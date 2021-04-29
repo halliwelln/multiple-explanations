@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE rdf:RDF [
+  <!ENTITY rule   "http://ns.inria.fr/corese/rule/"> 
+  <!ENTITY rdf    "http://www.w3.org/1999/02/22-rdf-syntax-ns">
+  <!ENTITY rdfs   "http://www.w3.org/2000/01/rdf-schema">
+  <!ENTITY xsd    "http://www.w3.org/2001/XMLSchema#">
+  <!ENTITY spin   "http://spinrdf.org/sp#">
+  <!ENTITY owl    "http://www.w3.org/2002/07/owl#">
+  <!ENTITY dbo    "http://dbpedia.org/ontology/">
+  <!ENTITY foaf   "http://xmlns.com/foaf/0.1/">
+]>
+
+<rdf:RDF 
+    xmlns:rdf  = "&rdf;#"
+    xmlns:rdfs = "&rdfs;#"
+    xmlns:xsd  = "&xsd;" 
+    xmlns:rule = "&rule;#"
+    xmlns:owl  = "&owl;"
+    xmlns:sp   = "&spin;"
+    xmlns      = "&rule;"
+    xmlns:dbo  = "&dbo;"
+    xmlns:foaf = "&foaf;"
+>
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?b dbo:spouse ?a .
+}
+WHERE {
+    ?a dbo:spouse ?b .
+}
+</body>
+</rule>
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?a dbo:grandparent ?mygrandparent .
+}
+WHERE {
+    ?a dbo:parent ?myparent .
+    ?myparent dbo:parent ?mygrandparent .    
+
+    FILTER (!EXISTS {?a dbo:grandparent ?mygrandparent})
+    FILTER (!EXISTS {?a dbo:parent ?myparent2 . ?myparent2 dbo:parent ?mygrandparent . FILTER (?myparent!=?myparent2)})
+}
+
+</body>
+</rule>
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?a dbo:grandparent ?mygrandparent .
+}
+WHERE {
+    ?a dbo:brother ?mybrother .
+    ?mybrother dbo:grandparent ?mygrandparent .    
+
+    FILTER (!EXISTS {?a dbo:grandparent ?mygrandparent})
+    FILTER (!EXISTS {?a dbo:brother ?mybrother2 . ?mybrother2 dbo:grandparent ?mygrandparent . FILTER (?mybrother!=?mybrother2)})
+}
+
+</body>
+</rule>
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?a dbo:grandparent ?mygrandparent .
+}
+WHERE {
+    ?a dbo:sister ?mysister .
+    ?mysister dbo:grandparent ?mygrandparent .    
+
+    FILTER (!EXISTS {?a dbo:grandparent ?mygrandparent})
+    FILTER (!EXISTS {?a dbo:sister ?mysister2 . ?mysister2 dbo:grandparent ?mygrandparent . FILTER (?mysister!=?mysister2)})
+
+}
+
+</body>
+</rule>
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?a dbo:grandparent ?mygrandparent2 .
+}
+WHERE {
+    ?a dbo:grandparent ?mygrandparent .
+    ?mygrandparent dbo:spouse ?mygrandparent2 .    
+
+    FILTER (!EXISTS {?a dbo:grandparent ?mygrandparent2})
+    FILTER (!EXISTS {?a dbo:grandparent ?mygrandparent3 . ?mygrandparent3 dbo:spouse ?mygrandparent2 . FILTER (?mygrandparent3!=?mygrandparent2)})
+
+}
+
+</body>
+</rule>
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?a dbo:grandparent ?mygrandparent2 .
+}
+WHERE {
+    ?a dbo:grandparent ?mygrandparent .
+    ?mygrandparent2 dbo:spouse ?mygrandparent .    
+
+    FILTER (!EXISTS {?a dbo:grandparent ?mygrandparent2})
+    FILTER (!EXISTS {?a dbo:grandparent ?mygrandparent3 . ?mygrandparent2 dbo:spouse ?mygrandparent3 . FILTER (?mygrandparent3!=?mygrandparent2)})
+}
+
+</body>
+</rule>
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?a dbo:grandparent ?mygrandparent .
+}
+WHERE {
+    ?a dbo:uncle ?myuncle .
+    ?myuncle dbo:parent ?mygrandparent .    
+
+    FILTER (!EXISTS {?a dbo:grandparent ?mygrandparent2})
+    FILTER (!EXISTS {?a dbo:uncle ?myuncle1 . ?myuncle1 dbo:parent ?mygrandparent . FILTER (?myuncle!=?myuncle1)})
+}
+
+</body>
+</rule>
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?a dbo:grandparent ?mygrandparent .
+}
+WHERE {
+    ?a dbo:aunt ?myaunt .
+    ?myaunt dbo:parent ?mygrandparent .    
+
+    FILTER (!EXISTS {?a dbo:grandparent ?mygrandparent2})
+    FILTER (!EXISTS {?a dbo:aunt ?myaunt1 . ?myaunt1 dbo:parent ?mygrandparent . FILTER (?myaunt!=?myaunt1)})
+}
+
+</body>
+</rule>
+
+</rdf:RDF>
