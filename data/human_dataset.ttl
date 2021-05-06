@@ -16,14 +16,14 @@
     dbo:sister <http://example.org/data#SisterPaul>;
     dbo:parent <http://example.org/data#FatherPaul>;
     dbo:parent <http://example.org/data#MotherPaul>;
-    dbo:spouse <http://example.org/data#StepSisterPaul>.
+    dbo:spouse <http://example.org/data#SisterInLawPaul>.
     
 <http://example.org/data#SisterPaul>
     dbo:brother <http://example.org/data#BrotherPaul>;
     dbo:brother <http://example.org/data#Paul>;
     dbo:parent <http://example.org/data#FatherPaul>;
     dbo:parent <http://example.org/data#MotherPaul>;
-    dbo:spouse <http://example.org/data#StepBrotherPaul>.   
+    dbo:spouse <http://example.org/data#BrotherInLawPaul>.   
 
 <http://example.org/data#FatherPaul>
     dbo:brother <http://example.org/data#UnclePaul1>;

@@ -1,0 +1,60 @@
+@public
+@beforeEntailment
+function us:beforeEntailment (re, path) {
+    fun:allEntailment(true);
+    set(entailmentList = xt:list())
+}
+
+
+@public
+@entailment
+function us:entailment(re, rul, acons, awhere) {
+    xt:add(entailmentList, xt:list(acons, awhere))
+}
+
+
+@public
+@afterEntailment
+function us:afterEntailment (re, path) {
+    us:exportEntailment()
+}
+
+@public
+function us:exportEntailment() {
+    xt:define("h", <http://www.inria.fr/2015/humans#>);
+    xt:define("i", <http://www.inria.fr/2015/humans-instances#>);
+    let (ind = 0, list = xt:list()) {
+        for (ent in entailmentList) {
+            let ((acons awhere) = ent) {
+                xt:add(list, us:format(acons, awhere, set(ind = ind + 1)))
+            }
+        } ;
+        let (target = reduce(rq:concat, list)) {
+            xt:print(target) ;
+            xt:print("result in: /Users/nhalliwe/Desktop/multiple-explanations/data/traces/entailment.ttl");
+            xt:write("/Users/nhalliwe/Desktop/multiple-explanations/data/traces/entailment.ttl", target)
+        }
+    }
+}
+
+
+
+@public
+function us:format(acons, awhere, ind) {
+    let (idcons = concat("us:construct", ind), idwhere = concat("us:where", ind)) {
+        concat(
+        st:format("graph %s {\n%s} \n",   idcons,  us:format(acons)),
+        st:format("graph %s {\n%s} \n\n", idwhere, us:format(awhere)))
+    }
+}
+
+@public
+function us:format(edgeList) {
+    reduce(rq:concat, 
+        maplist (function((s, p, o)) {
+            st:format("  %s %s %s .\n", st:turtle(s), st:turtle(p), st:turtle(o))
+        }, 
+        edgeList) )
+}
+
+

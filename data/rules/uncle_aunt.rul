@@ -67,17 +67,6 @@ WHERE {
 <rule>
 <body>  
 CONSTRUCT {
-    ?b dbo:spouse ?a .
-}
-WHERE {
-    ?a dbo:spouse ?b .
-}
-</body>
-</rule>
-
-<rule>
-<body>  
-CONSTRUCT {
     ?a dbo:uncle ?myuncle .
 }
 WHERE {
@@ -102,7 +91,6 @@ WHERE {
 }
 </body>
 </rule>
-
 
 
 <rule>
@@ -139,7 +127,7 @@ CONSTRUCT {
     ?a dbo:aunt ?myaunt .
 }
 WHERE {
-    ?a dbo:sister ?mybrother .
+    ?a dbo:sister ?mysister .
     ?mysister dbo:aunt ?myaunt . 
     
     FILTER (!EXISTS {?a dbo:aunt ?myaunt})
