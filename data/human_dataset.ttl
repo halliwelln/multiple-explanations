@@ -9,37 +9,59 @@
     dbo:sister <http://example.org/data#SisterPaul>;
     dbo:parent <http://example.org/data#FatherPaul>;
     dbo:parent <http://example.org/data#MotherPaul>;
-    dbo:spouse <http://example.org/data#SpousePaul>  .
+    dbo:child <http://example.org/data#SonPaul>;
+    dbo:child <http://example.org/data#DaughterPaul>;
+    dbo:spouse <http://example.org/data#SpousePaul> .
 
 <http://example.org/data#BrotherPaul>
     dbo:brother <http://example.org/data#Paul>;
     dbo:sister <http://example.org/data#SisterPaul>;
     dbo:parent <http://example.org/data#FatherPaul>;
     dbo:parent <http://example.org/data#MotherPaul>;
-    dbo:spouse <http://example.org/data#SisterInLawPaul>.
+    dbo:spouse <http://example.org/data#SisterInLawPaul> .
     
 <http://example.org/data#SisterPaul>
     dbo:brother <http://example.org/data#BrotherPaul>;
     dbo:brother <http://example.org/data#Paul>;
     dbo:parent <http://example.org/data#FatherPaul>;
     dbo:parent <http://example.org/data#MotherPaul>;
-    dbo:spouse <http://example.org/data#BrotherInLawPaul>.   
+    dbo:spouse <http://example.org/data#BrotherInLawPaul> .   
 
 <http://example.org/data#FatherPaul>
     dbo:brother <http://example.org/data#UnclePaul1>;
     dbo:sister <http://example.org/data#AuntPaul1>;
     dbo:parent <http://example.org/data#GrandFatherPaul1>;
     dbo:parent <http://example.org/data#GrandMotherPaul1>;
+    dbo:child <http://example.org/data#Paul>;
+    dbo:child <http://example.org/data#BrotherPaul>;
+    dbo:child <http://example.org/data#SisterPaul>;
     dbo:spouse <http://example.org/data#MotherPaul> .
     
+<http://example.org/data#SonPaul>
+    dbo:sister <http://example.org/data#DaughterPaul>;
+    dbo:parent <http://example.org/data#Paul>;
+    dbo:parent <http://example.org/data#SpousePaul> .
+
+<http://example.org/data#DaughterPaul>
+    dbo:brother <http://example.org/data#SonPaul>;
+    dbo:parent <http://example.org/data#Paul>;
+    dbo:parent <http://example.org/data#SpousePaul> .
+
 <http://example.org/data#MotherPaul>
     dbo:brother <http://example.org/data#UnclePaul2>;
     dbo:sister <http://example.org/data#AuntPaul2>;
     dbo:parent <http://example.org/data#GrandFatherPaul2>;
-    dbo:parent <http://example.org/data#GrandMotherPaul2> .
+    dbo:parent <http://example.org/data#GrandMotherPaul2>;
+    dbo:child <http://example.org/data#Paul>;
+    dbo:child <http://example.org/data#BrotherPaul>;
+    dbo:child <http://example.org/data#SisterPaul>;
+    dbo:spouse <http://example.org/data#FatherPaul> .
 
 <http://example.org/data#GrandFatherPaul1>
-    dbo:spouse <http://example.org/data#GrandMotherPaul1> .
+    dbo:spouse <http://example.org/data#GrandMotherPaul1>;
+    dbo:child <http://example.org/data#FatherPaul> .
     
 <http://example.org/data#GrandFatherPaul2>
-    dbo:spouse <http://example.org/data#GrandMotherPaul2> .
+    dbo:spouse <http://example.org/data#GrandMotherPaul2>;
+    dbo:child <http://example.org/data#MotherPaul> .
+

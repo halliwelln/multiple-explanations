@@ -1,0 +1,160 @@
+graph us:construct1 {
+  <http://example.org/data#Paul> dbo:uncle <http://example.org/data#UnclePaul1> .
+} 
+graph us:where1 {
+  <http://example.org/data#Paul> dbo:parent <http://example.org/data#FatherPaul> .
+  <http://example.org/data#FatherPaul> dbo:brother <http://example.org/data#UnclePaul1> .
+} 
+
+graph us:construct2 {
+  <http://example.org/data#Paul> dbo:uncle <http://example.org/data#UnclePaul2> .
+} 
+graph us:where2 {
+  <http://example.org/data#Paul> dbo:parent <http://example.org/data#MotherPaul> .
+  <http://example.org/data#MotherPaul> dbo:brother <http://example.org/data#UnclePaul2> .
+} 
+
+graph us:construct3 {
+  <http://example.org/data#BrotherPaul> dbo:uncle <http://example.org/data#UnclePaul1> .
+} 
+graph us:where3 {
+  <http://example.org/data#BrotherPaul> dbo:parent <http://example.org/data#FatherPaul> .
+  <http://example.org/data#FatherPaul> dbo:brother <http://example.org/data#UnclePaul1> .
+} 
+
+graph us:construct4 {
+  <http://example.org/data#BrotherPaul> dbo:uncle <http://example.org/data#UnclePaul2> .
+} 
+graph us:where4 {
+  <http://example.org/data#BrotherPaul> dbo:parent <http://example.org/data#MotherPaul> .
+  <http://example.org/data#MotherPaul> dbo:brother <http://example.org/data#UnclePaul2> .
+} 
+
+graph us:construct5 {
+  <http://example.org/data#SisterPaul> dbo:uncle <http://example.org/data#UnclePaul1> .
+} 
+graph us:where5 {
+  <http://example.org/data#SisterPaul> dbo:parent <http://example.org/data#FatherPaul> .
+  <http://example.org/data#FatherPaul> dbo:brother <http://example.org/data#UnclePaul1> .
+} 
+
+graph us:construct6 {
+  <http://example.org/data#SisterPaul> dbo:uncle <http://example.org/data#UnclePaul2> .
+} 
+graph us:where6 {
+  <http://example.org/data#SisterPaul> dbo:parent <http://example.org/data#MotherPaul> .
+  <http://example.org/data#MotherPaul> dbo:brother <http://example.org/data#UnclePaul2> .
+} 
+
+graph us:construct7 {
+  <http://example.org/data#SonPaul> dbo:uncle <http://example.org/data#BrotherPaul> .
+} 
+graph us:where7 {
+  <http://example.org/data#SonPaul> dbo:parent <http://example.org/data#Paul> .
+  <http://example.org/data#Paul> dbo:brother <http://example.org/data#BrotherPaul> .
+} 
+
+graph us:construct8 {
+  <http://example.org/data#DaughterPaul> dbo:uncle <http://example.org/data#BrotherPaul> .
+} 
+graph us:where8 {
+  <http://example.org/data#DaughterPaul> dbo:parent <http://example.org/data#Paul> .
+  <http://example.org/data#Paul> dbo:brother <http://example.org/data#BrotherPaul> .
+} 
+
+graph us:construct9 {
+  <http://example.org/data#SonPaul> dbo:aunt <http://example.org/data#SisterPaul> .
+} 
+graph us:where9 {
+  <http://example.org/data#Paul> dbo:sister <http://example.org/data#SisterPaul> .
+  <http://example.org/data#SonPaul> dbo:parent <http://example.org/data#Paul> .
+} 
+
+graph us:construct10 {
+  <http://example.org/data#DaughterPaul> dbo:aunt <http://example.org/data#SisterPaul> .
+} 
+graph us:where10 {
+  <http://example.org/data#Paul> dbo:sister <http://example.org/data#SisterPaul> .
+  <http://example.org/data#DaughterPaul> dbo:parent <http://example.org/data#Paul> .
+} 
+
+graph us:construct11 {
+  <http://example.org/data#Paul> dbo:aunt <http://example.org/data#AuntPaul1> .
+} 
+graph us:where11 {
+  <http://example.org/data#FatherPaul> dbo:sister <http://example.org/data#AuntPaul1> .
+  <http://example.org/data#Paul> dbo:parent <http://example.org/data#FatherPaul> .
+} 
+
+graph us:construct12 {
+  <http://example.org/data#BrotherPaul> dbo:aunt <http://example.org/data#AuntPaul1> .
+} 
+graph us:where12 {
+  <http://example.org/data#FatherPaul> dbo:sister <http://example.org/data#AuntPaul1> .
+  <http://example.org/data#BrotherPaul> dbo:parent <http://example.org/data#FatherPaul> .
+} 
+
+graph us:construct13 {
+  <http://example.org/data#SisterPaul> dbo:aunt <http://example.org/data#AuntPaul1> .
+} 
+graph us:where13 {
+  <http://example.org/data#FatherPaul> dbo:sister <http://example.org/data#AuntPaul1> .
+  <http://example.org/data#SisterPaul> dbo:parent <http://example.org/data#FatherPaul> .
+} 
+
+graph us:construct14 {
+  <http://example.org/data#Paul> dbo:aunt <http://example.org/data#AuntPaul2> .
+} 
+graph us:where14 {
+  <http://example.org/data#MotherPaul> dbo:sister <http://example.org/data#AuntPaul2> .
+  <http://example.org/data#Paul> dbo:parent <http://example.org/data#MotherPaul> .
+} 
+
+graph us:construct15 {
+  <http://example.org/data#BrotherPaul> dbo:aunt <http://example.org/data#AuntPaul2> .
+} 
+graph us:where15 {
+  <http://example.org/data#MotherPaul> dbo:sister <http://example.org/data#AuntPaul2> .
+  <http://example.org/data#BrotherPaul> dbo:parent <http://example.org/data#MotherPaul> .
+} 
+
+graph us:construct16 {
+  <http://example.org/data#SisterPaul> dbo:aunt <http://example.org/data#AuntPaul2> .
+} 
+graph us:where16 {
+  <http://example.org/data#MotherPaul> dbo:sister <http://example.org/data#AuntPaul2> .
+  <http://example.org/data#SisterPaul> dbo:parent <http://example.org/data#MotherPaul> .
+} 
+
+graph us:construct17 {
+  <http://example.org/data#SonPaul> dbo:aunt <http://example.org/data#SisterInLawPaul> .
+} 
+graph us:where17 {
+  <http://example.org/data#SonPaul> dbo:uncle <http://example.org/data#BrotherPaul> .
+  <http://example.org/data#BrotherPaul> dbo:spouse <http://example.org/data#SisterInLawPaul> .
+} 
+
+graph us:construct18 {
+  <http://example.org/data#DaughterPaul> dbo:aunt <http://example.org/data#SisterInLawPaul> .
+} 
+graph us:where18 {
+  <http://example.org/data#DaughterPaul> dbo:uncle <http://example.org/data#BrotherPaul> .
+  <http://example.org/data#BrotherPaul> dbo:spouse <http://example.org/data#SisterInLawPaul> .
+} 
+
+graph us:construct19 {
+  <http://example.org/data#SonPaul> dbo:uncle <http://example.org/data#BrotherInLawPaul> .
+} 
+graph us:where19 {
+  <http://example.org/data#SonPaul> dbo:aunt <http://example.org/data#SisterPaul> .
+  <http://example.org/data#SisterPaul> dbo:spouse <http://example.org/data#BrotherInLawPaul> .
+} 
+
+graph us:construct20 {
+  <http://example.org/data#DaughterPaul> dbo:uncle <http://example.org/data#BrotherInLawPaul> .
+} 
+graph us:where20 {
+  <http://example.org/data#DaughterPaul> dbo:aunt <http://example.org/data#SisterPaul> .
+  <http://example.org/data#SisterPaul> dbo:spouse <http://example.org/data#BrotherInLawPaul> .
+} 
+

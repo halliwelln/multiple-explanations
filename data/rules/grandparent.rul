@@ -25,17 +25,6 @@
 <rule>
 <body>  
 CONSTRUCT {
-    ?b dbo:spouse ?a .
-}
-WHERE {
-    ?a dbo:spouse ?b .
-}
-</body>
-</rule>
-
-<rule>
-<body>  
-CONSTRUCT {
     ?a dbo:grandparent ?mygrandparent .
 }
 WHERE {
@@ -110,38 +99,6 @@ WHERE {
 
     FILTER (!EXISTS {?a dbo:grandparent ?mygrandparent2})
     FILTER (!EXISTS {?a dbo:grandparent ?mygrandparent3 . ?mygrandparent2 dbo:spouse ?mygrandparent3 . FILTER (?mygrandparent3!=?mygrandparent2)})
-}
-
-</body>
-</rule>
-
-<rule>
-<body>  
-CONSTRUCT {
-    ?a dbo:grandparent ?mygrandparent .
-}
-WHERE {
-    ?a dbo:uncle ?myuncle .
-    ?myuncle dbo:parent ?mygrandparent .    
-
-    FILTER (!EXISTS {?a dbo:grandparent ?mygrandparent2})
-    FILTER (!EXISTS {?a dbo:uncle ?myuncle1 . ?myuncle1 dbo:parent ?mygrandparent . FILTER (?myuncle!=?myuncle1)})
-}
-
-</body>
-</rule>
-
-<rule>
-<body>  
-CONSTRUCT {
-    ?a dbo:grandparent ?mygrandparent .
-}
-WHERE {
-    ?a dbo:aunt ?myaunt .
-    ?myaunt dbo:parent ?mygrandparent .    
-
-    FILTER (!EXISTS {?a dbo:grandparent ?mygrandparent2})
-    FILTER (!EXISTS {?a dbo:aunt ?myaunt1 . ?myaunt1 dbo:parent ?mygrandparent . FILTER (?myaunt!=?myaunt1)})
 }
 
 </body>

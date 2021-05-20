@@ -28,8 +28,8 @@ CONSTRUCT {
     ?a dbo:uncle ?myuncle .
 }
 WHERE {
-    ?myparent dbo:brother ?myuncle .
     ?a dbo:parent ?myparent . 
+    ?myparent dbo:brother ?myuncle .
     
     FILTER (!EXISTS {?a dbo:uncle ?myuncle})
 }
