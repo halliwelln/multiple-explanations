@@ -14,6 +14,7 @@
     dbo:spouse <http://example.org/data#SpousePaul> .
 
 <http://example.org/data#BrotherPaul>
+    rdfs:label "Mike";
     dbo:brother <http://example.org/data#Paul>;
     dbo:sister <http://example.org/data#SisterPaul>;
     dbo:parent <http://example.org/data#FatherPaul>;
@@ -21,13 +22,15 @@
     dbo:spouse <http://example.org/data#SisterInLawPaul> .
     
 <http://example.org/data#SisterPaul>
+    rdfs:label "Ruth";
     dbo:brother <http://example.org/data#BrotherPaul>;
     dbo:brother <http://example.org/data#Paul>;
     dbo:parent <http://example.org/data#FatherPaul>;
     dbo:parent <http://example.org/data#MotherPaul>;
-    dbo:spouse <http://example.org/data#BrotherInLawPaul> .   
+    dbo:spouse <http://example.org/data#BrotherInLawPaul> .
 
 <http://example.org/data#FatherPaul>
+    rdfs:label "James";
     dbo:brother <http://example.org/data#UnclePaul1>;
     dbo:sister <http://example.org/data#AuntPaul1>;
     dbo:parent <http://example.org/data#GrandFatherPaul1>;
@@ -38,16 +41,19 @@
     dbo:spouse <http://example.org/data#MotherPaul> .
     
 <http://example.org/data#SonPaul>
+    rdfs:label "Bob";
     dbo:sister <http://example.org/data#DaughterPaul>;
     dbo:parent <http://example.org/data#Paul>;
     dbo:parent <http://example.org/data#SpousePaul> .
 
 <http://example.org/data#DaughterPaul>
+    rdfs:label "Stella";
     dbo:brother <http://example.org/data#SonPaul>;
     dbo:parent <http://example.org/data#Paul>;
     dbo:parent <http://example.org/data#SpousePaul> .
 
 <http://example.org/data#MotherPaul>
+    rdfs:label "Mary";
     dbo:brother <http://example.org/data#UnclePaul2>;
     dbo:sister <http://example.org/data#AuntPaul2>;
     dbo:parent <http://example.org/data#GrandFatherPaul2>;
@@ -55,13 +61,24 @@
     dbo:child <http://example.org/data#Paul>;
     dbo:child <http://example.org/data#BrotherPaul>;
     dbo:child <http://example.org/data#SisterPaul>;
-    dbo:spouse <http://example.org/data#FatherPaul> .
+    dbo:spouse <http://example.org/data#FatherPaul> . 
 
 <http://example.org/data#GrandFatherPaul1>
+    rdfs:label "Jim";
     dbo:spouse <http://example.org/data#GrandMotherPaul1>;
     dbo:child <http://example.org/data#FatherPaul> .
     
 <http://example.org/data#GrandFatherPaul2>
+    rdfs:label "Owen";
     dbo:spouse <http://example.org/data#GrandMotherPaul2>;
     dbo:child <http://example.org/data#MotherPaul> .
 
+<http://example.org/data#SpousePaul> rdfs:label "Linda" .
+<http://example.org/data#SisterInLawPaul> rdfs:label "Rowena" .
+<http://example.org/data#BrotherInLawPaul> rdfs:label "Kevin" .
+<http://example.org/data#UnclePaul1> rdfs:label "Albert" .
+<http://example.org/data#UnclePaul2> rdfs:label "Jack" .
+<http://example.org/data#AuntPaul1> rdfs:label "Joan" .
+<http://example.org/data#AuntPaul2> rdfs:label "Milly" .
+<http://example.org/data#GrandMotherPaul1> rdfs:label "Flora" .
+<http://example.org/data#GrandMotherPaul2> rdfs:label "Theresa".
