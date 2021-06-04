@@ -24,11 +24,31 @@
 <body>  
 CONSTRUCT {
     ?b dbo:spouse ?a .
+    [] dbo:weight ".9"^^xsd:float .
 }
 WHERE {
     ?a dbo:spouse ?b .
+    
+    FILTER (?b != ?a)
 }
+
 </body>
-</rule>
+</rule> 
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?b dbo:spouse ?a .
+    [] dbo:weight "0.1"^^xsd:float .
+}
+WHERE {
+    ?b dbo:child ?c .
+    ?c dbo:parent ?a .
+
+    FILTER (?b != ?a)
+}
+
+</body>
+</rule> 
 
 </rdf:RDF>
