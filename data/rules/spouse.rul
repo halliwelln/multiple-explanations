@@ -24,7 +24,6 @@
 <body>  
 CONSTRUCT {
     ?b dbo:spouse ?a .
-    [] dbo:weight ".9"^^xsd:float .
 }
 WHERE {
     ?a dbo:spouse ?b .
@@ -39,7 +38,6 @@ WHERE {
 <body>  
 CONSTRUCT {
     ?b dbo:spouse ?a .
-    [] dbo:weight "0.1"^^xsd:float .
 }
 WHERE {
     ?b dbo:child ?c .

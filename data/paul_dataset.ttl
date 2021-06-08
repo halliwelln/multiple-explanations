@@ -3,8 +3,10 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
 
 <http://example.org/data#Paul> 
+    foaf:gender "male"@en;
     dbo:brother <http://example.org/data#BrotherPaul>;
     dbo:sister <http://example.org/data#SisterPaul>;
     dbo:parent <http://example.org/data#FatherPaul>;
@@ -15,6 +17,7 @@
 
 <http://example.org/data#BrotherPaul>
     rdfs:label "Mike";
+    foaf:gender "male"@en;
     dbo:brother <http://example.org/data#Paul>;
     dbo:sister <http://example.org/data#SisterPaul>;
     dbo:parent <http://example.org/data#FatherPaul>;
@@ -23,6 +26,7 @@
     
 <http://example.org/data#SisterPaul>
     rdfs:label "Ruth";
+    foaf:gender "female"@en;
     dbo:brother <http://example.org/data#BrotherPaul>;
     dbo:brother <http://example.org/data#Paul>;
     dbo:parent <http://example.org/data#FatherPaul>;
@@ -31,6 +35,7 @@
 
 <http://example.org/data#FatherPaul>
     rdfs:label "James";
+    foaf:gender "male"@en;
     dbo:brother <http://example.org/data#UnclePaul1>;
     dbo:sister <http://example.org/data#AuntPaul1>;
     dbo:parent <http://example.org/data#GrandFatherPaul1>;
@@ -42,18 +47,21 @@
     
 <http://example.org/data#SonPaul>
     rdfs:label "Bob";
+    foaf:gender "male"@en;
     dbo:sister <http://example.org/data#DaughterPaul>;
     dbo:parent <http://example.org/data#Paul>;
     dbo:parent <http://example.org/data#SpousePaul> .
 
 <http://example.org/data#DaughterPaul>
     rdfs:label "Stella";
+    foaf:gender "female"@en;
     dbo:brother <http://example.org/data#SonPaul>;
     dbo:parent <http://example.org/data#Paul>;
     dbo:parent <http://example.org/data#SpousePaul> .
 
 <http://example.org/data#MotherPaul>
     rdfs:label "Mary";
+    foaf:gender "female"@en;
     dbo:brother <http://example.org/data#UnclePaul2>;
     dbo:sister <http://example.org/data#AuntPaul2>;
     dbo:parent <http://example.org/data#GrandFatherPaul2>;
@@ -65,20 +73,61 @@
 
 <http://example.org/data#GrandFatherPaul1>
     rdfs:label "Jim";
+    foaf:gender "male"@en;
     dbo:spouse <http://example.org/data#GrandMotherPaul1>;
-    dbo:child <http://example.org/data#FatherPaul> .
+    dbo:child <http://example.org/data#FatherPaul>;
+    dbo:child <http://example.org/data#UnclePaul1>;
+    dbo:child <http://example.org/data#AuntPaul1> .
     
 <http://example.org/data#GrandFatherPaul2>
     rdfs:label "Owen";
+    foaf:gender "male"@en;
     dbo:spouse <http://example.org/data#GrandMotherPaul2>;
-    dbo:child <http://example.org/data#MotherPaul> .
+    dbo:child <http://example.org/data#MotherPaul>;
+    dbo:child <http://example.org/data#UnclePaul2>;
+    dbo:child <http://example.org/data#AuntPaul2> .
 
-<http://example.org/data#SpousePaul> rdfs:label "Linda" .
-<http://example.org/data#SisterInLawPaul> rdfs:label "Rowena" .
-<http://example.org/data#BrotherInLawPaul> rdfs:label "Kevin" .
-<http://example.org/data#UnclePaul1> rdfs:label "Albert" .
-<http://example.org/data#UnclePaul2> rdfs:label "Jack" .
-<http://example.org/data#AuntPaul1> rdfs:label "Joan" .
-<http://example.org/data#AuntPaul2> rdfs:label "Milly" .
-<http://example.org/data#GrandMotherPaul1> rdfs:label "Flora" .
-<http://example.org/data#GrandMotherPaul2> rdfs:label "Theresa".
+<http://example.org/data#GrandMotherPaul1> 
+    rdfs:label "Flora";
+    foaf:gender "female"@en;
+    dbo:spouse <http://example.org/data#GrandFatherPaul1>;
+    dbo:child <http://example.org/data#FatherPaul>;
+    dbo:child <http://example.org/data#UnclePaul1>;
+    dbo:child <http://example.org/data#AuntPaul1> .
+
+<http://example.org/data#GrandMotherPaul2> 
+    rdfs:label "Theresa";
+    foaf:gender "female"@en;
+    dbo:spouse <http://example.org/data#GrandFatherPaul2>;
+    dbo:child <http://example.org/data#MotherPaul>;
+    dbo:child <http://example.org/data#UnclePaul2>;
+    dbo:child <http://example.org/data#AuntPaul2> .
+
+<http://example.org/data#UnclePaul1> 
+    rdfs:label "Albert";
+    foaf:gender "male"@en .
+
+<http://example.org/data#UnclePaul2> 
+    rdfs:label "Jack";
+    foaf:gender "male"@en  .
+
+<http://example.org/data#AuntPaul1> 
+    rdfs:label "Joan";
+    foaf:gender "female"@en .
+
+<http://example.org/data#AuntPaul2> 
+    rdfs:label "Milly";
+    foaf:gender "female"@en .
+
+<http://example.org/data#SpousePaul> 
+    rdfs:label "Linda";
+    foaf:gender "female"@en .
+
+<http://example.org/data#SisterInLawPaul> 
+    rdfs:label "Rowena";
+    foaf:gender "female"@en .
+
+<http://example.org/data#BrotherInLawPaul>
+    rdfs:label "Kevin";
+    foaf:gender "male"@en .
+
