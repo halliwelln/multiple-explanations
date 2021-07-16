@@ -26,7 +26,7 @@ def parse_ttl(file_name, max_padding):
 
             source_tup = [split_source[0],source_rel,split_source[2]]
 
-            weight = float(lines[idx+2].split()[2][1:4])
+            weight = float(lines[idx+2].split()[2][1:5])
 
         exp_triples = []
 

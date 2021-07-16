@@ -12,10 +12,13 @@ np.random.seed(SEED)
 rn.seed(SEED)
 
 parser = argparse.ArgumentParser()
-parser.add_argument("rules", nargs="+",help='<rule> no quotes or commas ie grandparent child')
+parser.add_argument("rules", type=str,
+    help='<rule> separated by spaces (no quotes or commas) i.e grandparent child')
 args = parser.parse_args()
 
-rules = args.rules
+rules = args.rules.split()
+
+MAX_PADDING = 3
 
 data = dict()
 all_triples = []
@@ -37,7 +40,7 @@ for rule in rules:
         max_padding=MAX_PADDING
     )
 
-    _, unique_idx = np.unique(triples, axis=0,return_index=True)
+    _, unique_idx = np.unique(traces, axis=0,return_index=True)
 
     triples = triples[unique_idx]
     traces = traces[unique_idx]
@@ -49,49 +52,16 @@ for rule in rules:
     traces = traces[idx]
     weights = weights[idx]
 
-    #####FIX THIS######
-    #remove male/female triples from brother/sister
-    if rule_file == 'brother_sister':
-        pass
+    # #####FIX THIS######
+    # #remove male/female triples from brother/sister
+    # if rule_file == 'brother_sister':
+    #     pass
 
     exp_entities = np.array([[traces[:,i,:][:,0],
         traces[:,i,:][:,2]] for i in range(MAX_PADDING)]).flatten()
 
     exp_relations = np.array([traces[:,i,:][:,1] for i in range(MAX_PADDING)]).flatten()
  
-    if rule == 'spouse':
-
-        spouse_idx = traces[:,0,:][:,1] == 'spouse'
-
-        symmetric_spouse_triples = triples[spouse_idx]
-        symmetric_spouse_traces = traces[spouse_idx]
-        symmetric_spouse_weights = weights[spouse_idx]
-
-        non_symmetric_spouse_triples = triples[~spouse_idx]
-        non_symmetric_spouse_traces = traces[~spouse_idx]
-        non_symmetric_spouse_weights = weights[~spouse_idx]
-
-        swapped_triples = symmetric_spouse_triples[:,[2,1,0]]
-        swapped_traces = symmetric_spouse_traces[:,:,[2,1,0]]
-
-        triples = np.concatenate([
-            swapped_triples,
-            symmetric_spouse_triples,
-            non_symmetric_spouse_triples
-            ], axis=0)
-
-        traces = np.concatenate([
-            swapped_traces,
-            symmetric_spouse_traces,
-            non_symmetric_spouse_traces
-            ], axis=0)
-
-        weights = np.concatenate([
-            symmetric_spouse_weights,
-            symmetric_spouse_weights,
-            non_symmetric_spouse_weights
-            ], axis=0)
-
     all_triples.append(triples)
     all_traces.append(traces)
     all_weights.append(weights)
@@ -125,6 +95,6 @@ data['rules'] = rules
 
 print('Saving numpy file...')
 
-np.savez(os.path.join('..','data',f'paul_dataset.npz'),**data)
+np.savez(os.path.join('..','data',f'paul-dataset.npz'),**data)
 
 print('Done')

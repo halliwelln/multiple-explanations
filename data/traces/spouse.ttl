@@ -1,6 +1,6 @@
 graph us:construct1 {
   <http://example.org/data#SpousePaul> dbo:spouse <http://example.org/data#Paul> .
-  _:b_0.0.13.27 dbo:weight "1.0"^^xsd:float .
+  _:b_0.0.13.27 dbo:weight "0.99"^^xsd:float .
 } 
 graph us:where1 {
   <http://example.org/data#Paul> dbo:spouse <http://example.org/data#SpousePaul> .
@@ -8,7 +8,7 @@ graph us:where1 {
 
 graph us:construct2 {
   <http://example.org/data#SisterInLawPaul> dbo:spouse <http://example.org/data#BrotherPaul> .
-  _:b_0.0.17.29 dbo:weight "1.0"^^xsd:float .
+  _:b_0.0.17.29 dbo:weight "0.99"^^xsd:float .
 } 
 graph us:where2 {
   <http://example.org/data#BrotherPaul> dbo:spouse <http://example.org/data#SisterInLawPaul> .
@@ -16,7 +16,7 @@ graph us:where2 {
 
 graph us:construct3 {
   <http://example.org/data#BrotherInLawPaul> dbo:spouse <http://example.org/data#SisterPaul> .
-  _:b_0.0.19.32 dbo:weight "1.0"^^xsd:float .
+  _:b_0.0.19.32 dbo:weight "0.99"^^xsd:float .
 } 
 graph us:where3 {
   <http://example.org/data#SisterPaul> dbo:spouse <http://example.org/data#BrotherInLawPaul> .
@@ -24,7 +24,7 @@ graph us:where3 {
 
 graph us:construct4 {
   <http://example.org/data#MotherPaul> dbo:spouse <http://example.org/data#FatherPaul> .
-  _:b_0.0.21.22 dbo:weight "1.0"^^xsd:float .
+  _:b_0.0.21.22 dbo:weight "0.99"^^xsd:float .
 } 
 graph us:where4 {
   <http://example.org/data#FatherPaul> dbo:spouse <http://example.org/data#MotherPaul> .
@@ -32,7 +32,7 @@ graph us:where4 {
 
 graph us:construct5 {
   <http://example.org/data#FatherPaul> dbo:spouse <http://example.org/data#MotherPaul> .
-  _:b_0.0.22.21 dbo:weight "1.0"^^xsd:float .
+  _:b_0.0.22.21 dbo:weight "0.99"^^xsd:float .
 } 
 graph us:where5 {
   <http://example.org/data#MotherPaul> dbo:spouse <http://example.org/data#FatherPaul> .
@@ -40,7 +40,7 @@ graph us:where5 {
 
 graph us:construct6 {
   <http://example.org/data#GrandMotherPaul1> dbo:spouse <http://example.org/data#GrandFatherPaul1> .
-  _:b_0.0.36.37 dbo:weight "1.0"^^xsd:float .
+  _:b_0.0.36.37 dbo:weight "0.99"^^xsd:float .
 } 
 graph us:where6 {
   <http://example.org/data#GrandFatherPaul1> dbo:spouse <http://example.org/data#GrandMotherPaul1> .
@@ -48,7 +48,7 @@ graph us:where6 {
 
 graph us:construct7 {
   <http://example.org/data#GrandFatherPaul1> dbo:spouse <http://example.org/data#GrandMotherPaul1> .
-  _:b_0.0.37.36 dbo:weight "1.0"^^xsd:float .
+  _:b_0.0.37.36 dbo:weight "0.99"^^xsd:float .
 } 
 graph us:where7 {
   <http://example.org/data#GrandMotherPaul1> dbo:spouse <http://example.org/data#GrandFatherPaul1> .
@@ -56,7 +56,7 @@ graph us:where7 {
 
 graph us:construct8 {
   <http://example.org/data#GrandMotherPaul2> dbo:spouse <http://example.org/data#GrandFatherPaul2> .
-  _:b_0.0.43.44 dbo:weight "1.0"^^xsd:float .
+  _:b_0.0.43.44 dbo:weight "0.99"^^xsd:float .
 } 
 graph us:where8 {
   <http://example.org/data#GrandFatherPaul2> dbo:spouse <http://example.org/data#GrandMotherPaul2> .
@@ -64,15 +64,15 @@ graph us:where8 {
 
 graph us:construct9 {
   <http://example.org/data#GrandFatherPaul2> dbo:spouse <http://example.org/data#GrandMotherPaul2> .
-  _:b_0.0.44.43 dbo:weight "1.0"^^xsd:float .
+  _:b_0.0.44.43 dbo:weight "0.99"^^xsd:float .
 } 
 graph us:where9 {
   <http://example.org/data#GrandMotherPaul2> dbo:spouse <http://example.org/data#GrandFatherPaul2> .
 } 
 
 graph us:construct10 {
-  <http://example.org/data#Paul> dbo:spouse <http://example.org/data#SpousePaul> .
-  _:b_1.0.13.24.27 dbo:weight "0.4"^^xsd:float .
+  <http://example.org/data#SpousePaul> dbo:spouse <http://example.org/data#Paul> .
+  _:b_1.0.13.24.27 dbo:weight "0.99"^^xsd:float .
 } 
 graph us:where10 {
   <http://example.org/data#Paul> dbo:child <http://example.org/data#SonPaul> .
@@ -80,8 +80,8 @@ graph us:where10 {
 } 
 
 graph us:construct11 {
-  <http://example.org/data#Paul> dbo:spouse <http://example.org/data#SpousePaul> .
-  _:b_1.0.13.25.27 dbo:weight "0.4"^^xsd:float .
+  <http://example.org/data#SpousePaul> dbo:spouse <http://example.org/data#Paul> .
+  _:b_1.0.13.25.27 dbo:weight "0.99"^^xsd:float .
 } 
 graph us:where11 {
   <http://example.org/data#Paul> dbo:child <http://example.org/data#DaughterPaul> .
@@ -89,8 +89,8 @@ graph us:where11 {
 } 
 
 graph us:construct12 {
-  <http://example.org/data#FatherPaul> dbo:spouse <http://example.org/data#MotherPaul> .
-  _:b_1.0.21.13.22 dbo:weight "0.4"^^xsd:float .
+  <http://example.org/data#MotherPaul> dbo:spouse <http://example.org/data#FatherPaul> .
+  _:b_1.0.21.13.22 dbo:weight "0.99"^^xsd:float .
 } 
 graph us:where12 {
   <http://example.org/data#FatherPaul> dbo:child <http://example.org/data#Paul> .
@@ -98,8 +98,8 @@ graph us:where12 {
 } 
 
 graph us:construct13 {
-  <http://example.org/data#FatherPaul> dbo:spouse <http://example.org/data#MotherPaul> .
-  _:b_1.0.21.17.22 dbo:weight "0.4"^^xsd:float .
+  <http://example.org/data#MotherPaul> dbo:spouse <http://example.org/data#FatherPaul> .
+  _:b_1.0.21.17.22 dbo:weight "0.99"^^xsd:float .
 } 
 graph us:where13 {
   <http://example.org/data#FatherPaul> dbo:child <http://example.org/data#BrotherPaul> .
@@ -107,8 +107,8 @@ graph us:where13 {
 } 
 
 graph us:construct14 {
-  <http://example.org/data#FatherPaul> dbo:spouse <http://example.org/data#MotherPaul> .
-  _:b_1.0.21.19.22 dbo:weight "0.4"^^xsd:float .
+  <http://example.org/data#MotherPaul> dbo:spouse <http://example.org/data#FatherPaul> .
+  _:b_1.0.21.19.22 dbo:weight "0.99"^^xsd:float .
 } 
 graph us:where14 {
   <http://example.org/data#FatherPaul> dbo:child <http://example.org/data#SisterPaul> .
@@ -116,8 +116,8 @@ graph us:where14 {
 } 
 
 graph us:construct15 {
-  <http://example.org/data#MotherPaul> dbo:spouse <http://example.org/data#FatherPaul> .
-  _:b_1.0.22.13.21 dbo:weight "0.4"^^xsd:float .
+  <http://example.org/data#FatherPaul> dbo:spouse <http://example.org/data#MotherPaul> .
+  _:b_1.0.22.13.21 dbo:weight "0.99"^^xsd:float .
 } 
 graph us:where15 {
   <http://example.org/data#MotherPaul> dbo:child <http://example.org/data#Paul> .
@@ -125,8 +125,8 @@ graph us:where15 {
 } 
 
 graph us:construct16 {
-  <http://example.org/data#MotherPaul> dbo:spouse <http://example.org/data#FatherPaul> .
-  _:b_1.0.22.17.21 dbo:weight "0.4"^^xsd:float .
+  <http://example.org/data#FatherPaul> dbo:spouse <http://example.org/data#MotherPaul> .
+  _:b_1.0.22.17.21 dbo:weight "0.99"^^xsd:float .
 } 
 graph us:where16 {
   <http://example.org/data#MotherPaul> dbo:child <http://example.org/data#BrotherPaul> .
@@ -134,8 +134,8 @@ graph us:where16 {
 } 
 
 graph us:construct17 {
-  <http://example.org/data#MotherPaul> dbo:spouse <http://example.org/data#FatherPaul> .
-  _:b_1.0.22.19.21 dbo:weight "0.4"^^xsd:float .
+  <http://example.org/data#FatherPaul> dbo:spouse <http://example.org/data#MotherPaul> .
+  _:b_1.0.22.19.21 dbo:weight "0.99"^^xsd:float .
 } 
 graph us:where17 {
   <http://example.org/data#MotherPaul> dbo:child <http://example.org/data#SisterPaul> .
@@ -143,8 +143,8 @@ graph us:where17 {
 } 
 
 graph us:construct18 {
-  <http://example.org/data#GrandFatherPaul1> dbo:spouse <http://example.org/data#GrandMotherPaul1> .
-  _:b_1.0.36.21.37 dbo:weight "0.4"^^xsd:float .
+  <http://example.org/data#GrandMotherPaul1> dbo:spouse <http://example.org/data#GrandFatherPaul1> .
+  _:b_1.0.36.21.37 dbo:weight "0.99"^^xsd:float .
 } 
 graph us:where18 {
   <http://example.org/data#GrandFatherPaul1> dbo:child <http://example.org/data#FatherPaul> .
@@ -152,8 +152,8 @@ graph us:where18 {
 } 
 
 graph us:construct19 {
-  <http://example.org/data#GrandMotherPaul1> dbo:spouse <http://example.org/data#GrandFatherPaul1> .
-  _:b_1.0.37.21.36 dbo:weight "0.4"^^xsd:float .
+  <http://example.org/data#GrandFatherPaul1> dbo:spouse <http://example.org/data#GrandMotherPaul1> .
+  _:b_1.0.37.21.36 dbo:weight "0.99"^^xsd:float .
 } 
 graph us:where19 {
   <http://example.org/data#GrandMotherPaul1> dbo:child <http://example.org/data#FatherPaul> .
@@ -161,8 +161,8 @@ graph us:where19 {
 } 
 
 graph us:construct20 {
-  <http://example.org/data#GrandFatherPaul2> dbo:spouse <http://example.org/data#GrandMotherPaul2> .
-  _:b_1.0.43.22.44 dbo:weight "0.4"^^xsd:float .
+  <http://example.org/data#GrandMotherPaul2> dbo:spouse <http://example.org/data#GrandFatherPaul2> .
+  _:b_1.0.43.22.44 dbo:weight "0.99"^^xsd:float .
 } 
 graph us:where20 {
   <http://example.org/data#GrandFatherPaul2> dbo:child <http://example.org/data#MotherPaul> .
@@ -170,8 +170,8 @@ graph us:where20 {
 } 
 
 graph us:construct21 {
-  <http://example.org/data#GrandMotherPaul2> dbo:spouse <http://example.org/data#GrandFatherPaul2> .
-  _:b_1.0.44.22.43 dbo:weight "0.4"^^xsd:float .
+  <http://example.org/data#GrandFatherPaul2> dbo:spouse <http://example.org/data#GrandMotherPaul2> .
+  _:b_1.0.44.22.43 dbo:weight "0.99"^^xsd:float .
 } 
 graph us:where21 {
   <http://example.org/data#GrandMotherPaul2> dbo:child <http://example.org/data#MotherPaul> .
@@ -180,7 +180,7 @@ graph us:where21 {
 
 graph us:construct22 {
   <http://example.org/data#SpousePaul> dbo:spouse <http://example.org/data#Paul> .
-  _:b_0.0.13.27 dbo:weight "1.0"^^xsd:float .
+  _:b_0.0.13.27 dbo:weight "0.99"^^xsd:float .
 } 
 graph us:where22 {
   <http://example.org/data#Paul> dbo:spouse <http://example.org/data#SpousePaul> .
@@ -188,7 +188,7 @@ graph us:where22 {
 
 graph us:construct23 {
   <http://example.org/data#SisterInLawPaul> dbo:spouse <http://example.org/data#BrotherPaul> .
-  _:b_0.0.17.29 dbo:weight "1.0"^^xsd:float .
+  _:b_0.0.17.29 dbo:weight "0.99"^^xsd:float .
 } 
 graph us:where23 {
   <http://example.org/data#BrotherPaul> dbo:spouse <http://example.org/data#SisterInLawPaul> .
@@ -196,7 +196,7 @@ graph us:where23 {
 
 graph us:construct24 {
   <http://example.org/data#BrotherInLawPaul> dbo:spouse <http://example.org/data#SisterPaul> .
-  _:b_0.0.19.32 dbo:weight "1.0"^^xsd:float .
+  _:b_0.0.19.32 dbo:weight "0.99"^^xsd:float .
 } 
 graph us:where24 {
   <http://example.org/data#SisterPaul> dbo:spouse <http://example.org/data#BrotherInLawPaul> .
@@ -204,7 +204,7 @@ graph us:where24 {
 
 graph us:construct25 {
   <http://example.org/data#MotherPaul> dbo:spouse <http://example.org/data#FatherPaul> .
-  _:b_0.0.21.22 dbo:weight "1.0"^^xsd:float .
+  _:b_0.0.21.22 dbo:weight "0.99"^^xsd:float .
 } 
 graph us:where25 {
   <http://example.org/data#FatherPaul> dbo:spouse <http://example.org/data#MotherPaul> .
@@ -212,7 +212,7 @@ graph us:where25 {
 
 graph us:construct26 {
   <http://example.org/data#FatherPaul> dbo:spouse <http://example.org/data#MotherPaul> .
-  _:b_0.0.22.21 dbo:weight "1.0"^^xsd:float .
+  _:b_0.0.22.21 dbo:weight "0.99"^^xsd:float .
 } 
 graph us:where26 {
   <http://example.org/data#MotherPaul> dbo:spouse <http://example.org/data#FatherPaul> .
@@ -220,7 +220,7 @@ graph us:where26 {
 
 graph us:construct27 {
   <http://example.org/data#Paul> dbo:spouse <http://example.org/data#SpousePaul> .
-  _:b_0.0.27.13 dbo:weight "1.0"^^xsd:float .
+  _:b_0.0.27.13 dbo:weight "0.99"^^xsd:float .
 } 
 graph us:where27 {
   <http://example.org/data#SpousePaul> dbo:spouse <http://example.org/data#Paul> .
@@ -228,7 +228,7 @@ graph us:where27 {
 
 graph us:construct28 {
   <http://example.org/data#BrotherPaul> dbo:spouse <http://example.org/data#SisterInLawPaul> .
-  _:b_0.0.29.17 dbo:weight "1.0"^^xsd:float .
+  _:b_0.0.29.17 dbo:weight "0.99"^^xsd:float .
 } 
 graph us:where28 {
   <http://example.org/data#SisterInLawPaul> dbo:spouse <http://example.org/data#BrotherPaul> .
@@ -236,7 +236,7 @@ graph us:where28 {
 
 graph us:construct29 {
   <http://example.org/data#SisterPaul> dbo:spouse <http://example.org/data#BrotherInLawPaul> .
-  _:b_0.0.32.19 dbo:weight "1.0"^^xsd:float .
+  _:b_0.0.32.19 dbo:weight "0.99"^^xsd:float .
 } 
 graph us:where29 {
   <http://example.org/data#BrotherInLawPaul> dbo:spouse <http://example.org/data#SisterPaul> .
@@ -244,7 +244,7 @@ graph us:where29 {
 
 graph us:construct30 {
   <http://example.org/data#GrandMotherPaul1> dbo:spouse <http://example.org/data#GrandFatherPaul1> .
-  _:b_0.0.36.37 dbo:weight "1.0"^^xsd:float .
+  _:b_0.0.36.37 dbo:weight "0.99"^^xsd:float .
 } 
 graph us:where30 {
   <http://example.org/data#GrandFatherPaul1> dbo:spouse <http://example.org/data#GrandMotherPaul1> .
@@ -252,7 +252,7 @@ graph us:where30 {
 
 graph us:construct31 {
   <http://example.org/data#GrandFatherPaul1> dbo:spouse <http://example.org/data#GrandMotherPaul1> .
-  _:b_0.0.37.36 dbo:weight "1.0"^^xsd:float .
+  _:b_0.0.37.36 dbo:weight "0.99"^^xsd:float .
 } 
 graph us:where31 {
   <http://example.org/data#GrandMotherPaul1> dbo:spouse <http://example.org/data#GrandFatherPaul1> .
@@ -260,7 +260,7 @@ graph us:where31 {
 
 graph us:construct32 {
   <http://example.org/data#GrandMotherPaul2> dbo:spouse <http://example.org/data#GrandFatherPaul2> .
-  _:b_0.0.43.44 dbo:weight "1.0"^^xsd:float .
+  _:b_0.0.43.44 dbo:weight "0.99"^^xsd:float .
 } 
 graph us:where32 {
   <http://example.org/data#GrandFatherPaul2> dbo:spouse <http://example.org/data#GrandMotherPaul2> .
@@ -268,15 +268,15 @@ graph us:where32 {
 
 graph us:construct33 {
   <http://example.org/data#GrandFatherPaul2> dbo:spouse <http://example.org/data#GrandMotherPaul2> .
-  _:b_0.0.44.43 dbo:weight "1.0"^^xsd:float .
+  _:b_0.0.44.43 dbo:weight "0.99"^^xsd:float .
 } 
 graph us:where33 {
   <http://example.org/data#GrandMotherPaul2> dbo:spouse <http://example.org/data#GrandFatherPaul2> .
 } 
 
 graph us:construct34 {
-  <http://example.org/data#Paul> dbo:spouse <http://example.org/data#SpousePaul> .
-  _:b_1.0.13.24.27 dbo:weight "0.4"^^xsd:float .
+  <http://example.org/data#SpousePaul> dbo:spouse <http://example.org/data#Paul> .
+  _:b_1.0.13.24.27 dbo:weight "0.99"^^xsd:float .
 } 
 graph us:where34 {
   <http://example.org/data#Paul> dbo:child <http://example.org/data#SonPaul> .
@@ -284,8 +284,8 @@ graph us:where34 {
 } 
 
 graph us:construct35 {
-  <http://example.org/data#Paul> dbo:spouse <http://example.org/data#SpousePaul> .
-  _:b_1.0.13.25.27 dbo:weight "0.4"^^xsd:float .
+  <http://example.org/data#SpousePaul> dbo:spouse <http://example.org/data#Paul> .
+  _:b_1.0.13.25.27 dbo:weight "0.99"^^xsd:float .
 } 
 graph us:where35 {
   <http://example.org/data#Paul> dbo:child <http://example.org/data#DaughterPaul> .
@@ -293,8 +293,8 @@ graph us:where35 {
 } 
 
 graph us:construct36 {
-  <http://example.org/data#FatherPaul> dbo:spouse <http://example.org/data#MotherPaul> .
-  _:b_1.0.21.13.22 dbo:weight "0.4"^^xsd:float .
+  <http://example.org/data#MotherPaul> dbo:spouse <http://example.org/data#FatherPaul> .
+  _:b_1.0.21.13.22 dbo:weight "0.99"^^xsd:float .
 } 
 graph us:where36 {
   <http://example.org/data#FatherPaul> dbo:child <http://example.org/data#Paul> .
@@ -302,8 +302,8 @@ graph us:where36 {
 } 
 
 graph us:construct37 {
-  <http://example.org/data#FatherPaul> dbo:spouse <http://example.org/data#MotherPaul> .
-  _:b_1.0.21.17.22 dbo:weight "0.4"^^xsd:float .
+  <http://example.org/data#MotherPaul> dbo:spouse <http://example.org/data#FatherPaul> .
+  _:b_1.0.21.17.22 dbo:weight "0.99"^^xsd:float .
 } 
 graph us:where37 {
   <http://example.org/data#FatherPaul> dbo:child <http://example.org/data#BrotherPaul> .
@@ -311,8 +311,8 @@ graph us:where37 {
 } 
 
 graph us:construct38 {
-  <http://example.org/data#FatherPaul> dbo:spouse <http://example.org/data#MotherPaul> .
-  _:b_1.0.21.19.22 dbo:weight "0.4"^^xsd:float .
+  <http://example.org/data#MotherPaul> dbo:spouse <http://example.org/data#FatherPaul> .
+  _:b_1.0.21.19.22 dbo:weight "0.99"^^xsd:float .
 } 
 graph us:where38 {
   <http://example.org/data#FatherPaul> dbo:child <http://example.org/data#SisterPaul> .
@@ -320,8 +320,8 @@ graph us:where38 {
 } 
 
 graph us:construct39 {
-  <http://example.org/data#MotherPaul> dbo:spouse <http://example.org/data#FatherPaul> .
-  _:b_1.0.22.13.21 dbo:weight "0.4"^^xsd:float .
+  <http://example.org/data#FatherPaul> dbo:spouse <http://example.org/data#MotherPaul> .
+  _:b_1.0.22.13.21 dbo:weight "0.99"^^xsd:float .
 } 
 graph us:where39 {
   <http://example.org/data#MotherPaul> dbo:child <http://example.org/data#Paul> .
@@ -329,8 +329,8 @@ graph us:where39 {
 } 
 
 graph us:construct40 {
-  <http://example.org/data#MotherPaul> dbo:spouse <http://example.org/data#FatherPaul> .
-  _:b_1.0.22.17.21 dbo:weight "0.4"^^xsd:float .
+  <http://example.org/data#FatherPaul> dbo:spouse <http://example.org/data#MotherPaul> .
+  _:b_1.0.22.17.21 dbo:weight "0.99"^^xsd:float .
 } 
 graph us:where40 {
   <http://example.org/data#MotherPaul> dbo:child <http://example.org/data#BrotherPaul> .
@@ -338,8 +338,8 @@ graph us:where40 {
 } 
 
 graph us:construct41 {
-  <http://example.org/data#MotherPaul> dbo:spouse <http://example.org/data#FatherPaul> .
-  _:b_1.0.22.19.21 dbo:weight "0.4"^^xsd:float .
+  <http://example.org/data#FatherPaul> dbo:spouse <http://example.org/data#MotherPaul> .
+  _:b_1.0.22.19.21 dbo:weight "0.99"^^xsd:float .
 } 
 graph us:where41 {
   <http://example.org/data#MotherPaul> dbo:child <http://example.org/data#SisterPaul> .
@@ -347,8 +347,8 @@ graph us:where41 {
 } 
 
 graph us:construct42 {
-  <http://example.org/data#GrandFatherPaul1> dbo:spouse <http://example.org/data#GrandMotherPaul1> .
-  _:b_1.0.36.21.37 dbo:weight "0.4"^^xsd:float .
+  <http://example.org/data#GrandMotherPaul1> dbo:spouse <http://example.org/data#GrandFatherPaul1> .
+  _:b_1.0.36.21.37 dbo:weight "0.99"^^xsd:float .
 } 
 graph us:where42 {
   <http://example.org/data#GrandFatherPaul1> dbo:child <http://example.org/data#FatherPaul> .
@@ -356,8 +356,8 @@ graph us:where42 {
 } 
 
 graph us:construct43 {
-  <http://example.org/data#GrandMotherPaul1> dbo:spouse <http://example.org/data#GrandFatherPaul1> .
-  _:b_1.0.37.21.36 dbo:weight "0.4"^^xsd:float .
+  <http://example.org/data#GrandFatherPaul1> dbo:spouse <http://example.org/data#GrandMotherPaul1> .
+  _:b_1.0.37.21.36 dbo:weight "0.99"^^xsd:float .
 } 
 graph us:where43 {
   <http://example.org/data#GrandMotherPaul1> dbo:child <http://example.org/data#FatherPaul> .
@@ -365,8 +365,8 @@ graph us:where43 {
 } 
 
 graph us:construct44 {
-  <http://example.org/data#GrandFatherPaul2> dbo:spouse <http://example.org/data#GrandMotherPaul2> .
-  _:b_1.0.43.22.44 dbo:weight "0.4"^^xsd:float .
+  <http://example.org/data#GrandMotherPaul2> dbo:spouse <http://example.org/data#GrandFatherPaul2> .
+  _:b_1.0.43.22.44 dbo:weight "0.99"^^xsd:float .
 } 
 graph us:where44 {
   <http://example.org/data#GrandFatherPaul2> dbo:child <http://example.org/data#MotherPaul> .
@@ -374,8 +374,8 @@ graph us:where44 {
 } 
 
 graph us:construct45 {
-  <http://example.org/data#GrandMotherPaul2> dbo:spouse <http://example.org/data#GrandFatherPaul2> .
-  _:b_1.0.44.22.43 dbo:weight "0.4"^^xsd:float .
+  <http://example.org/data#GrandFatherPaul2> dbo:spouse <http://example.org/data#GrandMotherPaul2> .
+  _:b_1.0.44.22.43 dbo:weight "0.99"^^xsd:float .
 } 
 graph us:where45 {
   <http://example.org/data#GrandMotherPaul2> dbo:child <http://example.org/data#MotherPaul> .
@@ -384,7 +384,7 @@ graph us:where45 {
 
 graph us:construct46 {
   <http://example.org/data#SpousePaul> dbo:spouse <http://example.org/data#Paul> .
-  _:b_0.0.13.27 dbo:weight "1.0"^^xsd:float .
+  _:b_0.0.13.27 dbo:weight "0.99"^^xsd:float .
 } 
 graph us:where46 {
   <http://example.org/data#Paul> dbo:spouse <http://example.org/data#SpousePaul> .
@@ -392,7 +392,7 @@ graph us:where46 {
 
 graph us:construct47 {
   <http://example.org/data#SisterInLawPaul> dbo:spouse <http://example.org/data#BrotherPaul> .
-  _:b_0.0.17.29 dbo:weight "1.0"^^xsd:float .
+  _:b_0.0.17.29 dbo:weight "0.99"^^xsd:float .
 } 
 graph us:where47 {
   <http://example.org/data#BrotherPaul> dbo:spouse <http://example.org/data#SisterInLawPaul> .
@@ -400,7 +400,7 @@ graph us:where47 {
 
 graph us:construct48 {
   <http://example.org/data#BrotherInLawPaul> dbo:spouse <http://example.org/data#SisterPaul> .
-  _:b_0.0.19.32 dbo:weight "1.0"^^xsd:float .
+  _:b_0.0.19.32 dbo:weight "0.99"^^xsd:float .
 } 
 graph us:where48 {
   <http://example.org/data#SisterPaul> dbo:spouse <http://example.org/data#BrotherInLawPaul> .
@@ -408,7 +408,7 @@ graph us:where48 {
 
 graph us:construct49 {
   <http://example.org/data#MotherPaul> dbo:spouse <http://example.org/data#FatherPaul> .
-  _:b_0.0.21.22 dbo:weight "1.0"^^xsd:float .
+  _:b_0.0.21.22 dbo:weight "0.99"^^xsd:float .
 } 
 graph us:where49 {
   <http://example.org/data#FatherPaul> dbo:spouse <http://example.org/data#MotherPaul> .
@@ -416,7 +416,7 @@ graph us:where49 {
 
 graph us:construct50 {
   <http://example.org/data#FatherPaul> dbo:spouse <http://example.org/data#MotherPaul> .
-  _:b_0.0.22.21 dbo:weight "1.0"^^xsd:float .
+  _:b_0.0.22.21 dbo:weight "0.99"^^xsd:float .
 } 
 graph us:where50 {
   <http://example.org/data#MotherPaul> dbo:spouse <http://example.org/data#FatherPaul> .
@@ -424,7 +424,7 @@ graph us:where50 {
 
 graph us:construct51 {
   <http://example.org/data#Paul> dbo:spouse <http://example.org/data#SpousePaul> .
-  _:b_0.0.27.13 dbo:weight "1.0"^^xsd:float .
+  _:b_0.0.27.13 dbo:weight "0.99"^^xsd:float .
 } 
 graph us:where51 {
   <http://example.org/data#SpousePaul> dbo:spouse <http://example.org/data#Paul> .
@@ -432,7 +432,7 @@ graph us:where51 {
 
 graph us:construct52 {
   <http://example.org/data#BrotherPaul> dbo:spouse <http://example.org/data#SisterInLawPaul> .
-  _:b_0.0.29.17 dbo:weight "1.0"^^xsd:float .
+  _:b_0.0.29.17 dbo:weight "0.99"^^xsd:float .
 } 
 graph us:where52 {
   <http://example.org/data#SisterInLawPaul> dbo:spouse <http://example.org/data#BrotherPaul> .
@@ -440,7 +440,7 @@ graph us:where52 {
 
 graph us:construct53 {
   <http://example.org/data#SisterPaul> dbo:spouse <http://example.org/data#BrotherInLawPaul> .
-  _:b_0.0.32.19 dbo:weight "1.0"^^xsd:float .
+  _:b_0.0.32.19 dbo:weight "0.99"^^xsd:float .
 } 
 graph us:where53 {
   <http://example.org/data#BrotherInLawPaul> dbo:spouse <http://example.org/data#SisterPaul> .
@@ -448,7 +448,7 @@ graph us:where53 {
 
 graph us:construct54 {
   <http://example.org/data#GrandMotherPaul1> dbo:spouse <http://example.org/data#GrandFatherPaul1> .
-  _:b_0.0.36.37 dbo:weight "1.0"^^xsd:float .
+  _:b_0.0.36.37 dbo:weight "0.99"^^xsd:float .
 } 
 graph us:where54 {
   <http://example.org/data#GrandFatherPaul1> dbo:spouse <http://example.org/data#GrandMotherPaul1> .
@@ -456,7 +456,7 @@ graph us:where54 {
 
 graph us:construct55 {
   <http://example.org/data#GrandFatherPaul1> dbo:spouse <http://example.org/data#GrandMotherPaul1> .
-  _:b_0.0.37.36 dbo:weight "1.0"^^xsd:float .
+  _:b_0.0.37.36 dbo:weight "0.99"^^xsd:float .
 } 
 graph us:where55 {
   <http://example.org/data#GrandMotherPaul1> dbo:spouse <http://example.org/data#GrandFatherPaul1> .
@@ -464,7 +464,7 @@ graph us:where55 {
 
 graph us:construct56 {
   <http://example.org/data#GrandMotherPaul2> dbo:spouse <http://example.org/data#GrandFatherPaul2> .
-  _:b_0.0.43.44 dbo:weight "1.0"^^xsd:float .
+  _:b_0.0.43.44 dbo:weight "0.99"^^xsd:float .
 } 
 graph us:where56 {
   <http://example.org/data#GrandFatherPaul2> dbo:spouse <http://example.org/data#GrandMotherPaul2> .
@@ -472,15 +472,15 @@ graph us:where56 {
 
 graph us:construct57 {
   <http://example.org/data#GrandFatherPaul2> dbo:spouse <http://example.org/data#GrandMotherPaul2> .
-  _:b_0.0.44.43 dbo:weight "1.0"^^xsd:float .
+  _:b_0.0.44.43 dbo:weight "0.99"^^xsd:float .
 } 
 graph us:where57 {
   <http://example.org/data#GrandMotherPaul2> dbo:spouse <http://example.org/data#GrandFatherPaul2> .
 } 
 
 graph us:construct58 {
-  <http://example.org/data#Paul> dbo:spouse <http://example.org/data#SpousePaul> .
-  _:b_1.0.13.24.27 dbo:weight "0.4"^^xsd:float .
+  <http://example.org/data#SpousePaul> dbo:spouse <http://example.org/data#Paul> .
+  _:b_1.0.13.24.27 dbo:weight "0.99"^^xsd:float .
 } 
 graph us:where58 {
   <http://example.org/data#Paul> dbo:child <http://example.org/data#SonPaul> .
@@ -488,8 +488,8 @@ graph us:where58 {
 } 
 
 graph us:construct59 {
-  <http://example.org/data#Paul> dbo:spouse <http://example.org/data#SpousePaul> .
-  _:b_1.0.13.25.27 dbo:weight "0.4"^^xsd:float .
+  <http://example.org/data#SpousePaul> dbo:spouse <http://example.org/data#Paul> .
+  _:b_1.0.13.25.27 dbo:weight "0.99"^^xsd:float .
 } 
 graph us:where59 {
   <http://example.org/data#Paul> dbo:child <http://example.org/data#DaughterPaul> .
@@ -497,8 +497,8 @@ graph us:where59 {
 } 
 
 graph us:construct60 {
-  <http://example.org/data#FatherPaul> dbo:spouse <http://example.org/data#MotherPaul> .
-  _:b_1.0.21.13.22 dbo:weight "0.4"^^xsd:float .
+  <http://example.org/data#MotherPaul> dbo:spouse <http://example.org/data#FatherPaul> .
+  _:b_1.0.21.13.22 dbo:weight "0.99"^^xsd:float .
 } 
 graph us:where60 {
   <http://example.org/data#FatherPaul> dbo:child <http://example.org/data#Paul> .
@@ -506,8 +506,8 @@ graph us:where60 {
 } 
 
 graph us:construct61 {
-  <http://example.org/data#FatherPaul> dbo:spouse <http://example.org/data#MotherPaul> .
-  _:b_1.0.21.17.22 dbo:weight "0.4"^^xsd:float .
+  <http://example.org/data#MotherPaul> dbo:spouse <http://example.org/data#FatherPaul> .
+  _:b_1.0.21.17.22 dbo:weight "0.99"^^xsd:float .
 } 
 graph us:where61 {
   <http://example.org/data#FatherPaul> dbo:child <http://example.org/data#BrotherPaul> .
@@ -515,8 +515,8 @@ graph us:where61 {
 } 
 
 graph us:construct62 {
-  <http://example.org/data#FatherPaul> dbo:spouse <http://example.org/data#MotherPaul> .
-  _:b_1.0.21.19.22 dbo:weight "0.4"^^xsd:float .
+  <http://example.org/data#MotherPaul> dbo:spouse <http://example.org/data#FatherPaul> .
+  _:b_1.0.21.19.22 dbo:weight "0.99"^^xsd:float .
 } 
 graph us:where62 {
   <http://example.org/data#FatherPaul> dbo:child <http://example.org/data#SisterPaul> .
@@ -524,8 +524,8 @@ graph us:where62 {
 } 
 
 graph us:construct63 {
-  <http://example.org/data#MotherPaul> dbo:spouse <http://example.org/data#FatherPaul> .
-  _:b_1.0.22.13.21 dbo:weight "0.4"^^xsd:float .
+  <http://example.org/data#FatherPaul> dbo:spouse <http://example.org/data#MotherPaul> .
+  _:b_1.0.22.13.21 dbo:weight "0.99"^^xsd:float .
 } 
 graph us:where63 {
   <http://example.org/data#MotherPaul> dbo:child <http://example.org/data#Paul> .
@@ -533,8 +533,8 @@ graph us:where63 {
 } 
 
 graph us:construct64 {
-  <http://example.org/data#MotherPaul> dbo:spouse <http://example.org/data#FatherPaul> .
-  _:b_1.0.22.17.21 dbo:weight "0.4"^^xsd:float .
+  <http://example.org/data#FatherPaul> dbo:spouse <http://example.org/data#MotherPaul> .
+  _:b_1.0.22.17.21 dbo:weight "0.99"^^xsd:float .
 } 
 graph us:where64 {
   <http://example.org/data#MotherPaul> dbo:child <http://example.org/data#BrotherPaul> .
@@ -542,8 +542,8 @@ graph us:where64 {
 } 
 
 graph us:construct65 {
-  <http://example.org/data#MotherPaul> dbo:spouse <http://example.org/data#FatherPaul> .
-  _:b_1.0.22.19.21 dbo:weight "0.4"^^xsd:float .
+  <http://example.org/data#FatherPaul> dbo:spouse <http://example.org/data#MotherPaul> .
+  _:b_1.0.22.19.21 dbo:weight "0.99"^^xsd:float .
 } 
 graph us:where65 {
   <http://example.org/data#MotherPaul> dbo:child <http://example.org/data#SisterPaul> .
@@ -551,8 +551,8 @@ graph us:where65 {
 } 
 
 graph us:construct66 {
-  <http://example.org/data#GrandFatherPaul1> dbo:spouse <http://example.org/data#GrandMotherPaul1> .
-  _:b_1.0.36.21.37 dbo:weight "0.4"^^xsd:float .
+  <http://example.org/data#GrandMotherPaul1> dbo:spouse <http://example.org/data#GrandFatherPaul1> .
+  _:b_1.0.36.21.37 dbo:weight "0.99"^^xsd:float .
 } 
 graph us:where66 {
   <http://example.org/data#GrandFatherPaul1> dbo:child <http://example.org/data#FatherPaul> .
@@ -560,8 +560,8 @@ graph us:where66 {
 } 
 
 graph us:construct67 {
-  <http://example.org/data#GrandMotherPaul1> dbo:spouse <http://example.org/data#GrandFatherPaul1> .
-  _:b_1.0.37.21.36 dbo:weight "0.4"^^xsd:float .
+  <http://example.org/data#GrandFatherPaul1> dbo:spouse <http://example.org/data#GrandMotherPaul1> .
+  _:b_1.0.37.21.36 dbo:weight "0.99"^^xsd:float .
 } 
 graph us:where67 {
   <http://example.org/data#GrandMotherPaul1> dbo:child <http://example.org/data#FatherPaul> .
@@ -569,8 +569,8 @@ graph us:where67 {
 } 
 
 graph us:construct68 {
-  <http://example.org/data#GrandFatherPaul2> dbo:spouse <http://example.org/data#GrandMotherPaul2> .
-  _:b_1.0.43.22.44 dbo:weight "0.4"^^xsd:float .
+  <http://example.org/data#GrandMotherPaul2> dbo:spouse <http://example.org/data#GrandFatherPaul2> .
+  _:b_1.0.43.22.44 dbo:weight "0.99"^^xsd:float .
 } 
 graph us:where68 {
   <http://example.org/data#GrandFatherPaul2> dbo:child <http://example.org/data#MotherPaul> .
@@ -578,8 +578,8 @@ graph us:where68 {
 } 
 
 graph us:construct69 {
-  <http://example.org/data#GrandMotherPaul2> dbo:spouse <http://example.org/data#GrandFatherPaul2> .
-  _:b_1.0.44.22.43 dbo:weight "0.4"^^xsd:float .
+  <http://example.org/data#GrandFatherPaul2> dbo:spouse <http://example.org/data#GrandMotherPaul2> .
+  _:b_1.0.44.22.43 dbo:weight "0.99"^^xsd:float .
 } 
 graph us:where69 {
   <http://example.org/data#GrandMotherPaul2> dbo:child <http://example.org/data#MotherPaul> .

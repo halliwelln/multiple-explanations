@@ -22,145 +22,142 @@
     xmlns:foaf = "&foaf;"
 >
 
+<!--            aunt              -->
+
 <rule>
 <body>  
 CONSTRUCT {
-    ?a dbo:uncle ?myuncle .
+    ?paul dbo:aunt ?joan .
+    [] dbo:weight "0.99"^^xsd:float .
 }
 WHERE {
-    ?a dbo:parent ?myparent . 
-    ?myparent dbo:brother ?myuncle .
+    ?mike dbo:aunt ?joan .
+    ?paul dbo:brother ? paul. 
     
-    FILTER (!EXISTS {?a dbo:uncle ?myuncle})
+    FILTER (?paul != ?joan)
 }
+
 </body>
 </rule>
 
 <rule>
 <body>  
 CONSTRUCT {
-    ?a dbo:uncle ?myuncle .
+    ?paul dbo:aunt ?joan .
+    [] dbo:weight "0.99"^^xsd:float .
 }
 WHERE {
-    ?a dbo:brother ?mybrother .
-    ?mybrother dbo:uncle ?myuncle . 
+    ?paul dbo:grandparent ?flora .
+    ?flora dbo:child ?joan . 
     
-    FILTER (!EXISTS {?a dbo:uncle ?myuncle})
+    FILTER (?paul != ?joan)
 }
+
 </body>
 </rule>
 
 <rule>
 <body>  
 CONSTRUCT {
-    ?a dbo:uncle ?myuncle .
+    ?paul dbo:aunt ?joan .
+    [] dbo:weight "0.99"^^xsd:float .
 }
 WHERE {
-    ?a dbo:sister ?mysister .
-    ?mysister dbo:uncle ?myuncle . 
+    ?james dbo:sister ?joan .
+    ?paul dbo:parent ?james . 
     
-    FILTER (!EXISTS {?a dbo:uncle ?myuncle})
+    FILTER (?paul != ?joan)
 }
+
 </body>
 </rule>
 
 <rule>
 <body>  
 CONSTRUCT {
-    ?a dbo:uncle ?myuncle .
+    ?paul dbo:aunt ?joan .
+    [] dbo:weight "0.99"^^xsd:float .
 }
 WHERE {
-    ?a dbo:aunt ?myaunt .
-    ?myaunt dbo:spouse ?myuncle . 
+    ?ruth dbo:aunt ?joan .
+    ?paul dbo:sister ?ruth . 
     
-    FILTER (!EXISTS {?a dbo:uncle ?myuncle})
+    FILTER (?paul != ?joan)
 }
+
+</body>
+</rule>
+
+<!--            aunt              -->
+
+
+
+<!--            uncle              -->
+<rule>
+<body>  
+CONSTRUCT {
+    ?paul dbo:uncle ?albert .
+    [] dbo:weight "0.99"^^xsd:float .
+}
+WHERE {
+    ?paul dbo:brother ?mike . 
+    ?mike dbo:uncle ?albert .
+    
+    FILTER (?paul != ?albert)
+}
+
 </body>
 </rule>
 
 <rule>
 <body>  
 CONSTRUCT {
-    ?a dbo:uncle ?myuncle .
+    ?paul dbo:uncle ?albert .
+    [] dbo:weight "0.99"^^xsd:float .
+
 }
 WHERE {
-    ?a dbo:aunt ?myaunt .
-    ?myuncle dbo:spouse ?myaunt . 
+    ?paul dbo:grandparent ?jim . 
+    ?jim dbo:child ?albert .
     
-    FILTER (!EXISTS {?a dbo:uncle ?myuncle})
+    FILTER (?paul != ?albert)
 }
-</body>
-</rule>
 
-
-<rule>
-<body>  
-CONSTRUCT {
-    ?a dbo:aunt ?myaunt .
-}
-WHERE {
-    ?myparent dbo:sister ?myaunt .
-    ?a dbo:parent ?myparent . 
-    
-    FILTER (!EXISTS {?a dbo:aunt ?myaunt})
-}
 </body>
 </rule>
 
 <rule>
 <body>  
 CONSTRUCT {
-    ?a dbo:aunt ?myaunt .
+    ?paul dbo:uncle ?albert .
+    [] dbo:weight "0.99"^^xsd:float .
 }
 WHERE {
-    ?a dbo:brother ?mybrother .
-    ?mybrother dbo:aunt ?myaunt . 
+    ?paul dbo:parent ?james . 
+    ?james dbo:brother ?albert .
     
-    FILTER (!EXISTS {?a dbo:aunt ?myaunt})
+    FILTER (?paul != ?albert)
 }
+
 </body>
 </rule>
 
 <rule>
 <body>  
 CONSTRUCT {
-    ?a dbo:aunt ?myaunt .
+    ?paul dbo:uncle ?albert .
+    [] dbo:weight "0.99"^^xsd:float .
 }
 WHERE {
-    ?a dbo:sister ?mysister .
-    ?mysister dbo:aunt ?myaunt . 
+    ?ruth dbo:uncle ?albert . 
+    ?paul dbo:sister ?ruth .
     
-    FILTER (!EXISTS {?a dbo:aunt ?myaunt})
+    FILTER (?paul != ?albert)
 }
-</body>
-</rule>
 
-<rule>
-<body>  
-CONSTRUCT {
-    ?a dbo:aunt ?myaunt .
-}
-WHERE {
-    ?a dbo:uncle ?myuncle .
-    ?myuncle dbo:spouse ?myaunt . 
-    
-    FILTER (!EXISTS {?a dbo:aunt ?myaunt})
-}
 </body>
 </rule>
+<!--            uncle              -->
 
-<rule>
-<body>  
-CONSTRUCT {
-    ?a dbo:aunt ?myaunt .
-}
-WHERE {
-    ?a dbo:uncle ?myuncle .
-    ?myaunt dbo:spouse ?myuncle . 
-    
-    FILTER (!EXISTS {?a dbo:aunt ?myaunt})
-}
-</body>
-</rule>
 
 </rdf:RDF>

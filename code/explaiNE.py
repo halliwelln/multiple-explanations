@@ -49,10 +49,12 @@ if __name__ == '__main__':
 
     parser = argparse.ArgumentParser()
 
+
+    #####update to paul dataset
     parser.add_argument('dataset', type=str,
         help='royalty_30k or royalty_20k')
     parser.add_argument('rule',type=str,
-        help='spouse,successor,...,full_data')
+        help='spouse,brother,...,full_data')
     parser.add_argument('embedding_dim',type=int)
     parser.add_argument('trace_length',type=int)
 

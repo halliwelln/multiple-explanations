@@ -23,13 +23,13 @@
 <rule>
 <body>  
 CONSTRUCT {
-    ?b dbo:spouse ?a .
-    [] dbo:weight "1.0"^^xsd:float .
+    ?linda dbo:spouse ?paul .
+    [] dbo:weight "0.99"^^xsd:float .
 }
 WHERE {
-    ?a dbo:spouse ?b .
+    ?paul dbo:spouse ?linda .
     
-    FILTER (?b != ?a)
+    FILTER (?linda != ?paul)
 }
 
 </body>
@@ -38,14 +38,45 @@ WHERE {
 <rule>
 <body>  
 CONSTRUCT {
-    ?b dbo:spouse ?a .
-    [] dbo:weight "0.4"^^xsd:float .
+    ?paul dbo:spouse ?linda .
+    [] dbo:weight "0.99"^^xsd:float .
 }
 WHERE {
-    ?b dbo:child ?c .
-    ?c dbo:parent ?a .
+    ?linda dbo:spouse ?paul .
+    
+    FILTER (?linda != ?paul)
+}
 
-    FILTER (?b != ?a)
+</body>
+</rule> 
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?linda dbo:spouse ?paul .
+    [] dbo:weight "0.99"^^xsd:float .
+}
+WHERE {
+    ?paul dbo:child ?bob .
+    ?bob dbo:parent ?linda .
+
+    FILTER (?linda != ?paul)
+}
+
+</body>
+</rule> 
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?paul dbo:spouse ?linda .
+    [] dbo:weight "0.99"^^xsd:float .
+}
+WHERE {
+    ?linda dbo:child ?bob .
+    ?bob dbo:parent ?paul .
+
+    FILTER (?linda != ?paul)
 }
 
 </body>

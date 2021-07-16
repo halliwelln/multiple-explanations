@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE rdf:RDF [
+  <!ENTITY rule   "http://ns.inria.fr/corese/rule/"> 
+  <!ENTITY rdf    "http://www.w3.org/1999/02/22-rdf-syntax-ns">
+  <!ENTITY rdfs   "http://www.w3.org/2000/01/rdf-schema">
+  <!ENTITY xsd    "http://www.w3.org/2001/XMLSchema#">
+  <!ENTITY spin   "http://spinrdf.org/sp#">
+  <!ENTITY owl    "http://www.w3.org/2002/07/owl#">
+  <!ENTITY dbo    "http://dbpedia.org/ontology/">
+]>
+
+<rdf:RDF 
+    xmlns:rdf  = "&rdf;#"
+    xmlns:rdfs = "&rdfs;#"
+    xmlns:xsd  = "&xsd;" 
+    xmlns:rule = "&rule;#"
+    xmlns:owl  = "&owl;"
+    xmlns:sp   = "&spin;"
+    xmlns      = "&rule;"
+    xmlns:dbo  = "&dbo;"
+>
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?paul dbo:parent ?mary .
+    [] dbo:weight "0.99"^^xsd:float .
+}
+WHERE {
+    ?paul dbo:brother ?mike .
+    ?mike dbo:parent ?mary .
+
+    FILTER (?paul != ?mary)
+}
+
+</body>
+</rule> 
+
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?paul dbo:parent ?mary .
+    [] dbo:weight "0.99"^^xsd:float .
+}
+WHERE {
+    ?owen dbo:child ?mary .
+    ?paul dbo:grandparent ?owen .
+
+    FILTER (?paul != ?mary)
+}
+
+</body>
+</rule> 
+
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?paul dbo:parent ?mary .
+    [] dbo:weight "0.99"^^xsd:float .
+}
+WHERE {
+    ?paul dbo:parent ?james .
+    ?mary dbo:spouse ?james .
+
+    FILTER (?paul != ?mary)
+}
+
+</body>
+</rule>
+
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?paul dbo:parent ?mary .
+    [] dbo:weight "0.99"^^xsd:float .
+}
+WHERE {
+    ?paul dbo:sister ?ruth .
+    ?ruth dbo:parent ?mary .
+
+    FILTER (?paul != ?mary)
+}
+
+</body>
+</rule>
+
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?paul dbo:parent ?mary .
+    [] dbo:weight "0.99"^^xsd:float .
+}
+WHERE {
+    ?paul dbo:aunt ?milly .
+    ?mary dbo:sister ?milly .
+
+    FILTER (?paul != ?mary)
+}
+
+</body>
+</rule>
+
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?paul dbo:parent ?mary .
+    [] dbo:weight "0.99"^^xsd:float .
+}
+WHERE {
+    ?paul dbo:brother ?mike .
+    ?mary dbo:child ?mike .
+
+    FILTER (?paul != ?mary)
+}
+
+</body>
+</rule>
+
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?paul dbo:parent ?mary .
+    [] dbo:weight "0.99"^^xsd:float .
+}
+WHERE {
+    ?paul dbo:grandparent ?theresa .
+    ?mary dbo:parent ?theresa .
+
+    FILTER (?paul != ?mary)
+}
+
+</body>
+</rule>
+
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?paul dbo:parent ?mary .
+    [] dbo:weight "0.99"^^xsd:float .
+}
+WHERE {
+    ?paul dbo:sister ?ruth .
+    ?mary dbo:child ?ruth .
+
+    FILTER (?paul != ?mary)
+}
+
+</body>
+</rule>
+
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?paul dbo:parent ?mary .
+    [] dbo:weight "0.99"^^xsd:float .
+}
+WHERE {
+    ?paul dbo:uncle ?jack .
+    ?mary dbo:brother ?jack .
+
+    FILTER (?paul != ?mary)
+}
+
+</body>
+</rule>
+
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?paul dbo:parent ?mary .
+    [] dbo:weight "0.99"^^xsd:float .
+}
+WHERE {
+    ?mary dbo:child ?child .
+
+    FILTER (?paul != ?mary)
+}
+
+</body>
+</rule>
+
+
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?paul dbo:parent ?mary .
+    [] dbo:weight "0.99"^^xsd:float .
+}
+WHERE {
+    ?mary dbo:spouse ?james .
+    ?james dbo:child ?paul .
+
+    FILTER (?paul != ?mary)
+}
+
+</body>
+</rule>
+
+</rdf:RDF>

@@ -79,4 +79,271 @@ WHERE {
 </rule>
 
 
+
+<!--                 brother                     -->
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?paul dbo:brother ?mike .
+    [] dbo:weight "0.99"^^xsd:float .
+}
+WHERE {
+  ?bob dbo:uncle ?mike .
+  ?paul dbo:child ?bob .
+
+  FILTER (?paul != ?mike)
+}
+</body>
+</rule>
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?paul dbo:brother ?mike .
+    [] dbo:weight "0.99"^^xsd:float .
+}
+WHERE {
+  ?paul dbo:parent ?mary .
+  ?mary dbo:child ?mike .
+
+  FILTER (?paul != ?mike)
+}
+</body>
+</rule>
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?paul dbo:brother ?mike .
+    [] dbo:weight "0.99"^^xsd:float .
+}
+WHERE {
+  ?paul dbo:sister ?ruth .
+  ?ruth dbo:brother ?mike .
+
+  FILTER (?paul != ?mike)
+}
+</body>
+</rule>
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?paul dbo:brother ?mike .
+    [] dbo:weight "0.99"^^xsd:float .
+}
+WHERE {
+  ?mike dbo:aunt ?joan .
+  ?paul dbo:aunt ?joan .
+
+  FILTER (?paul != ?mike)
+}
+</body>
+</rule>
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?paul dbo:brother ?mike .
+    [] dbo:weight "0.99"^^xsd:float .
+}
+WHERE {
+  ?mike dbo:grandparent ?flora .
+  ?paul dbo:grandparent ?flora .
+
+  FILTER (?paul != ?mike)
+}
+</body>
+</rule>
+
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?paul dbo:brother ?mike .
+    [] dbo:weight "0.99"^^xsd:float .
+}
+WHERE {
+  ?mike dbo:parent ?mary .
+  ?paul dbo:parent ?mary .
+
+  FILTER (?paul != ?mike)
+}
+</body>
+</rule>
+
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?paul dbo:brother ?mike .
+    [] dbo:weight "0.99"^^xsd:float .
+}
+WHERE {
+  ?mike dbo:sister ?ruth .
+  ?paul dbo:sister ?ruth .
+
+  FILTER (?paul != ?mike)
+}
+</body>
+</rule>
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?paul dbo:brother ?mike .
+    [] dbo:weight "0.99"^^xsd:float .
+}
+WHERE {
+  ?mike dbo:uncle ?jack .
+  ?paul dbo:uncle ?jack .
+
+  FILTER (?paul != ?mike)
+}
+</body>
+</rule>
+
+<!--                 brother                     -->
+
+
+
+<!--                 sister                     -->
+<rule>
+<body>  
+CONSTRUCT {
+    ?paul dbo:sister ?ruth .
+    [] dbo:weight "0.99"^^xsd:float .
+}
+WHERE {
+  ?ruth dbo:brother ?paul .
+
+  FILTER (?paul != ?ruth)
+}
+</body>
+</rule>
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?paul dbo:sister ?ruth .
+    [] dbo:weight "0.99"^^xsd:float .
+}
+WHERE {
+  ?paul dbo:brother ?mike .
+  ?mike dbo:sister ?ruth .
+
+  FILTER (?paul != ?ruth)
+}
+</body>
+</rule>
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?paul dbo:sister ?ruth .
+    [] dbo:weight "0.99"^^xsd:float .
+}
+WHERE {
+  ?paul dbo:child ?stella .
+  ?stella dbo:aunt ?ruth .
+
+  FILTER (?paul != ?ruth)
+}
+</body>
+</rule>
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?paul dbo:sister ?ruth .
+    [] dbo:weight "0.99"^^xsd:float .
+}
+WHERE {
+  ?paul dbo:parent ?mary .
+  ?mary dbo:child ?ruth .
+
+  FILTER (?paul != ?ruth)
+}
+</body>
+</rule>
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?paul dbo:sister ?ruth .
+    [] dbo:weight "0.99"^^xsd:float .
+}
+WHERE {
+  ?ruth dbo:aunt ?milly .
+  ?paul dbo:aunt ?milly .
+
+  FILTER (?paul != ?ruth)
+}
+</body>
+</rule>
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?paul dbo:sister ?ruth .
+    [] dbo:weight "0.99"^^xsd:float .
+}
+WHERE {
+  ?ruth dbo:brother ?mike .
+  ?paul dbo:brother ?mike .
+
+  FILTER (?paul != ?ruth)
+}
+</body>
+</rule>
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?paul dbo:sister ?ruth .
+    [] dbo:weight "0.99"^^xsd:float .
+}
+WHERE {
+  ?ruth dbo:grandparent ?jim .
+  ?paul dbo:grandparent ?jim .
+
+  FILTER (?paul != ?ruth)
+}
+</body>
+</rule>
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?paul dbo:sister ?ruth .
+    [] dbo:weight "0.99"^^xsd:float .
+}
+WHERE {
+  ?paul dbo:parent ?james .
+  ?ruth dbo:parent ?james .
+
+  FILTER (?paul != ?ruth)
+}
+</body>
+</rule>
+
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?paul dbo:sister ?ruth .
+    [] dbo:weight "0.99"^^xsd:float .
+}
+WHERE {
+  ?ruth dbo:uncle ?jack .
+  ?paul dbo:uncle ?jack .
+
+  FILTER (?paul != ?ruth)
+}
+</body>
+</rule>
+
+<!--                 sister                     -->
+
 </rdf:RDF>
