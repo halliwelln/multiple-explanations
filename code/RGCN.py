@@ -225,7 +225,7 @@ if __name__ == '__main__':
 
     parser = argparse.ArgumentParser()
     parser.add_argument('dataset', type=str,
-        help='royalty_30k or royalty_20k')
+        help='paul_dataset')
     parser.add_argument('rule',type=str,
         help='spouse,successor,...,full_data')
     parser.add_argument('num_epochs',type=int)
@@ -256,16 +256,13 @@ if __name__ == '__main__':
 
     full_data = np.concatenate([triples2idx,traces2idx.reshape(-1,3)],axis=0)
 
-    idx_train,idx_test = utils.train_test_split_no_unseen(
+    X_train,X_test = utils.train_test_split_no_unseen(
         full_data, 
         test_size=.2,
         seed=SEED, 
         allow_duplication=False, 
         filtered_test_predicates=None
     )
-
-    X_train = full_data[idx_train]
-    X_test = full_data[idx_test]
 
     adj_mats = utils.get_adj_mats(X_train,NUM_ENTITIES,NUM_RELATIONS)
 

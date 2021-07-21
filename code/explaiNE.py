@@ -49,10 +49,8 @@ if __name__ == '__main__':
 
     parser = argparse.ArgumentParser()
 
-
-    #####update to paul dataset
     parser.add_argument('dataset', type=str,
-        help='royalty_30k or royalty_20k')
+        help='paul_dataset')
     parser.add_argument('rule',type=str,
         help='spouse,brother,...,full_data')
     parser.add_argument('embedding_dim',type=int)
@@ -67,7 +65,7 @@ if __name__ == '__main__':
 
     data = np.load(os.path.join('..','data',DATASET+'.npz'))
 
-    triples,traces,entities,relations = utils.get_data(data,RULE)
+    triples,traces,weights,entities,relations = utils.get_data(data,RULE)
 
     NUM_ENTITIES = len(entities)
     NUM_RELATIONS = len(relations)
@@ -148,7 +146,6 @@ if __name__ == '__main__':
         test_indicies.append(test_idx)
 
     best_idx = np.argmax(cv_scores)
-    #best_preds = np.array(cv_preds[best_idx])
     best_test_indices = test_indicies[best_idx]
 
     preds = np.array(cv_preds[best_idx])
@@ -156,22 +153,9 @@ if __name__ == '__main__':
     best_preds = utils.idx2array(preds,idx2ent,idx2rel)
 
     print(f'Embedding dim: {EMBEDDING_DIM}')
-    #print(f"{DATASET} {RULE} jaccard score: {cv_scores[best_idx]}")
 
     np.savez(os.path.join('..','data','preds',DATASET,'explaine_'+DATASET+'_'+RULE+'_preds.npz'),
         preds=best_preds,best_idx=best_idx,test_idx=best_test_indices
         )
 
     print('Done.')
-    # d = np.load(os.path.join('..','data','preds','explaine_'+RULE+'_preds.npz'))
-
-    # print(d['preds'].shape)
-    # print(len(d['preds'][0]))
-    # print(len(d['preds'][1]))
-    # new_traces = utils.array2idx(traces[d['test_idx']],ent2idx,rel2idx)
-
-    # j = 0
-    # num = d['preds'].shape[0]
-    # for i in range(num):
-    #     j += jaccard_score(new_traces[i],d['preds'][i],1)
-    # print(j/num)

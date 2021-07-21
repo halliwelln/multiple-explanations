@@ -95,6 +95,6 @@ data['rules'] = rules
 
 print('Saving numpy file...')
 
-np.savez(os.path.join('..','data',f'paul-dataset.npz'),**data)
+np.savez(os.path.join('..','data',f'paul_dataset.npz'),**data)
 
 print('Done')

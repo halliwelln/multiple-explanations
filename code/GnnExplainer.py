@@ -196,7 +196,7 @@ if __name__ == '__main__':
 
     data = np.load(os.path.join('..','data',DATASET+'.npz'))
 
-    triples,traces,entities,relations = utils.get_data(data,RULE)
+    triples,traces,weights,entities,relations = utils.get_data(data,RULE)
 
     NUM_ENTITIES = len(entities)
     NUM_RELATIONS = len(relations)
