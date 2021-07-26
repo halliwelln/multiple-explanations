@@ -114,6 +114,7 @@ CONSTRUCT {
 WHERE {
     ?paul dbo:brother ?mike .
     ?mike dbo:grandparent ?flora .
+
     FILTER (?paul != ?flora)
 }
 
@@ -129,6 +130,7 @@ CONSTRUCT {
 WHERE {
     ?paul dbo:grandparent ?jim .
     ?flora dbo:spouse ?jim .
+
     FILTER (?paul != ?flora)
 }
 
@@ -144,6 +146,7 @@ CONSTRUCT {
 WHERE {
     ?paul dbo:parent ?james .
     ?james dbo:parent ?flora .
+
     FILTER (?paul != ?flora)
 }
 
@@ -157,8 +160,9 @@ CONSTRUCT {
     [] dbo:weight "0.99"^^xsd:float .
 }
 WHERE {
-    ?paul dbo:sister ?james .
-    ?james dbo:grandparent ?flora .
+    ?paul dbo:sister ?ruth .
+    ?ruth dbo:grandparent ?flora .
+
     FILTER (?paul != ?flora)
 }
 
@@ -174,6 +178,7 @@ CONSTRUCT {
 WHERE {
     ?paul dbo:aunt ?joan .
     ?flora dbo:child ?joan .
+
     FILTER (?paul != ?flora)
 }
 
@@ -189,6 +194,7 @@ CONSTRUCT {
 WHERE {
     ?james dbo:parent ?flora .
     ?james dbo:child ?paul .
+
     FILTER (?paul != ?flora)
 }
 
@@ -204,6 +210,7 @@ CONSTRUCT {
 WHERE {
     ?paul dbo:uncle ?albert .
     ?flora dbo:child ?albert .
+
     FILTER (?paul != ?flora)
 }
 
@@ -219,6 +226,7 @@ CONSTRUCT {
 WHERE {
     ?flora dbo:child ?james .
     ?james dbo:child ?paul .
+
     FILTER (?paul != ?flora)
 }
 

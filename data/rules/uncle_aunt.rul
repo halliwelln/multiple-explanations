@@ -32,7 +32,7 @@ CONSTRUCT {
 }
 WHERE {
     ?mike dbo:aunt ?joan .
-    ?paul dbo:brother ? paul. 
+    ?paul dbo:brother ?mike. 
     
     FILTER (?paul != ?joan)
 }

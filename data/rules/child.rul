@@ -77,6 +77,23 @@ CONSTRUCT {
     [] dbo:weight "0.99"^^xsd:float .
 }
 WHERE {
+    ?james dbo:child ?mike .
+    ?mike dbo:brother ?paul .
+
+    FILTER (?james != ?paul)
+}
+
+</body>
+</rule> 
+
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?james dbo:child ?paul .
+    [] dbo:weight "0.99"^^xsd:float .
+}
+WHERE {
     ?james dbo:parent ?jim .
     ?paul dbo:grandparent ?jim .
 
@@ -112,6 +129,23 @@ CONSTRUCT {
 }
 WHERE {
     ?mary dbo:spouse ?james .
+    ?paul dbo:parent ?mary .
+
+    FILTER (?james != ?paul)
+}
+
+</body>
+</rule> 
+
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?james dbo:child ?paul .
+    [] dbo:weight "0.99"^^xsd:float .
+}
+WHERE {
+    ?james dbo:spouse ?mary .
     ?paul dbo:parent ?mary .
 
     FILTER (?james != ?paul)

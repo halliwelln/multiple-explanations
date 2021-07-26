@@ -69,6 +69,23 @@ WHERE {
 <rule>
 <body>  
 CONSTRUCT {
+    ?linda dbo:spouse ?paul .
+    [] dbo:weight "0.99"^^xsd:float .
+}
+WHERE {
+    ?linda dbo:child ?bob .
+    ?bob dbo:parent ?paul .
+
+    FILTER (?linda != ?paul)
+}
+
+</body>
+</rule> 
+
+
+<rule>
+<body>  
+CONSTRUCT {
     ?paul dbo:spouse ?linda .
     [] dbo:weight "0.99"^^xsd:float .
 }
@@ -81,5 +98,23 @@ WHERE {
 
 </body>
 </rule> 
+
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?paul dbo:spouse ?linda .
+    [] dbo:weight "0.99"^^xsd:float .
+}
+WHERE {
+    ?paul dbo:child ?bob .
+    ?bob dbo:parent ?linda .
+
+    FILTER (?linda != ?paul)
+}
+
+</body>
+</rule> 
+
 
 </rdf:RDF>
