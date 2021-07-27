@@ -23,14 +23,14 @@
 <rule>
 <body>  
 CONSTRUCT {
-    ?paul dbo:parent ?mary .
+    ?me dbo:parent ?myparent .
     [] dbo:weight "0.99"^^xsd:float .
 }
 WHERE {
-    ?paul dbo:brother ?mike .
-    ?mike dbo:parent ?mary .
+    ?me dbo:brother ?mybrother .
+    ?mybrother dbo:parent ?myparent .
 
-    FILTER (?paul != ?mary)
+    FILTER (?me != ?myparent)
 }
 
 </body>
@@ -40,14 +40,14 @@ WHERE {
 <rule>
 <body>  
 CONSTRUCT {
-    ?paul dbo:parent ?mary .
+    ?me dbo:parent ?myparent .
     [] dbo:weight "0.99"^^xsd:float .
 }
 WHERE {
-    ?owen dbo:child ?mary .
-    ?paul dbo:grandparent ?owen .
+    ?mygrandparent dbo:child ?myparent .
+    ?me dbo:grandparent ?mygrandparent .
 
-    FILTER (?paul != ?mary)
+    FILTER (?me != ?myparent)
 }
 
 </body>
@@ -57,14 +57,16 @@ WHERE {
 <rule>
 <body>  
 CONSTRUCT {
-    ?paul dbo:parent ?mary .
+    ?me dbo:parent ?myparent .
     [] dbo:weight "0.99"^^xsd:float .
 }
 WHERE {
-    ?paul dbo:parent ?james .
-    ?mary dbo:spouse ?james .
+    ?me dbo:parent ?myparent2 .
+    ?myparent dbo:spouse ?myparent2 .
 
-    FILTER (?paul != ?mary)
+    FILTER (?me != ?myparent)
+    FILTER (?me != ?myparent2)
+
 }
 
 </body>
@@ -74,14 +76,14 @@ WHERE {
 <rule>
 <body>  
 CONSTRUCT {
-    ?paul dbo:parent ?mary .
+    ?me dbo:parent ?myparent .
     [] dbo:weight "0.99"^^xsd:float .
 }
 WHERE {
-    ?paul dbo:parent ?james .
-    ?james dbo:spouse ?mary .
+    ?me dbo:sister ?mysister .
+    ?mysister dbo:parent ?myparent .
 
-    FILTER (?paul != ?mary)
+    FILTER (?me != ?myparent)
 }
 
 </body>
@@ -91,14 +93,14 @@ WHERE {
 <rule>
 <body>  
 CONSTRUCT {
-    ?paul dbo:parent ?mary .
+    ?me dbo:parent ?myparent .
     [] dbo:weight "0.99"^^xsd:float .
 }
 WHERE {
-    ?paul dbo:sister ?ruth .
-    ?ruth dbo:parent ?mary .
+    ?me dbo:aunt ?myaunt .
+    ?myparent dbo:sister ?myaunt .
 
-    FILTER (?paul != ?mary)
+    FILTER (?me != ?myparent)
 }
 
 </body>
@@ -108,14 +110,14 @@ WHERE {
 <rule>
 <body>  
 CONSTRUCT {
-    ?paul dbo:parent ?mary .
+    ?me dbo:parent ?myparent .
     [] dbo:weight "0.99"^^xsd:float .
 }
 WHERE {
-    ?paul dbo:aunt ?milly .
-    ?mary dbo:sister ?milly .
+    ?me dbo:brother ?mybrother .
+    ?myparent dbo:child ?mybrother .
 
-    FILTER (?paul != ?mary)
+    FILTER (?me != ?myparent)
 }
 
 </body>
@@ -125,14 +127,14 @@ WHERE {
 <rule>
 <body>  
 CONSTRUCT {
-    ?paul dbo:parent ?mary .
+    ?me dbo:parent ?myparent .
     [] dbo:weight "0.99"^^xsd:float .
 }
 WHERE {
-    ?paul dbo:aunt ?milly .
-    ?milly dbo:sister ?mary .
+    ?me dbo:grandparent ?mygrandparent .
+    ?myparent dbo:parent ?mygrandparent .
 
-    FILTER (?paul != ?mary)
+    FILTER (?me != ?myparent)
 }
 
 </body>
@@ -142,14 +144,14 @@ WHERE {
 <rule>
 <body>  
 CONSTRUCT {
-    ?paul dbo:parent ?mary .
+    ?me dbo:parent ?myparent .
     [] dbo:weight "0.99"^^xsd:float .
 }
 WHERE {
-    ?paul dbo:brother ?mike .
-    ?mary dbo:child ?mike .
+    ?me dbo:sister ?mysister .
+    ?myparent dbo:child ?mysister .
 
-    FILTER (?paul != ?mary)
+    FILTER (?me != ?myparent)
 }
 
 </body>
@@ -159,14 +161,14 @@ WHERE {
 <rule>
 <body>  
 CONSTRUCT {
-    ?paul dbo:parent ?mary .
+    ?me dbo:parent ?myparent .
     [] dbo:weight "0.99"^^xsd:float .
 }
 WHERE {
-    ?paul dbo:grandparent ?theresa .
-    ?mary dbo:parent ?theresa .
+    ?me dbo:uncle ?myuncle .
+    ?myparent dbo:brother ?myuncle .
 
-    FILTER (?paul != ?mary)
+    FILTER (?me != ?myparent)
 }
 
 </body>
@@ -176,47 +178,13 @@ WHERE {
 <rule>
 <body>  
 CONSTRUCT {
-    ?paul dbo:parent ?mary .
+    ?me dbo:parent ?myparent .
     [] dbo:weight "0.99"^^xsd:float .
 }
 WHERE {
-    ?paul dbo:sister ?ruth .
-    ?mary dbo:child ?ruth .
+    ?myparent dbo:child ?me .
 
-    FILTER (?paul != ?mary)
-}
-
-</body>
-</rule>
-
-
-<rule>
-<body>  
-CONSTRUCT {
-    ?paul dbo:parent ?mary .
-    [] dbo:weight "0.99"^^xsd:float .
-}
-WHERE {
-    ?paul dbo:uncle ?jack .
-    ?mary dbo:brother ?jack .
-
-    FILTER (?paul != ?mary)
-}
-
-</body>
-</rule>
-
-
-<rule>
-<body>  
-CONSTRUCT {
-    ?paul dbo:parent ?mary .
-    [] dbo:weight "0.99"^^xsd:float .
-}
-WHERE {
-    ?mary dbo:child ?paul .
-
-    FILTER (?paul != ?mary)
+    FILTER (?me != ?myparent)
 }
 
 </body>
@@ -227,30 +195,14 @@ WHERE {
 <rule>
 <body>  
 CONSTRUCT {
-    ?paul dbo:parent ?mary .
+    ?me dbo:parent ?myparent .
     [] dbo:weight "0.99"^^xsd:float .
 }
 WHERE {
-    ?mary dbo:spouse ?james .
-    ?james dbo:child ?paul .
+    ?myparent dbo:spouse ?myparent2 .
+    ?myparent2 dbo:child ?me .
 
-    FILTER (?paul != ?mary)
-}
-
-</body>
-</rule>
-
-<rule>
-<body>  
-CONSTRUCT {
-    ?paul dbo:parent ?mary .
-    [] dbo:weight "0.99"^^xsd:float .
-}
-WHERE {
-    ?james dbo:spouse ?mary .
-    ?james dbo:child ?paul .
-
-    FILTER (?paul != ?mary)
+    FILTER (?me != ?myparent)
 }
 
 </body>

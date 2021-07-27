@@ -34,6 +34,7 @@ WHERE {
     
     FILTER (?a != ?b)
 }
+
 </body>
 </rule>
 
@@ -48,6 +49,7 @@ WHERE {
     ?b foaf:gender "female"@en .
     FILTER (?a != ?b)
 }
+
 </body>
 </rule>
 
@@ -62,6 +64,7 @@ WHERE {
     ?bs dbo:sister ?s .
     FILTER (?a != ?s)
 }
+
 </body>
 </rule>
 
@@ -75,6 +78,7 @@ WHERE {
     ?bs dbo:brother ?b .
 	FILTER (?a != ?b)
 }
+
 </body>
 </rule>
 
