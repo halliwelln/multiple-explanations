@@ -2,7 +2,9 @@
 
 import numpy as np
 
-def get_preds(adj_mats,num_relations,trace_length,tape,pred):
+def get_pred(adj_mats,num_relations,tape,pred,true_exp):
+
+    trace_length = true_exp.shape[0]
     
     scores = []
     
@@ -54,14 +56,12 @@ if __name__ == '__main__':
     parser.add_argument('rule',type=str,
         help='spouse,brother,...,full_data')
     parser.add_argument('embedding_dim',type=int)
-    parser.add_argument('trace_length',type=int)
 
     args = parser.parse_args()
 
     DATASET = args.dataset
     RULE = args.rule
     EMBEDDING_DIM = args.embedding_dim
-    TRACE_LENGTH = args.trace_length
 
     data = np.load(os.path.join('..','data',DATASET+'.npz'))
 
@@ -78,6 +78,18 @@ if __name__ == '__main__':
 
     idx2ent = dict(zip(range(NUM_ENTITIES),entities))
     idx2rel = dict(zip(range(NUM_RELATIONS),relations))
+
+    triples2idx = utils.array2idx(triples,ent2idx,rel2idx)
+    traces2idx = utils.array2idx(traces,ent2idx,rel2idx)
+
+    UNK_ENT_ID = ent2idx['UNK_ENT']
+    UNK_REL_ID = rel2idx['UNK_REL']
+
+    relevance_scores = utils.get_relevance_scores(
+        traces2idx,
+        weights,
+        UNK_ENT_ID,
+        UNK_REL_ID)
 
     model = RGCN.get_RGCN_Model(
         num_entities=NUM_ENTITIES,
@@ -100,11 +112,11 @@ if __name__ == '__main__':
         pred_exps = []
         cv_jaccard = 0.0
 
-        train2idx = utils.array2idx(triples[train_idx],ent2idx,rel2idx)
-        trainexp2idx = utils.array2idx(traces[train_idx],ent2idx,rel2idx)
+        train2idx = triples2idx[train_idx]#utils.array2idx(triples[train_idx],ent2idx,rel2idx)
+        trainexp2idx = traces2idx[train_idx]#utils.array2idx(traces[train_idx],ent2idx,rel2idx)
 
-        test2idx = utils.array2idx(triples[test_idx],ent2idx,rel2idx)
-        testexp2idx = utils.array2idx(traces[test_idx],ent2idx,rel2idx)
+        test2idx = triples2idx[test_idx]#utils.array2idx(triples[test_idx],ent2idx,rel2idx)
+        testexp2idx = traces2idx[test_idx]#utils.array2idx(traces[test_idx],ent2idx,rel2idx)
 
         ADJACENCY_DATA = tf.concat([
             train2idx,
@@ -121,6 +133,8 @@ if __name__ == '__main__':
 
         for head, rel, tail, true_exp in tf_data:
 
+            true_exp = utils.remove_padding_tf(true_exp[0],UNK_ENT_ID,UNK_REL_ID)
+
             with tf.GradientTape(watch_accessed_variables=False,persistent=True) as tape:
 
                 tape.watch(adj_mats)
@@ -134,11 +148,11 @@ if __name__ == '__main__':
                     ]
                 )
 
-            pred_exp = get_preds(adj_mats,NUM_RELATIONS,TRACE_LENGTH,tape,pred)
+            pred_exp = get_pred(adj_mats,NUM_RELATIONS,tape,pred,true_exp)
 
             pred_exps.append(pred_exp)
 
-            jaccard = utils.jaccard_score(true_exp.numpy()[0],pred_exp)
+            jaccard = utils.max_jaccard_np(testexp2idx,pred_exp,UNK_ENT_ID,UNK_REL_ID)
             cv_jaccard += jaccard
 
         cv_preds.append(pred_exps)
@@ -148,7 +162,9 @@ if __name__ == '__main__':
     best_idx = np.argmax(cv_scores)
     best_test_indices = test_indicies[best_idx]
 
-    preds = np.array(cv_preds[best_idx])
+    preds = np.array(cv_preds[best_idx],dtype=object)
+
+    preds = utils.pad(preds,UNK_ENT_ID,UNK_REL_ID)
 
     best_preds = utils.idx2array(preds,idx2ent,idx2rel)
 

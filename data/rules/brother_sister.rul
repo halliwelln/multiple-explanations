@@ -25,14 +25,14 @@
 <rule>
 <body>  
 CONSTRUCT {
-    ?a dbo:brother ?b .
+    ?me dbo:brother ?mybrother .
 }
 WHERE {
-    ?a dbo:parent ?parent .
-    ?b dbo:parent ?parent .
-    ?b foaf:gender "male"@en .
+    ?me dbo:parent ?myparent .
+    ?mybrother dbo:parent ?myparent .
+    ?mybrother foaf:gender "male"@en .
     
-    FILTER (?a != ?b)
+    FILTER (?me != ?mybrother)
 }
 
 </body>
@@ -41,13 +41,13 @@ WHERE {
 <rule>
 <body>  
 CONSTRUCT {
-    ?a dbo:sister ?b .
+    ?me dbo:sister ?mysister .
 }
 WHERE {
-    ?a dbo:parent ?parent .
-    ?b dbo:parent ?parent .
-    ?b foaf:gender "female"@en .
-    FILTER (?a != ?b)
+    ?me dbo:parent ?myparent .
+    ?mysister dbo:parent ?myparent .
+    ?mysister foaf:gender "female"@en .
+    FILTER (?me != ?mysister)
 }
 
 </body>

@@ -3,13 +3,57 @@
 import numpy as np
 import tensorflow as tf
 
+def pad_weights(weight_array,longest_trace):
+    
+    weight_array = list(weight_array)
+    
+    while len(weight_array) != longest_trace:
+        weight_array.append('UNK_WEIGHT')
+        
+    return weight_array
+
+def pad_trace(trace,max_padding,longest_trace):
+    
+    unk = np.repeat(np.array([['UNK_ENT','UNK_REL','UNK_ENT']]),[max_padding],axis=0)
+    
+    unk = np.expand_dims(unk,axis=0)
+    
+    while trace.shape[0] != longest_trace:
+        trace = np.concatenate([trace,unk],axis=0)
+        
+    return trace
+
 def f1(precision,recall):
     return 2 * (precision*recall) / (precision + recall)
+
+def pad(triples,unk_ent_id,unk_rel_id,max_shape=-1):
+
+    unk = np.array([[unk_ent_id, unk_rel_id, unk_ent_id]])
+    
+    if max_shape==-1:
+        for triple in triples:
+            if triple.shape[0]>max_shape:
+                max_shape = triple.shape[0] 
+
+    output_array = []
+    
+    for i in range(len(triples)):
+
+        triple = triples[i:i+1]
+        
+        if triple.shape[0] == max_shape:
+            output_array.append(triple)
+            
+        while triple.shape[0] != max_shape:
+            triple = np.concatenate([triple,unk],axis=0)
+        output_array.append(triple)
+            
+    return np.array(output_array)
 
 def remove_padding_np(exp,unk_ent_id, unk_rel_id):
 
     #unk = np.array(['UNK_ENT', 'UNK_REL', 'UNK_ENT'])
-    unk = np.array([unk_ent_id, unk_rel_id, unk_ent_id])
+    unk = np.array([unk_ent_id, unk_rel_id, unk_ent_id],dtype=object)
 
     exp_mask = (exp != unk).all(axis=1)
 
@@ -20,7 +64,9 @@ def remove_padding_np(exp,unk_ent_id, unk_rel_id):
 def remove_padding_tf(exp,unk_ent_id, unk_rel_id):
 
     #unk = tf.convert_to_tensor(np.array(['UNK_ENT', 'UNK_REL', 'UNK_ENT']))
-    unk = tf.convert_to_tensor(np.array([unk_ent_id, unk_rel_id, unk_ent_id]))
+    unk = tf.cast(
+        tf.convert_to_tensor([unk_ent_id, unk_rel_id, unk_ent_id]),
+        dtype=exp.dtype)
 
     exp_mask = tf.reduce_all(tf.math.not_equal(exp, unk),axis=1)
 
@@ -28,7 +74,7 @@ def remove_padding_tf(exp,unk_ent_id, unk_rel_id):
 
     return masked_exp
 
-def jaccard_score(true_exp,pred_exp):
+def jaccard_score_np(true_exp,pred_exp):
         
     num_true_traces = true_exp.shape[0]
     num_pred_traces = pred_exp.shape[0]
@@ -43,6 +89,54 @@ def jaccard_score(true_exp,pred_exp):
     
     return score
 
+def jaccard_score_tf(true_exp,pred_exp):
+
+    num_true_traces = tf.shape(true_exp)[0]
+    num_pred_traces = tf.shape(pred_exp)[0]
+
+    count = 0
+    for i in range(num_pred_traces):
+
+        pred_row = pred_exp[i]
+
+        for j in range(num_true_traces):
+
+            true_row = true_exp[j]
+
+            count += tf.cond(tf.reduce_all(pred_row == true_row), lambda :1, lambda:0)
+
+    score = count / (num_true_traces + num_pred_traces-count)
+    
+    return score
+
+def max_jaccard_np(traces2idx,pred_exp,unk_ent_id,unk_rel_id):
+    
+    jaccards = []
+    
+    for i in range(len(traces2idx)):
+        
+        trace = remove_padding_np(traces2idx[i],unk_ent_id,unk_rel_id)
+
+        jaccard = jaccard_score_np(trace, pred_exp)
+
+        jaccards.append(jaccard)
+    
+    return max(jaccards)
+
+def max_jaccard_tf(traces2idx,pred_exp,unk_ent_id,unk_rel_id):
+    
+    jaccards = []
+    
+    for i in range(len(traces2idx)):
+        
+        trace = remove_padding_tf(traces2idx[i],unk_ent_id,unk_rel_id)
+
+        jaccard = jaccard_score_tf(trace, pred_exp)
+
+        jaccards.append(jaccard)
+    
+    return max(jaccards)
+
 def get_relevance_scores(traces,weights,unk_ent_id,unk_rel_id):
 
     '''Get relevance score for each triple'''
@@ -55,70 +149,19 @@ def get_relevance_scores(traces,weights,unk_ent_id,unk_rel_id):
                 
         for j in range(len(stripped_trace)):
             
-            # if np.issubdtype(stripped_trace.dtype, np.integer):
-            #     predicate = '_'.join([str(i) for i in stripped_trace[:,1]])
-            # else:
-            #     predicate = '_'.join(stripped_trace[:,1])
+            if np.issubdtype(stripped_trace.dtype, np.integer):
+                predicate = '_'.join([str(i) for i in stripped_trace[:,1]])
+            else:
+                predicate = '_'.join(stripped_trace[:,1])
 
             str_trip = str(stripped_trace[j])
 
-            # if str_trip in relevance_scores:
-            #     relevance_scores[str_trip].update({predicate:weights[i]})
-            # else:
-            #     relevance_scores[str_trip] = {predicate:weights[i]}
-            relevance_scores[str_trip] = weights[i]
+            if str_trip in relevance_scores:
+                relevance_scores[str_trip].update({predicate:weights[i]})
+            else:
+                relevance_scores[str_trip] = {predicate:weights[i]}
+            #relevance_scores[str_trip] = weights[i]
     return relevance_scores
-
-# def precision_recall(true_exps,preds):
-
-#     num_triples = true_exps.shape[0]
-
-#     precision = 0.0
-#     recall = 0.0
-
-#     for i in range(num_triples):
-        
-#         current_tp = 0.0
-#         current_fp = 0.0
-#         current_fn = 0.0
-        
-#         true_exp = true_exps[i]
-#         current_preds = preds[i]
-
-#         for pred_row in current_preds:
-            
-#             for true_row in true_exp:
-                
-#                 reversed_row = true_row[[2,1,0]]
-                
-#                 if (pred_row == true_row).all() or (pred_row == reversed_row).all():
-#                     current_tp += 1
-#                 else:
-#                     current_fp += 1
-                    
-#                 if (current_preds == true_row).all(axis=1).sum() >= 1:
-#                     #if true explanation triple is in set of predicitons
-#                     pass
-#                 else:
-#                     current_fn += 1
-
-#         if current_tp == 0 and current_fp == 0:
-#             current_precision = 0.0
-#         else:
-#             current_precision = current_tp / (current_tp + current_fp)
-
-#         if current_tp == 0  and current_fn == 0:
-#             current_recall = 0.0
-#         else:
-#             current_recall = current_tp / (current_tp + current_fn)
-        
-#         precision += current_precision
-#         recall += current_recall
-        
-#     precision /= num_triples
-#     recall /= num_triples
-
-#     return precision, recall
 
 def parse_ttl(file_name, max_padding):
     

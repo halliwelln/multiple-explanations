@@ -40,11 +40,23 @@ for rule in rules:
         max_padding=MAX_PADDING
     )
 
-    _, unique_idx = np.unique(traces, axis=0,return_index=True)
+    _, unique_traces_idx = np.unique(traces, axis=0,return_index=True)
 
-    triples = triples[unique_idx]
-    traces = traces[unique_idx]
-    weights = weights[unique_idx]
+    triples = triples[unique_traces_idx]
+    traces = traces[unique_traces_idx]
+    weights = weights[unique_traces_idx]
+
+
+
+
+
+
+
+
+
+
+
+
 
     idx = triples[:,1] == rule
 
@@ -57,10 +69,11 @@ for rule in rules:
     # if rule_file == 'brother_sister':
     #     pass
 
-    exp_entities = np.array([[traces[:,i,:][:,0],
-        traces[:,i,:][:,2]] for i in range(MAX_PADDING)]).flatten()
+    exp_entities = np.array([
+        [traces[:,i,j,0],traces[:,i,j,2]] for i in range(longest_trace) for j in range(MAX_PADDING)]).flatten()
 
-    exp_relations = np.array([traces[:,i,:][:,1] for i in range(MAX_PADDING)]).flatten()
+    exp_relations = np.array([
+        [traces[:,i,j,1]] for i in range(longest_trace) for j in range(MAX_PADDING)]).flatten()
  
     all_triples.append(triples)
     all_traces.append(traces)

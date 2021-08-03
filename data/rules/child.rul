@@ -30,7 +30,7 @@ WHERE {
     ?myparent dbo:child ?mysister .
     ?me dbo:sister ?mysister .
 
-    FILTER (?myparent != ?paul)
+    FILTER (?myparent != ?me)
 }
 
 </body>

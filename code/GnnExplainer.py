@@ -30,7 +30,7 @@ def get_computation_graph(head,rel,tail,k,data,num_relations):
 
     #     seen_nodes = []
         
-    #     for _ in range(k-1):#-1 since we already computed 1st degree neighbors above
+    #     for _ in range(k-1):#-1 as we already computed 1st degree neighbors above
 
     #         for idx in range(num_indices):
 
@@ -54,26 +54,6 @@ def get_computation_graph(head,rel,tail,k,data,num_relations):
     #                 all_neighbors = tf.concat([all_neighbors,more_tail_neighbors],axis=0)
 
     return all_neighbors
-
-def tf_jaccard(true_exp,pred_exp):
-
-    num_true_traces = tf.shape(true_exp)[0]
-    num_pred_traces = tf.shape(pred_exp)[0]
-
-    count = 0
-    for i in range(num_pred_traces):
-
-        pred_row = pred_exp[i]
-
-        for j in range(num_true_traces):
-
-            true_row = true_exp[j]
-
-            count += tf.cond(tf.reduce_all(pred_row == true_row), lambda :1, lambda:0)
-
-    score = count / (num_true_traces + num_pred_traces-count)
-    
-    return score
 
 def replica_step(head,rel,tail,explanation,num_relations):
     
@@ -111,10 +91,6 @@ def replica_step(head,rel,tail,explanation,num_relations):
                     ]
                 )
 
-            #penalty = [tf.reduce_sum(tf.cast(tf.sigmoid(i.values) > .5,dtype=tf.float32)) for i in masked_adjs]
-
-            #loss = -1 * tf.math.log(pred+0.00001) + (0.0001 * tf.reduce_sum(penalty))
-
             loss = - before_pred * tf.math.log(pred+0.00001)
 
             tf.print(f"current loss {loss}")
@@ -136,7 +112,7 @@ def replica_step(head,rel,tail,explanation,num_relations):
         if (non_masked_indices.shape[0] == 0) and (tf.math.reduce_all(true_subgraphs[i].values == tf.zeros((1,3)))):
             total_jaccard += 1.
         else:
-            total_jaccard += tf_jaccard(true_subgraphs[i].indices,non_masked_indices)
+            #total_jaccard += utils.jaccard_tf(true_subgraphs[i].indices,non_masked_indices)
 
         pred = non_masked_indices.numpy()
 
@@ -179,7 +155,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
 
     parser.add_argument('dataset', type=str,
-        help='royalty_30k or royalty_20k')
+        help='paul_dataset')
     parser.add_argument('rule',type=str,
         help='spouse,successor,...,full_data')
     parser.add_argument('num_epochs',type=int)
@@ -209,6 +185,18 @@ if __name__ == '__main__':
 
     idx2ent = dict(zip(range(NUM_ENTITIES),entities))
     idx2rel = dict(zip(range(NUM_RELATIONS),relations))
+
+    triples2idx = utils.array2idx(triples,ent2idx,rel2idx)
+    traces2idx = utils.array2idx(traces,ent2idx,rel2idx)
+
+    UNK_ENT_ID = ent2idx['UNK_ENT']
+    UNK_REL_ID = rel2idx['UNK_REL']
+
+    relevance_scores = utils.get_relevance_scores(
+        traces2idx,
+        weights,
+        UNK_ENT_ID,
+        UNK_REL_ID)
 
     ALL_INDICES = tf.reshape(tf.range(0,NUM_ENTITIES,1,dtype=tf.int64), (1,-1))
 
@@ -255,11 +243,11 @@ if __name__ == '__main__':
 
         preds = []
 
-        train2idx = utils.array2idx(triples[train_idx],ent2idx,rel2idx)
-        trainexp2idx = utils.array2idx(traces[train_idx],ent2idx,rel2idx)
-        
-        test2idx = utils.array2idx(triples[test_idx],ent2idx,rel2idx)
-        testexp2idx = utils.array2idx(traces[test_idx],ent2idx,rel2idx)
+        train2idx = triples2idx[train_idx]
+        trainexp2idx = traces2idx[train_idx]
+
+        test2idx = triples2idx[test_idx]
+        testexp2idx = traces2idx[test_idx]
 
         ADJACENCY_DATA = tf.concat([
             train2idx,
@@ -326,8 +314,6 @@ if __name__ == '__main__':
     print(f'Embedding dim: {EMBEDDING_DIM}')
     print(f'learning_rate: {LEARNING_RATE}')
     print(f'threshold {THRESHOLD}')
-
-    #print(f"{DATASET} {RULE} jaccard score: {cv_scores[best_idx]}")
 
     np.savez(os.path.join('..','data','preds',DATASET,'gnn_explainer_'+DATASET+'_'+RULE+'_preds.npz'),
         best_idx=best_idx, preds=best_preds,test_idx=best_test_indices
