@@ -26,6 +26,8 @@
 <body>  
 CONSTRUCT {
     ?me dbo:brother ?mybrother .
+    [] dbo:weight "0.00"^^xsd:float .
+
 }
 WHERE {
     ?me dbo:parent ?myparent .
@@ -42,6 +44,8 @@ WHERE {
 <body>  
 CONSTRUCT {
     ?me dbo:sister ?mysister .
+    [] dbo:weight "0.00"^^xsd:float .
+
 }
 WHERE {
     ?me dbo:parent ?myparent .
@@ -63,8 +67,8 @@ CONSTRUCT {
     [] dbo:weight "0.99"^^xsd:float .
 }
 WHERE {
-  ?myson dbo:uncle ?mybrother .
   ?me dbo:child ?myson .
+  ?myson dbo:uncle ?mybrother .
 
   FILTER (?me != ?mybrother)
 }
@@ -78,8 +82,8 @@ CONSTRUCT {
     [] dbo:weight "0.99"^^xsd:float .
 }
 WHERE {
-  ?me dbo:parent ?myparent .
   ?myparent dbo:child ?mybrother .
+  ?me dbo:parent ?myparent .
 
   FILTER (?me != ?mybrother)
 }
@@ -93,8 +97,8 @@ CONSTRUCT {
     [] dbo:weight "0.99"^^xsd:float .
 }
 WHERE {
-  ?me dbo:sister ?mysister .
   ?mysister dbo:brother ?mybrother .
+  ?me dbo:sister ?mysister .
 
   FILTER (?me != ?mybrother)
 }
@@ -178,6 +182,21 @@ WHERE {
 </body>
 </rule>
 
+<rule>
+<body>  
+CONSTRUCT {
+    ?mysister dbo:brother ?me .
+    [] dbo:weight "0.99"^^xsd:float .
+}
+WHERE {
+  ?me dbo:sister ?mysister .
+
+  FILTER (?me != ?mysister)
+}
+</body>
+</rule>
+
+
 <!--                 brother                     -->
 
 
@@ -219,8 +238,8 @@ CONSTRUCT {
     [] dbo:weight "0.99"^^xsd:float .
 }
 WHERE {
-  ?me dbo:child ?mydaughter .
-  ?mydaughter dbo:aunt ?mysister .
+  ?mychild dbo:aunt ?mysister .
+  ?me dbo:child ?mychild .
 
   FILTER (?me != ?mysister)
 }
@@ -234,8 +253,8 @@ CONSTRUCT {
     [] dbo:weight "0.99"^^xsd:float .
 }
 WHERE {
-  ?me dbo:parent ?myparent .
   ?myparent dbo:child ?mysister .
+  ?me dbo:parent ?myparent .
 
   FILTER (?me != ?mysister)
 }
@@ -314,6 +333,22 @@ WHERE {
   ?me dbo:uncle ?myuncle .
 
   FILTER (?me != ?mysister)
+}
+</body>
+</rule>
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?me dbo:sister ?mysister1 .
+    [] dbo:weight "0.99"^^xsd:float .
+}
+WHERE {
+  ?mysister1 dbo:sister ?mysister2 .
+  ?me dbo:sister ?mysister2 .
+
+  FILTER (?me != ?mysister1)
+  FILTER (?me != ?mysister2)
 }
 </body>
 </rule>

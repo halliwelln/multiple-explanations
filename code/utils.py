@@ -3,18 +3,48 @@
 import numpy as np
 import tensorflow as tf
 
-def pad_weights(weight_array,longest_trace):
+def graded_precision_recall(
+    pred_exp,
+    current_traces,
+    current_weights,
+    unk_ent_id,
+    unk_rel_id,
+    unk_weight_id):
     
-    weight_array = list(weight_array)
-    
-    while len(weight_array) != longest_trace:
-        weight_array.append('UNK_WEIGHT')
-        
-    return weight_array
+    n = len(pred_exp)
 
-def pad_trace(trace,max_padding,longest_trace):
+    relevance_scores = np.zeros(longest_trace) #numerator of graded recall
+
+    for i in range(n):
+
+        current_pred = pred_exp[i]
+
+        for j in range(len(current_traces)):
+
+            unpadded_traces = remove_padding_np(current_traces[j],unk_ent_id,unk_rel_id)
+            unpadded_weights = current_weights[j][current_weights[j] != unk_weight_id]
+
+            indices = (unpadded_traces == current_pred).all(axis=1)
+
+            sum_weights = sum([float(num) for num in unpadded_weights[indices]])
+
+            relevance_scores[j] += sum_weights
+
+    max_relevance_score = max(relevance_scores)
+    max_idx = np.argmax(relevance_scores)
+
+    total_sum = sum([float(weight) for weight in current_weights[max_idx] if weight != unk_weight_id])
+
+    precision = max_relevance_score/n
+    recall = max_relevance_score/total_sum
     
-    unk = np.repeat(np.array([['UNK_ENT','UNK_REL','UNK_ENT']]),[max_padding],axis=0)
+    return precision, recall
+
+def pad_trace(trace,max_padding,longest_trace,unk):
+
+    #unk = np.array([['UNK_ENT','UNK_REL','UNK_ENT']])
+    
+    unk = np.repeat(unk,[max_padding],axis=0)
     
     unk = np.expand_dims(unk,axis=0)
     
@@ -25,54 +55,6 @@ def pad_trace(trace,max_padding,longest_trace):
 
 def f1(precision,recall):
     return 2 * (precision*recall) / (precision + recall)
-
-def pad(triples,unk_ent_id,unk_rel_id,max_shape=-1):
-
-    unk = np.array([[unk_ent_id, unk_rel_id, unk_ent_id]])
-    
-    if max_shape==-1:
-        for triple in triples:
-            if triple.shape[0]>max_shape:
-                max_shape = triple.shape[0] 
-
-    output_array = []
-    
-    for i in range(len(triples)):
-
-        triple = triples[i:i+1]
-        
-        if triple.shape[0] == max_shape:
-            output_array.append(triple)
-            
-        while triple.shape[0] != max_shape:
-            triple = np.concatenate([triple,unk],axis=0)
-        output_array.append(triple)
-            
-    return np.array(output_array)
-
-def remove_padding_np(exp,unk_ent_id, unk_rel_id):
-
-    #unk = np.array(['UNK_ENT', 'UNK_REL', 'UNK_ENT'])
-    unk = np.array([unk_ent_id, unk_rel_id, unk_ent_id],dtype=object)
-
-    exp_mask = (exp != unk).all(axis=1)
-
-    masked_exp = exp[exp_mask]
-
-    return masked_exp
-
-def remove_padding_tf(exp,unk_ent_id, unk_rel_id):
-
-    #unk = tf.convert_to_tensor(np.array(['UNK_ENT', 'UNK_REL', 'UNK_ENT']))
-    unk = tf.cast(
-        tf.convert_to_tensor([unk_ent_id, unk_rel_id, unk_ent_id]),
-        dtype=exp.dtype)
-
-    exp_mask = tf.reduce_all(tf.math.not_equal(exp, unk),axis=1)
-
-    masked_exp = tf.boolean_mask(exp,exp_mask)
-
-    return masked_exp
 
 def jaccard_score_np(true_exp,pred_exp):
         
@@ -109,59 +91,66 @@ def jaccard_score_tf(true_exp,pred_exp):
     
     return score
 
-def max_jaccard_np(traces2idx,pred_exp,unk_ent_id,unk_rel_id):
+def remove_padding_np(exp,unk_ent_id, unk_rel_id):
+
+    #unk = np.array(['UNK_ENT', 'UNK_REL', 'UNK_ENT'])
+    unk = np.array([unk_ent_id, unk_rel_id, unk_ent_id],dtype=object)
+
+    exp_mask = (exp != unk).all(axis=1)
+
+    masked_exp = exp[exp_mask]
+
+    return masked_exp
+
+def remove_padding_tf(exp,unk_ent_id, unk_rel_id):
+
+    #unk = tf.convert_to_tensor(np.array(['UNK_ENT', 'UNK_REL', 'UNK_ENT']))
+    unk = tf.cast(
+        tf.convert_to_tensor([unk_ent_id, unk_rel_id, unk_ent_id]),
+        dtype=exp.dtype)
+
+    exp_mask = tf.reduce_all(tf.math.not_equal(exp, unk),axis=1)
+
+    masked_exp = tf.boolean_mask(exp,exp_mask)
+
+    return masked_exp
+
+def max_jaccard_np(current_traces,pred_exp,unk_ent_id,unk_rel_id):
+
+    ''''
+    pred_exp must have shape[0] >= 1
+
+    pred_exp: 2 dimensional (num_triples,3)
+
+    '''
     
     jaccards = []
     
-    for i in range(len(traces2idx)):
+    for i in range(len(current_traces)):
         
-        trace = remove_padding_np(traces2idx[i],unk_ent_id,unk_rel_id)
+        true_exp = remove_padding_np(current_traces[i],unk_ent_id,unk_rel_id)
 
-        jaccard = jaccard_score_np(trace, pred_exp)
+        jaccard = jaccard_score_np(true_exp, pred_exp)
 
         jaccards.append(jaccard)
     
     return max(jaccards)
 
-def max_jaccard_tf(traces2idx,pred_exp,unk_ent_id,unk_rel_id):
+def max_jaccard_tf(current_traces,pred_exp,unk_ent_id,unk_rel_id):
+
+    '''pred_exp: 2 dimensional (num_triples,3)'''
     
     jaccards = []
     
-    for i in range(len(traces2idx)):
+    for i in range(len(current_traces)):
         
-        trace = remove_padding_tf(traces2idx[i],unk_ent_id,unk_rel_id)
+        trace = remove_padding_tf(current_traces[i],unk_ent_id,unk_rel_id)
 
         jaccard = jaccard_score_tf(trace, pred_exp)
 
         jaccards.append(jaccard)
-    
+
     return max(jaccards)
-
-def get_relevance_scores(traces,weights,unk_ent_id,unk_rel_id):
-
-    '''Get relevance score for each triple'''
-    
-    relevance_scores = {}
-
-    for i in range(len(traces)):
-
-        stripped_trace = remove_padding_np(traces[i],unk_ent_id,unk_rel_id)
-                
-        for j in range(len(stripped_trace)):
-            
-            if np.issubdtype(stripped_trace.dtype, np.integer):
-                predicate = '_'.join([str(i) for i in stripped_trace[:,1]])
-            else:
-                predicate = '_'.join(stripped_trace[:,1])
-
-            str_trip = str(stripped_trace[j])
-
-            if str_trip in relevance_scores:
-                relevance_scores[str_trip].update({predicate:weights[i]})
-            else:
-                relevance_scores[str_trip] = {predicate:weights[i]}
-            #relevance_scores[str_trip] = weights[i]
-    return relevance_scores
 
 def parse_ttl(file_name, max_padding):
     
@@ -291,6 +280,32 @@ def array2idx(dataset,ent2idx,rel2idx):
             
         data = np.array(data).reshape(-1,dataset.shape[1],3)
 
+    elif dataset.ndim == 4:
+
+        data = []
+
+        for i in range(len(dataset)):
+
+            temp_array = []
+
+            for j in range(len(dataset[i])):
+
+                temp_array_1 = []
+
+                for head,rel,tail in dataset[i,j]:
+
+                    head_idx = ent2idx[head]
+                    tail_idx = ent2idx[tail]
+                    rel_idx = rel2idx[rel]
+
+                    temp_array_1.append((head_idx,rel_idx,tail_idx))
+
+                temp_array.append(temp_array_1)
+
+            data.append(temp_array)
+
+        data = np.array(data)
+
     return data
 
 def idx2array(dataset,idx2ent,idx2rel):
@@ -328,6 +343,32 @@ def idx2array(dataset,idx2ent,idx2rel):
             data.append(temp_array)
             
         data = np.array(data).reshape(-1,dataset.shape[1],3)
+
+    elif dataset.ndim == 4:
+
+        data = []
+
+        for i in range(len(dataset)):
+
+            temp_array = []
+
+            for j in range(len(dataset[i])):
+
+                temp_array_1 = []
+
+                for head_idx, rel_idx, tail_idx in dataset[i,j]:
+
+                    head = idx2ent[head_idx]
+                    tail = idx2ent[tail_idx]
+                    rel = idx2rel[rel_idx]
+
+                    temp_array_1.append((head,rel,tail))
+
+                temp_array.append(temp_array_1)
+
+            data.append(temp_array)
+
+        data = np.array(data)
 
     return data
 

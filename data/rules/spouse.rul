@@ -81,6 +81,38 @@ WHERE {
 }
 
 </body>
-</rule> 
+</rule>
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?me dbo:spouse ?myspouse .
+    [] dbo:weight "0.99"^^xsd:float .
+}
+WHERE {
+    ?myspouse dbo:child ?mychild .
+    ?me dbo:child ?mychild .
+
+    FILTER (?myspouse != ?me)
+}
+
+</body>
+</rule>
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?myspouse dbo:spouse ?me .
+    [] dbo:weight "0.99"^^xsd:float .
+}
+WHERE {
+    ?myspouse dbo:child ?mychild .
+    ?me dbo:child ?mychild .
+
+    FILTER (?myspouse != ?me)
+}
+
+</body>
+</rule>
 
 </rdf:RDF>
