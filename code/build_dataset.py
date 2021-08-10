@@ -13,13 +13,13 @@ rn.seed(SEED)
 
 parser = argparse.ArgumentParser()
 parser.add_argument('dataset', type=str,
-        help='paul','royalty')
-parser.add_argument("rules", type=str,
-    help='<rule> separated by spaces (no quotes or commas) i.e grandparent child')
+       help='paul, royalty')
+parser.add_argument("rules", type=str,nargs='*',
+     help='<rule> separated by spaces (no quotes or commas) i.e aunt child uncle')
 args = parser.parse_args()
 
 DATASET = args.dataset
-RULES = args.rules.split()
+RULES = args.rules
 
 MAX_PADDING = 2
 UNK = np.array([['UNK_ENT','UNK_REL','UNK_ENT']])
@@ -42,7 +42,7 @@ for rule in RULES:
         rule_file = rule
 
     triples,traces, weights = utils.parse_ttl(
-        file_name=os.path.join('..','data','traces',rule_file+'.ttl'),
+        file_name=os.path.join('..','data',f'{DATASET}_traces',f'{rule_file}.ttl'),
         max_padding=MAX_PADDING
     )
 
