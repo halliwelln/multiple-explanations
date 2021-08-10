@@ -24,7 +24,7 @@
 <body>  
 CONSTRUCT {
     ?myspouse dbo:spouse ?me .
-    [] dbo:weight "0.99"^^xsd:float .
+    [] dbo:weight "0.75"^^xsd:float .
 }
 WHERE {
     ?me dbo:spouse ?myspouse .
@@ -39,7 +39,7 @@ WHERE {
 <body>  
 CONSTRUCT {
     ?me dbo:spouse ?myspouse .
-    [] dbo:weight "0.99"^^xsd:float .
+    [] dbo:weight "0.75"^^xsd:float .
 }
 WHERE {
     ?myspouse dbo:spouse ?me .
@@ -54,7 +54,7 @@ WHERE {
 <body>  
 CONSTRUCT {
     ?myspouse dbo:spouse ?me .
-    [] dbo:weight "0.99"^^xsd:float .
+    [] dbo:weight "0.50"^^xsd:float .
 }
 WHERE {
     ?me dbo:child ?mychild .
@@ -71,7 +71,7 @@ WHERE {
 <body>  
 CONSTRUCT {
     ?me dbo:spouse ?myspouse .
-    [] dbo:weight "0.99"^^xsd:float .
+    [] dbo:weight "0.50"^^xsd:float .
 }
 WHERE {
     ?myspouse dbo:child ?mychild .
@@ -87,7 +87,7 @@ WHERE {
 <body>  
 CONSTRUCT {
     ?me dbo:spouse ?myspouse .
-    [] dbo:weight "0.99"^^xsd:float .
+    [] dbo:weight "0.75"^^xsd:float .
 }
 WHERE {
     ?myspouse dbo:child ?mychild .
@@ -103,7 +103,7 @@ WHERE {
 <body>  
 CONSTRUCT {
     ?myspouse dbo:spouse ?me .
-    [] dbo:weight "0.99"^^xsd:float .
+    [] dbo:weight "0.75"^^xsd:float .
 }
 WHERE {
     ?myspouse dbo:child ?mychild .

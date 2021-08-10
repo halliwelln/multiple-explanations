@@ -26,7 +26,7 @@
 <body>  
 CONSTRUCT {
     ?me dbo:grandparent ?mygrandparent .
-    [] dbo:weight "0.99"^^xsd:float .
+    [] dbo:weight "0.50"^^xsd:float .
 }
 WHERE {
     ?me dbo:brother ?mybrother .
@@ -43,7 +43,7 @@ WHERE {
 <body>  
 CONSTRUCT {
     ?me dbo:grandparent ?mygrandparent1 .
-    [] dbo:weight "0.99"^^xsd:float .
+    [] dbo:weight "0.75"^^xsd:float .
 }
 WHERE {
     ?me dbo:grandparent ?mygrandparent2 .
@@ -61,7 +61,7 @@ WHERE {
 <body>  
 CONSTRUCT {
     ?me dbo:grandparent ?mygrandparent .
-    [] dbo:weight "0.99"^^xsd:float .
+    [] dbo:weight "1.00"^^xsd:float .
 }
 WHERE {
     ?me dbo:parent ?myparent .
@@ -78,7 +78,7 @@ WHERE {
 <body>  
 CONSTRUCT {
     ?me dbo:grandparent ?mygrandparent .
-    [] dbo:weight "0.99"^^xsd:float .
+    [] dbo:weight "0.50"^^xsd:float .
 }
 WHERE {
     ?mysister dbo:grandparent ?mygrandparent .
@@ -96,7 +96,7 @@ WHERE {
 <body>  
 CONSTRUCT {
     ?me dbo:grandparent ?mygrandparent .
-    [] dbo:weight "0.99"^^xsd:float .
+    [] dbo:weight "0.25"^^xsd:float .
 }
 WHERE {
     ?me dbo:aunt ?myaunt .
@@ -114,7 +114,7 @@ WHERE {
 <body>  
 CONSTRUCT {
     ?me dbo:grandparent ?mygrandparent .
-    [] dbo:weight "0.99"^^xsd:float .
+    [] dbo:weight "1.00"^^xsd:float .
 }
 WHERE {
     ?myparent dbo:child ?me .
@@ -132,7 +132,7 @@ WHERE {
 <body>  
 CONSTRUCT {
     ?me dbo:grandparent ?mygrandparent .
-    [] dbo:weight "0.99"^^xsd:float .
+    [] dbo:weight "0.50"^^xsd:float .
 }
 WHERE {
     ?mygrandparent dbo:child ?myuncle .
@@ -150,7 +150,7 @@ WHERE {
 <body>  
 CONSTRUCT {
     ?me dbo:grandparent ?mygrandparent .
-    [] dbo:weight "0.99"^^xsd:float .
+    [] dbo:weight "0.75"^^xsd:float .
 }
 WHERE {
     ?mygrandparent dbo:child ?myparent .
@@ -167,7 +167,7 @@ WHERE {
 <body>  
 CONSTRUCT {
     ?me dbo:grandparent ?mygrandparent .
-    [] dbo:weight "0.99"^^xsd:float .
+    [] dbo:weight "0.50"^^xsd:float .
 }
 WHERE {
     ?myuncle dbo:parent ?mygrandparent .
@@ -184,7 +184,7 @@ WHERE {
 <body>  
 CONSTRUCT {
     ?me dbo:grandparent ?mygrandparent .
-    [] dbo:weight "0.99"^^xsd:float .
+    [] dbo:weight "0.25"^^xsd:float .
 }
 WHERE {
     ?me dbo:aunt ?myaunt .

@@ -52,7 +52,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
 
     parser.add_argument('dataset', type=str,
-        help='paul_dataset')
+        help='paul','royalty')
     parser.add_argument('rule',type=str,
         help='spouse,brother,...,full_data')
     parser.add_argument('embedding_dim',type=int)

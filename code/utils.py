@@ -5,24 +5,31 @@ import tensorflow as tf
 
 def graded_precision_recall(
     pred_exp,
-    current_traces,
-    current_weights,
+    true_exp,
+    true_weights,
+    max_trace,
     unk_ent_id,
     unk_rel_id,
     unk_weight_id):
+
+    '''
+    pred_exp: numpy array without padding
+    true_exp: numpy array with padding
+
+    '''
     
     n = len(pred_exp)
 
-    relevance_scores = np.zeros(longest_trace) #numerator of graded recall
+    relevance_scores = np.zeros(max_trace) #numerator of graded recall
 
     for i in range(n):
 
         current_pred = pred_exp[i]
 
-        for j in range(len(current_traces)):
+        for j in range(len(true_exp)):
 
-            unpadded_traces = remove_padding_np(current_traces[j],unk_ent_id,unk_rel_id)
-            unpadded_weights = current_weights[j][current_weights[j] != unk_weight_id]
+            unpadded_traces = remove_padding_np(true_exp[j],unk_ent_id,unk_rel_id)
+            unpadded_weights = true_weights[j][true_weights[j] != unk_weight_id]
 
             indices = (unpadded_traces == current_pred).all(axis=1)
 
@@ -33,14 +40,14 @@ def graded_precision_recall(
     max_relevance_score = max(relevance_scores)
     max_idx = np.argmax(relevance_scores)
 
-    total_sum = sum([float(weight) for weight in current_weights[max_idx] if weight != unk_weight_id])
+    total_sum = sum([float(weight) for weight in true_weights[max_idx] if weight != unk_weight_id])
 
     precision = max_relevance_score/n
     recall = max_relevance_score/total_sum
     
     return precision, recall
 
-def pad_trace(trace,max_padding,longest_trace,unk):
+def pad_trace(trace,longest_trace,max_padding,unk):
 
     #unk = np.array([['UNK_ENT','UNK_REL','UNK_ENT']])
     
@@ -51,6 +58,13 @@ def pad_trace(trace,max_padding,longest_trace,unk):
     while trace.shape[0] != longest_trace:
         trace = np.concatenate([trace,unk],axis=0)
         
+    return trace
+
+def pad_weight(trace,longest_trace,unk_weight):
+
+    while trace.shape[0] != longest_trace:
+        trace = np.concatenate([trace,unk_weight],axis=0)
+
     return trace
 
 def f1(precision,recall):
@@ -211,7 +225,10 @@ def get_data(data,rule):
 
     if rule == 'full_data':
 
-        triples,traces,weights = concat_triples(data, data['rules'])
+        triples = data['all_triples']
+        traces = data['all_traces'] 
+        weights = data['all_weights']
+
         entities = data['all_entities'].tolist()
         relations = data['all_relations'].tolist()
 
