@@ -4,9 +4,9 @@ import numpy as np
 import tensorflow as tf
 
 def graded_precision_recall(
-    pred_exp,
     true_exp,
-    true_weights,
+    pred_exp,
+    true_weight,
     max_trace,
     unk_ent_id,
     unk_rel_id,
@@ -20,7 +20,7 @@ def graded_precision_recall(
     
     n = len(pred_exp)
 
-    relevance_scores = np.zeros(max_trace) #numerator of graded recall
+    relevance_scores = np.zeros(max_trace)
 
     for i in range(n):
 
@@ -29,7 +29,7 @@ def graded_precision_recall(
         for j in range(len(true_exp)):
 
             unpadded_traces = remove_padding_np(true_exp[j],unk_ent_id,unk_rel_id)
-            unpadded_weights = true_weights[j][true_weights[j] != unk_weight_id]
+            unpadded_weights = true_weight[j][true_weight[j] != unk_weight_id]
 
             indices = (unpadded_traces == current_pred).all(axis=1)
 
@@ -40,7 +40,7 @@ def graded_precision_recall(
     max_relevance_score = max(relevance_scores)
     max_idx = np.argmax(relevance_scores)
 
-    total_sum = sum([float(weight) for weight in true_weights[max_idx] if weight != unk_weight_id])
+    total_sum = sum([float(weight) for weight in true_weight[max_idx] if weight != unk_weight_id])
 
     precision = max_relevance_score/n
     recall = max_relevance_score/total_sum
