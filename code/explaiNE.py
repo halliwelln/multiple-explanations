@@ -2,9 +2,7 @@
 
 import numpy as np
 
-def get_pred(adj_mats,num_relations,tape,pred,true_exp):
-
-    trace_length = true_exp.shape[0]
+def get_pred(adj_mats,num_relations,tape,pred,top_k):
     
     scores = []
     
@@ -16,7 +14,7 @@ def get_pred(adj_mats,num_relations,tape,pred,true_exp):
             if score:
                 scores.append((idx,i,score))
                 
-    top_k_scores = sorted(scores, key=lambda x : x[2],reverse=True)[:trace_length]
+    top_k_scores = sorted(scores, key=lambda x : x[2],reverse=True)[:top_k]
     
     pred_triples = []
     
@@ -55,12 +53,14 @@ if __name__ == '__main__':
         help='paul, royalty')
     parser.add_argument('rule',type=str,
         help='spouse,brother,...,full_data')
+    parser.add_argument('top_k',type=int,help='top k explanations')
     parser.add_argument('embedding_dim',type=int)
 
     args = parser.parse_args()
 
     DATASET = args.dataset
     RULE = args.rule
+    TOP_K = args.top_k
     EMBEDDING_DIM = args.embedding_dim
 
     data = np.load(os.path.join('..','data',DATASET+'.npz'))
@@ -82,6 +82,9 @@ if __name__ == '__main__':
     triples2idx = utils.array2idx(triples,ent2idx,rel2idx)
     traces2idx = utils.array2idx(traces,ent2idx,rel2idx)
 
+    UNK_ENT_ID = ent2idx['UNK_ENT']
+    UNK_REL_ID = rel2idx['UNK_REL']
+
     model = RGCN.get_RGCN_Model(
         num_entities=NUM_ENTITIES,
         num_relations=NUM_RELATIONS,
@@ -100,14 +103,16 @@ if __name__ == '__main__':
 
     for train_idx,test_idx in kf.split(X=triples):
 
+        test_idx = test_idx[0:2]
+
         pred_exps = []
         cv_jaccard = 0.0
 
-        train2idx = triples2idx[train_idx]#utils.array2idx(triples[train_idx],ent2idx,rel2idx)
-        trainexp2idx = traces2idx[train_idx]#utils.array2idx(traces[train_idx],ent2idx,rel2idx)
+        train2idx = triples2idx[train_idx]
+        trainexp2idx = traces2idx[train_idx]
 
-        test2idx = triples2idx[test_idx]#utils.array2idx(triples[test_idx],ent2idx,rel2idx)
-        testexp2idx = traces2idx[test_idx]#utils.array2idx(traces[test_idx],ent2idx,rel2idx)
+        test2idx = triples2idx[test_idx]
+        testexp2idx = traces2idx[test_idx]
 
         ADJACENCY_DATA = tf.concat([
             train2idx,
@@ -124,8 +129,6 @@ if __name__ == '__main__':
 
         for head, rel, tail, true_exp in tf_data:
 
-            true_exp = utils.remove_padding_tf(true_exp[0],UNK_ENT_ID,UNK_REL_ID)
-
             with tf.GradientTape(watch_accessed_variables=False,persistent=True) as tape:
 
                 tape.watch(adj_mats)
@@ -139,11 +142,13 @@ if __name__ == '__main__':
                     ]
                 )
 
-            pred_exp = get_pred(adj_mats,NUM_RELATIONS,tape,pred,true_exp)
+            pred_exp = get_pred(adj_mats,NUM_RELATIONS,tape,pred,TOP_K)
 
             pred_exps.append(pred_exp)
 
-            jaccard = utils.max_jaccard_np(true_exp,pred_exp,UNK_ENT_ID,UNK_REL_ID)
+            jaccard = utils.max_jaccard_tf(true_exp[0],pred_exp,UNK_ENT_ID,UNK_REL_ID)
+
+            print(f'jaccard {jaccard}')
             cv_jaccard += jaccard
 
         cv_preds.append(pred_exps)
@@ -152,13 +157,11 @@ if __name__ == '__main__':
 
     best_idx = np.argmax(cv_scores)
     best_test_indices = test_indicies[best_idx]
+    best_preds = np.array(cv_preds[best_idx])
 
-    preds = np.array(cv_preds[best_idx],dtype=object)
+    best_preds = utils.idx2array(best_preds,idx2ent,idx2rel)
 
-    preds = utils.pad(preds,UNK_ENT_ID,UNK_REL_ID)
-
-    best_preds = utils.idx2array(preds,idx2ent,idx2rel)
-
+    print(f'Top k: {TOP_K}')
     print(f'Embedding dim: {EMBEDDING_DIM}')
 
     np.savez(os.path.join('..','data','preds',DATASET,'explaine_'+DATASET+'_'+RULE+'_preds.npz'),

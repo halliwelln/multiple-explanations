@@ -61,8 +61,6 @@ def replica_step(head,rel,tail,explanation,num_relations):
 
     adj_mats = utils.get_adj_mats(comp_graph, NUM_ENTITIES, num_relations)
 
-    #true_subgraphs = utils.get_adj_mats(tf.squeeze(explanation,axis=0),NUM_ENTITIES,num_relations)
-
     total_loss = 0.0
 
     for epoch in range(NUM_EPOCHS):
@@ -100,56 +98,36 @@ def replica_step(head,rel,tail,explanation,num_relations):
         grads = tape.gradient(loss,masks)
         optimizer.apply_gradients(zip(grads,masks))
 
-
     current_pred = []
 
     for i in range(num_relations):
 
         mask_i = adj_mats[i] * tf.nn.sigmoid(masks[i])
 
-        non_masked_indices = tf.gather(mask_i.indices[mask_i.values > THRESHOLD],[1,2],axis=1)#check to make sure first index is zero!!
+        non_masked_indices = tf.gather(mask_i.indices[mask_i.values > THRESHOLD],[1,2],axis=1)
 
         if tf.reduce_sum(non_masked_indices) != 0:
 
             rel_indices = tf.cast(tf.ones((non_masked_indices.shape[0],1)) * i,tf.int64)
 
-            indices_0 = tf.reshape(non_masked_indices[:,0],(-1,1))
-            indices_1 = tf.reshape(non_masked_indices[:,1],(-1,1))
-        
-            triple = tf.concat([indices_0,rel_indices,indices_1],axis=1)
+            triple = tf.concat([non_masked_indices,rel_indices],axis=1)
             
+            triple = tf.gather(triple,[0,2,1],axis=1)
+
             current_pred.append(triple)
 
-    pred_exp = tf.squeeze(tf.concat([current_pred],axis=0),axis=1) #check to make sure removing 1 axis is ok!!!!
-    true_exp = tf.squeeze(explanation,axis=0) #check to make sure dimensions are correct -> can remove first axis??
+    pred_exp = tf.reshape(tf.concat([array for array in current_pred],axis=0),(-1,3))
 
-    jaccard_pred_i = utils(true_exp,pred_exp,UNK_ENT_ID,UNK_REL_ID)
-    # current_preds = []
-    # total_jaccard = 0.0
+    true_exp = tf.squeeze(explanation,axis=0)
 
-    # for i in range(num_relations):
+    jaccard_pred_i = utils.max_jaccard_tf(true_exp,pred_exp,UNK_ENT_ID,UNK_REL_ID)
 
-    #     mask_i = adj_mats[i] * tf.nn.sigmoid(masks[i])
-
-    #     non_masked_indices = mask_i.indices[mask_i.values > THRESHOLD]
-
-    #     if (non_masked_indices.shape[0] == 0) and (tf.math.reduce_all(true_subgraphs[i].values == tf.zeros((1,3)))):
-    #         total_jaccard += 1.
-    #     else:
-    #         #total_jaccard += utils.jaccard_tf(true_subgraphs[i].indices,non_masked_indices)
-
-    #     pred = non_masked_indices.numpy()
-
-    #     current_preds.append(pred[:,1:])
-
-    #total_jaccard /= num_relations
-
-    #tf.print(f"per observation jaccard: {total_jaccard}")
+    print('jaccard_pred_i',jaccard_pred_i)
 
     for mask in masks:
         mask.assign(value=init_value)
 
-    return total_loss, jaccard_pred_i, current_preds
+    return total_loss, jaccard_pred_i, pred_exp
 
 def distributed_replica_step(head,rel,tail,explanation,num_relations):
 
@@ -257,7 +235,7 @@ if __name__ == '__main__':
 
     for train_idx,test_idx in kf.split(X=triples):
 
-        test_idx = test_idx[0:2]
+        #test_idx = test_idx[0:2]
 
         preds = []
 
@@ -289,8 +267,6 @@ if __name__ == '__main__':
 
         for head,rel,tail,explanation in dist_dataset:
 
-            print(explanation.shape)
-
             loss, jaccard_pred_i, current_preds = distributed_replica_step(head,rel,tail,explanation,NUM_RELATIONS)
     
             preds.append(current_preds)
@@ -305,39 +281,27 @@ if __name__ == '__main__':
         cv_preds.append(preds)
         test_indices.append(test_idx)
 
+    best_idx = np.argmax(cv_scores)
+    best_test_indices = test_indices[best_idx]
+    best_preds = [array.numpy() for array in cv_preds[best_idx]]
 
-    # best_idx = np.argmax(cv_scores)
-    # best_test_indices = test_indices[best_idx]
-    # best_preds = cv_preds[best_idx]
+    out_preds = []
 
-    # best_preds = []
+    for i in range(len(best_preds)):
 
-    # all_preds = np.array(cv_preds[best_idx],dtype=object)
+        preds_i = utils.idx2array(best_preds[i],idx2ent,idx2rel)
 
-    # for i in range(len(all_preds)):
+        out_preds.append(preds_i)
 
-    #     preds_i = []
+    out_preds = np.array(out_preds,dtype=object)
 
-    #     for rel_idx in range(NUM_RELATIONS):
+    print(f'Num epochs: {NUM_EPOCHS}')
+    print(f'Embedding dim: {EMBEDDING_DIM}')
+    print(f'learning_rate: {LEARNING_RATE}')
+    print(f'threshold {THRESHOLD}')
 
-    #         triples_i = all_preds[i][rel_idx]
-
-    #         if triples_i.shape[0]:
-    #             rel_indices = (np.ones((triples_i.shape[0],1)) * rel_idx).astype(np.int64)
-    #             concat = np.concatenate([triples_i,rel_indices],axis=1)
-    #             preds_i.append(concat[:,[0,2,1]])
-    #     preds_i = np.concatenate(preds_i,axis=0)
-    #     best_preds.append(utils.idx2array(preds_i,idx2ent,idx2rel))
-
-    # best_preds = np.array(best_preds,dtype=object)
-
-    # print(f'Num epochs: {NUM_EPOCHS}')
-    # print(f'Embedding dim: {EMBEDDING_DIM}')
-    # print(f'learning_rate: {LEARNING_RATE}')
-    # print(f'threshold {THRESHOLD}')
-
-    # np.savez(os.path.join('..','data','preds',DATASET,'gnn_explainer_'+DATASET+'_'+RULE+'_preds.npz'),
-    #     best_idx=best_idx, preds=best_preds,test_idx=best_test_indices
-    #     )
+    np.savez(os.path.join('..','data','preds',DATASET,'gnn_explainer_'+DATASET+'_'+RULE+'_preds.npz'),
+        best_idx=best_idx, preds=out_preds,test_idx=best_test_indices
+        )
 
     print('Done.')
