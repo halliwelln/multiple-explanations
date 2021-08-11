@@ -103,7 +103,7 @@ if __name__ == '__main__':
 
     for train_idx,test_idx in kf.split(X=triples):
 
-        test_idx = test_idx[0:2]
+        #test_idx = test_idx[0:2]
 
         pred_exps = []
         cv_jaccard = 0.0
@@ -148,7 +148,7 @@ if __name__ == '__main__':
 
             jaccard = utils.max_jaccard_tf(true_exp[0],pred_exp,UNK_ENT_ID,UNK_REL_ID)
 
-            print(f'jaccard {jaccard}')
+            #print(f'jaccard {jaccard}')
             cv_jaccard += jaccard
 
         cv_preds.append(pred_exps)

@@ -82,6 +82,47 @@ print(f'max jaccard score: {round(gnn_jaccard,3)}')
 
 ###################################################
 
+explaine_data = np.load(
+    os.path.join('..','data','preds',DATASET,
+        'explaine_'+DATASET+'_'+RULE+'_preds.npz'),allow_pickle=True)
 
+explaine_test_idx = explaine_data['test_idx']
+
+explaine_true_exps = traces[explaine_test_idx]
+explaine_true_weights = weights[explaine_test_idx]
+
+explaine_preds = explaine_data['preds']
+
+num_explaine_triples = explaine_true_exps.shape[0]
+
+explaine_jaccard = 0.0
+explaine_precision = 0.0
+explaine_recall = 0.0
+
+for i in range(num_explaine_triples):
+
+    explaine_true_exp = explaine_true_exps[i]
+    explaine_pred = explaine_preds[i]
+    true_weight = explaine_true_weights[i]
+
+    explaine_jaccard += utils.max_jaccard_np(explaine_true_exp,explaine_pred,UNK_ENT_ID,UNK_REL_ID)
+
+    explaine_precision_i, explaine_recall_i = utils.graded_precision_recall(
+        explaine_true_exp,explaine_pred,true_weight,MAX_TRACE,UNK_ENT_ID,UNK_REL_ID,UNK_WEIGHT_ID)
+
+    explaine_precision += explaine_precision_i
+    explaine_recall += explaine_recall_i
+
+explaine_jaccard /= num_explaine_triples
+explaine_precision /= num_explaine_triples
+explaine_recall /= num_explaine_triples
+
+explaine_f1 = utils.f1(explaine_precision,explaine_recall)
+
+print(f'{DATASET} {RULE} ExplaiNE')
+print(f'graded precision {round(explaine_precision,3)}')
+print(f'graded recall {round(explaine_recall,3)}')
+print(f'f1 {round(explaine_f1,3)}')
+print(f'max jaccard score: {round(explaine_jaccard,3)}')
 
 

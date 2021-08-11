@@ -122,7 +122,7 @@ def replica_step(head,rel,tail,explanation,num_relations):
 
     jaccard_pred_i = utils.max_jaccard_tf(true_exp,pred_exp,UNK_ENT_ID,UNK_REL_ID)
 
-    print('jaccard_pred_i',jaccard_pred_i)
+    #print('jaccard_pred_i',jaccard_pred_i)
 
     for mask in masks:
         mask.assign(value=init_value)
@@ -275,7 +275,7 @@ if __name__ == '__main__':
 
         total_jaccard /= TEST_SIZE
 
-        print(f"CV jaccard: {total_jaccard}")
+        #print(f"CV jaccard: {total_jaccard}")
 
         cv_scores.append(total_jaccard)
         cv_preds.append(preds)
