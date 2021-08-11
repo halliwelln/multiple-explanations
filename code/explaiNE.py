@@ -82,15 +82,6 @@ if __name__ == '__main__':
     triples2idx = utils.array2idx(triples,ent2idx,rel2idx)
     traces2idx = utils.array2idx(traces,ent2idx,rel2idx)
 
-    UNK_ENT_ID = ent2idx['UNK_ENT']
-    UNK_REL_ID = rel2idx['UNK_REL']
-
-    relevance_scores = utils.get_relevance_scores(
-        traces2idx,
-        weights,
-        UNK_ENT_ID,
-        UNK_REL_ID)
-
     model = RGCN.get_RGCN_Model(
         num_entities=NUM_ENTITIES,
         num_relations=NUM_RELATIONS,
@@ -152,7 +143,7 @@ if __name__ == '__main__':
 
             pred_exps.append(pred_exp)
 
-            jaccard = utils.max_jaccard_np(testexp2idx,pred_exp,UNK_ENT_ID,UNK_REL_ID)
+            jaccard = utils.max_jaccard_np(true_exp,pred_exp,UNK_ENT_ID,UNK_REL_ID)
             cv_jaccard += jaccard
 
         cv_preds.append(pred_exps)

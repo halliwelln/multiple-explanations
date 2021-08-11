@@ -225,9 +225,9 @@ if __name__ == '__main__':
 
     parser = argparse.ArgumentParser()
     parser.add_argument('dataset', type=str,
-        help='paul_dataset')
+        help='paul, royaltys')
     parser.add_argument('rule',type=str,
-        help='spouse,successor,...,full_data')
+        help='spouse,aunt,...,full_data')
     parser.add_argument('num_epochs',type=int)
     parser.add_argument('embedding_dim',type=int)
     parser.add_argument('learning_rate',type=float)
@@ -237,8 +237,8 @@ if __name__ == '__main__':
     DATASET = args.dataset
     RULE = args.rule
     NUM_EPOCHS = args.num_epochs
-    EMBEDDING_DIM = args.embedding_dim#25
-    LEARNING_RATE = args.learning_rate#1e-3
+    EMBEDDING_DIM = args.embedding_dim
+    LEARNING_RATE = args.learning_rate
     OUTPUT_DIM = EMBEDDING_DIM
 
     data = np.load(os.path.join('..','data',DATASET+'.npz'))
@@ -254,7 +254,9 @@ if __name__ == '__main__':
     triples2idx = utils.array2idx(triples,ent2idx,rel2idx)
     traces2idx = utils.array2idx(traces,ent2idx,rel2idx)
 
-    full_data = np.concatenate([triples2idx,traces2idx.reshape(-1,3)],axis=0)
+    full_data = np.unique(
+        np.concatenate([triples2idx,traces2idx.reshape(-1,3)],axis=0),
+        axis=0)
 
     X_train,X_test = utils.train_test_split_no_unseen(
         full_data, 
