@@ -50,7 +50,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
 
     parser.add_argument('dataset', type=str,
-        help='paul, royalty')
+        help='paul, english_royalty, etc')
     parser.add_argument('rule',type=str,
         help='spouse,brother,...,full_data')
     parser.add_argument('top_k',type=int,help='top k explanations')

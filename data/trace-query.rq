@@ -31,8 +31,8 @@ function us:exportEntailment() {
         } ;
         let (target = reduce(rq:concat, list)) {
             xt:print(target) ;
-            xt:print("result in: /Users/nhalliwe/Desktop/multiple-explanations/data/paul_traces/entailment.ttl");
-            xt:write("/Users/nhalliwe/Desktop/multiple-explanations/data/paul_traces/entailment.ttl", target)
+            xt:print("result in: /Users/nhalliwe/Desktop/multiple-explanations/data/english_royalty_traces/entailment.ttl");
+            xt:write("/Users/nhalliwe/Desktop/multiple-explanations/data/english_royalty_traces/entailment.ttl", target)
         }
     }
 }

@@ -1,0 +1,1203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE rdf:RDF [
+  <!ENTITY rule   "http://ns.inria.fr/corese/rule/"> 
+  <!ENTITY rdf    "http://www.w3.org/1999/02/22-rdf-syntax-ns">
+  <!ENTITY rdfs   "http://www.w3.org/2000/01/rdf-schema">
+  <!ENTITY xsd    "http://www.w3.org/2001/XMLSchema#">
+  <!ENTITY spin   "http://spinrdf.org/sp#">
+  <!ENTITY owl    "http://www.w3.org/2002/07/owl#">
+  <!ENTITY dbo    "http://dbpedia.org/ontology/">
+  <!ENTITY foaf   "http://xmlns.com/foaf/0.1/">
+]>
+
+<rdf:RDF 
+    xmlns:rdf  = "&rdf;#"
+    xmlns:rdfs = "&rdfs;#"
+    xmlns:xsd  = "&xsd;" 
+    xmlns:rule = "&rule;#"
+    xmlns:owl  = "&owl;"
+    xmlns:sp   = "&spin;"
+    xmlns      = "&rule;"
+    xmlns:dbo  = "&dbo;"
+    xmlns:foaf = "&foaf;"
+>
+
+<!--            aunt              -->
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?me dbo:aunt ?myaunt .
+    [] dbo:weight "0.50"^^xsd:float .
+}
+WHERE {
+    ?brother dbo:aunt ?myaunt .
+    ?me dbo:brother ?brother. 
+    
+    FILTER (?me != ?myaunt)
+    FILTER (EXISTS {?myaunt foaf:gender 'female'@en .})
+
+}
+
+</body>
+</rule>
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?me dbo:aunt ?myaunt .
+    [] dbo:weight "0.50"^^xsd:float .
+}
+WHERE {
+    ?mygrandparent dbo:child ?myaunt . 
+    ?me dbo:grandparent ?mygrandparent .
+    
+    FILTER (?me != ?myaunt)
+    FILTER (EXISTS {?myaunt foaf:gender 'female'@en .})
+}
+
+</body>
+</rule>
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?me dbo:aunt ?myaunt .
+    [] dbo:weight "1.00"^^xsd:float .
+}
+WHERE {
+    ?me dbo:parent ?myparent . 
+    ?myparent dbo:sister ?myaunt .
+    
+    FILTER (?me != ?myaunt)
+    FILTER (EXISTS {?myaunt foaf:gender 'female'@en .})
+}
+
+</body>
+</rule>
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?me dbo:aunt ?myaunt .
+    [] dbo:weight "0.50"^^xsd:float .
+}
+WHERE {
+    ?mysister dbo:aunt ?myaunt .
+    ?me dbo:sister ?mysister . 
+    
+    FILTER (?me != ?myaunt)
+    FILTER (EXISTS {?myaunt foaf:gender 'female'@en .})
+}
+
+</body>
+</rule>
+
+<!--            aunt              -->
+
+
+
+<!--            uncle              -->
+<rule>
+<body>  
+CONSTRUCT {
+    ?me dbo:uncle ?myuncle .
+    [] dbo:weight "0.50"^^xsd:float .
+}
+WHERE {
+    ?me dbo:brother ?mybrother . 
+    ?mybrother dbo:uncle ?myuncle .
+
+    FILTER (?me != ?myuncle)
+    FILTER (EXISTS {?myuncle foaf:gender 'male'@en .})
+
+}
+
+</body>
+</rule>
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?me dbo:uncle ?myuncle .
+    [] dbo:weight "0.50"^^xsd:float .
+
+}
+WHERE {
+    ?mygrandparent dbo:child ?myuncle .
+    ?me dbo:grandparent ?mygrandparent . 
+    
+    FILTER (?me != ?myuncle)
+    FILTER (EXISTS {?myuncle foaf:gender 'male'@en .})
+}
+
+</body>
+</rule>
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?me dbo:uncle ?myuncle .
+    [] dbo:weight "1.00"^^xsd:float .
+}
+WHERE {
+    ?myparent dbo:brother ?myuncle .
+    ?me dbo:parent ?myparent . 
+    
+    FILTER (?me != ?myuncle)
+    FILTER (EXISTS {?myuncle foaf:gender 'male'@en .})
+}
+
+</body>
+</rule>
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?me dbo:uncle ?myuncle .
+    [] dbo:weight "0.50"^^xsd:float .
+}
+WHERE {
+    ?me dbo:sister ?mysister .
+    ?mysister dbo:uncle ?myuncle . 
+    
+    FILTER (?me != ?myuncle)
+    FILTER (EXISTS {?myuncle foaf:gender 'male'@en .})
+}
+
+</body>
+</rule>
+
+<!--            uncle              -->
+
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?myspouse dbo:spouse ?me .
+    [] dbo:weight "0.75"^^xsd:float .
+}
+WHERE {
+    ?me dbo:spouse ?myspouse .
+    
+    FILTER (?myspouse != ?me)
+}
+
+</body>
+</rule> 
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?me dbo:spouse ?myspouse .
+    [] dbo:weight "0.75"^^xsd:float .
+}
+WHERE {
+    ?myspouse dbo:spouse ?me .
+    
+    FILTER (?me != ?myspouse)
+}
+
+</body>
+</rule> 
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?myspouse dbo:spouse ?me .
+    [] dbo:weight "0.50"^^xsd:float .
+}
+WHERE {
+    ?me dbo:child ?mychild .
+    ?mychild dbo:parent ?myspouse .
+
+    FILTER (?myspouse != ?me)
+}
+
+</body>
+</rule> 
+
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?me dbo:spouse ?myspouse .
+    [] dbo:weight "0.50"^^xsd:float .
+}
+WHERE {
+    ?myspouse dbo:child ?mychild .
+    ?mychild dbo:parent ?me .
+
+    FILTER (?myspouse != ?me)
+}
+
+</body>
+</rule>
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?me dbo:spouse ?myspouse .
+    [] dbo:weight "0.75"^^xsd:float .
+}
+WHERE {
+    ?myspouse dbo:child ?mychild .
+    ?me dbo:child ?mychild .
+
+    FILTER (?myspouse != ?me)
+}
+
+</body>
+</rule>
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?myspouse dbo:spouse ?me .
+    [] dbo:weight "0.75"^^xsd:float .
+}
+WHERE {
+    ?myspouse dbo:child ?mychild .
+    ?me dbo:child ?mychild .
+
+    FILTER (?myspouse != ?me)
+}
+
+</body>
+</rule>
+
+<!--                 brother                     -->
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?me dbo:brother ?mybrother .
+    [] dbo:weight "0.00"^^xsd:float .
+
+}
+WHERE {
+    ?me dbo:parent ?myparent .
+    ?mybrother dbo:parent ?myparent .
+    ?mybrother foaf:gender "male"@en .
+    
+    FILTER (?me != ?mybrother)
+}
+
+</body>
+</rule>
+
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?me dbo:brother ?mybrother .
+    [] dbo:weight "0.25"^^xsd:float .
+}
+WHERE {
+  ?me dbo:child ?myson .
+  ?myson dbo:uncle ?mybrother .
+
+  FILTER (?me != ?mybrother)
+  FILTER (EXISTS {?mybrother foaf:gender 'male'@en .})
+}
+
+</body>
+</rule>
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?me dbo:brother ?mybrother .
+    [] dbo:weight "0.75"^^xsd:float .
+}
+WHERE {
+  ?myparent dbo:child ?mybrother .
+  ?me dbo:parent ?myparent .
+
+  FILTER (?me != ?mybrother)
+  FILTER (EXISTS {?mybrother foaf:gender 'male'@en .})
+}
+
+</body>
+</rule>
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?me dbo:brother ?mybrother .
+    [] dbo:weight "0.75"^^xsd:float .
+}
+WHERE {
+  ?mysister dbo:brother ?mybrother .
+  ?me dbo:sister ?mysister .
+
+  FILTER (?me != ?mybrother)
+  FILTER (EXISTS {?mybrother foaf:gender 'male'@en .})
+}
+
+</body>
+</rule>
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?me dbo:brother ?mybrother .
+    [] dbo:weight "0.25"^^xsd:float .
+}
+WHERE {
+  ?mybrother dbo:aunt ?myaunt .
+  ?me dbo:aunt ?myaunt .
+
+  FILTER (?me != ?mybrother)
+  FILTER (EXISTS {?mybrother foaf:gender 'male'@en .})
+}
+
+</body>
+</rule>
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?me dbo:brother ?mybrother .
+    [] dbo:weight "0.25"^^xsd:float .
+}
+WHERE {
+  ?mybrother dbo:grandparent ?mygrandparent .
+  ?me dbo:grandparent ?mygrandparent .
+
+  FILTER (?me != ?mybrother)
+  FILTER (EXISTS {?mybrother foaf:gender 'male'@en .})
+}
+
+</body>
+</rule>
+
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?me dbo:brother ?mybrother .
+    [] dbo:weight "0.75"^^xsd:float .
+}
+WHERE {
+  ?mybrother dbo:parent ?myparent .
+  ?me dbo:parent ?myparent .
+
+  FILTER (?me != ?mybrother)
+  FILTER (EXISTS {?mybrother foaf:gender 'male'@en .})
+}
+
+</body>
+</rule>
+
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?me dbo:brother ?mybrother .
+    [] dbo:weight "0.75"^^xsd:float .
+}
+WHERE {
+  ?mybrother dbo:sister ?mysister .
+  ?me dbo:sister ?mysister .
+
+  FILTER (?me != ?mybrother)
+  FILTER (EXISTS {?mybrother foaf:gender 'male'@en .})
+}
+
+</body>
+</rule>
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?me dbo:brother ?mybrother .
+    [] dbo:weight "0.25"^^xsd:float .
+}
+WHERE {
+  ?mybrother dbo:uncle ?myuncle .
+  ?me dbo:uncle ?myuncle .
+
+  FILTER (?me != ?mybrother)
+  FILTER (EXISTS {?mybrother foaf:gender 'male'@en .})
+}
+
+</body>
+</rule>
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?mysister dbo:brother ?me .
+    [] dbo:weight "0.75"^^xsd:float .
+}
+WHERE {
+  ?me dbo:sister ?mysister .
+
+  FILTER (?me != ?mysister)
+  FILTER (EXISTS {?me foaf:gender 'male'@en .})
+}
+
+</body>
+</rule>
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?me dbo:brother ?mybrother1 .
+    [] dbo:weight "0.75"^^xsd:float .
+}
+WHERE {
+  ?mybrother1 dbo:brother ?mybrother2 .
+  ?me dbo:brother ?mybrother2 .
+
+  FILTER (?me != ?mybrother1)
+  FILTER (?me != ?mybrother2)
+  FILTER (EXISTS {?mybrother1 foaf:gender 'male'@en .})
+}
+
+</body>
+</rule>
+
+
+<!--                 brother                     -->
+
+<!--                 sister                     -->
+<rule>
+<body>  
+CONSTRUCT {
+    ?me dbo:sister ?mysister .
+    [] dbo:weight "0.00"^^xsd:float .
+
+}
+WHERE {
+    ?me dbo:parent ?myparent .
+    ?mysister dbo:parent ?myparent .
+    ?mysister foaf:gender "female"@en .
+    FILTER (?me != ?mysister)
+}
+
+</body>
+</rule>
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?me dbo:sister ?mysister .
+    [] dbo:weight "0.75"^^xsd:float .
+}
+WHERE {
+  ?mysister dbo:brother ?me .
+
+  FILTER (?me != ?mysister)
+  FILTER (EXISTS {?mysister foaf:gender 'female'@en .})
+}
+
+</body>
+</rule>
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?me dbo:sister ?mysister .
+    [] dbo:weight "0.75"^^xsd:float .
+}
+WHERE {
+  ?me dbo:brother ?mybrother .
+  ?mybrother dbo:sister ?mysister .
+
+  FILTER (?me != ?mysister)
+  FILTER (EXISTS {?mysister foaf:gender 'female'@en .})
+}
+
+</body>
+</rule>
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?me dbo:sister ?mysister .
+    [] dbo:weight "0.25"^^xsd:float .
+}
+WHERE {
+  ?mychild dbo:aunt ?mysister .
+  ?me dbo:child ?mychild .
+
+  FILTER (?me != ?mysister)
+  FILTER (EXISTS {?mysister foaf:gender 'female'@en .})
+}
+
+</body>
+</rule>
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?me dbo:sister ?mysister .
+    [] dbo:weight "0.75"^^xsd:float .
+}
+WHERE {
+  ?myparent dbo:child ?mysister .
+  ?me dbo:parent ?myparent .
+
+  FILTER (?me != ?mysister)
+  FILTER (EXISTS {?mysister foaf:gender 'female'@en .})
+}
+
+</body>
+</rule>
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?me dbo:sister ?mysister .
+    [] dbo:weight "0.25"^^xsd:float .
+}
+WHERE {
+  ?mysister dbo:aunt ?myaunt .
+  ?me dbo:aunt ?myaunt .
+
+  FILTER (?me != ?mysister)
+  FILTER (EXISTS {?mysister foaf:gender 'female'@en .})
+}
+
+</body>
+</rule>
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?me dbo:sister ?mysister .
+    [] dbo:weight "0.75"^^xsd:float .
+}
+WHERE {
+  ?mysister dbo:brother ?mybrother .
+  ?me dbo:brother ?mybrother .
+
+  FILTER (?me != ?mysister)
+  FILTER (EXISTS {?mysister foaf:gender 'female'@en .})
+}
+
+</body>
+</rule>
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?me dbo:sister ?mysister .
+    [] dbo:weight "0.25"^^xsd:float .
+}
+WHERE {
+  ?mysister dbo:grandparent ?mygrandparent .
+  ?me dbo:grandparent ?mygrandparent .
+
+  FILTER (?me != ?mysister)
+  FILTER (EXISTS {?mysister foaf:gender 'female'@en .})
+}
+
+</body>
+</rule>
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?me dbo:sister ?mysister .
+    [] dbo:weight "1.00"^^xsd:float .
+}
+WHERE {
+  ?me dbo:parent ?myparent .
+  ?mysister dbo:parent ?myparent .
+
+  FILTER (?me != ?mysister)
+  FILTER (EXISTS {?mysister foaf:gender 'female'@en .})
+}
+
+</body>
+</rule>
+
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?me dbo:sister ?mysister .
+    [] dbo:weight "0.25"^^xsd:float .
+}
+WHERE {
+  ?mysister dbo:uncle ?myuncle .
+  ?me dbo:uncle ?myuncle .
+
+  FILTER (?me != ?mysister)
+  FILTER (EXISTS {?mysister foaf:gender 'female'@en .})
+}
+
+</body>
+</rule>
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?me dbo:sister ?mysister1 .
+    [] dbo:weight "0.75"^^xsd:float .
+}
+WHERE {
+  ?mysister1 dbo:sister ?mysister2 .
+  ?me dbo:sister ?mysister2 .
+
+  FILTER (?me != ?mysister1)
+  FILTER (?me != ?mysister2)
+  FILTER (EXISTS {?mysister1 foaf:gender 'female'@en .})
+}
+
+</body>
+</rule>
+
+<!--                 sister                     -->
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?me dbo:grandparent ?mygrandparent .
+    [] dbo:weight "0.50"^^xsd:float .
+}
+WHERE {
+    ?me dbo:brother ?mybrother .
+    ?mybrother dbo:grandparent ?mygrandparent .
+    
+    FILTER (?me != ?mygrandparent)
+}
+
+</body>
+</rule>
+
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?me dbo:grandparent ?mygrandparent1 .
+    [] dbo:weight "0.75"^^xsd:float .
+}
+WHERE {
+    ?me dbo:grandparent ?mygrandparent2 .
+    ?mygrandparent1 dbo:spouse ?mygrandparent2 .
+    
+    FILTER (?me != ?mygrandparent1)
+    FILTER (?me != ?mygrandparent2)
+
+}
+
+</body>
+</rule>
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?me dbo:grandparent ?mygrandparent .
+    [] dbo:weight "1.00"^^xsd:float .
+}
+WHERE {
+    ?me dbo:parent ?myparent .
+    ?myparent dbo:parent ?mygrandparent .
+    
+    FILTER (?me != ?mygrandparent)
+
+}
+
+</body>
+</rule>
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?me dbo:grandparent ?mygrandparent .
+    [] dbo:weight "0.50"^^xsd:float .
+}
+WHERE {
+    ?mysister dbo:grandparent ?mygrandparent .
+    ?me dbo:sister ?mysister .
+    
+    FILTER (?me != ?mygrandparent)
+
+}
+
+</body>
+</rule>
+
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?me dbo:grandparent ?mygrandparent .
+    [] dbo:weight "0.25"^^xsd:float .
+}
+WHERE {
+    ?me dbo:aunt ?myaunt .
+    ?mygrandparent dbo:child ?myaunt .
+    
+    FILTER (?me != ?mygrandparent)
+
+}
+
+</body>
+</rule>
+
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?me dbo:grandparent ?mygrandparent .
+    [] dbo:weight "1.00"^^xsd:float .
+}
+WHERE {
+    ?myparent dbo:child ?me .
+    ?myparent dbo:parent ?mygrandparent .
+    
+    FILTER (?me != ?mygrandparent)
+
+}
+
+</body>
+</rule>
+
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?me dbo:grandparent ?mygrandparent .
+    [] dbo:weight "0.50"^^xsd:float .
+}
+WHERE {
+    ?mygrandparent dbo:child ?myuncle .
+    ?me dbo:uncle ?myuncle .
+    
+    FILTER (?me != ?mygrandparent)
+
+}
+
+</body>
+</rule>
+
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?me dbo:grandparent ?mygrandparent .
+    [] dbo:weight "0.75"^^xsd:float .
+}
+WHERE {
+    ?mygrandparent dbo:child ?myparent .
+    ?myparent dbo:child ?me .
+    
+    FILTER (?me != ?mygrandparent)
+
+}
+
+</body>
+</rule>
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?me dbo:grandparent ?mygrandparent .
+    [] dbo:weight "0.50"^^xsd:float .
+}
+WHERE {
+    ?myuncle dbo:parent ?mygrandparent .
+    ?me dbo:uncle ?myuncle .
+    
+    FILTER (?me != ?mygrandparent)
+
+}
+
+</body>
+</rule>
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?me dbo:grandparent ?mygrandparent .
+    [] dbo:weight "0.25"^^xsd:float .
+}
+WHERE {
+    ?me dbo:aunt ?myaunt .
+    ?myaunt dbo:parent ?mygrandparent .
+    
+    FILTER (?me != ?mygrandparent)
+
+}
+
+</body>
+</rule>
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?myparent dbo:child ?me .
+    [] dbo:weight "0.75"^^xsd:float .
+}
+WHERE {
+    ?myparent dbo:child ?mysister .
+    ?me dbo:sister ?mysister .
+
+    FILTER (?myparent != ?me)
+}
+
+</body>
+</rule> 
+
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?myparent dbo:child ?me .
+    [] dbo:weight "0.25"^^xsd:float .
+}
+WHERE {
+    ?myuncle dbo:brother ?myparent .
+    ?me dbo:uncle ?myuncle .
+
+    FILTER (?myparent != ?me)
+}
+
+</body>
+</rule> 
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?myparent dbo:child ?me .
+    [] dbo:weight "0.75"^^xsd:float .
+}
+WHERE {
+    ?mybrother dbo:brother ?me .
+    ?myparent dbo:child ?mybrother .
+
+    FILTER (?myparent != ?me)
+}
+
+</body>
+</rule> 
+
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?myparent dbo:child ?me .
+    [] dbo:weight "0.25"^^xsd:float .
+}
+WHERE {
+    ?me dbo:grandparent ?mygrandparent .
+    ?myparent dbo:parent ?mygrandparent .
+
+    FILTER (?myparent != ?me)
+}
+
+</body>
+</rule> 
+
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?myparent dbo:child ?me .
+    [] dbo:weight "0.25"^^xsd:float .
+}
+WHERE {
+    ?me dbo:aunt ?myaunt .
+    ?myparent dbo:sister ?myaunt .
+
+    FILTER (?myparent != ?me)
+}
+
+</body>
+</rule> 
+
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?myparent dbo:child ?me .
+    [] dbo:weight "0.75"^^xsd:float .
+}
+WHERE {
+    ?me dbo:parent ?myparent2 .
+    ?myparent2 dbo:spouse ?myparent .
+
+    FILTER (?myparent != ?me)
+}
+
+</body>
+</rule> 
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?myparent dbo:child ?me .
+    [] dbo:weight "1.00"^^xsd:float .
+}
+WHERE {
+    ?me dbo:parent ?myparent .
+
+    FILTER (?myparent != ?me)
+}
+
+</body>
+</rule> 
+
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?myparent dbo:child ?me .
+    [] dbo:weight "0.25"^^xsd:float .
+}
+WHERE {
+    ?me dbo:aunt ?myaunt .
+    ?myaunt dbo:brother ?myparent .
+
+    FILTER (?myparent != ?me)
+}
+
+</body>
+</rule> 
+
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?myparent dbo:child ?me .
+    [] dbo:weight "0.75"^^xsd:float .
+}
+WHERE {
+    ?me dbo:brother ?mybrother .
+    ?mybrother dbo:parent ?myparent .
+
+    FILTER (?myparent != ?me)
+}
+
+</body>
+</rule> 
+
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?myparent dbo:child ?me .
+    [] dbo:weight "0.50"^^xsd:float .
+}
+WHERE {
+    ?mygrandparent dbo:child ?myparent .
+    ?me dbo:grandparent ?mygrandparent .
+
+    FILTER (?myparent != ?me)
+}
+
+</body>
+</rule> 
+
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?myparent dbo:child ?me .
+    [] dbo:weight "0.75"^^xsd:float .
+}
+WHERE {
+    ?mysister dbo:parent ?myparent .
+    ?me dbo:sister ?mysister .
+
+
+    FILTER (?myparent != ?me)
+}
+
+</body>
+</rule> 
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?me dbo:parent ?myparent .
+    [] dbo:weight "0.75"^^xsd:float .
+}
+WHERE {
+    ?me dbo:brother ?mybrother .
+    ?mybrother dbo:parent ?myparent .
+
+    FILTER (?me != ?myparent)
+}
+
+</body>
+</rule> 
+
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?me dbo:parent ?myparent .
+    [] dbo:weight "0.25"^^xsd:float .
+}
+WHERE {
+    ?mygrandparent dbo:child ?myparent .
+    ?me dbo:grandparent ?mygrandparent .
+
+    FILTER (?me != ?myparent)
+}
+
+</body>
+</rule> 
+
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?me dbo:parent ?myparent .
+    [] dbo:weight "0.75"^^xsd:float .
+}
+WHERE {
+    ?me dbo:parent ?myparent2 .
+    ?myparent dbo:spouse ?myparent2 .
+
+    FILTER (?me != ?myparent)
+    FILTER (?me != ?myparent2)
+
+}
+
+</body>
+</rule>
+
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?me dbo:parent ?myparent .
+    [] dbo:weight "0.75"^^xsd:float .
+}
+WHERE {
+    ?mysister dbo:parent ?myparent .
+    ?me dbo:sister ?mysister .
+
+    FILTER (?me != ?myparent)
+}
+
+</body>
+</rule>
+
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?me dbo:parent ?myparent .
+    [] dbo:weight "0.25"^^xsd:float .
+}
+WHERE {
+    ?me dbo:aunt ?myaunt .
+    ?myparent dbo:sister ?myaunt .
+
+    FILTER (?me != ?myparent)
+}
+
+</body>
+</rule>
+
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?me dbo:parent ?myparent .
+    [] dbo:weight "0.75"^^xsd:float .
+}
+WHERE {
+    ?me dbo:brother ?mybrother .
+    ?myparent dbo:child ?mybrother .
+
+    FILTER (?me != ?myparent)
+}
+
+</body>
+</rule>
+
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?me dbo:parent ?myparent .
+    [] dbo:weight "0.25"^^xsd:float .
+}
+WHERE {
+    ?me dbo:grandparent ?mygrandparent .
+    ?myparent dbo:parent ?mygrandparent .
+
+    FILTER (?me != ?myparent)
+}
+
+</body>
+</rule>
+
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?me dbo:parent ?myparent .
+    [] dbo:weight "0.75"^^xsd:float .
+}
+WHERE {
+    ?myparent dbo:child ?mysister .
+    ?me dbo:sister ?mysister .
+
+    FILTER (?me != ?myparent)
+}
+
+</body>
+</rule>
+
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?me dbo:parent ?myparent .
+    [] dbo:weight "0.25"^^xsd:float .
+}
+WHERE {
+    ?myparent dbo:brother ?myuncle .
+    ?me dbo:uncle ?myuncle .
+
+    FILTER (?me != ?myparent)
+}
+
+</body>
+</rule>
+
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?me dbo:parent ?myparent .
+    [] dbo:weight "0.75"^^xsd:float .
+}
+WHERE {
+    ?myparent dbo:child ?me .
+
+    FILTER (?me != ?myparent)
+}
+
+</body>
+</rule>
+
+
+<rule>
+<body>  
+CONSTRUCT {
+    ?me dbo:parent ?myparent .
+    [] dbo:weight "0.75"^^xsd:float .
+}
+WHERE {
+    ?myparent2 dbo:child ?me .
+    ?myparent dbo:spouse ?myparent2 .
+
+
+    FILTER (?me != ?myparent)
+}
+
+</body>
+</rule>
+
+</rdf:RDF>

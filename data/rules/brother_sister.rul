@@ -22,6 +22,8 @@
     xmlns:foaf = "&foaf;"
 >
 
+<!--                 brother                     -->
+
 <rule>
 <body>  
 CONSTRUCT {
@@ -40,42 +42,6 @@ WHERE {
 </body>
 </rule>
 
-<rule>
-<body>  
-CONSTRUCT {
-    ?me dbo:sister ?mysister .
-    [] dbo:weight "0.00"^^xsd:float .
-
-}
-WHERE {
-    ?me dbo:parent ?myparent .
-    ?mysister dbo:parent ?myparent .
-    ?mysister foaf:gender "female"@en .
-    FILTER (?me != ?mysister)
-}
-
-</body>
-</rule>
-
-
-<!--                 brother                     -->
-
-<rule>
-<body>  
-CONSTRUCT {
-    ?me dbo:brother ?mybrother .
-    [] dbo:weight "0.25"^^xsd:float .
-}
-WHERE {
-  ?me dbo:child ?myson .
-  ?myson dbo:uncle ?mybrother .
-
-  FILTER (?me != ?mybrother)
-  FILTER (EXISTS {?mybrother foaf:gender 'male'@en .})
-}
-
-</body>
-</rule>
 
 <rule>
 <body>  
@@ -103,23 +69,6 @@ CONSTRUCT {
 WHERE {
   ?mysister dbo:brother ?mybrother .
   ?me dbo:sister ?mysister .
-
-  FILTER (?me != ?mybrother)
-  FILTER (EXISTS {?mybrother foaf:gender 'male'@en .})
-}
-
-</body>
-</rule>
-
-<rule>
-<body>  
-CONSTRUCT {
-    ?me dbo:brother ?mybrother .
-    [] dbo:weight "0.25"^^xsd:float .
-}
-WHERE {
-  ?mybrother dbo:aunt ?myaunt .
-  ?me dbo:aunt ?myaunt .
 
   FILTER (?me != ?mybrother)
   FILTER (EXISTS {?mybrother foaf:gender 'male'@en .})
@@ -184,23 +133,6 @@ WHERE {
 <rule>
 <body>  
 CONSTRUCT {
-    ?me dbo:brother ?mybrother .
-    [] dbo:weight "0.25"^^xsd:float .
-}
-WHERE {
-  ?mybrother dbo:uncle ?myuncle .
-  ?me dbo:uncle ?myuncle .
-
-  FILTER (?me != ?mybrother)
-  FILTER (EXISTS {?mybrother foaf:gender 'male'@en .})
-}
-
-</body>
-</rule>
-
-<rule>
-<body>  
-CONSTRUCT {
     ?mysister dbo:brother ?me .
     [] dbo:weight "0.75"^^xsd:float .
 }
@@ -235,9 +167,24 @@ WHERE {
 
 <!--                 brother                     -->
 
-
-
 <!--                 sister                     -->
+<rule>
+<body>  
+CONSTRUCT {
+    ?me dbo:sister ?mysister .
+    [] dbo:weight "0.00"^^xsd:float .
+
+}
+WHERE {
+    ?me dbo:parent ?myparent .
+    ?mysister dbo:parent ?myparent .
+    ?mysister foaf:gender "female"@en .
+    FILTER (?me != ?mysister)
+}
+
+</body>
+</rule>
+
 <rule>
 <body>  
 CONSTRUCT {
@@ -275,45 +222,11 @@ WHERE {
 <body>  
 CONSTRUCT {
     ?me dbo:sister ?mysister .
-    [] dbo:weight "0.25"^^xsd:float .
-}
-WHERE {
-  ?mychild dbo:aunt ?mysister .
-  ?me dbo:child ?mychild .
-
-  FILTER (?me != ?mysister)
-  FILTER (EXISTS {?mysister foaf:gender 'female'@en .})
-}
-
-</body>
-</rule>
-
-<rule>
-<body>  
-CONSTRUCT {
-    ?me dbo:sister ?mysister .
     [] dbo:weight "0.75"^^xsd:float .
 }
 WHERE {
   ?myparent dbo:child ?mysister .
   ?me dbo:parent ?myparent .
-
-  FILTER (?me != ?mysister)
-  FILTER (EXISTS {?mysister foaf:gender 'female'@en .})
-}
-
-</body>
-</rule>
-
-<rule>
-<body>  
-CONSTRUCT {
-    ?me dbo:sister ?mysister .
-    [] dbo:weight "0.25"^^xsd:float .
-}
-WHERE {
-  ?mysister dbo:aunt ?myaunt .
-  ?me dbo:aunt ?myaunt .
 
   FILTER (?me != ?mysister)
   FILTER (EXISTS {?mysister foaf:gender 'female'@en .})
@@ -365,24 +278,6 @@ CONSTRUCT {
 WHERE {
   ?me dbo:parent ?myparent .
   ?mysister dbo:parent ?myparent .
-
-  FILTER (?me != ?mysister)
-  FILTER (EXISTS {?mysister foaf:gender 'female'@en .})
-}
-
-</body>
-</rule>
-
-
-<rule>
-<body>  
-CONSTRUCT {
-    ?me dbo:sister ?mysister .
-    [] dbo:weight "0.25"^^xsd:float .
-}
-WHERE {
-  ?mysister dbo:uncle ?myuncle .
-  ?me dbo:uncle ?myuncle .
 
   FILTER (?me != ?mysister)
   FILTER (EXISTS {?mysister foaf:gender 'female'@en .})

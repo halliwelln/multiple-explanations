@@ -1,0 +1,294 @@
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix dbe: <http://dbpedia.org/resource/> .
+@prefix dbo: <http://dbpedia.org/ontology/> .
+
+<http://dbpedia.org/resource/Anne_of_England_(1637–1640)> dbo:parent dbe:Charles_I_of_England ;
+  dbo:parent dbe:Henrietta_Maria_of_France ;
+  foaf:gender "female"@en .
+
+dbe:Beatrice_of_England dbo:parent dbe:Eleanor_of_Provence ;
+  dbo:parent dbe:Henry_III_of_England ;
+  dbo:spouse <http://dbpedia.org/resource/John_II,_Duke_of_Brittany> ;
+  foaf:gender "female"@en .
+
+dbe:Blanche_of_England dbo:parent dbe:Henry_IV_of_England ;
+  dbo:parent dbe:Mary_de_Bohun ;
+  dbo:spouse <http://dbpedia.org/resource/Louis_III,_Elector_Palatine> ;
+  foaf:gender "female"@en .
+
+dbe:Charles_II_of_England dbo:parent dbe:Charles_I_of_England ;
+  dbo:parent dbe:Henrietta_Maria_of_France ;
+  dbo:spouse dbe:Catherine_of_Braganza ;
+  foaf:gender "male"@en .
+
+dbe:Charles_I_of_England dbo:parent dbe:Anne_of_Denmark ;
+  dbo:parent dbe:James_VI_and_I ;
+  dbo:spouse dbe:Henrietta_Maria_of_France ;
+  foaf:gender "male"@en .
+
+dbe:Edward_III_of_England dbo:parent dbe:Edward_II_of_England ;
+  dbo:parent dbe:Isabella_of_France ;
+  dbo:spouse dbe:Philippa_of_Hainault ;
+  foaf:gender "male"@en .
+
+dbe:Edward_II_of_England dbo:parent dbe:Edward_I_of_England ;
+  dbo:parent <http://dbpedia.org/resource/Eleanor_of_Castile_(1246-1290)> ;
+  dbo:spouse dbe:Isabella_of_France ;
+  foaf:gender "male"@en .
+
+dbe:Edward_IV_of_England dbo:parent <http://dbpedia.org/resource/Cecily_Neville,_Duchess_of_York> ;
+  dbo:parent <http://dbpedia.org/resource/Richard_of_York,_3rd_Duke_of_York> ;
+  dbo:spouse dbe:Elizabeth_Woodville ;
+  foaf:gender "male"@en .
+
+dbe:Edward_I_of_England dbo:parent dbe:Eleanor_of_Provence ;
+  dbo:parent dbe:Henry_III_of_England ;
+  dbo:spouse dbe:Eleanor_of_Castile ;
+  dbo:spouse <http://dbpedia.org/resource/Margaret_of_France_(died_1318)> ;
+  foaf:gender "male"@en .
+
+dbe:Edward_VI_of_England dbo:parent dbe:Henry_VIII_of_England ;
+  dbo:parent dbe:Jane_Seymour ;
+  foaf:gender "male"@en .
+
+dbe:Edward_V_of_England dbo:parent dbe:Edward_IV_of_England ;
+  dbo:parent dbe:Elizabeth_Woodville ;
+  foaf:gender "male"@en .
+
+<http://dbpedia.org/resource/Eleanor_of_England,_Countess_of_Bar> dbo:parent dbe:Edward_I_of_England ;
+  dbo:parent dbe:Eleanor_of_Castile ;
+  dbo:spouse <http://dbpedia.org/resource/Henry_III,_Count_of_Bar> ;
+  foaf:gender "female"@en .
+
+<http://dbpedia.org/resource/Eleanor_of_England,_Queen_of_Castile> dbo:parent dbe:Eleanor_of_Aquitaine ;
+  dbo:parent dbe:Henry_II_of_England ;
+  dbo:spouse dbe:Alfonso_VIII_of_Castile ;
+  foaf:gender "female"@en .
+
+dbe:Elizabeth_I_of_England dbo:parent dbe:Anne_Boleyn ;
+  dbo:parent dbe:Henry_VIII_of_England ;
+  foaf:gender "female"@en .
+
+dbe:Henrietta_of_England dbo:child <http://dbpedia.org/resource/Anne_Marie_d'Orléans> ;
+  dbo:child <http://dbpedia.org/resource/Marie_Louise_d'Orléans> ;
+  dbo:child <http://dbpedia.org/resource/Philippe_Charles,_Duke_of_Valois> ;
+  dbo:parent dbe:Charles_I_of_England ;
+  dbo:parent dbe:Henrietta_Maria_of_France ;
+  dbo:spouse <http://dbpedia.org/resource/Philippe_I,_Duke_of_Orléans> ;
+  foaf:gender "female"@en .
+
+dbe:Henry_III_of_England dbo:child dbe:Beatrice_of_England ;
+  dbo:child dbe:Edmund_Crouchback ;
+  dbo:child dbe:Edward_I_of_England ;
+  dbo:child dbe:Katherine_of_England ;
+  dbo:child dbe:Margaret_of_England ;
+  dbo:parent <http://dbpedia.org/resource/Isabella,_Countess_of_Angoulême> ;
+  dbo:parent <http://dbpedia.org/resource/John,_King_of_England> ;
+  dbo:spouse dbe:Eleanor_of_Provence ;
+  foaf:gender "male"@en .
+
+dbe:Henry_II_of_England dbo:child <http://dbpedia.org/resource/Eleanor_of_England,_Queen_of_Castile> ;
+  dbo:child <http://dbpedia.org/resource/Geoffrey_(archbishop_of_York)> ;
+  dbo:child <http://dbpedia.org/resource/Geoffrey_II,_Duke_of_Brittany> ;
+  dbo:child dbe:Henry_the_Young_King ;
+  dbo:child <http://dbpedia.org/resource/Joan_of_England,_Queen_of_Sicily> ;
+  dbo:child <http://dbpedia.org/resource/John,_King_of_England> ;
+  dbo:child <http://dbpedia.org/resource/Matilda_of_England,_Duchess_of_Saxony> ;
+  dbo:child dbe:Richard_I_of_England ;
+  dbo:child <http://dbpedia.org/resource/William_IX,_Count_of_Poitiers> ;
+  dbo:child <http://dbpedia.org/resource/William_Longespée,_3rd_Earl_of_Salisbury> ;
+  dbo:parent dbe:Empress_Matilda ;
+  dbo:parent <http://dbpedia.org/resource/Geoffrey_Plantagenet,_Count_of_Anjou> ;
+  dbo:spouse dbe:Eleanor_of_Aquitaine ;
+  foaf:gender "male"@en .
+
+dbe:Henry_IV_of_England dbo:parent dbe:Blanche_of_Lancaster ;
+  dbo:parent <http://dbpedia.org/resource/John_of_Gaunt,_1st_Duke_of_Lancaster> ;
+  foaf:gender "male"@en .
+
+dbe:Henry_I_of_England dbo:child dbe:Alice_FitzRoy ;
+  dbo:child dbe:Empress_Matilda ;
+  dbo:child dbe:Juliane_de_Fontevrault ;
+  dbo:child <http://dbpedia.org/resource/Matilda_FitzRoy,_Abbess_of_Montivilliers> ;
+  dbo:child <http://dbpedia.org/resource/Matilda_FitzRoy,_Countess_of_Perche> ;
+  dbo:child <http://dbpedia.org/resource/Matilda_FitzRoy,_Duchess_of_Brittany> ;
+  dbo:child <http://dbpedia.org/resource/Reginald_de_Dunstanville,_1st_Earl_of_Cornwall> ;
+  dbo:child <http://dbpedia.org/resource/Richard_of_Lincoln_(illegitimate_son_of_Henry_I_of_England)> ;
+  dbo:child <http://dbpedia.org/resource/Robert,_1st_Earl_of_Gloucester> ;
+  dbo:child dbe:Robert_fitzEdith ;
+  dbo:child dbe:Sybilla_of_Normandy ;
+  dbo:child dbe:William_Adelin ;
+  dbo:parent dbe:Matilda_of_Flanders ;
+  dbo:parent dbe:William_I_of_England ;
+  dbo:spouse dbe:Adeliza_of_Louvain ;
+  dbo:spouse dbe:Matilda_of_Scotland ;
+  foaf:gender "male"@en .
+
+dbe:Henry_VIII_of_England dbo:parent dbe:Elizabeth_of_York ;
+  dbo:parent dbe:Henry_VII_of_England ;
+  foaf:gender "male"@en .
+
+dbe:Henry_VII_of_England dbo:child <http://dbpedia.org/resource/Arthur,_Prince_of_Wales> ;
+  dbo:child <http://dbpedia.org/resource/Edmund_Tudor,_Duke_of_Somerset> ;
+  dbo:child <http://dbpedia.org/resource/Elizabeth_Tudor_(1492–1495)> ;
+  dbo:child dbe:Henry_VIII ;
+  dbo:child dbe:Margaret_Tudor ;
+  dbo:child <http://dbpedia.org/resource/Mary_Tudor,_Queen_of_France> ;
+  dbo:parent <http://dbpedia.org/resource/Edmund_Tudor,_1st_Earl_of_Richmond> ;
+  dbo:parent <http://dbpedia.org/resource/Margaret_Beaufort,_Countess_of_Richmond_and_Derby> ;
+  dbo:spouse dbe:Elizabeth_of_York ;
+  foaf:gender "male"@en .
+
+dbe:Henry_VI_of_England dbo:child <http://dbpedia.org/resource/Edward_of_Westminster,_Prince_of_Wales> ;
+  dbo:parent dbe:Catherine_of_Valois ;
+  dbo:parent dbe:Henry_V_of_England ;
+  dbo:spouse dbe:Margaret_of_Anjou ;
+  foaf:gender "male"@en .
+
+dbe:Henry_V_of_England dbo:child dbe:Henry_VI_of_England ;
+  dbo:parent dbe:Henry_IV_of_England ;
+  dbo:parent dbe:Mary_de_Bohun ;
+  dbo:spouse dbe:Catherine_of_Valois ;
+  foaf:gender "male"@en .
+
+dbe:Isabella_of_England dbo:parent dbe:Isabella_of_Angoulême ;
+  dbo:parent <http://dbpedia.org/resource/John,_King_of_England> ;
+  dbo:spouse <http://dbpedia.org/resource/Frederick_II,_Holy_Roman_Emperor> ;
+  foaf:gender "female"@en .
+
+dbe:James_II_of_England dbo:child <http://dbpedia.org/resource/Anne,_Queen_of_Great_Britain> ;
+  dbo:child <http://dbpedia.org/resource/Charles_Stuart,_Duke_of_Cambridge_(1660–1661)> ;
+  dbo:child <http://dbpedia.org/resource/Charles_Stuart,_Duke_of_Cambridge_(1677)> ;
+  dbo:child <http://dbpedia.org/resource/Charles_Stuart,_Duke_of_Kendal> ;
+  dbo:child <http://dbpedia.org/resource/Edgar_Stuart,_Duke_of_Cambridge> ;
+  dbo:child dbe:Henrietta_FitzJames ;
+  dbo:child dbe:Henry_FitzJames ;
+  dbo:child dbe:Isabel_Stuart ;
+  dbo:child <http://dbpedia.org/resource/James_FitzJames,_1st_Duke_of_Berwick> ;
+  dbo:child dbe:James_Francis_Edward_Stuart ;
+  dbo:child <http://dbpedia.org/resource/James_Stuart,_Duke_of_Cambridge> ;
+  dbo:child dbe:Louisa_Maria_Stuart ;
+  dbo:child dbe:Mary_II_of_England ;
+  dbo:parent dbe:Charles_I_of_England ;
+  dbo:parent dbe:Henrietta_Maria_of_France ;
+  dbo:spouse dbe:Anne_Hyde ;
+  dbo:spouse dbe:Mary_of_Modena ;
+  foaf:gender "male"@en .
+
+<http://dbpedia.org/resource/Joan_of_England,_Queen_of_Scotland> dbo:parent dbe:Isabella_of_Angoulême ;
+  dbo:parent <http://dbpedia.org/resource/John,_King_of_England> ;
+  dbo:spouse dbe:Alexander_II_of_Scotland ;
+  foaf:gender "female"@en .
+
+<http://dbpedia.org/resource/Joan_of_England,_Queen_of_Sicily> dbo:parent dbe:Eleanor_of_Aquitaine ;
+  dbo:parent dbe:Henry_II_of_England ;
+  dbo:spouse dbe:Raymond_VI_of_Toulouse ;
+  dbo:spouse dbe:William_II_of_Sicily ;
+  foaf:gender "female"@en .
+
+<http://dbpedia.org/resource/Joan_of_England_(1335–1348)> dbo:parent dbe:Edward_III_of_England ;
+  dbo:parent dbe:Philippa_of_Hainault ;
+  foaf:gender "female"@en .
+
+<http://dbpedia.org/resource/Joan_of_Navarre,_Queen_of_England> dbo:child <http://dbpedia.org/resource/Arthur_III,_Duke_of_Brittany> ;
+  dbo:child <http://dbpedia.org/resource/John_IV,_Duke_of_Brittany> ;
+  dbo:child <http://dbpedia.org/resource/John_V,_Duke_of_Brittany> ;
+  dbo:child <http://dbpedia.org/resource/Marie_of_Brittany,_Lady_of_La_Guerche> ;
+  dbo:child <http://dbpedia.org/resource/Richard,_Count_of_Étampes> ;
+  dbo:parent dbe:Charles_II_of_Navarre ;
+  dbo:parent <http://dbpedia.org/resource/Joan_of_Valois,_Queen_of_Navarre> ;
+  dbo:spouse dbe:Henry_IV_of_England ;
+  dbo:spouse <http://dbpedia.org/resource/John_IV,_Duke_of_Brittany> ;
+  foaf:gender "female"@en .
+
+<http://dbpedia.org/resource/John,_King_of_England> dbo:child <http://dbpedia.org/resource/Eleanor_of_England,_Countess_of_Leicester> ;
+  dbo:child dbe:Henry_III_of_England ;
+  dbo:child dbe:Isabella_of_England ;
+  dbo:child <http://dbpedia.org/resource/Joan,_Lady_of_Wales> ;
+  dbo:child <http://dbpedia.org/resource/Joan_of_England,_Queen_of_Scotland> ;
+  dbo:child dbe:Richard_FitzRoy ;
+  dbo:child dbe:Richard_of_Cornwall ;
+  dbo:parent dbe:Eleanor_of_Aquitaine ;
+  dbo:parent dbe:Henry_II_of_England ;
+  dbo:spouse <http://dbpedia.org/resource/Isabella,_Countess_of_Gloucester> ;
+  dbo:spouse dbe:Isabella_of_Angoulême ;
+  foaf:gender "male"@en .
+
+dbe:Katherine_of_England dbo:parent dbe:Eleanor_of_Provence ;
+  dbo:parent dbe:Henry_III_of_England ;
+  foaf:gender "female"@en .
+
+dbe:Margaret_of_England dbo:child <http://dbpedia.org/resource/Alexander,_Prince_of_Scotland> ;
+  dbo:child <http://dbpedia.org/resource/Margaret_of_Scotland,_Queen_of_Norway> ;
+  dbo:parent dbe:Eleanor_of_Provence ;
+  dbo:parent dbe:Henry_III_of_England ;
+  dbo:spouse dbe:Alexander_III_of_Scotland ;
+  foaf:gender "female"@en .
+
+<http://dbpedia.org/resource/Margaret_of_England,_Duchess_of_Brabant> dbo:parent dbe:Edward_I_of_England ;
+  dbo:parent dbe:Eleanor_of_Castile ;
+  dbo:spouse <http://dbpedia.org/resource/John_II,_Duke_of_Brabant> ;
+  foaf:gender "female"@en .
+
+<http://dbpedia.org/resource/Margaret_of_France,_Queen_of_England> dbo:child <http://dbpedia.org/resource/Edmund_of_Woodstock,_1st_Earl_of_Kent> ;
+  dbo:child <http://dbpedia.org/resource/Thomas_of_Brotherton,_1st_Earl_of_Norfolk> ;
+  dbo:parent <http://dbpedia.org/resource/Marie_of_Brabant,_Queen_of_France> ;
+  dbo:parent dbe:Philip_III_of_France ;
+  dbo:spouse dbe:Edward_I_of_England ;
+  foaf:gender "female"@en .
+
+<http://dbpedia.org/resource/Margaret_of_France,_Queen_of_England_and_Hungary> dbo:parent dbe:Constance_of_Castile ;
+  dbo:parent dbe:Louis_VII_of_France ;
+  dbo:spouse dbe:Béla_III_of_Hungary ;
+  dbo:spouse dbe:Henry_the_Young_King ;
+  foaf:gender "female"@en .
+
+dbe:Mary_II_of_England dbo:parent dbe:Anne_Hyde ;
+  dbo:parent dbe:James_II_of_England ;
+  foaf:gender "female"@en .
+
+dbe:Mary_I_of_England dbo:parent dbe:Catherine_of_Aragon ;
+  dbo:parent dbe:Henry_VIII_of_England ;
+  dbo:spouse dbe:Philip_II_of_Spain ;
+  foaf:gender "female"@en .
+
+<http://dbpedia.org/resource/Matilda_of_England,_Duchess_of_Saxony> dbo:child <http://dbpedia.org/resource/Henry_V,_Count_Palatine_of_the_Rhine> ;
+  dbo:child <http://dbpedia.org/resource/Matilda_of_Saxony_(1172-1209/10)> ;
+  dbo:child <http://dbpedia.org/resource/Otto_IV,_Holy_Roman_Emperor> ;
+  dbo:child <http://dbpedia.org/resource/William_of_Winchester,_Lord_of_Lunenburg> ;
+  dbo:parent dbe:Eleanor_of_Aquitaine ;
+  dbo:parent dbe:Henry_II_of_England ;
+  dbo:spouse dbe:Henry_the_Lion ;
+  foaf:gender "female"@en .
+
+dbe:Philippa_of_England dbo:parent dbe:Henry_IV_of_England ;
+  dbo:parent dbe:Mary_de_Bohun ;
+  dbo:spouse dbe:Eric_of_Pomerania ;
+  foaf:gender "female"@en .
+
+dbe:Richard_III_of_England dbo:parent <http://dbpedia.org/resource/Cecily_Neville,_Duchess_of_York> ;
+  dbo:parent <http://dbpedia.org/resource/Richard_of_York,_3rd_Duke_of_York> ;
+  dbo:spouse dbe:Anne_Neville ;
+  foaf:gender "male"@en .
+
+dbe:Richard_II_of_England dbo:parent <http://dbpedia.org/resource/Edward,_the_Black_Prince> ;
+  dbo:parent <http://dbpedia.org/resource/Joan,_4th_Countess_of_Kent> ;
+  dbo:spouse dbe:Anne_of_Bohemia ;
+  dbo:spouse dbe:Isabella_of_Valois ;
+  foaf:gender "male"@en .
+
+dbe:Richard_I_of_England dbo:child dbe:Philip_of_Cognac ;
+  dbo:parent dbe:Eleanor_of_Aquitaine ;
+  dbo:parent dbe:Henry_II_of_England ;
+  dbo:spouse dbe:Berengaria_of_Navarre ;
+  foaf:gender "male"@en .
+
+<http://dbpedia.org/resource/Stephen,_King_of_England> dbo:child <http://dbpedia.org/resource/Eustace_IV,_Count_of_Boulogne> ;
+  dbo:child dbe:Gervase_of_Blois ;
+  dbo:child <http://dbpedia.org/resource/Marie_I,_Countess_of_Boulogne> ;
+  dbo:child <http://dbpedia.org/resource/William_I,_Count_of_Boulogne> ;
+  dbo:parent dbe:Adela_of_Normandy ;
+  dbo:parent <http://dbpedia.org/resource/Stephen,_Count_of_Blois> ;
+  dbo:spouse dbe:Matilda_of_Boulogne ;
+  foaf:gender "male"@en .
+

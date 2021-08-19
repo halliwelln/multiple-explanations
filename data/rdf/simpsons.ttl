@@ -1,0 +1,2412 @@
+@prefix dbo: <http://dbpedia.org/ontology/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+<http://example.org/data#Homer_Simpson> 
+    rdfs:label "Homer_Simpson";
+    foaf:gender "male"@en;
+    dbo:brother <http://example.org/data#Herbert_Powell>;
+    dbo:sister <http://example.org/data#Abbey_Simpson>;
+    dbo:parent <http://example.org/data#Abe_Simpson>;
+    dbo:parent <http://example.org/data#Mona_Olsen>;
+    dbo:child <http://example.org/data#Bart_Simpson>;
+    dbo:child <http://example.org/data#Lisa_Simpson>;
+    dbo:child <http://example.org/data#Maggie_Simpson>;
+    dbo:spouse <http://example.org/data#Marge_Simpson> .
+
+<http://example.org/data#Marge_Simpson> 
+    rdfs:label "Marge_Simpson";
+    foaf:gender "female"@en;
+    dbo:parent <http://example.org/data#Clancy_Bouvier>;
+    dbo:parent <http://example.org/data#Jacqueline_Gurney>;
+    dbo:child <http://example.org/data#Bart_Simpson>;
+    dbo:child <http://example.org/data#Lisa_Simpson>;
+    dbo:child <http://example.org/data#Maggie_Simpson>;
+    dbo:sister <http://example.org/data#Selma_Bouvier>;
+    dbo:sister <http://example.org/data#Patty_Bouvier>;
+    dbo:aunt <http://example.org/data#Charlene_Bouvier>;
+    dbo:aunt <http://example.org/data#Gladys_Gurney>;
+    dbo:uncle <http://example.org/data#Lou_Gurney>;
+    dbo:spouse <http://example.org/data#Homer_Simpson> .
+
+<http://example.org/data#Charlene_Bouvier> 
+    rdfs:label "Charlene_Bouvier";
+    foaf:gender "female"@en;
+    dbo:brother <http://example.org/data#Clancy_Bouvier> .
+
+<http://example.org/data#Gladys_Gurney> 
+    rdfs:label "Gladys_Gurney";
+    foaf:gender "female"@en;
+    dbo:brother <http://example.org/data#Lou_Gurney>;
+    dbo:sister <http://example.org/data#Jacqueline_Gurney> .
+
+<http://example.org/data#Lou_Gurney> 
+    rdfs:label "Lou_Gurney";
+    foaf:gender "male"@en;
+    dbo:sister <http://example.org/data#Gladys_Gurney>;
+    dbo:sister <http://example.org/data#Jacqueline_Gurney> .
+
+<http://example.org/data#Maggie_Simpson> 
+    rdfs:label "Maggie_Simpson";
+    foaf:gender "female"@en;
+    dbo:sister <http://example.org/data#Lisa_Simpson>;
+    dbo:brother <http://example.org/data#Bart_Simpson>;
+    dbo:parent <http://example.org/data#Marge_Simpson>;
+    dbo:parent <http://example.org/data#Homer_Simpson>;
+    dbo:aunt <http://example.org/data#Selma_Bouvier>;
+    dbo:aunt <http://example.org/data#Patty_Bouvier>;
+    dbo:grandparent <http://example.org/data#Abe_Simpson>;
+    dbo:grandparent <http://example.org/data#Mona_Olsen>;
+    dbo:grandparent <http://example.org/data#Clancy_Bouvier>;
+    dbo:grandparent <http://example.org/data#Jacqueline_Gurney> .
+
+<http://example.org/data#Lisa_Simpson> 
+    rdfs:label "Lisa_Simpson";
+    foaf:gender "female"@en;
+    dbo:sister <http://example.org/data#Maggie_Simpson>;
+    dbo:brother <http://example.org/data#Bart_Simpson>;
+    dbo:parent <http://example.org/data#Marge_Simpson>;
+    dbo:parent <http://example.org/data#Homer_Simpson>;
+    dbo:aunt <http://example.org/data#Selma_Bouvier>;
+    dbo:aunt <http://example.org/data#Patty_Bouvier>;
+    dbo:grandparent <http://example.org/data#Abe_Simpson>;
+    dbo:grandparent <http://example.org/data#Mona_Olsen>;
+    dbo:grandparent <http://example.org/data#Clancy_Bouvier>;
+    dbo:grandparent <http://example.org/data#Jacqueline_Gurney> .
+
+<http://example.org/data#Bart_Simpson> 
+    rdfs:label "Bart_Simpson";
+    foaf:gender "male"@en;
+    dbo:sister <http://example.org/data#Lisa_Simpson>;
+    dbo:sister <http://example.org/data#Maggie_Simpson>;
+    dbo:parent <http://example.org/data#Marge_Simpson>;
+    dbo:parent <http://example.org/data#Homer_Simpson>;
+    dbo:aunt <http://example.org/data#Selma_Bouvier>;
+    dbo:aunt <http://example.org/data#Patty_Bouvier>;
+    dbo:grandparent <http://example.org/data#Abe_Simpson>;
+    dbo:grandparent <http://example.org/data#Mona_Olsen>;
+    dbo:grandparent <http://example.org/data#Clancy_Bouvier>;
+    dbo:grandparent <http://example.org/data#Jacqueline_Gurney> .
+
+<http://example.org/data#Abe_Simpson> 
+    rdfs:label "Abe_Simpson";
+    foaf:gender "male"@en ;
+    dbo:brother <http://example.org/data#Chet_Simpson>;
+    dbo:brother <http://example.org/data#Hubert_Simpson>;
+    dbo:sister <http://example.org/data#Hortense_Simpson>;
+    dbo:spouse <http://example.org/data#Mona_Olsen> .
+
+<http://example.org/data#Clancy_Bouvier> 
+    rdfs:label "Clancy_Bouvier";
+    foaf:gender "male"@en;
+    dbo:child <http://example.org/data#Marge_Simpson>;
+    dbo:child <http://example.org/data#Selma_Bouvier>;
+    dbo:child <http://example.org/data#Patty_Bouvier>;
+    dbo:sister <http://example.org/data#Charlene_Bouvier>;
+    dbo:spouse <http://example.org/data#Jacqueline_Gurney>;
+    dbo:brother <http://example.org/data#Charlene_Bouvier> .
+
+<http://example.org/data#Jacqueline_Gurney> 
+    rdfs:label "Jacqueline_Gurney";
+    foaf:gender "female"@en;
+    dbo:child <http://example.org/data#Marge_Simpson>;
+    dbo:child <http://example.org/data#Selma_Bouvier>;
+    dbo:child <http://example.org/data#Patty_Bouvier>;
+    dbo:spouse <http://example.org/data#Clancy_Bouvier>;
+    dbo:sister <http://example.org/data#Gladys_Gurney>;
+    dbo:brother <http://example.org/data#Lou_Gurney>;
+    dbo:sister <http://example.org/data#Jacqueline_Gurney> .
+
+<http://example.org/data#Mona_Olsen> 
+    rdfs:label "Mona_Olsen";
+    foaf:gender "female"@en;
+    dbo:child <http://example.org/data#Homer_Simpson>;
+    dbo:spouse <http://example.org/data#Abe_Simpson> .
+
+<http://example.org/data#Patty_Bouvier> 
+    rdfs:label "Patty_Bouvier";
+    foaf:gender "female"@en;
+    dbo:sister <http://example.org/data#Marge_Simpson>;
+    dbo:sister <http://example.org/data#Selma_Bouvier>;
+    dbo:parent <http://example.org/data#Clancy_Bouvier>;
+    dbo:parent <http://example.org/data#Jacqueline_Gurney>;
+    dbo:aunt <http://example.org/data#Charlene_Bouvier>;
+    dbo:aunt <http://example.org/data#Gladys_Gurney>;
+    dbo:uncle <http://example.org/data#Lou_Gurney> .
+
+<http://example.org/data#Selma_Bouvier> 
+    rdfs:label "Selma_Bouvier";
+    foaf:gender "female"@en;
+    dbo:sister <http://example.org/data#Marge_Simpson>;
+    dbo:sister <http://example.org/data#Patty_Bouvier>;
+    dbo:parent <http://example.org/data#Clancy_Bouvier>;
+    dbo:parent <http://example.org/data#Jacqueline_Gurney>;
+    dbo:aunt <http://example.org/data#Charlene_Bouvier>;
+    dbo:aunt <http://example.org/data#Gladys_Gurney>;
+    dbo:uncle <http://example.org/data#Lou_Gurney>;
+    dbo:spouse <http://example.org/data#Robert_Terwilliger> .
+
+<http://example.org/data#Chet_Simpson> 
+    rdfs:label "Chet_Simpson";
+    foaf:gender "male"@en;
+    dbo:brother <http://example.org/data#Abe_Simpson>;
+    dbo:brother <http://example.org/data#Hubert_Simpson>;
+    dbo:sister <http://example.org/data#Hortense_Simpson> .
+
+<http://example.org/data#Herbert_Powell> 
+    rdfs:label "Herbert_Powell";
+    foaf:gender "male"@en;
+    dbo:parent <http://example.org/data#Abe_Simpson>;
+    dbo:brother <http://example.org/data#Homer_Simpson>;
+    dbo:sister <http://example.org/data#Abbey_Simpson> .
+
+<http://example.org/data#Abbey_Simpson> 
+    rdfs:label "Abbey_Simpson";
+    foaf:gender "female"@en;
+    dbo:brother <http://example.org/data#Homer_Simpson>;
+    dbo:brother <http://example.org/data#Herbert_Powell> .
+
+<http://example.org/data#Hubert_Simpson> 
+    rdfs:label "Hubert_Simpson";
+    foaf:gender "male"@en;
+    dbo:brother <http://example.org/data#Abe_Simpson>;
+    dbo:brother <http://example.org/data#Chet_Simpson>;
+    dbo:sister <http://example.org/data#Hortense_Simpson> .
+
+<http://example.org/data#Hortense_Simpson> 
+    rdfs:label "Hortense_Simpson";
+    foaf:gender "female"@en;
+    dbo:brother <http://example.org/data#Abe_Simpson>;
+    dbo:brother <http://example.org/data#Chet_Simpson>;
+    dbo:brother <http://example.org/data#Hubert_Simpson> .
+
+<http://example.org/data#Ned_Flanders> 
+    rdfs:label "Ned_Flanders";
+    foaf:gender "male"@en;
+    dbo:sister <http://example.org/data#Nediana_Flanders>;
+    dbo:parent <http://example.org/data#Nedward_Flanders_Sr>;
+    dbo:parent <http://example.org/data#Agnes_Flanders>;
+    dbo:child <http://example.org/data#Rod_Flanders>;
+    dbo:child <http://example.org/data#Todd_Flanders>;
+    dbo:spouse <http://example.org/data#Maude_Flanders> .
+
+<http://example.org/data#Maude_Flanders> 
+    rdfs:label "Maude_Flanders";
+    foaf:gender "female"@en;
+    dbo:child <http://example.org/data#Rod_Flanders>;
+    dbo:child <http://example.org/data#Todd_Flanders>;
+    dbo:spouse <http://example.org/data#Ned_Flanders> .
+
+<http://example.org/data#Nediana_Flanders> 
+    rdfs:label "Nediana_Flanders";
+    foaf:gender "female"@en;
+    dbo:brother <http://example.org/data#Ned_Flanders>;
+    dbo:parent <http://example.org/data#Nedward_Flanders_Sr>;
+    dbo:parent <http://example.org/data#Agnes_Flanders> .
+
+<http://example.org/data#Nedward_Flanders_Sr> 
+    rdfs:label "Nedward_Flanders_Sr";
+    foaf:gender "male"@en;
+    dbo:child <http://example.org/data#Ned_Flanders>;
+    dbo:child <http://example.org/data#Nediana_Flanders>;
+    dbo:spouse <http://example.org/data#Agnes_Flanders> .
+
+<http://example.org/data#Agnes_Flanders> 
+    rdfs:label "Agnes_Flanders";
+    foaf:gender "female"@en;
+    dbo:child <http://example.org/data#Nediana_Flanders>;
+    dbo:child <http://example.org/data#Ned_Flanders>;
+    dbo:spouse <http://example.org/data#Nedward_Flanders_Sr> .
+
+<http://example.org/data#Rod_Flanders> 
+    rdfs:label "Rod_Flanders";
+    foaf:gender "male"@en;
+    dbo:brother <http://example.org/data#Todd_Flanders>;
+    dbo:aunt <http://example.org/data#Nediana_Flanders>;
+    dbo:grandparent <http://example.org/data#Nedward_Flanders>;
+    dbo:grandparent <http://example.org/data#Agnes_Flanders> .
+
+<http://example.org/data#Todd_Flanders> 
+    rdfs:label "Todd_Flanders";
+    foaf:gender "male"@en;
+    dbo:brother <http://example.org/data#Rod_Flanders>;
+    dbo:aunt <http://example.org/data#Nediana_Flanders>;
+    dbo:grandparent <http://example.org/data#Nedward_Flanders_Sr>;
+    dbo:grandparent <http://example.org/data#Agnes_Flanders> .
+
+<http://example.org/data#Krusty_the_Clown> 
+    rdfs:label "Krusty_the_Clown";
+    foaf:gender "male"@en;
+    dbo:sister <http://example.org/data#Barbara_Van_Horne>;
+    dbo:parent <http://example.org/data#Rachel_Krustofsky>;
+    dbo:parent <http://example.org/data#Hyman_Krustofsky>;
+    dbo:child <http://example.org/data#Sophie_Krustofsky> .
+
+<http://example.org/data#Rachel_Krustofsky> 
+    rdfs:label "Rachel_Krustofsky";
+    foaf:gender "female"@en;
+    dbo:child <http://example.org/data#Krusty_the_Clown>;
+    dbo:child <http://example.org/data#Barbara_Van_Horne>;
+    dbo:spouse <http://example.org/data#Hyman_Krustofsky> .
+
+<http://example.org/data#Hyman_Krustofsky> 
+    rdfs:label "Hyman_Krustofsky";
+    foaf:gender "male"@en;
+    dbo:child <http://example.org/data#Krusty_the_Clown>;
+    dbo:child <http://example.org/data#Barbara_Van_Horne>;
+    dbo:spouse <http://example.org/data#Rachel_Krustofsky> .
+
+<http://example.org/data#Barbara_Van_Horne> 
+    rdfs:label "Barbara_Van_Horne";
+    foaf:gender "female"@en;
+    dbo:parent <http://example.org/data#Hyman_Krustofsky>;
+    dbo:parent <http://example.org/data#Rachel_Krustofsky> .
+
+<http://example.org/data#Sophie_Krustofsky> 
+    rdfs:label "Sophie_Krustofsky";
+    foaf:gender "female"@en;
+    dbo:parent <http://example.org/data#Krusty_the_Clown>;
+    dbo:grandparent <http://example.org/data#Rachel_Krustofsky>;
+    dbo:grandparent <http://example.org/data#Hyman_Krustofsky> .
+
+<http://example.org/data#Apu_Nahasapeemapetilon> 
+    rdfs:label "Apu_Nahasapeemapetilon";
+    foaf:gender "male"@en;
+    dbo:brother <http://example.org/data#Sanjay_Nahasapeemapetilon>;
+    dbo:sister <http://example.org/data#Apus_Sister>;
+    dbo:parent <http://example.org/data#Apu_Nahasapeemapetilon_Sr>;
+    dbo:parent <http://example.org/data#Apus_Mother>;
+    dbo:child <http://example.org/data#Poonam_Nahasapeemapetilon>;
+    dbo:child <http://example.org/data#Sashi_Nahasapeemapetilon>;
+    dbo:child <http://example.org/data#Pria_Nahasapeemapetilon>;
+    dbo:child <http://example.org/data#Uma_Nahasapeemapetilon>;
+    dbo:child <http://example.org/data#Anoop_Nahasapeemapetilon>;
+    dbo:child <http://example.org/data#Sandeep_Nahasapeemapetilon>;
+    dbo:child <http://example.org/data#Nabendu_Nahasapeemapetilon>;
+    dbo:child <http://example.org/data#Gheet_Nahasapeemapetilon>;
+    dbo:spouse <http://example.org/data#Manjula_Nahasapeemapetilon> .
+
+<http://example.org/data#Manjula_Nahasapeemapetilon> 
+    rdfs:label "Manjula_Nahasapeemapetilon";
+    foaf:gender "female"@en;
+    dbo:child <http://example.org/data#Poonam_Nahasapeemapetilon>;
+    dbo:child <http://example.org/data#Sashi_Nahasapeemapetilon>;
+    dbo:child <http://example.org/data#Pria_Nahasapeemapetilon>;
+    dbo:child <http://example.org/data#Uma_Nahasapeemapetilon>;
+    dbo:child <http://example.org/data#Anoop_Nahasapeemapetilon>;
+    dbo:child <http://example.org/data#Sandeep_Nahasapeemapetilon>;
+    dbo:child <http://example.org/data#Nabendu_Nahasapeemapetilon>;
+    dbo:child <http://example.org/data#Gheet_Nahasapeemapetilon>;
+    dbo:spouse <http://example.org/data#Apu_Nahasapeemapetilon> .
+
+<http://example.org/data#Sanjay_Nahasapeemapetilon> 
+    rdfs:label "Sanjay_Nahasapeemapetilon";
+    foaf:gender "male"@en;
+    dbo:brother <http://example.org/data#Apu_Nahasapeemapetilon> .
+
+<http://example.org/data#Apu_Nahasapeemapetilon_Sr> 
+    rdfs:label "Apu_Nahasapeemapetilon_Sr";
+    foaf:gender "male"@en;
+    dbo:child <http://example.org/data#Apu_Nahasapeemapetilon>;
+    dbo:child <http://example.org/data#Sanjay_Nahasapeemapetilon> .
+
+<http://example.org/data#Apus_Mother> 
+    rdfs:label "Apus_Mother";
+    foaf:gender "female"@en;
+    dbo:child <http://example.org/data#Apu_Nahasapeemapetilon>;
+    dbo:child <http://example.org/data#Sanjay_Nahasapeemapetilon> .
+
+<http://example.org/data#Poonam_Nahasapeemapetilon> 
+    rdfs:label "Poonam_Nahasapeemapetilon";
+    foaf:gender "female"@en;
+    dbo:parent <http://example.org/data#Apu_Nahasapeemapetilon>;
+    dbo:parent <http://example.org/data#Manjula_Nahasapeemapetilon>;
+    dbo:sister <http://example.org/data#Sashi_Nahasapeemapetilon>;
+    dbo:sister <http://example.org/data#Pria_Nahasapeemapetilon>;
+    dbo:sister <http://example.org/data#Uma_Nahasapeemapetilon>;
+    dbo:brother <http://example.org/data#Anoop_Nahasapeemapetilon>;
+    dbo:brother <http://example.org/data#Sandeep_Nahasapeemapetilon>;
+    dbo:brother <http://example.org/data#Nabendu_Nahasapeemapetilon>;
+    dbo:brother <http://example.org/data#Gheet_Nahasapeemapetilon> .
+
+<http://example.org/data#Sashi_Nahasapeemapetilon> 
+    rdfs:label "Sashi_Nahasapeemapetilon";
+    foaf:gender "female"@en;
+    dbo:parent <http://example.org/data#Apu_Nahasapeemapetilon>;
+    dbo:parent <http://example.org/data#Manjula_Nahasapeemapetilon>;
+    dbo:sister <http://example.org/data#Poonam_Nahasapeemapetilon>;
+    dbo:sister <http://example.org/data#Pria_Nahasapeemapetilon>;
+    dbo:sister <http://example.org/data#Uma_Nahasapeemapetilon>;
+    dbo:brother <http://example.org/data#Anoop_Nahasapeemapetilon>;
+    dbo:brother <http://example.org/data#Sandeep_Nahasapeemapetilon>;
+    dbo:brother <http://example.org/data#Nabendu_Nahasapeemapetilon>;
+    dbo:brother <http://example.org/data#Gheet_Nahasapeemapetilon> .
+
+<http://example.org/data#Pria_Nahasapeemapetilon> 
+    rdfs:label "Pria_Nahasapeemapetilon";
+    foaf:gender "female"@en;
+    dbo:parent <http://example.org/data#Apu_Nahasapeemapetilon>;
+    dbo:parent <http://example.org/data#Manjula_Nahasapeemapetilon>;
+    dbo:sister <http://example.org/data#Poonam_Nahasapeemapetilon>;
+    dbo:sister <http://example.org/data#Sashi_Nahasapeemapetilon>;
+    dbo:sister <http://example.org/data#Uma_Nahasapeemapetilon>;
+    dbo:brother <http://example.org/data#Anoop_Nahasapeemapetilon>;
+    dbo:brother <http://example.org/data#Sandeep_Nahasapeemapetilon>;
+    dbo:brother <http://example.org/data#Nabendu_Nahasapeemapetilon>;
+    dbo:brother <http://example.org/data#Gheet_Nahasapeemapetilon> .
+
+<http://example.org/data#Uma_Nahasapeemapetilon> 
+    rdfs:label "Uma_Nahasapeemapetilon";
+    foaf:gender "female"@en;
+    dbo:parent <http://example.org/data#Apu_Nahasapeemapetilon>;
+    dbo:parent <http://example.org/data#Manjula_Nahasapeemapetilon>;
+    dbo:sister <http://example.org/data#Poonam_Nahasapeemapetilon>;
+    dbo:sister <http://example.org/data#Sashi_Nahasapeemapetilon>;
+    dbo:sister <http://example.org/data#Pria_Nahasapeemapetilon>;
+    dbo:brother <http://example.org/data#Anoop_Nahasapeemapetilon>;
+    dbo:brother <http://example.org/data#Sandeep_Nahasapeemapetilon>;
+    dbo:brother <http://example.org/data#Nabendu_Nahasapeemapetilon>;
+    dbo:brother <http://example.org/data#Gheet_Nahasapeemapetilon> .
+
+<http://example.org/data#Anoop_Nahasapeemapetilon> 
+    rdfs:label "Anoop_Nahasapeemapetilon";
+    foaf:gender "male"@en;
+    dbo:parent <http://example.org/data#Apu_Nahasapeemapetilon>;
+    dbo:parent <http://example.org/data#Manjula_Nahasapeemapetilon>;
+    dbo:sister <http://example.org/data#Poonam_Nahasapeemapetilon>;
+    dbo:sister <http://example.org/data#Sashi_Nahasapeemapetilon>;
+    dbo:sister <http://example.org/data#Pria_Nahasapeemapetilon>;
+    dbo:sister <http://example.org/data#Uma_Nahasapeemapetilon>;
+    dbo:brother <http://example.org/data#Sandeep_Nahasapeemapetilon>;
+    dbo:brother <http://example.org/data#Nabendu_Nahasapeemapetilon>;
+    dbo:brother <http://example.org/data#Gheet_Nahasapeemapetilon> .
+
+<http://example.org/data#Sandeep_Nahasapeemapetilon> 
+    rdfs:label "Sandeep_Nahasapeemapetilon";
+    foaf:gender "male"@en;
+    dbo:parent <http://example.org/data#Apu_Nahasapeemapetilon>;
+    dbo:parent <http://example.org/data#Manjula_Nahasapeemapetilon>;
+    dbo:sister <http://example.org/data#Poonam_Nahasapeemapetilon>;
+    dbo:sister <http://example.org/data#Sashi_Nahasapeemapetilon>;
+    dbo:sister <http://example.org/data#Pria_Nahasapeemapetilon>;
+    dbo:sister <http://example.org/data#Uma_Nahasapeemapetilon>;
+    dbo:brother <http://example.org/data#Anoop_Nahasapeemapetilon>;
+    dbo:brother <http://example.org/data#Nabendu_Nahasapeemapetilon>;
+    dbo:brother <http://example.org/data#Gheet_Nahasapeemapetilon> .
+
+<http://example.org/data#Nabendu_Nahasapeemapetilon> 
+    rdfs:label "Nabendu_Nahasapeemapetilon";
+    foaf:gender "male"@en;
+    dbo:parent <http://example.org/data#Apu_Nahasapeemapetilon>;
+    dbo:parent <http://example.org/data#Manjula_Nahasapeemapetilon>;
+    dbo:sister <http://example.org/data#Poonam_Nahasapeemapetilon>;
+    dbo:sister <http://example.org/data#Sashi_Nahasapeemapetilon>;
+    dbo:sister <http://example.org/data#Pria_Nahasapeemapetilon>;
+    dbo:sister <http://example.org/data#Uma_Nahasapeemapetilon>;
+    dbo:brother <http://example.org/data#Anoop_Nahasapeemapetilon>;
+    dbo:brother <http://example.org/data#Sandeep_Nahasapeemapetilon>;
+    dbo:brother <http://example.org/data#Gheet_Nahasapeemapetilon> .
+
+<http://example.org/data#Gheet_Nahasapeemapetilon> 
+    rdfs:label "Gheet_Nahasapeemapetilon";
+    foaf:gender "male"@en;
+    dbo:parent <http://example.org/data#Apu_Nahasapeemapetilon>;
+    dbo:parent <http://example.org/data#Manjula_Nahasapeemapetilon>;
+    dbo:sister <http://example.org/data#Poonam_Nahasapeemapetilon>;
+    dbo:sister <http://example.org/data#Sashi_Nahasapeemapetilon>;
+    dbo:sister <http://example.org/data#Pria_Nahasapeemapetilon>;
+    dbo:sister <http://example.org/data#Uma_Nahasapeemapetilon>;
+    dbo:brother <http://example.org/data#Anoop_Nahasapeemapetilon>;
+    dbo:brother <http://example.org/data#Sandeep_Nahasapeemapetilon>;
+    dbo:brother <http://example.org/data#Nabendu_Nahasapeemapetilon> .
+
+<http://example.org/data#Milhouse_Van_Houten> 
+    rdfs:label "Milhouse_Van_Houten";
+    foaf:gender "male"@en;
+    dbo:parent <http://example.org/data#Luann_Van_Houten>;
+    dbo:parent <http://example.org/data#Kirk_Van_Houten> .
+
+<http://example.org/data#Kirk_Van_Houten> 
+    rdfs:label "Kirk_Van_Houten";
+    foaf:gender "male"@en;
+    dbo:spouse <http://example.org/data#Luann_Van_Houten>;
+    dbo:parent <http://example.org/data#Grandpa_Van_Houten>;
+    dbo:parent <http://example.org/data#Grandma_Van_Houten> .
+
+<http://example.org/data#Luann_Van_Houten> 
+    rdfs:label "Luann_Van_Houten";
+    foaf:gender "female"@en;
+    dbo:spouse <http://example.org/data#Kirk_Van_Houten>;
+    dbo:sister <http://example.org/data#Luanns_Sister>.
+
+<http://example.org/data#Grandpa_Van_Houten> 
+    rdfs:label "Grandpa_Van_Houten";
+    foaf:gender "male"@en;
+    dbo:child <http://example.org/data#Kirk_Van_Houten> .
+
+<http://example.org/data#Grandma_Van_Houten> 
+    rdfs:label "Grandma_Van_Houten";
+    foaf:gender "female"@en;
+    dbo:child <http://example.org/data#Kirk_Van_Houten> .
+
+<http://example.org/data#Luanns_Sister> 
+    rdfs:label "Luanns_Sister";
+    foaf:gender "female"@en;
+    dbo:sister <http://example.org/data#Luann_Van_Houten> .
+
+<http://example.org/data#Ralph_Wiggum> 
+    rdfs:label "Ralph_Wiggum";
+    foaf:gender "male"@en;
+    dbo:parent <http://example.org/data#Clancy_Wiggum>;
+    dbo:parent <http://example.org/data#Sarah_Wiggum>;
+    dbo:grandparent <http://example.org/data#Iggy_Wiggum>;
+    dbo:grandparent <http://example.org/data#Mrs_Wiggum> .
+
+<http://example.org/data#Clancy_Wiggum> 
+    rdfs:label "Clancy_Wiggum";
+    foaf:gender "male"@en;
+    dbo:spouse <http://example.org/data#Sarah_Wiggum>;
+    dbo:parent <http://example.org/data#Iggy_Wiggum>;
+    dbo:parent <http://example.org/data#Mrs_Wiggum>;
+    dbo:brother <http://example.org/data#Fred_Kanneke> .
+
+<http://example.org/data#Sarah_Wiggum> 
+    rdfs:label "Sarah_Wiggum";
+    foaf:gender "female"@en;
+    dbo:spouse <http://example.org/data#Clancy_Wiggum>;
+    dbo:child <http://example.org/data#Ralph_Wiggum> .
+
+<http://example.org/data#Iggy_Wiggum> 
+    rdfs:label "Iggy_Wiggum";
+    foaf:gender "male"@en;
+    dbo:child <http://example.org/data#Clancy_Wiggum>;
+    dbo:child <http://example.org/data#Fred_Kanneke> .
+
+<http://example.org/data#Mrs_Wiggum> 
+    rdfs:label "Mrs_Wiggum";
+    foaf:gender "female"@en;
+    dbo:child <http://example.org/data#Clancy_Wiggum>;
+    dbo:child <http://example.org/data#Fred_Kanneke> .
+
+<http://example.org/data#Fred_Kanneke> 
+    rdfs:label "Fred_Kanneke";
+    foaf:gender "male"@en;
+    dbo:brother <http://example.org/data#Clancy_Wiggum> .
+
+<http://example.org/data#Charles_Montgomery_Burns> 
+    rdfs:label "Charles_Montgomery_Burns";
+    foaf:gender "male"@en;
+    dbo:parent <http://example.org/data#Clifford_Burns>;
+    dbo:parent <http://example.org/data#Daphne_Charles>;
+    dbo:brother <http://example.org/data#Zeph_Burns>;
+    dbo:brother <http://example.org/data#George_Burns>; 
+    dbo:brother <http://example.org/data#Clifford_Burns_Jr>;
+    dbo:brother <http://example.org/data#Cornelius_Burns>; 
+    dbo:brother <http://example.org/data#Ernest_Burns>; 
+    dbo:brother <http://example.org/data#Archibald_Burns>;
+    dbo:sister <http://example.org/data#Sarah_Drew_Linscott>; 
+    dbo:sister <http://example.org/data#Cornelia_Burns>; 
+    dbo:sister <http://example.org/data#Dominique_Burns>; 
+    dbo:parent <http://example.org/data#Clifford_Burns>;
+    dbo:parent <http://example.org/data#Daphne_Charles>;
+    dbo:child <http://example.org/data#Larry_Burns>;
+    dbo:aunt <http://example.org/data#Doreena_Burns> .
+
+<http://example.org/data#Zeph_Burns> 
+    rdfs:label "Zeph_Burns";
+    foaf:gender "male"@en;
+    dbo:aunt <http://example.org/data#Doreena_Burns>;
+    dbo:parent <http://example.org/data#Clifford_Burns>;
+    dbo:parent <http://example.org/data#Daphne_Charles>;    
+    dbo:brother <http://example.org/data#Charles_Montgomery_Burns>;
+    dbo:brother <http://example.org/data#George_Burns>; 
+    dbo:brother <http://example.org/data#Clifford_Burns_Jr>;
+    dbo:brother <http://example.org/data#Cornelius_Burns>; 
+    dbo:brother <http://example.org/data#Ernest_Burns>; 
+    dbo:brother <http://example.org/data#Archibald_Burns>; 
+    dbo:sister <http://example.org/data#Sarah_Drew_Linscott>; 
+    dbo:sister <http://example.org/data#Cornelia_Burns>; 
+    dbo:sister <http://example.org/data#Dominique_Burns>; 
+    dbo:parent <http://example.org/data#Clifford_Burns>;
+    dbo:parent <http://example.org/data#Daphne_Charles> .
+
+<http://example.org/data#George_Burns> 
+    rdfs:label "George_Burns";
+    foaf:gender "male"@en;
+    dbo:aunt <http://example.org/data#Doreena_Burns>;
+    dbo:brother <http://example.org/data#Charles_Montgomery_Burns>;
+    dbo:brother <http://example.org/data#Zeph_Burns>;
+    dbo:brother <http://example.org/data#Clifford_Burns_Jr>;
+    dbo:brother <http://example.org/data#Cornelius_Burns>; 
+    dbo:brother <http://example.org/data#Ernest_Burns>; 
+    dbo:brother <http://example.org/data#Archibald_Burns>; 
+    dbo:sister <http://example.org/data#Sarah_Drew_Linscott>; 
+    dbo:sister <http://example.org/data#Cornelia_Burns>; 
+    dbo:sister <http://example.org/data#Dominique_Burns>;
+    dbo:parent <http://example.org/data#Clifford_Burns>;
+    dbo:parent <http://example.org/data#Daphne_Charles> .
+
+<http://example.org/data#Clifford_Burns_Jr> 
+    rdfs:label "Clifford_Burns_Jr";
+    foaf:gender "male"@en;
+    dbo:aunt <http://example.org/data#Doreena_Burns>;
+    dbo:brother <http://example.org/data#Charles_Montgomery_Burns>;
+    dbo:brother <http://example.org/data#Zeph_Burns>;
+    dbo:brother <http://example.org/data#George_Burns>; 
+    dbo:brother <http://example.org/data#Clifford_Burns_Jr>;
+    dbo:brother <http://example.org/data#Cornelius_Burns>; 
+    dbo:brother <http://example.org/data#Ernest_Burns>; 
+    dbo:brother <http://example.org/data#Archibald_Burns>; 
+    dbo:sister <http://example.org/data#Sarah_Drew_Linscott>; 
+    dbo:sister <http://example.org/data#Cornelia_Burns>; 
+    dbo:sister <http://example.org/data#Dominique_Burns>;
+    dbo:parent <http://example.org/data#Clifford_Burns>;
+    dbo:parent <http://example.org/data#Daphne_Charles> .
+
+<http://example.org/data#Cornelius_Burns> 
+    rdfs:label "Cornelius_Burns";
+    foaf:gender "male"@en;
+    dbo:aunt <http://example.org/data#Doreena_Burns>;
+    dbo:brother <http://example.org/data#Charles_Montgomery_Burns>;
+    dbo:brother <http://example.org/data#Zeph_Burns>;
+    dbo:brother <http://example.org/data#George_Burns>; 
+    dbo:brother <http://example.org/data#Clifford_Burns_Jr>;
+    dbo:brother <http://example.org/data#Ernest_Burns>; 
+    dbo:brother <http://example.org/data#Archibald_Burns>; 
+    dbo:sister <http://example.org/data#Sarah_Drew_Linscott>; 
+    dbo:sister <http://example.org/data#Cornelia_Burns>; 
+    dbo:sister <http://example.org/data#Dominique_Burns>;
+    dbo:parent <http://example.org/data#Clifford_Burns>;
+    dbo:parent <http://example.org/data#Daphne_Charles> .
+
+<http://example.org/data#Ernest_Burns> 
+    rdfs:label "Ernest_Burns";
+    foaf:gender "male"@en; 
+    dbo:aunt <http://example.org/data#Doreena_Burns>;
+    dbo:brother <http://example.org/data#Charles_Montgomery_Burns>;
+    dbo:brother <http://example.org/data#Zeph_Burns>;
+    dbo:brother <http://example.org/data#George_Burns>; 
+    dbo:brother <http://example.org/data#Clifford_Burns_Jr>;
+    dbo:brother <http://example.org/data#Cornelius_Burns>; 
+    dbo:brother <http://example.org/data#Archibald_Burns>; 
+    dbo:sister <http://example.org/data#Sarah_Drew_Linscott>; 
+    dbo:sister <http://example.org/data#Cornelia_Burns>; 
+    dbo:sister <http://example.org/data#Dominique_Burns>; 
+    dbo:parent <http://example.org/data#Clifford_Burns>;
+    dbo:parent <http://example.org/data#Daphne_Charles> .
+
+<http://example.org/data#Archibald_Burns> 
+    rdfs:label "Archibald_Burns";
+    foaf:gender "male"@en;
+    dbo:aunt <http://example.org/data#Doreena_Burns>;
+    dbo:brother <http://example.org/data#Charles_Montgomery_Burns>;
+    dbo:brother <http://example.org/data#Zeph_Burns>;
+    dbo:brother <http://example.org/data#George_Burns>; 
+    dbo:brother <http://example.org/data#Clifford_Burns_Jr>;
+    dbo:brother <http://example.org/data#Cornelius_Burns>; 
+    dbo:brother <http://example.org/data#Ernest_Burns>; 
+    dbo:sister <http://example.org/data#Sarah_Drew_Linscott>; 
+    dbo:sister <http://example.org/data#Cornelia_Burns>; 
+    dbo:sister <http://example.org/data#Dominique_Burns>;
+    dbo:parent <http://example.org/data#Clifford_Burns>;
+    dbo:parent <http://example.org/data#Daphne_Charles> .
+
+<http://example.org/data#Sarah_Drew_Linscott> 
+    rdfs:label "Sarah_Drew_Linscott";
+    foaf:gender "female"@en;
+    dbo:aunt <http://example.org/data#Doreena_Burns>;
+    dbo:brother <http://example.org/data#Charles_Montgomery_Burns>;
+    dbo:brother <http://example.org/data#Zeph_Burns>;
+    dbo:brother <http://example.org/data#George_Burns>; 
+    dbo:brother <http://example.org/data#Clifford_Burns_Jr>;
+    dbo:brother <http://example.org/data#Cornelius_Burns>; 
+    dbo:brother <http://example.org/data#Ernest_Burns>; 
+    dbo:brother <http://example.org/data#Archibald_Burns>; 
+    dbo:sister <http://example.org/data#Sarah_Drew_Linscott>; 
+    dbo:sister <http://example.org/data#Cornelia_Burns>; 
+    dbo:sister <http://example.org/data#Dominique_Burns>;
+    dbo:parent <http://example.org/data#Clifford_Burns>;
+    dbo:parent <http://example.org/data#Daphne_Charles> .
+
+<http://example.org/data#Cornelia_Burns> 
+    rdfs:label "Cornelia_Burns";
+    foaf:gender "female"@en;
+    dbo:aunt <http://example.org/data#Doreena_Burns>;
+    dbo:brother <http://example.org/data#Charles_Montgomery_Burns>;
+    dbo:brother <http://example.org/data#Zeph_Burns>;
+    dbo:brother <http://example.org/data#George_Burns>; 
+    dbo:brother <http://example.org/data#Clifford_Burns_Jr>;
+    dbo:brother <http://example.org/data#Cornelius_Burns>; 
+    dbo:brother <http://example.org/data#Ernest_Burns>; 
+    dbo:brother <http://example.org/data#Archibald_Burns>; 
+    dbo:sister <http://example.org/data#Sarah_Drew_Linscott>; 
+    dbo:sister <http://example.org/data#Cornelia_Burns>; 
+    dbo:sister <http://example.org/data#Dominique_Burns>;
+    dbo:parent <http://example.org/data#Clifford_Burns>;
+    dbo:parent <http://example.org/data#Daphne_Charles> .
+
+<http://example.org/data#Dominique_Burns> 
+    rdfs:label "Dominique_Burns";
+    foaf:gender "female"@en;
+    dbo:aunt <http://example.org/data#Doreena_Burns>;
+    dbo:brother <http://example.org/data#Charles_Montgomery_Burns>;
+    dbo:brother <http://example.org/data#Zeph_Burns>;
+    dbo:brother <http://example.org/data#George_Burns>; 
+    dbo:brother <http://example.org/data#Clifford_Burns_Jr>;
+    dbo:brother <http://example.org/data#Cornelius_Burns>; 
+    dbo:brother <http://example.org/data#Ernest_Burns>; 
+    dbo:brother <http://example.org/data#Archibald_Burns>; 
+    dbo:sister <http://example.org/data#Sarah_Drew_Linscott>; 
+    dbo:sister <http://example.org/data#Cornelia_Burns>; 
+    dbo:sister <http://example.org/data#Dominique_Burns>;
+    dbo:parent <http://example.org/data#Clifford_Burns>;
+    dbo:parent <http://example.org/data#Daphne_Charles> .
+
+<http://example.org/data#Doreena_Burns> 
+    rdfs:label "Doreena_Burns";
+    foaf:gender "female"@en;
+    dbo:brother <http://example.org/data#Clifford_Burns> .
+
+<http://example.org/data#Clifford_Burns> 
+    rdfs:label "Clifford_Burns";
+    foaf:gender "male"@en;
+    dbo:parent <http://example.org/data#Wainwright_Montgomery_Burns>;
+    dbo:parent <http://example.org/data#Evelyn_Graycomb>;
+    dbo:spouse <http://example.org/data#Daphne_Charles>;
+    dbo:child <http://example.org/data#Dominique_Burns>;
+    dbo:child <http://example.org/data#Charles_Montgomery_Burns>;
+    dbo:child <http://example.org/data#Zeph_Burns>;
+    dbo:child <http://example.org/data#George_Burns>; 
+    dbo:child <http://example.org/data#Clifford_Burns_Jr>;
+    dbo:child <http://example.org/data#Cornelius_Burns>; 
+    dbo:child <http://example.org/data#Ernest_Burns>; 
+    dbo:child <http://example.org/data#Archibald_Burns>; 
+    dbo:child <http://example.org/data#Sarah_Drew_Linscott>; 
+    dbo:child <http://example.org/data#Cornelia_Burns>; 
+    dbo:child <http://example.org/data#Dominique_Burns>; 
+    dbo:sister <http://example.org/data#Doreena_Burns> .
+
+<http://example.org/data#Wainwright_Montgomery_Burns> 
+    rdfs:label "Wainwright_Montgomery_Burns";
+    foaf:gender "male"@en;
+    dbo:child <http://example.org/data#Clifford_Burns>;
+    dbo:spouse <http://example.org/data#Evelyn_Graycomb> .
+
+<http://example.org/data#Evelyn_Graycomb> 
+    rdfs:label "Evelyn_Graycomb";
+    foaf:gender "female"@en;
+    dbo:child <http://example.org/data#Clifford_Burns>;
+    dbo:spouse <http://example.org/data#Wainwright_Montgomery_Burns> .
+
+<http://example.org/data#Daphne_Charles> 
+    rdfs:label "Daphne_Charles";
+    foaf:gender "female"@en;
+    dbo:parent <http://example.org/data#Jean-Claude_Charles>;
+    dbo:parent <http://example.org/data#Ophelia_Charles>;
+    dbo:child <http://example.org/data#Dominique_Burns>;
+    dbo:child <http://example.org/data#Charles_Montgomery_Burns>;
+    dbo:child <http://example.org/data#Zeph_Burns>;
+    dbo:child <http://example.org/data#George_Burns>; 
+    dbo:child <http://example.org/data#Clifford_Burns_Jr>;
+    dbo:child <http://example.org/data#Cornelius_Burns>; 
+    dbo:child <http://example.org/data#Ernest_Burns>; 
+    dbo:child <http://example.org/data#Archibald_Burns>; 
+    dbo:child <http://example.org/data#Sarah_Drew_Linscott>; 
+    dbo:child <http://example.org/data#Cornelia_Burns>; 
+    dbo:child <http://example.org/data#Dominique_Burns>; 
+    dbo:spouse <http://example.org/data#Clifford_Burns> .
+
+<http://example.org/data#Jean-Claude_Charles> 
+    rdfs:label "Jean-Claude_Charles";
+    foaf:gender "male"@en;
+    dbo:child <http://example.org/data#Daphne_Charles>;
+    dbo:spouse <http://example.org/data#Ophelia_Charles> .
+
+<http://example.org/data#Ophelia_Charles> 
+    rdfs:label "Ophelia_Charles";
+    foaf:gender "female"@en;
+    dbo:child <http://example.org/data#Daphne_Charles>;
+    dbo:spouse <http://example.org/data#Jean-Claude_Charles> .
+
+<http://example.org/data#Larry_Burns> 
+    rdfs:label "Larry_Burns";
+    foaf:gender "male"@en;
+    dbo:parent <http://example.org/data#Charles_Montgomery_Burns>;
+    dbo:grandparent <http://example.org/data#Clifford_Burns>;
+    dbo:grandparent <http://example.org/data#Daphne_Charles> .
+
+<http://example.org/data#Martin_Prince_Jr> 
+    rdfs:label "Martin_Prince_Jr";
+    foaf:gender "male"@en;
+    dbo:parent <http://example.org/data#Martin_Prince_Sr>;
+    dbo:parent <http://example.org/data#Martha_Prince> .
+
+<http://example.org/data#Martin_Prince_Sr> 
+    rdfs:label "Martin_Prince_Sr";
+    foaf:gender "male"@en;
+    dbo:child <http://example.org/data#Martin_Prince_Jr>;
+    dbo:spouse <http://example.org/data#Martha_Prince> .
+
+<http://example.org/data#Martha_Prince> 
+    rdfs:label "Martha_Prince";
+    foaf:gender "female"@en;
+    dbo:child <http://example.org/data#Martin_Prince_Jr>;
+    dbo:spouse <http://example.org/data#Martin_Prince_Sr> .
+
+<http://example.org/data#Agnes_Skinner> 
+    rdfs:label "Agnes_Skinner";
+    foaf:gender "female"@en;
+    dbo:child <http://example.org/data#Seymour_Skinner>;
+    dbo:child <http://example.org/data#Seymour_Skinner_(real)>;
+    dbo:brother <http://example.org/data#Stevie_Skinner>;
+    dbo:parent <http://example.org/data#Mark_Skinner>;
+    dbo:parent <http://example.org/data#Ellen_Skinner>;
+    dbo:spouse <http://example.org/data#Sheldon_Skinner> .
+
+<http://example.org/data#Seymour_Skinner> 
+    rdfs:label "Seymour_Skinner";
+    foaf:gender "male"@en;
+    dbo:brother <http://example.org/data#Seymour_Skinner_(real)>;
+    dbo:parent <http://example.org/data#Agnes_Skinner>;
+    dbo:parent <http://example.org/data#Sheldon_Skinner>;
+    dbo:grandparent <http://example.org/data#Mark_Skinner>;
+    dbo:grandparent <http://example.org/data#Ellen_Skinner> .
+
+<http://example.org/data#Seymour_Skinner_(real)> 
+    rdfs:label "Seymour_Skinner_(real)";
+    foaf:gender "male"@en;
+    dbo:brother <http://example.org/data#Seymour_Skinner>;
+    dbo:parent <http://example.org/data#Agnes_Skinner>;
+    dbo:parent <http://example.org/data#Sheldon_Skinner>;
+    dbo:grandparent <http://example.org/data#Mark_Skinner>;
+    dbo:grandparent <http://example.org/data#Ellen_Skinner> .
+
+<http://example.org/data#Sheldon_Skinner> 
+    rdfs:label "Sheldon_Skinner";
+    foaf:gender "male"@en;
+    dbo:child <http://example.org/data#Seymour_Skinner>;
+    dbo:child <http://example.org/data#Seymour_Skinner_(real)>;
+    dbo:spouse <http://example.org/data#Agnes_Skinner> .
+
+<http://example.org/data#Mark_Skinner> 
+    rdfs:label "Mark_Skinner";
+    foaf:gender "male"@en;
+    dbo:child <http://example.org/data#Agnes_Skinner>;
+    dbo:spouse <http://example.org/data#Ellen_Skinner> .
+
+<http://example.org/data#Ellen_Skinner> 
+    rdfs:label "Ellen_Skinner";
+    foaf:gender "female"@en;
+    dbo:child <http://example.org/data#Agnes_Skinner>;
+    dbo:spouse <http://example.org/data#Mark_Skinner> .
+
+<http://example.org/data#Groundskeeper_Willie> 
+    rdfs:label "Groundskeeper_Willie";
+    foaf:gender "male"@en;
+    dbo:parent <http://example.org/data#Mr_MacDougal>;
+    dbo:parent <http://example.org/data#Mrs_MacDougal>;
+    dbo:brother <http://example.org/data#Angus_MacDougal> .
+
+<http://example.org/data#Mr_MacDougal> 
+    rdfs:label "Mr_MacDougal";
+    foaf:gender "male"@en;
+    dbo:child <http://example.org/data#Groundskeeper_Willie>;
+    dbo:child <http://example.org/data#Angus_MacDougal>;
+    dbo:spouse <http://example.org/data#Mrs_MacDougal> .
+
+<http://example.org/data#Mrs_MacDougal> 
+    rdfs:label "Mrs_MacDougal";
+    foaf:gender "female"@en;
+    dbo:child <http://example.org/data#Groundskeeper_Willie>;
+    dbo:child <http://example.org/data#Angus_MacDougal>;
+    dbo:spouse <http://example.org/data#Mr_MacDougal> .
+
+<http://example.org/data#Angus_MacDougal> 
+    rdfs:label "Angus_MacDougal";
+    foaf:gender "male"@en;
+    dbo:parent <http://example.org/data#Mr_MacDougal>;
+    dbo:parent <http://example.org/data#Mrs_MacDougal>;
+    dbo:brother <http://example.org/data#Groundskeeper_Willie> .
+
+<http://example.org/data#Gary_Chalmers> 
+    rdfs:label "Gary_Chalmers";
+    foaf:gender "male"@en;
+    dbo:spouse <http://example.org/data#Rosemary_Chalmers>;
+    dbo:sister <http://example.org/data#Muriel_Chalmers> .
+
+<http://example.org/data#Rosemary_Chalmers> 
+    rdfs:label "Rosemary_Chalmers";
+    foaf:gender "female"@en;
+    dbo:spouse <http://example.org/data#Rosemary_Chalmers>;
+
+<http://example.org/data#Muriel_Chalmers> 
+    rdfs:label "Muriel_Chalmers";
+    foaf:gender "female"@en;
+    dbo:brother <http://example.org/data#Gary_Chalmers> .
+
+<http://example.org/data#Doris_Freedman> 
+    rdfs:label "Doris_Freedman";
+    foaf:gender "female"@en;
+    dbo:spouse <http://example.org/data#Richard_Freedman>;
+    dbo:child <http://example.org/data#Jeremy_Freedman> .
+
+<http://example.org/data#Richard_Freedman> 
+    rdfs:label "Richard_Freedman";
+    foaf:gender "male"@en;
+    dbo:spouse <http://example.org/data#Doris_Freedman> .
+
+<http://example.org/data#Jeremy_Freedman> 
+    rdfs:label "Jeremy_Freedman";
+    foaf:gender "male"@en;
+    dbo:parent <http://example.org/data#Doris_Freedman> .
+
+<http://example.org/data#Otto_Mann> 
+    rdfs:label "Otto_Mann";
+    foaf:gender "male"@en;
+    dbo:parent <http://example.org/data#Admiral_Mann>;
+    dbo:parent <http://example.org/data#Mrs_Mann> .
+
+<http://example.org/data#Admiral_Mann> 
+    rdfs:label "Admiral_Mann";
+    foaf:gender "male"@en;
+    dbo:child <http://example.org/data#Otto_Mann>;
+    dbo:spouse <http://example.org/data#Mrs_Mann> .
+
+<http://example.org/data#Mrs_Mann> 
+    rdfs:label "Mrs_Mann";
+    foaf:gender "female"@en;
+    dbo:child <http://example.org/data#Otto_Mann>;
+    dbo:spouse <http://example.org/data#Admiral_Mann> .
+
+<http://example.org/data#Waylon_Smithers_Jr> 
+    rdfs:label "Waylon_Smithers_Jr";
+    foaf:gender "male"@en;
+    dbo:parent <http://example.org/data#Waylon_Smithers_Sr>;
+    dbo:parent <http://example.org/data#Mrs_Smithers> .
+
+<http://example.org/data#Waylon_Smithers_Sr> 
+    rdfs:label "Waylon_Smithers_Sr";
+    foaf:gender "male"@en;
+    dbo:child <http://example.org/data#Waylon_Smithers_Jr>;
+    dbo:spouse <http://example.org/data#Mrs_Smithers> .
+
+<http://example.org/data#Mrs_Smithers> 
+    rdfs:label "Mrs_Smithers";
+    foaf:gender "female"@en;
+    dbo:child <http://example.org/data#Waylon_Smithers_Jr>;
+    dbo:spouse <http://example.org/data#Waylon_Smithers_Sr> .
+
+<http://example.org/data#Robert_Terwilliger> 
+    rdfs:label "Robert_Terwilliger";
+    foaf:gender "male"@en;
+    dbo:parent <http://example.org/data#Dame_Judith_Underdunk>;
+    dbo:parent <http://example.org/data#Robert_Terwilliger_Sr>;
+    dbo:brother <http://example.org/data#Cecil_Terwilliger>;
+    dbo:spouse <http://example.org/data#Francesca_Terwilliger>;
+    dbo:spouse <http://example.org/data#Selma_Bouvier>;
+    dbo:child <http://example.org/data#Gino_Terwilliger> . 
+
+<http://example.org/data#Cecil_Terwilliger> 
+    rdfs:label "Cecil_Terwilliger";
+    foaf:gender "male"@en;
+    dbo:parent <http://example.org/data#Dame_Judith_Underdunk>;
+    dbo:parent <http://example.org/data#Robert_Terwilliger_Sr>;
+    dbo:brother <http://example.org/data#Robert_Terwilliger>;
+    dbo:child <http://example.org/data#Neil_Terwilliger> . 
+
+<http://example.org/data#Dame_Judith_Underdunk> 
+    rdfs:label "Dame_Judith_Underdunk";
+    foaf:gender "female"@en;
+    dbo:child <http://example.org/data#Robert_Terwilliger>;
+    dbo:child <http://example.org/data#Cecil_Terwilliger>;
+    dbo:spouse <http://example.org/data#Robert_Terwilliger_Sr> .
+
+<http://example.org/data#Robert_Terwilliger_Sr> 
+    rdfs:label "Robert_Terwilliger_Sr";
+    foaf:gender "male"@en;
+    dbo:child <http://example.org/data#Robert_Terwilliger>;
+    dbo:child <http://example.org/data#Cecil_Terwilliger>;
+    dbo:spouse <http://example.org/data#Dame_Judith_Underdunk> .
+
+<http://example.org/data#Francesca_Terwilliger> 
+    rdfs:label "Francesca_Terwilliger";
+    foaf:gender "female"@en;
+    dbo:child <http://example.org/data#Gino_Terwilliger>;
+    dbo:spouse <http://example.org/data#Robert_Terwilliger> .
+
+<http://example.org/data#Gino_Terwilliger> 
+    rdfs:label "Gino_Terwilliger";
+    foaf:gender "male"@en;
+    dbo:parent <http://example.org/data#Francesca_Terwilliger>;
+    dbo:parent <http://example.org/data#Robert_Terwilliger>;
+    dbo:grandparent <http://example.org/data#Dame_Judith_Underdunk>;
+    dbo:grandparent <http://example.org/data#Robert_Terwilliger_Sr> .
+
+<http://example.org/data#Melvin_Van_Horne> 
+    rdfs:label "Melvin_Van_Horne";
+    foaf:gender "male"@en;
+    dbo:child <http://example.org/data#Warren_Van_Horne>;
+    dbo:parent <http://example.org/data#Norman_Van_Horne>;
+    dbo:parent <http://example.org/data#Lucille_Van_Horne> .
+
+<http://example.org/data#Warren_Van_Horne> 
+    rdfs:label "Warren_Van_Horne";
+    foaf:gender "male"@en;
+    dbo:parent <http://example.org/data#Melvin_Van_Horne>;
+    dbo:grandparent <http://example.org/data#Norman_Van_Horne>;
+    dbo:grandparent <http://example.org/data#Lucille_Van_Horne> .
+
+<http://example.org/data#Norman_Van_Horne> 
+    rdfs:label "Norman_Van_Horne";
+    foaf:gender "male"@en;
+    dbo:child <http://example.org/data#Melvin_Van_Horne>;
+    dbo:spouse <http://example.org/data#Lucille_Van_Horne> .
+
+<http://example.org/data#Lucille_Van_Horne> 
+    rdfs:label "Lucille_Van_Horne";
+    foaf:gender "female"@en;
+    dbo:child <http://example.org/data#Melvin_Van_Horne>;
+    dbo:spouse <http://example.org/data#Norman_Van_Horne> .
+
+<http://example.org/data#Joe_Quimby> 
+    rdfs:label "Joe_Quimby";
+    foaf:gender "male"@en;
+    dbo:parent <http://example.org/data#Joe_Quimby_Sr>;
+    dbo:parent <http://example.org/data#Rose_Quimby>;
+    dbo:brother <http://example.org/data#Clovis_Quimby>;
+    dbo:child <http://example.org/data#Joe_Quimby_Daughter_1>;
+    dbo:child <http://example.org/data#Joe_Quimby_Son_1>;
+    dbo:child <http://example.org/data#Joe_Quimby_Son_2>;
+    dbo:child <http://example.org/data#Joey_Quimby>;
+    dbo:spouse <http://example.org/data#Martha_Quimby> .
+
+<http://example.org/data#Martha_Quimby> 
+    rdfs:label "Martha_Quimby";
+    foaf:gender "female"@en;
+    dbo:child <http://example.org/data#Joey_Quimby>;
+    dbo:child <http://example.org/data#Joe_Quimby_Daughter_1>;
+    dbo:child <http://example.org/data#Joe_Quimby_Son_1>;
+    dbo:child <http://example.org/data#Joe_Quimby_Son_2>;
+    dbo:spouse <http://example.org/data#Joe_Quimby> .
+
+<http://example.org/data#Clovis_Quimby> 
+    rdfs:label "Clovis_Quimby";
+    foaf:gender "male"@en;
+    dbo:parent <http://example.org/data#Joe_Quimby_Sr>;
+    dbo:parent <http://example.org/data#Rose_Quimby>;
+    dbo:brother <http://example.org/data#Joe_Quimby>;
+    dbo:child <http://example.org/data#Freddy_Quimby> .
+
+<http://example.org/data#Joe_Quimby_Sr> 
+    rdfs:label "Joe_Quimby_Sr";
+    foaf:gender "male"@en;
+    dbo:child <http://example.org/data#Clovis_Quimby>;
+    dbo:child <http://example.org/data#Joe_Quimby>;
+    dbo:spouse <http://example.org/data#Rose_Quimby> .
+
+<http://example.org/data#Freddy_Quimby> 
+    rdfs:label "Freddy_Quimby";
+    foaf:gender "male"@en;
+    dbo:grandparent <http://example.org/data#Joe_Quimby_Sr>;
+    dbo:grandparent <http://example.org/data#Rose_Quimby>;
+    dbo:parent <http://example.org/data#Clovis_Quimby> .
+
+<http://example.org/data#Rose_Quimby> 
+    rdfs:label "Rose_Quimby";
+    foaf:gender "female"@en;
+    dbo:child <http://example.org/data#Clovis_Quimby>;
+    dbo:child <http://example.org/data#Joe_Quimby>;
+    dbo:spouse <http://example.org/data#Rose_Quimby> .
+
+<http://example.org/data#Joe_Quimby_Daughter_1> 
+    rdfs:label "Joe_Quimby_Daughter_1";
+    foaf:gender "female"@en;
+    dbo:parent <http://example.org/data#Joe_Quimby>;
+    dbo:parent <http://example.org/data#Martha_Quimby>;
+    dbo:grandparent <http://example.org/data#Joe_Quimby_Sr>;
+    dbo:grandparent <http://example.org/data#Rose_Quimby>;
+    dbo:brother <http://example.org/data#Joe_Quimby_Son_1>;
+    dbo:brother <http://example.org/data#Joe_Quimby_Son_2>;
+    dbo:brother <http://example.org/data#Joey_Quimby> .
+
+<http://example.org/data#Joe_Quimby_Son_1> 
+    rdfs:label "Joe_Quimby_Son_1";
+    foaf:gender "male"@en;
+    dbo:parent <http://example.org/data#Joe_Quimby>;
+    dbo:parent <http://example.org/data#Martha_Quimby>;
+    dbo:grandparent <http://example.org/data#Joe_Quimby_Sr>;
+    dbo:grandparent <http://example.org/data#Rose_Quimby>;
+    dbo:sister <http://example.org/data#Joe_Quimby_Daughter_1>;
+    dbo:brother <http://example.org/data#Joe_Quimby_Son_2>;
+    dbo:brother <http://example.org/data#Joey_Quimby> .
+
+<http://example.org/data#Joe_Quimby_Son_2> 
+    rdfs:label "Joe_Quimby_Son_2";
+    foaf:gender "male"@en;
+    dbo:parent <http://example.org/data#Joe_Quimby>;
+    dbo:parent <http://example.org/data#Martha_Quimby>;
+    dbo:grandparent <http://example.org/data#Joe_Quimby_Sr>;
+    dbo:grandparent <http://example.org/data#Rose_Quimby>;
+    dbo:sister <http://example.org/data#Joe_Quimby_Daughter_1>;
+    dbo:brother <http://example.org/data#Joe_Quimby_Son_1>;
+    dbo:brother <http://example.org/data#Joey_Quimby> .
+
+<http://example.org/data#Joey_Quimby> 
+    rdfs:label "Joey_Quimby";
+    foaf:gender "male"@en;
+    dbo:parent <http://example.org/data#Joe_Quimby>;
+    dbo:parent <http://example.org/data#Martha_Quimby>;
+    dbo:grandparent <http://example.org/data#Joe_Quimby_Sr>;
+    dbo:grandparent <http://example.org/data#Rose_Quimby>;
+    dbo:sister <http://example.org/data#Joe_Quimby_Daughter_1>;
+    dbo:brother <http://example.org/data#Joe_Quimby_Son_1>;
+    dbo:brother <http://example.org/data#Joe_Quimby_Son_2> .
+
+<http://example.org/data#Janey_Powell> 
+    rdfs:label "Janey_Powell";
+    foaf:gender "female"@en;
+    dbo:parent <http://example.org/data#Mr_Powell>;
+    dbo:parent <http://example.org/data#Mrs_Powell> .
+
+<http://example.org/data#Mr_Powell> 
+    rdfs:label "Mr_Powell";
+    foaf:gender "male"@en;
+    dbo:child <http://example.org/data#Janey_Powell>;
+    dbo:spouse <http://example.org/data#Mrs_Powell> .
+
+<http://example.org/data#Mrs_Powell> 
+    rdfs:label "Mrs_Powell";
+    foaf:gender "female"@en;
+    dbo:child <http://example.org/data#Janey_Powell>;
+    dbo:spouse <http://example.org/data#Mr_Powell> .
+
+<http://example.org/data#Sherri_Mackleberry> 
+    rdfs:label "Sherri_Mackleberry";
+    foaf:gender "female"@en;
+    dbo:sister <http://example.org/data#Terri_Mackleberry>;
+    dbo:brother <http://example.org/data#Jerry_Mackleberry>;
+    dbo:parent <http://example.org/data#Jerri_Mackleberry>;
+    dbo:parent <http://example.org/data#Barry_Mackleberry>;
+    dbo:grandparent <http://example.org/data#Sherri_and_Terri_Grandmother> .
+
+<http://example.org/data#Terri_Mackleberry> 
+    rdfs:label "Terri_Mackleberry";
+    foaf:gender "female"@en;
+    dbo:sister <http://example.org/data#Sherri_Mackleberry>;
+    dbo:brother <http://example.org/data#Jerry_Mackleberry>;
+    dbo:parent <http://example.org/data#Jerri_Mackleberry>;
+    dbo:parent <http://example.org/data#Barry_Mackleberry>;
+    dbo:grandparent <http://example.org/data#Sherri_and_Terri_Grandmother> .
+
+<http://example.org/data#Jerry_Mackleberry> 
+    rdfs:label "Jerry_Mackleberry";
+    foaf:gender "male"@en;
+    dbo:sister <http://example.org/data#Sherri_Mackleberry>;
+    dbo:sister <http://example.org/data#Terri_Mackleberry>;
+    dbo:parent <http://example.org/data#Jerri_Mackleberry>;
+    dbo:parent <http://example.org/data#Barry_Mackleberry>;
+    dbo:grandparent <http://example.org/data#Sherri_and_Terri_Grandmother> .
+
+<http://example.org/data#Jerri_Mackleberry> 
+    rdfs:label "Jerri_Mackleberry";
+    foaf:gender "female"@en;
+    dbo:child <http://example.org/data#Terri_Mackleberry>;
+    dbo:child <http://example.org/data#Sherri_Mackleberry>;
+    dbo:child <http://example.org/data#Jerry_Mackleberry>;
+    dbo:parent <http://example.org/data#Sherri_and_Terri_Grandmother>;
+    dbo:spouse <http://example.org/data#Barry_Mackleberry> .
+
+<http://example.org/data#Barry_Mackleberry> 
+    rdfs:label "Barry_Mackleberry";
+    foaf:gender "male"@en;
+    dbo:child <http://example.org/data#Terri_Mackleberry>;
+    dbo:child <http://example.org/data#Sherri_Mackleberry>;
+    dbo:child <http://example.org/data#Jerry_Mackleberry>;
+    dbo:spouse <http://example.org/data#Jerri_Mackleberry> .
+
+<http://example.org/data#Sherri_and_Terri_Grandmother> 
+    rdfs:label "Sherri_and_Terri_Grandmother";
+    foaf:gender "female"@en;
+    dbo:child <http://example.org/data#Jerri_Mackleberry> .
+
+<http://example.org/data#Cletus_Spuckler> 
+    rdfs:label "Cletus_Spuckler";
+    foaf:gender "male"@en;
+    dbo:child <http://example.org/data#Brittany_Spuckler>;
+    dbo:child <http://example.org/data#Cassidy_Spuckler>;
+    dbo:child <http://example.org/data#Chloe_Spuckler>;
+    dbo:child <http://example.org/data#Cody_Spuckler>;
+    dbo:child <http://example.org/data#Dermott_Spuckler>;
+    dbo:child <http://example.org/data#Dylan_Spuckler>;
+    dbo:child <http://example.org/data#Heather_Spuckler>;
+    dbo:child <http://example.org/data#Hunter_Spuckler>;
+    dbo:child <http://example.org/data#Ian_Spuckler>;
+    dbo:child <http://example.org/data#Jordan_Spuckler>;
+    dbo:child <http://example.org/data#Katlin_Spuckler>;
+    dbo:child <http://example.org/data#Kendall_Spuckler>;
+    dbo:child <http://example.org/data#Kevin_Spuckler>;
+    dbo:child <http://example.org/data#Kira_Spuckler>;
+    dbo:child <http://example.org/data#Lauren_Spuckler>;
+    dbo:child <http://example.org/data#Morgan_Spuckler>;
+    dbo:child <http://example.org/data#Max_Spuckler>;
+    dbo:child <http://example.org/data#Noah_Spuckler>;
+    dbo:child <http://example.org/data#Phil_Spuckler>;
+    dbo:child <http://example.org/data#Q-Bert_Spuckler>;
+    dbo:child <http://example.org/data#Rumor_Spuckler>;
+    dbo:child <http://example.org/data#Sascha_Spuckler>;
+    dbo:child <http://example.org/data#Scout_Spuckler>;
+    dbo:child <http://example.org/data#Taylor_Spuckler>;
+    dbo:child <http://example.org/data#Tiffany_Spuckler>;
+    dbo:child <http://example.org/data#Wesley_Spuckler>;
+    dbo:child <http://example.org/data#Zoe_Spuckler>;
+    dbo:child <http://example.org/data#Gummy_Sue_Spuckler>;
+    dbo:child <http://example.org/data#Rubella_Scabies_Spuckler>;
+    dbo:spouse <http://example.org/data#Brandine_Spuckler>;
+    dbo:parent  <http://example.org/data#Maw_Spuckler>;
+    dbo:parent  <http://example.org/data#Pete_Spuckler> .
+
+<http://example.org/data#Maw_Spuckler> 
+    rdfs:label "Maw_Spuckler";
+    foaf:gender "female"@en;
+    dbo:child <http://example.org/data#Cletus_Spuckler>;
+    dbo:spouse <http://example.org/data#Pete_Spuckler> .
+
+<http://example.org/data#Pete_Spuckler> 
+    rdfs:label "Pete_Spuckler";
+    foaf:gender "male"@en;
+    dbo:child <http://example.org/data#Cletus_Spuckler>;
+    dbo:spouse <http://example.org/data#Pete_Spuckler> .
+
+<http://example.org/data#Brandine_Spuckler> 
+    rdfs:label "Brandine_Spuckler";
+    foaf:gender "female"@en;
+    dbo:child <http://example.org/data#Brittany_Spuckler>;
+    dbo:child <http://example.org/data#Cassidy_Spuckler>;
+    dbo:child <http://example.org/data#Chloe_Spuckler>;
+    dbo:child <http://example.org/data#Cody_Spuckler>;
+    dbo:child <http://example.org/data#Dermott_Spuckler>;
+    dbo:child <http://example.org/data#Dylan_Spuckler>;
+    dbo:child <http://example.org/data#Heather_Spuckler>;
+    dbo:child <http://example.org/data#Hunter_Spuckler>;
+    dbo:child <http://example.org/data#Ian_Spuckler>;
+    dbo:child <http://example.org/data#Jordan_Spuckler>;
+    dbo:child <http://example.org/data#Katlin_Spuckler>;
+    dbo:child <http://example.org/data#Kendall_Spuckler>;
+    dbo:child <http://example.org/data#Kevin_Spuckler>;
+    dbo:child <http://example.org/data#Kira_Spuckler>;
+    dbo:child <http://example.org/data#Lauren_Spuckler>;
+    dbo:child <http://example.org/data#Morgan_Spuckler>;
+    dbo:child <http://example.org/data#Max_Spuckler>;
+    dbo:child <http://example.org/data#Noah_Spuckler>;
+    dbo:child <http://example.org/data#Phil_Spuckler>;
+    dbo:child <http://example.org/data#Q-Bert_Spuckler>;
+    dbo:child <http://example.org/data#Rumor_Spuckler>;
+    dbo:child <http://example.org/data#Sascha_Spuckler>;
+    dbo:child <http://example.org/data#Scout_Spuckler>;
+    dbo:child <http://example.org/data#Taylor_Spuckler>;
+    dbo:child <http://example.org/data#Tiffany_Spuckler>;
+    dbo:child <http://example.org/data#Wesley_Spuckler>;
+    dbo:child <http://example.org/data#Zoe_Spuckler>;
+    dbo:child <http://example.org/data#Gummy_Sue_Spuckler>;
+    dbo:child <http://example.org/data#Rubella_Scabies_Spuckler>;
+    dbo:spouse <http://example.org/data#Cletus_Spuckler> .
+
+
+<http://example.org/data#Brittany_Spuckler> 
+    rdfs:label "Brittany_Spuckler";
+    foaf:gender "female"@en;
+    dbo:sister <http://example.org/data#Cassidy_Spuckler>;
+    dbo:sister <http://example.org/data#Chloe_Spuckler>;
+    dbo:brother <http://example.org/data#Cody_Spuckler>;
+    dbo:brother <http://example.org/data#Dermott_Spuckler>;
+    dbo:brother <http://example.org/data#Dylan_Spuckler>;
+    dbo:sister <http://example.org/data#Heather_Spuckler>;
+    dbo:brother <http://example.org/data#Hunter_Spuckler>;
+    dbo:brother <http://example.org/data#Ian_Spuckler>;
+    dbo:brother <http://example.org/data#Jordan_Spuckler>;
+    dbo:sister <http://example.org/data#Katlin_Spuckler>;
+    dbo:sister <http://example.org/data#Kendall_Spuckler>;
+    dbo:brother <http://example.org/data#Kevin_Spuckler>;
+    dbo:sister <http://example.org/data#Kira_Spuckler>;
+    dbo:sister <http://example.org/data#Lauren_Spuckler>;
+    dbo:brother <http://example.org/data#Morgan_Spuckler>;
+    dbo:brother <http://example.org/data#Max_Spuckler>;
+    dbo:brother <http://example.org/data#Noah_Spuckler>;
+    dbo:brother <http://example.org/data#Phil_Spuckler>;
+    dbo:brother <http://example.org/data#Q-Bert_Spuckler>;
+    dbo:brother <http://example.org/data#Rumor_Spuckler>;
+    dbo:sister <http://example.org/data#Sascha_Spuckler>;
+    dbo:sister <http://example.org/data#Scout_Spuckler>;
+    dbo:brother <http://example.org/data#Taylor_Spuckler>;
+    dbo:sister <http://example.org/data#Tiffany_Spuckler>;
+    dbo:brother <http://example.org/data#Wesley_Spuckler>;
+    dbo:sister <http://example.org/data#Zoe_Spuckler>;
+    dbo:sister <http://example.org/data#Gummy_Sue_Spuckler>;
+    dbo:sister <http://example.org/data#Rubella_Scabies_Spuckler>;
+    dbo:parent <http://example.org/data#Cletus_Spuckler>;
+    dbo:parent <http://example.org/data#Brandine_Spuckler>;
+    dbo:grandparent <http://example.org/data#Maw_Spuckler>;
+    dbo:grandparent <http://example.org/data#Pete_Spuckler> .
+
+<http://example.org/data#Cassidy_Spuckler> 
+    rdfs:label "Cassidy_Spuckler";
+    foaf:gender "female"@en;
+    dbo:sister <http://example.org/data#Brittany_Spuckler>;
+    dbo:sister <http://example.org/data#Chloe_Spuckler>;
+    dbo:brother <http://example.org/data#Cody_Spuckler>;
+    dbo:brother <http://example.org/data#Dermott_Spuckler>;
+    dbo:brother <http://example.org/data#Dylan_Spuckler>;
+    dbo:sister <http://example.org/data#Heather_Spuckler>;
+    dbo:brother <http://example.org/data#Hunter_Spuckler>;
+    dbo:brother <http://example.org/data#Ian_Spuckler>;
+    dbo:brother <http://example.org/data#Jordan_Spuckler>;
+    dbo:sister <http://example.org/data#Katlin_Spuckler>;
+    dbo:sister <http://example.org/data#Kendall_Spuckler>;
+    dbo:brother <http://example.org/data#Kevin_Spuckler>;
+    dbo:sister <http://example.org/data#Kira_Spuckler>;
+    dbo:sister <http://example.org/data#Lauren_Spuckler>;
+    dbo:brother <http://example.org/data#Morgan_Spuckler>;
+    dbo:brother <http://example.org/data#Max_Spuckler>;
+    dbo:brother <http://example.org/data#Noah_Spuckler>;
+    dbo:brother <http://example.org/data#Phil_Spuckler>;
+    dbo:brother <http://example.org/data#Q-Bert_Spuckler>;
+    dbo:brother <http://example.org/data#Rumor_Spuckler>;
+    dbo:sister <http://example.org/data#Sascha_Spuckler>;
+    dbo:sister <http://example.org/data#Scout_Spuckler>;
+    dbo:brother <http://example.org/data#Taylor_Spuckler>;
+    dbo:sister <http://example.org/data#Tiffany_Spuckler>;
+    dbo:brother <http://example.org/data#Wesley_Spuckler>;
+    dbo:sister <http://example.org/data#Zoe_Spuckler>;
+    dbo:sister <http://example.org/data#Gummy_Sue_Spuckler>;
+    dbo:sister <http://example.org/data#Rubella_Scabies_Spuckler>;
+    dbo:parent <http://example.org/data#Cletus_Spuckler>;
+    dbo:parent <http://example.org/data#Brandine_Spuckler>;
+    dbo:grandparent <http://example.org/data#Maw_Spuckler>;
+    dbo:grandparent <http://example.org/data#Pete_Spuckler> .
+
+<http://example.org/data#Chloe_Spuckler> 
+    rdfs:label "Chloe_Spuckler";
+    foaf:gender "female"@en;
+    dbo:sister <http://example.org/data#Brittany_Spuckler>;
+    dbo:sister <http://example.org/data#Cassidy_Spuckler>;
+    dbo:brother <http://example.org/data#Cody_Spuckler>;
+    dbo:brother <http://example.org/data#Dermott_Spuckler>;
+    dbo:brother <http://example.org/data#Dylan_Spuckler>;
+    dbo:sister <http://example.org/data#Heather_Spuckler>;
+    dbo:brother <http://example.org/data#Hunter_Spuckler>;
+    dbo:brother <http://example.org/data#Ian_Spuckler>;
+    dbo:brother <http://example.org/data#Jordan_Spuckler>;
+    dbo:sister <http://example.org/data#Katlin_Spuckler>;
+    dbo:sister <http://example.org/data#Kendall_Spuckler>;
+    dbo:brother <http://example.org/data#Kevin_Spuckler>;
+    dbo:sister <http://example.org/data#Kira_Spuckler>;
+    dbo:sister <http://example.org/data#Lauren_Spuckler>;
+    dbo:brother <http://example.org/data#Morgan_Spuckler>;
+    dbo:brother <http://example.org/data#Max_Spuckler>;
+    dbo:brother <http://example.org/data#Noah_Spuckler>;
+    dbo:brother <http://example.org/data#Phil_Spuckler>;
+    dbo:brother <http://example.org/data#Q-Bert_Spuckler>;
+    dbo:brother <http://example.org/data#Rumor_Spuckler>;
+    dbo:sister <http://example.org/data#Sascha_Spuckler>;
+    dbo:sister <http://example.org/data#Scout_Spuckler>;
+    dbo:brother <http://example.org/data#Taylor_Spuckler>;
+    dbo:sister <http://example.org/data#Tiffany_Spuckler>;
+    dbo:brother <http://example.org/data#Wesley_Spuckler>;
+    dbo:sister <http://example.org/data#Zoe_Spuckler>;
+    dbo:sister <http://example.org/data#Gummy_Sue_Spuckler>;
+    dbo:sister <http://example.org/data#Rubella_Scabies_Spuckler>;
+    dbo:parent <http://example.org/data#Cletus_Spuckler>;
+    dbo:parent <http://example.org/data#Brandine_Spuckler>;
+    dbo:grandparent <http://example.org/data#Maw_Spuckler>;
+    dbo:grandparent <http://example.org/data#Pete_Spuckler> .
+
+<http://example.org/data#Cody_Spuckler> 
+    rdfs:label "Cody_Spuckler";
+    foaf:gender "male"@en;
+    dbo:sister <http://example.org/data#Brittany_Spuckler>;
+    dbo:sister <http://example.org/data#Cassidy_Spuckler>;
+    dbo:sister <http://example.org/data#Chloe_Spuckler>;
+    dbo:brother <http://example.org/data#Dermott_Spuckler>;
+    dbo:brother <http://example.org/data#Dylan_Spuckler>;
+    dbo:sister <http://example.org/data#Heather_Spuckler>;
+    dbo:brother <http://example.org/data#Hunter_Spuckler>;
+    dbo:brother <http://example.org/data#Ian_Spuckler>;
+    dbo:brother <http://example.org/data#Jordan_Spuckler>;
+    dbo:sister <http://example.org/data#Katlin_Spuckler>;
+    dbo:sister <http://example.org/data#Kendall_Spuckler>;
+    dbo:brother <http://example.org/data#Kevin_Spuckler>;
+    dbo:sister <http://example.org/data#Kira_Spuckler>;
+    dbo:sister <http://example.org/data#Lauren_Spuckler>;
+    dbo:brother <http://example.org/data#Morgan_Spuckler>;
+    dbo:brother <http://example.org/data#Max_Spuckler>;
+    dbo:brother <http://example.org/data#Noah_Spuckler>;
+    dbo:brother <http://example.org/data#Phil_Spuckler>;
+    dbo:brother <http://example.org/data#Q-Bert_Spuckler>;
+    dbo:brother <http://example.org/data#Rumor_Spuckler>;
+    dbo:sister <http://example.org/data#Sascha_Spuckler>;
+    dbo:sister <http://example.org/data#Scout_Spuckler>;
+    dbo:brother <http://example.org/data#Taylor_Spuckler>;
+    dbo:sister <http://example.org/data#Tiffany_Spuckler>;
+    dbo:brother <http://example.org/data#Wesley_Spuckler>;
+    dbo:sister <http://example.org/data#Zoe_Spuckler>;
+    dbo:sister <http://example.org/data#Gummy_Sue_Spuckler>;
+    dbo:sister <http://example.org/data#Rubella_Scabies_Spuckler>;
+    dbo:parent <http://example.org/data#Cletus_Spuckler>;
+    dbo:parent <http://example.org/data#Brandine_Spuckler>;
+    dbo:grandparent <http://example.org/data#Maw_Spuckler>;
+    dbo:grandparent <http://example.org/data#Pete_Spuckler> .
+
+<http://example.org/data#Dermott_Spuckler> 
+    rdfs:label "Dermott_Spuckler";
+    foaf:gender "male"@en;
+    dbo:sister <http://example.org/data#Brittany_Spuckler>;
+    dbo:sister <http://example.org/data#Cassidy_Spuckler>;
+    dbo:sister <http://example.org/data#Chloe_Spuckler>;
+    dbo:brother <http://example.org/data#Cody_Spuckler>;
+    dbo:brother <http://example.org/data#Dylan_Spuckler>;
+    dbo:sister <http://example.org/data#Heather_Spuckler>;
+    dbo:brother <http://example.org/data#Hunter_Spuckler>;
+    dbo:brother <http://example.org/data#Ian_Spuckler>;
+    dbo:brother <http://example.org/data#Jordan_Spuckler>;
+    dbo:sister <http://example.org/data#Katlin_Spuckler>;
+    dbo:sister <http://example.org/data#Kendall_Spuckler>;
+    dbo:brother <http://example.org/data#Kevin_Spuckler>;
+    dbo:sister <http://example.org/data#Kira_Spuckler>;
+    dbo:sister <http://example.org/data#Lauren_Spuckler>;
+    dbo:brother <http://example.org/data#Morgan_Spuckler>;
+    dbo:brother <http://example.org/data#Max_Spuckler>;
+    dbo:brother <http://example.org/data#Noah_Spuckler>;
+    dbo:brother <http://example.org/data#Phil_Spuckler>;
+    dbo:brother <http://example.org/data#Q-Bert_Spuckler>;
+    dbo:brother <http://example.org/data#Rumor_Spuckler>;
+    dbo:sister <http://example.org/data#Sascha_Spuckler>;
+    dbo:sister <http://example.org/data#Scout_Spuckler>;
+    dbo:brother <http://example.org/data#Taylor_Spuckler>;
+    dbo:sister <http://example.org/data#Tiffany_Spuckler>;
+    dbo:brother <http://example.org/data#Wesley_Spuckler>;
+    dbo:sister <http://example.org/data#Zoe_Spuckler>;
+    dbo:sister <http://example.org/data#Gummy_Sue_Spuckler>;
+    dbo:sister <http://example.org/data#Rubella_Scabies_Spuckler>;
+    dbo:parent <http://example.org/data#Cletus_Spuckler>;
+    dbo:parent <http://example.org/data#Brandine_Spuckler>;
+    dbo:grandparent <http://example.org/data#Maw_Spuckler>;
+    dbo:grandparent <http://example.org/data#Pete_Spuckler> .
+
+<http://example.org/data#Dylan_Spuckler> 
+    rdfs:label "Dylan_Spuckler";
+    foaf:gender "male"@en;
+    dbo:sister <http://example.org/data#Brittany_Spuckler>;
+    dbo:sister <http://example.org/data#Cassidy_Spuckler>;
+    dbo:sister <http://example.org/data#Chloe_Spuckler>;
+    dbo:brother <http://example.org/data#Cody_Spuckler>;
+    dbo:brother <http://example.org/data#Dermott_Spuckler>;
+    dbo:brother <http://example.org/data#Dylan_Spuckler>;
+    dbo:sister <http://example.org/data#Heather_Spuckler>;
+    dbo:brother <http://example.org/data#Hunter_Spuckler>;
+    dbo:brother <http://example.org/data#Ian_Spuckler>;
+    dbo:brother <http://example.org/data#Jordan_Spuckler>;
+    dbo:sister <http://example.org/data#Katlin_Spuckler>;
+    dbo:sister <http://example.org/data#Kendall_Spuckler>;
+    dbo:brother <http://example.org/data#Kevin_Spuckler>;
+    dbo:sister <http://example.org/data#Kira_Spuckler>;
+    dbo:sister <http://example.org/data#Lauren_Spuckler>;
+    dbo:brother <http://example.org/data#Morgan_Spuckler>;
+    dbo:brother <http://example.org/data#Max_Spuckler>;
+    dbo:brother <http://example.org/data#Noah_Spuckler>;
+    dbo:brother <http://example.org/data#Phil_Spuckler>;
+    dbo:brother <http://example.org/data#Q-Bert_Spuckler>;
+    dbo:brother <http://example.org/data#Rumor_Spuckler>;
+    dbo:sister <http://example.org/data#Sascha_Spuckler>;
+    dbo:sister <http://example.org/data#Scout_Spuckler>;
+    dbo:brother <http://example.org/data#Taylor_Spuckler>;
+    dbo:sister <http://example.org/data#Tiffany_Spuckler>;
+    dbo:brother <http://example.org/data#Wesley_Spuckler>;
+    dbo:sister <http://example.org/data#Zoe_Spuckler>;
+    dbo:sister <http://example.org/data#Gummy_Sue_Spuckler>;
+    dbo:sister <http://example.org/data#Rubella_Scabies_Spuckler>;
+    dbo:parent <http://example.org/data#Cletus_Spuckler>;
+    dbo:parent <http://example.org/data#Brandine_Spuckler>;
+    dbo:grandparent <http://example.org/data#Maw_Spuckler>;
+    dbo:grandparent <http://example.org/data#Pete_Spuckler> .
+
+<http://example.org/data#Heather_Spuckler> 
+    rdfs:label "Heather_Spuckler";
+    foaf:gender "female"@en;
+    dbo:sister <http://example.org/data#Brittany_Spuckler>;
+    dbo:sister <http://example.org/data#Cassidy_Spuckler>;
+    dbo:sister <http://example.org/data#Chloe_Spuckler>;
+    dbo:brother <http://example.org/data#Cody_Spuckler>;
+    dbo:brother <http://example.org/data#Dermott_Spuckler>;
+    dbo:brother <http://example.org/data#Dylan_Spuckler>;
+    dbo:brother <http://example.org/data#Hunter_Spuckler>;
+    dbo:brother <http://example.org/data#Ian_Spuckler>;
+    dbo:brother <http://example.org/data#Jordan_Spuckler>;
+    dbo:sister <http://example.org/data#Katlin_Spuckler>;
+    dbo:sister <http://example.org/data#Kendall_Spuckler>;
+    dbo:brother <http://example.org/data#Kevin_Spuckler>;
+    dbo:sister <http://example.org/data#Kira_Spuckler>;
+    dbo:sister <http://example.org/data#Lauren_Spuckler>;
+    dbo:brother <http://example.org/data#Morgan_Spuckler>;
+    dbo:brother <http://example.org/data#Max_Spuckler>;
+    dbo:brother <http://example.org/data#Noah_Spuckler>;
+    dbo:brother <http://example.org/data#Phil_Spuckler>;
+    dbo:brother <http://example.org/data#Q-Bert_Spuckler>;
+    dbo:brother <http://example.org/data#Rumor_Spuckler>;
+    dbo:sister <http://example.org/data#Sascha_Spuckler>;
+    dbo:sister <http://example.org/data#Scout_Spuckler>;
+    dbo:brother <http://example.org/data#Taylor_Spuckler>;
+    dbo:sister <http://example.org/data#Tiffany_Spuckler>;
+    dbo:brother <http://example.org/data#Wesley_Spuckler>;
+    dbo:sister <http://example.org/data#Zoe_Spuckler>;
+    dbo:sister <http://example.org/data#Gummy_Sue_Spuckler>;
+    dbo:sister <http://example.org/data#Rubella_Scabies_Spuckler>;
+    dbo:parent <http://example.org/data#Cletus_Spuckler>;
+    dbo:parent <http://example.org/data#Brandine_Spuckler>;
+    dbo:grandparent <http://example.org/data#Maw_Spuckler>;
+    dbo:grandparent <http://example.org/data#Pete_Spuckler> .
+
+<http://example.org/data#Hunter_Spuckler> 
+    rdfs:label "Hunter_Spuckler";
+    foaf:gender "male"@en;
+    dbo:sister <http://example.org/data#Brittany_Spuckler>;
+    dbo:sister <http://example.org/data#Cassidy_Spuckler>;
+    dbo:sister <http://example.org/data#Chloe_Spuckler>;
+    dbo:brother <http://example.org/data#Cody_Spuckler>;
+    dbo:brother <http://example.org/data#Dermott_Spuckler>;
+    dbo:brother <http://example.org/data#Dylan_Spuckler>;
+    dbo:sister <http://example.org/data#Heather_Spuckler>;
+    dbo:brother <http://example.org/data#Ian_Spuckler>;
+    dbo:brother <http://example.org/data#Jordan_Spuckler>;
+    dbo:sister <http://example.org/data#Katlin_Spuckler>;
+    dbo:sister <http://example.org/data#Kendall_Spuckler>;
+    dbo:brother <http://example.org/data#Kevin_Spuckler>;
+    dbo:sister <http://example.org/data#Kira_Spuckler>;
+    dbo:sister <http://example.org/data#Lauren_Spuckler>;
+    dbo:brother <http://example.org/data#Morgan_Spuckler>;
+    dbo:brother <http://example.org/data#Max_Spuckler>;
+    dbo:brother <http://example.org/data#Noah_Spuckler>;
+    dbo:brother <http://example.org/data#Phil_Spuckler>;
+    dbo:brother <http://example.org/data#Q-Bert_Spuckler>;
+    dbo:brother <http://example.org/data#Rumor_Spuckler>;
+    dbo:sister <http://example.org/data#Sascha_Spuckler>;
+    dbo:sister <http://example.org/data#Scout_Spuckler>;
+    dbo:brother <http://example.org/data#Taylor_Spuckler>;
+    dbo:sister <http://example.org/data#Tiffany_Spuckler>;
+    dbo:brother <http://example.org/data#Wesley_Spuckler>;
+    dbo:sister <http://example.org/data#Zoe_Spuckler>;
+    dbo:sister <http://example.org/data#Gummy_Sue_Spuckler>;
+    dbo:sister <http://example.org/data#Rubella_Scabies_Spuckler>;
+    dbo:parent <http://example.org/data#Cletus_Spuckler>;
+    dbo:parent <http://example.org/data#Brandine_Spuckler>;
+    dbo:grandparent <http://example.org/data#Maw_Spuckler>;
+    dbo:grandparent <http://example.org/data#Pete_Spuckler> .
+
+<http://example.org/data#Ian_Spuckler> 
+    rdfs:label "Ian_Spuckler";
+    foaf:gender "male"@en;
+    dbo:sister <http://example.org/data#Brittany_Spuckler>;
+    dbo:sister <http://example.org/data#Cassidy_Spuckler>;
+    dbo:sister <http://example.org/data#Chloe_Spuckler>;
+    dbo:brother <http://example.org/data#Cody_Spuckler>;
+    dbo:brother <http://example.org/data#Dermott_Spuckler>;
+    dbo:brother <http://example.org/data#Dylan_Spuckler>;
+    dbo:sister <http://example.org/data#Heather_Spuckler>;
+    dbo:brother <http://example.org/data#Hunter_Spuckler>;
+    dbo:brother <http://example.org/data#Jordan_Spuckler>;
+    dbo:sister <http://example.org/data#Katlin_Spuckler>;
+    dbo:sister <http://example.org/data#Kendall_Spuckler>;
+    dbo:brother <http://example.org/data#Kevin_Spuckler>;
+    dbo:sister <http://example.org/data#Kira_Spuckler>;
+    dbo:sister <http://example.org/data#Lauren_Spuckler>;
+    dbo:brother <http://example.org/data#Morgan_Spuckler>;
+    dbo:brother <http://example.org/data#Max_Spuckler>;
+    dbo:brother <http://example.org/data#Noah_Spuckler>;
+    dbo:brother <http://example.org/data#Phil_Spuckler>;
+    dbo:brother <http://example.org/data#Q-Bert_Spuckler>;
+    dbo:brother <http://example.org/data#Rumor_Spuckler>;
+    dbo:sister <http://example.org/data#Sascha_Spuckler>;
+    dbo:sister <http://example.org/data#Scout_Spuckler>;
+    dbo:brother <http://example.org/data#Taylor_Spuckler>;
+    dbo:sister <http://example.org/data#Tiffany_Spuckler>;
+    dbo:brother <http://example.org/data#Wesley_Spuckler>;
+    dbo:sister <http://example.org/data#Zoe_Spuckler>;
+    dbo:sister <http://example.org/data#Gummy_Sue_Spuckler>;
+    dbo:sister <http://example.org/data#Rubella_Scabies_Spuckler>;
+    dbo:parent <http://example.org/data#Cletus_Spuckler>;
+    dbo:parent <http://example.org/data#Brandine_Spuckler>;
+    dbo:grandparent <http://example.org/data#Maw_Spuckler>;
+    dbo:grandparent <http://example.org/data#Pete_Spuckler> .
+
+<http://example.org/data#Jordan_Spuckler> 
+    rdfs:label "Jordan_Spuckler";
+    foaf:gender "male"@en;
+    dbo:sister <http://example.org/data#Brittany_Spuckler>;
+    dbo:sister <http://example.org/data#Cassidy_Spuckler>;
+    dbo:sister <http://example.org/data#Chloe_Spuckler>;
+    dbo:brother <http://example.org/data#Cody_Spuckler>;
+    dbo:brother <http://example.org/data#Dermott_Spuckler>;
+    dbo:brother <http://example.org/data#Dylan_Spuckler>;
+    dbo:sister <http://example.org/data#Heather_Spuckler>;
+    dbo:brother <http://example.org/data#Hunter_Spuckler>;
+    dbo:brother <http://example.org/data#Ian_Spuckler>;
+    dbo:sister <http://example.org/data#Katlin_Spuckler>;
+    dbo:sister <http://example.org/data#Kendall_Spuckler>;
+    dbo:brother <http://example.org/data#Kevin_Spuckler>;
+    dbo:sister <http://example.org/data#Kira_Spuckler>;
+    dbo:sister <http://example.org/data#Lauren_Spuckler>;
+    dbo:brother <http://example.org/data#Morgan_Spuckler>;
+    dbo:brother <http://example.org/data#Max_Spuckler>;
+    dbo:brother <http://example.org/data#Noah_Spuckler>;
+    dbo:brother <http://example.org/data#Phil_Spuckler>;
+    dbo:brother <http://example.org/data#Q-Bert_Spuckler>;
+    dbo:brother <http://example.org/data#Rumor_Spuckler>;
+    dbo:sister <http://example.org/data#Sascha_Spuckler>;
+    dbo:sister <http://example.org/data#Scout_Spuckler>;
+    dbo:brother <http://example.org/data#Taylor_Spuckler>;
+    dbo:sister <http://example.org/data#Tiffany_Spuckler>;
+    dbo:brother <http://example.org/data#Wesley_Spuckler>;
+    dbo:sister <http://example.org/data#Zoe_Spuckler>;
+    dbo:sister <http://example.org/data#Gummy_Sue_Spuckler>;
+    dbo:sister <http://example.org/data#Rubella_Scabies_Spuckler>;
+    dbo:parent <http://example.org/data#Cletus_Spuckler>;
+    dbo:parent <http://example.org/data#Brandine_Spuckler>;
+    dbo:grandparent <http://example.org/data#Maw_Spuckler>;
+    dbo:grandparent <http://example.org/data#Pete_Spuckler> .
+
+<http://example.org/data#Katlin_Spuckler> 
+    rdfs:label "Katlin_Spuckler";
+    foaf:gender "female"@en;
+    dbo:sister <http://example.org/data#Brittany_Spuckler>;
+    dbo:sister <http://example.org/data#Cassidy_Spuckler>;
+    dbo:sister <http://example.org/data#Chloe_Spuckler>;
+    dbo:brother <http://example.org/data#Cody_Spuckler>;
+    dbo:brother <http://example.org/data#Dermott_Spuckler>;
+    dbo:brother <http://example.org/data#Dylan_Spuckler>;
+    dbo:sister <http://example.org/data#Heather_Spuckler>;
+    dbo:brother <http://example.org/data#Hunter_Spuckler>;
+    dbo:brother <http://example.org/data#Ian_Spuckler>;
+    dbo:brother <http://example.org/data#Jordan_Spuckler>;
+    dbo:sister <http://example.org/data#Kendall_Spuckler>;
+    dbo:brother <http://example.org/data#Kevin_Spuckler>;
+    dbo:sister <http://example.org/data#Kira_Spuckler>;
+    dbo:sister <http://example.org/data#Lauren_Spuckler>;
+    dbo:brother <http://example.org/data#Morgan_Spuckler>;
+    dbo:brother <http://example.org/data#Max_Spuckler>;
+    dbo:brother <http://example.org/data#Noah_Spuckler>;
+    dbo:brother <http://example.org/data#Phil_Spuckler>;
+    dbo:brother <http://example.org/data#Q-Bert_Spuckler>;
+    dbo:brother <http://example.org/data#Rumor_Spuckler>;
+    dbo:sister <http://example.org/data#Sascha_Spuckler>;
+    dbo:sister <http://example.org/data#Scout_Spuckler>;
+    dbo:brother <http://example.org/data#Taylor_Spuckler>;
+    dbo:sister <http://example.org/data#Tiffany_Spuckler>;
+    dbo:brother <http://example.org/data#Wesley_Spuckler>;
+    dbo:sister <http://example.org/data#Zoe_Spuckler>;
+    dbo:sister <http://example.org/data#Gummy_Sue_Spuckler>;
+    dbo:sister <http://example.org/data#Rubella_Scabies_Spuckler>;
+    dbo:parent <http://example.org/data#Cletus_Spuckler>;
+    dbo:parent <http://example.org/data#Brandine_Spuckler>;
+    dbo:grandparent <http://example.org/data#Maw_Spuckler>;
+    dbo:grandparent <http://example.org/data#Pete_Spuckler> .
+
+<http://example.org/data#Kendall_Spuckler> 
+    rdfs:label "Kendall_Spuckler";
+    foaf:gender "female"@en;
+    dbo:sister <http://example.org/data#Brittany_Spuckler>;
+    dbo:sister <http://example.org/data#Cassidy_Spuckler>;
+    dbo:sister <http://example.org/data#Chloe_Spuckler>;
+    dbo:brother <http://example.org/data#Cody_Spuckler>;
+    dbo:brother <http://example.org/data#Dermott_Spuckler>;
+    dbo:brother <http://example.org/data#Dylan_Spuckler>;
+    dbo:sister <http://example.org/data#Heather_Spuckler>;
+    dbo:brother <http://example.org/data#Hunter_Spuckler>;
+    dbo:brother <http://example.org/data#Ian_Spuckler>;
+    dbo:brother <http://example.org/data#Jordan_Spuckler>;
+    dbo:sister <http://example.org/data#Katlin_Spuckler>;
+    dbo:brother <http://example.org/data#Kevin_Spuckler>;
+    dbo:sister <http://example.org/data#Kira_Spuckler>;
+    dbo:sister <http://example.org/data#Lauren_Spuckler>;
+    dbo:brother <http://example.org/data#Morgan_Spuckler>;
+    dbo:brother <http://example.org/data#Max_Spuckler>;
+    dbo:brother <http://example.org/data#Noah_Spuckler>;
+    dbo:brother <http://example.org/data#Phil_Spuckler>;
+    dbo:brother <http://example.org/data#Q-Bert_Spuckler>;
+    dbo:brother <http://example.org/data#Rumor_Spuckler>;
+    dbo:sister <http://example.org/data#Sascha_Spuckler>;
+    dbo:sister <http://example.org/data#Scout_Spuckler>;
+    dbo:brother <http://example.org/data#Taylor_Spuckler>;
+    dbo:sister <http://example.org/data#Tiffany_Spuckler>;
+    dbo:brother <http://example.org/data#Wesley_Spuckler>;
+    dbo:sister <http://example.org/data#Zoe_Spuckler>;
+    dbo:sister <http://example.org/data#Gummy_Sue_Spuckler>;
+    dbo:sister <http://example.org/data#Rubella_Scabies_Spuckler>;
+    dbo:parent <http://example.org/data#Cletus_Spuckler>;
+    dbo:parent <http://example.org/data#Brandine_Spuckler>;
+    dbo:grandparent <http://example.org/data#Maw_Spuckler>;
+    dbo:grandparent <http://example.org/data#Pete_Spuckler> .
+
+<http://example.org/data#Kevin_Spuckler> 
+    rdfs:label "Kevin_Spuckler";
+    foaf:gender "male"@en;
+    dbo:sister <http://example.org/data#Brittany_Spuckler>;
+    dbo:sister <http://example.org/data#Cassidy_Spuckler>;
+    dbo:sister <http://example.org/data#Chloe_Spuckler>;
+    dbo:brother <http://example.org/data#Cody_Spuckler>;
+    dbo:brother <http://example.org/data#Dermott_Spuckler>;
+    dbo:brother <http://example.org/data#Dylan_Spuckler>;
+    dbo:sister <http://example.org/data#Heather_Spuckler>;
+    dbo:brother <http://example.org/data#Hunter_Spuckler>;
+    dbo:brother <http://example.org/data#Ian_Spuckler>;
+    dbo:brother <http://example.org/data#Jordan_Spuckler>;
+    dbo:sister <http://example.org/data#Katlin_Spuckler>;
+    dbo:sister <http://example.org/data#Kendall_Spuckler>;
+    dbo:sister <http://example.org/data#Kira_Spuckler>;
+    dbo:sister <http://example.org/data#Lauren_Spuckler>;
+    dbo:brother <http://example.org/data#Morgan_Spuckler>;
+    dbo:brother <http://example.org/data#Max_Spuckler>;
+    dbo:brother <http://example.org/data#Noah_Spuckler>;
+    dbo:brother <http://example.org/data#Phil_Spuckler>;
+    dbo:brother <http://example.org/data#Q-Bert_Spuckler>;
+    dbo:brother <http://example.org/data#Rumor_Spuckler>;
+    dbo:sister <http://example.org/data#Sascha_Spuckler>;
+    dbo:sister <http://example.org/data#Scout_Spuckler>;
+    dbo:brother <http://example.org/data#Taylor_Spuckler>;
+    dbo:sister <http://example.org/data#Tiffany_Spuckler>;
+    dbo:brother <http://example.org/data#Wesley_Spuckler>;
+    dbo:sister <http://example.org/data#Zoe_Spuckler>;
+    dbo:sister <http://example.org/data#Gummy_Sue_Spuckler>;
+    dbo:sister <http://example.org/data#Rubella_Scabies_Spuckler>;
+    dbo:parent <http://example.org/data#Cletus_Spuckler>;
+    dbo:parent <http://example.org/data#Brandine_Spuckler>;
+    dbo:grandparent <http://example.org/data#Maw_Spuckler>;
+    dbo:grandparent <http://example.org/data#Pete_Spuckler> .
+
+<http://example.org/data#Kira_Spuckler> 
+    rdfs:label "Kira_Spuckler";
+    foaf:gender "female"@en;
+    dbo:sister <http://example.org/data#Brittany_Spuckler>;
+    dbo:sister <http://example.org/data#Cassidy_Spuckler>;
+    dbo:sister <http://example.org/data#Chloe_Spuckler>;
+    dbo:brother <http://example.org/data#Cody_Spuckler>;
+    dbo:brother <http://example.org/data#Dermott_Spuckler>;
+    dbo:brother <http://example.org/data#Dylan_Spuckler>;
+    dbo:sister <http://example.org/data#Heather_Spuckler>;
+    dbo:brother <http://example.org/data#Hunter_Spuckler>;
+    dbo:brother <http://example.org/data#Ian_Spuckler>;
+    dbo:brother <http://example.org/data#Jordan_Spuckler>;
+    dbo:sister <http://example.org/data#Katlin_Spuckler>;
+    dbo:sister <http://example.org/data#Kendall_Spuckler>;
+    dbo:brother <http://example.org/data#Kevin_Spuckler>;
+    dbo:sister <http://example.org/data#Lauren_Spuckler>;
+    dbo:brother <http://example.org/data#Morgan_Spuckler>;
+    dbo:brother <http://example.org/data#Max_Spuckler>;
+    dbo:brother <http://example.org/data#Noah_Spuckler>;
+    dbo:brother <http://example.org/data#Phil_Spuckler>;
+    dbo:brother <http://example.org/data#Q-Bert_Spuckler>;
+    dbo:brother <http://example.org/data#Rumor_Spuckler>;
+    dbo:sister <http://example.org/data#Sascha_Spuckler>;
+    dbo:sister <http://example.org/data#Scout_Spuckler>;
+    dbo:brother <http://example.org/data#Taylor_Spuckler>;
+    dbo:sister <http://example.org/data#Tiffany_Spuckler>;
+    dbo:brother <http://example.org/data#Wesley_Spuckler>;
+    dbo:sister <http://example.org/data#Zoe_Spuckler>;
+    dbo:sister <http://example.org/data#Gummy_Sue_Spuckler>;
+    dbo:sister <http://example.org/data#Rubella_Scabies_Spuckler>;
+    dbo:parent <http://example.org/data#Cletus_Spuckler>;
+    dbo:parent <http://example.org/data#Brandine_Spuckler>;
+    dbo:grandparent <http://example.org/data#Maw_Spuckler>;
+    dbo:grandparent <http://example.org/data#Pete_Spuckler> .
+
+<http://example.org/data#Lauren_Spuckler> 
+    rdfs:label "Lauren_Spuckler";
+    foaf:gender "female"@en;
+    dbo:sister <http://example.org/data#Brittany_Spuckler>;
+    dbo:sister <http://example.org/data#Cassidy_Spuckler>;
+    dbo:sister <http://example.org/data#Chloe_Spuckler>;
+    dbo:brother <http://example.org/data#Cody_Spuckler>;
+    dbo:brother <http://example.org/data#Dermott_Spuckler>;
+    dbo:brother <http://example.org/data#Dylan_Spuckler>;
+    dbo:sister <http://example.org/data#Heather_Spuckler>;
+    dbo:brother <http://example.org/data#Hunter_Spuckler>;
+    dbo:brother <http://example.org/data#Ian_Spuckler>;
+    dbo:brother <http://example.org/data#Jordan_Spuckler>;
+    dbo:sister <http://example.org/data#Katlin_Spuckler>;
+    dbo:sister <http://example.org/data#Kendall_Spuckler>;
+    dbo:brother <http://example.org/data#Kevin_Spuckler>;
+    dbo:sister <http://example.org/data#Kira_Spuckler>;
+    dbo:brother <http://example.org/data#Morgan_Spuckler>;
+    dbo:brother <http://example.org/data#Max_Spuckler>;
+    dbo:brother <http://example.org/data#Noah_Spuckler>;
+    dbo:brother <http://example.org/data#Phil_Spuckler>;
+    dbo:brother <http://example.org/data#Q-Bert_Spuckler>;
+    dbo:brother <http://example.org/data#Rumor_Spuckler>;
+    dbo:sister <http://example.org/data#Sascha_Spuckler>;
+    dbo:sister <http://example.org/data#Scout_Spuckler>;
+    dbo:brother <http://example.org/data#Taylor_Spuckler>;
+    dbo:sister <http://example.org/data#Tiffany_Spuckler>;
+    dbo:brother <http://example.org/data#Wesley_Spuckler>;
+    dbo:sister <http://example.org/data#Zoe_Spuckler>;
+    dbo:sister <http://example.org/data#Gummy_Sue_Spuckler>;
+    dbo:sister <http://example.org/data#Rubella_Scabies_Spuckler>;
+    dbo:parent <http://example.org/data#Cletus_Spuckler>;
+    dbo:parent <http://example.org/data#Brandine_Spuckler>;
+    dbo:grandparent <http://example.org/data#Maw_Spuckler>;
+    dbo:grandparent <http://example.org/data#Pete_Spuckler> .
+
+<http://example.org/data#Morgan_Spuckler> 
+    rdfs:label "Morgan_Spuckler";
+    foaf:gender "male"@en;
+    dbo:sister <http://example.org/data#Brittany_Spuckler>;
+    dbo:sister <http://example.org/data#Cassidy_Spuckler>;
+    dbo:sister <http://example.org/data#Chloe_Spuckler>;
+    dbo:brother <http://example.org/data#Cody_Spuckler>;
+    dbo:brother <http://example.org/data#Dermott_Spuckler>;
+    dbo:brother <http://example.org/data#Dylan_Spuckler>;
+    dbo:sister <http://example.org/data#Heather_Spuckler>;
+    dbo:brother <http://example.org/data#Hunter_Spuckler>;
+    dbo:brother <http://example.org/data#Ian_Spuckler>;
+    dbo:brother <http://example.org/data#Jordan_Spuckler>;
+    dbo:sister <http://example.org/data#Katlin_Spuckler>;
+    dbo:sister <http://example.org/data#Kendall_Spuckler>;
+    dbo:brother <http://example.org/data#Kevin_Spuckler>;
+    dbo:sister <http://example.org/data#Kira_Spuckler>;
+    dbo:sister <http://example.org/data#Lauren_Spuckler>;
+    dbo:brother <http://example.org/data#Max_Spuckler>;
+    dbo:brother <http://example.org/data#Noah_Spuckler>;
+    dbo:brother <http://example.org/data#Phil_Spuckler>;
+    dbo:brother <http://example.org/data#Q-Bert_Spuckler>;
+    dbo:brother <http://example.org/data#Rumor_Spuckler>;
+    dbo:sister <http://example.org/data#Sascha_Spuckler>;
+    dbo:sister <http://example.org/data#Scout_Spuckler>;
+    dbo:brother <http://example.org/data#Taylor_Spuckler>;
+    dbo:sister <http://example.org/data#Tiffany_Spuckler>;
+    dbo:brother <http://example.org/data#Wesley_Spuckler>;
+    dbo:sister <http://example.org/data#Zoe_Spuckler>;
+    dbo:sister <http://example.org/data#Gummy_Sue_Spuckler>;
+    dbo:sister <http://example.org/data#Rubella_Scabies_Spuckler>;
+    dbo:parent <http://example.org/data#Cletus_Spuckler>;
+    dbo:parent <http://example.org/data#Brandine_Spuckler>;
+    dbo:grandparent <http://example.org/data#Maw_Spuckler>;
+    dbo:grandparent <http://example.org/data#Pete_Spuckler> .
+
+<http://example.org/data#Max_Spuckler> 
+    rdfs:label "Max_Spuckler";
+    foaf:gender "male"@en;
+    dbo:sister <http://example.org/data#Brittany_Spuckler>;
+    dbo:sister <http://example.org/data#Cassidy_Spuckler>;
+    dbo:sister <http://example.org/data#Chloe_Spuckler>;
+    dbo:brother <http://example.org/data#Cody_Spuckler>;
+    dbo:brother <http://example.org/data#Dermott_Spuckler>;
+    dbo:brother <http://example.org/data#Dylan_Spuckler>;
+    dbo:sister <http://example.org/data#Heather_Spuckler>;
+    dbo:brother <http://example.org/data#Hunter_Spuckler>;
+    dbo:brother <http://example.org/data#Ian_Spuckler>;
+    dbo:brother <http://example.org/data#Jordan_Spuckler>;
+    dbo:sister <http://example.org/data#Katlin_Spuckler>;
+    dbo:sister <http://example.org/data#Kendall_Spuckler>;
+    dbo:brother <http://example.org/data#Kevin_Spuckler>;
+    dbo:sister <http://example.org/data#Kira_Spuckler>;
+    dbo:sister <http://example.org/data#Lauren_Spuckler>;
+    dbo:brother <http://example.org/data#Morgan_Spuckler>;
+    dbo:brother <http://example.org/data#Noah_Spuckler>;
+    dbo:brother <http://example.org/data#Phil_Spuckler>;
+    dbo:brother <http://example.org/data#Q-Bert_Spuckler>;
+    dbo:brother <http://example.org/data#Rumor_Spuckler>;
+    dbo:sister <http://example.org/data#Sascha_Spuckler>;
+    dbo:sister <http://example.org/data#Scout_Spuckler>;
+    dbo:brother <http://example.org/data#Taylor_Spuckler>;
+    dbo:sister <http://example.org/data#Tiffany_Spuckler>;
+    dbo:brother <http://example.org/data#Wesley_Spuckler>;
+    dbo:sister <http://example.org/data#Zoe_Spuckler>;
+    dbo:sister <http://example.org/data#Gummy_Sue_Spuckler>;
+    dbo:sister <http://example.org/data#Rubella_Scabies_Spuckler>;
+    dbo:parent <http://example.org/data#Cletus_Spuckler>;
+    dbo:parent <http://example.org/data#Brandine_Spuckler>;
+    dbo:grandparent <http://example.org/data#Maw_Spuckler>;
+    dbo:grandparent <http://example.org/data#Pete_Spuckler> .
+
+<http://example.org/data#Noah_Spuckler> 
+    rdfs:label "Noah_Spuckler";
+    foaf:gender "male"@en;
+    dbo:sister <http://example.org/data#Brittany_Spuckler>;
+    dbo:sister <http://example.org/data#Cassidy_Spuckler>;
+    dbo:sister <http://example.org/data#Chloe_Spuckler>;
+    dbo:brother <http://example.org/data#Cody_Spuckler>;
+    dbo:brother <http://example.org/data#Dermott_Spuckler>;
+    dbo:brother <http://example.org/data#Dylan_Spuckler>;
+    dbo:sister <http://example.org/data#Heather_Spuckler>;
+    dbo:brother <http://example.org/data#Hunter_Spuckler>;
+    dbo:brother <http://example.org/data#Ian_Spuckler>;
+    dbo:brother <http://example.org/data#Jordan_Spuckler>;
+    dbo:sister <http://example.org/data#Katlin_Spuckler>;
+    dbo:sister <http://example.org/data#Kendall_Spuckler>;
+    dbo:brother <http://example.org/data#Kevin_Spuckler>;
+    dbo:sister <http://example.org/data#Kira_Spuckler>;
+    dbo:sister <http://example.org/data#Lauren_Spuckler>;
+    dbo:brother <http://example.org/data#Morgan_Spuckler>;
+    dbo:brother <http://example.org/data#Max_Spuckler>;
+    dbo:brother <http://example.org/data#Phil_Spuckler>;
+    dbo:brother <http://example.org/data#Q-Bert_Spuckler>;
+    dbo:brother <http://example.org/data#Rumor_Spuckler>;
+    dbo:sister <http://example.org/data#Sascha_Spuckler>;
+    dbo:sister <http://example.org/data#Scout_Spuckler>;
+    dbo:brother <http://example.org/data#Taylor_Spuckler>;
+    dbo:sister <http://example.org/data#Tiffany_Spuckler>;
+    dbo:brother <http://example.org/data#Wesley_Spuckler>;
+    dbo:sister <http://example.org/data#Zoe_Spuckler>;
+    dbo:sister <http://example.org/data#Gummy_Sue_Spuckler>;
+    dbo:sister <http://example.org/data#Rubella_Scabies_Spuckler>;
+    dbo:parent <http://example.org/data#Cletus_Spuckler>;
+    dbo:parent <http://example.org/data#Brandine_Spuckler>;
+    dbo:grandparent <http://example.org/data#Maw_Spuckler>;
+    dbo:grandparent <http://example.org/data#Pete_Spuckler> .
+
+<http://example.org/data#Phil_Spuckler> 
+    rdfs:label "Phil_Spuckler";
+    foaf:gender "male"@en;
+    dbo:sister <http://example.org/data#Brittany_Spuckler>;
+    dbo:sister <http://example.org/data#Cassidy_Spuckler>;
+    dbo:sister <http://example.org/data#Chloe_Spuckler>;
+    dbo:brother <http://example.org/data#Cody_Spuckler>;
+    dbo:brother <http://example.org/data#Dermott_Spuckler>;
+    dbo:brother <http://example.org/data#Dylan_Spuckler>;
+    dbo:sister <http://example.org/data#Heather_Spuckler>;
+    dbo:brother <http://example.org/data#Hunter_Spuckler>;
+    dbo:brother <http://example.org/data#Ian_Spuckler>;
+    dbo:brother <http://example.org/data#Jordan_Spuckler>;
+    dbo:sister <http://example.org/data#Katlin_Spuckler>;
+    dbo:sister <http://example.org/data#Kendall_Spuckler>;
+    dbo:brother <http://example.org/data#Kevin_Spuckler>;
+    dbo:sister <http://example.org/data#Kira_Spuckler>;
+    dbo:sister <http://example.org/data#Lauren_Spuckler>;
+    dbo:brother <http://example.org/data#Morgan_Spuckler>;
+    dbo:brother <http://example.org/data#Max_Spuckler>;
+    dbo:brother <http://example.org/data#Noah_Spuckler>;
+    dbo:brother <http://example.org/data#Q-Bert_Spuckler>;
+    dbo:brother <http://example.org/data#Rumor_Spuckler>;
+    dbo:sister <http://example.org/data#Sascha_Spuckler>;
+    dbo:sister <http://example.org/data#Scout_Spuckler>;
+    dbo:brother <http://example.org/data#Taylor_Spuckler>;
+    dbo:sister <http://example.org/data#Tiffany_Spuckler>;
+    dbo:brother <http://example.org/data#Wesley_Spuckler>;
+    dbo:sister <http://example.org/data#Zoe_Spuckler>;
+    dbo:sister <http://example.org/data#Gummy_Sue_Spuckler>;
+    dbo:sister <http://example.org/data#Rubella_Scabies_Spuckler>;
+    dbo:parent <http://example.org/data#Cletus_Spuckler>;
+    dbo:parent <http://example.org/data#Brandine_Spuckler>;
+    dbo:grandparent <http://example.org/data#Maw_Spuckler>;
+    dbo:grandparent <http://example.org/data#Pete_Spuckler> .
+
+<http://example.org/data#Q-Bert_Spuckler> 
+    rdfs:label "Q-Bert_Spuckler";
+    foaf:gender "male"@en;
+    dbo:sister <http://example.org/data#Brittany_Spuckler>;
+    dbo:sister <http://example.org/data#Cassidy_Spuckler>;
+    dbo:sister <http://example.org/data#Chloe_Spuckler>;
+    dbo:brother <http://example.org/data#Cody_Spuckler>;
+    dbo:brother <http://example.org/data#Dermott_Spuckler>;
+    dbo:brother <http://example.org/data#Dylan_Spuckler>;
+    dbo:sister <http://example.org/data#Heather_Spuckler>;
+    dbo:brother <http://example.org/data#Hunter_Spuckler>;
+    dbo:brother <http://example.org/data#Ian_Spuckler>;
+    dbo:brother <http://example.org/data#Jordan_Spuckler>;
+    dbo:sister <http://example.org/data#Katlin_Spuckler>;
+    dbo:sister <http://example.org/data#Kendall_Spuckler>;
+    dbo:brother <http://example.org/data#Kevin_Spuckler>;
+    dbo:sister <http://example.org/data#Kira_Spuckler>;
+    dbo:sister <http://example.org/data#Lauren_Spuckler>;
+    dbo:brother <http://example.org/data#Morgan_Spuckler>;
+    dbo:brother <http://example.org/data#Max_Spuckler>;
+    dbo:brother <http://example.org/data#Noah_Spuckler>;
+    dbo:brother <http://example.org/data#Phil_Spuckler>;
+    dbo:brother <http://example.org/data#Rumor_Spuckler>;
+    dbo:sister <http://example.org/data#Sascha_Spuckler>;
+    dbo:sister <http://example.org/data#Scout_Spuckler>;
+    dbo:brother <http://example.org/data#Taylor_Spuckler>;
+    dbo:sister <http://example.org/data#Tiffany_Spuckler>;
+    dbo:brother <http://example.org/data#Wesley_Spuckler>;
+    dbo:sister <http://example.org/data#Zoe_Spuckler>;
+    dbo:sister <http://example.org/data#Gummy_Sue_Spuckler>;
+    dbo:sister <http://example.org/data#Rubella_Scabies_Spuckler>;
+    dbo:parent <http://example.org/data#Cletus_Spuckler>;
+    dbo:parent <http://example.org/data#Brandine_Spuckler>;
+    dbo:grandparent <http://example.org/data#Maw_Spuckler>;
+    dbo:grandparent <http://example.org/data#Pete_Spuckler> .
+
+<http://example.org/data#Rumor_Spuckler> 
+    rdfs:label "Rumor_Spuckler";
+    foaf:gender "male"@en;
+    dbo:sister <http://example.org/data#Brittany_Spuckler>;
+    dbo:sister <http://example.org/data#Cassidy_Spuckler>;
+    dbo:sister <http://example.org/data#Chloe_Spuckler>;
+    dbo:brother <http://example.org/data#Cody_Spuckler>;
+    dbo:brother <http://example.org/data#Dermott_Spuckler>;
+    dbo:brother <http://example.org/data#Dylan_Spuckler>;
+    dbo:sister <http://example.org/data#Heather_Spuckler>;
+    dbo:brother <http://example.org/data#Hunter_Spuckler>;
+    dbo:brother <http://example.org/data#Ian_Spuckler>;
+    dbo:brother <http://example.org/data#Jordan_Spuckler>;
+    dbo:sister <http://example.org/data#Katlin_Spuckler>;
+    dbo:sister <http://example.org/data#Kendall_Spuckler>;
+    dbo:brother <http://example.org/data#Kevin_Spuckler>;
+    dbo:sister <http://example.org/data#Kira_Spuckler>;
+    dbo:sister <http://example.org/data#Lauren_Spuckler>;
+    dbo:brother <http://example.org/data#Morgan_Spuckler>;
+    dbo:brother <http://example.org/data#Max_Spuckler>;
+    dbo:brother <http://example.org/data#Noah_Spuckler>;
+    dbo:brother <http://example.org/data#Phil_Spuckler>;
+    dbo:brother <http://example.org/data#Q-Bert_Spuckler>;
+    dbo:sister <http://example.org/data#Sascha_Spuckler>;
+    dbo:sister <http://example.org/data#Scout_Spuckler>;
+    dbo:brother <http://example.org/data#Taylor_Spuckler>;
+    dbo:sister <http://example.org/data#Tiffany_Spuckler>;
+    dbo:brother <http://example.org/data#Wesley_Spuckler>;
+    dbo:sister <http://example.org/data#Zoe_Spuckler>;
+    dbo:sister <http://example.org/data#Gummy_Sue_Spuckler>;
+    dbo:sister <http://example.org/data#Rubella_Scabies_Spuckler>;
+    dbo:parent <http://example.org/data#Cletus_Spuckler>;
+    dbo:parent <http://example.org/data#Brandine_Spuckler>;
+    dbo:grandparent <http://example.org/data#Maw_Spuckler>;
+    dbo:grandparent <http://example.org/data#Pete_Spuckler> .
+
+<http://example.org/data#Sascha_Spuckler> 
+    rdfs:label "Sascha_Spuckler";
+    foaf:gender "female"@en;
+    dbo:sister <http://example.org/data#Brittany_Spuckler>;
+    dbo:sister <http://example.org/data#Cassidy_Spuckler>;
+    dbo:sister <http://example.org/data#Chloe_Spuckler>;
+    dbo:brother <http://example.org/data#Cody_Spuckler>;
+    dbo:brother <http://example.org/data#Dermott_Spuckler>;
+    dbo:brother <http://example.org/data#Dylan_Spuckler>;
+    dbo:sister <http://example.org/data#Heather_Spuckler>;
+    dbo:brother <http://example.org/data#Hunter_Spuckler>;
+    dbo:brother <http://example.org/data#Ian_Spuckler>;
+    dbo:brother <http://example.org/data#Jordan_Spuckler>;
+    dbo:sister <http://example.org/data#Katlin_Spuckler>;
+    dbo:sister <http://example.org/data#Kendall_Spuckler>;
+    dbo:brother <http://example.org/data#Kevin_Spuckler>;
+    dbo:sister <http://example.org/data#Kira_Spuckler>;
+    dbo:sister <http://example.org/data#Lauren_Spuckler>;
+    dbo:brother <http://example.org/data#Morgan_Spuckler>;
+    dbo:brother <http://example.org/data#Max_Spuckler>;
+    dbo:brother <http://example.org/data#Noah_Spuckler>;
+    dbo:brother <http://example.org/data#Phil_Spuckler>;
+    dbo:brother <http://example.org/data#Q-Bert_Spuckler>;
+    dbo:brother <http://example.org/data#Rumor_Spuckler>;
+    dbo:sister <http://example.org/data#Scout_Spuckler>;
+    dbo:brother <http://example.org/data#Taylor_Spuckler>;
+    dbo:sister <http://example.org/data#Tiffany_Spuckler>;
+    dbo:brother <http://example.org/data#Wesley_Spuckler>;
+    dbo:sister <http://example.org/data#Zoe_Spuckler>;
+    dbo:sister <http://example.org/data#Gummy_Sue_Spuckler>;
+    dbo:sister <http://example.org/data#Rubella_Scabies_Spuckler>;
+    dbo:parent <http://example.org/data#Cletus_Spuckler>;
+    dbo:parent <http://example.org/data#Brandine_Spuckler>;
+    dbo:grandparent <http://example.org/data#Maw_Spuckler>;
+    dbo:grandparent <http://example.org/data#Pete_Spuckler> .
+
+<http://example.org/data#Scout_Spuckler> 
+    rdfs:label "Scout_Spuckler";
+    foaf:gender "female"@en;
+    dbo:sister <http://example.org/data#Brittany_Spuckler>;
+    dbo:sister <http://example.org/data#Cassidy_Spuckler>;
+    dbo:sister <http://example.org/data#Chloe_Spuckler>;
+    dbo:brother <http://example.org/data#Cody_Spuckler>;
+    dbo:brother <http://example.org/data#Dermott_Spuckler>;
+    dbo:brother <http://example.org/data#Dylan_Spuckler>;
+    dbo:sister <http://example.org/data#Heather_Spuckler>;
+    dbo:brother <http://example.org/data#Hunter_Spuckler>;
+    dbo:brother <http://example.org/data#Ian_Spuckler>;
+    dbo:brother <http://example.org/data#Jordan_Spuckler>;
+    dbo:sister <http://example.org/data#Katlin_Spuckler>;
+    dbo:sister <http://example.org/data#Kendall_Spuckler>;
+    dbo:brother <http://example.org/data#Kevin_Spuckler>;
+    dbo:sister <http://example.org/data#Kira_Spuckler>;
+    dbo:sister <http://example.org/data#Lauren_Spuckler>;
+    dbo:brother <http://example.org/data#Morgan_Spuckler>;
+    dbo:brother <http://example.org/data#Max_Spuckler>;
+    dbo:brother <http://example.org/data#Noah_Spuckler>;
+    dbo:brother <http://example.org/data#Phil_Spuckler>;
+    dbo:brother <http://example.org/data#Q-Bert_Spuckler>;
+    dbo:brother <http://example.org/data#Rumor_Spuckler>;
+    dbo:sister <http://example.org/data#Sascha_Spuckler>;
+    dbo:brother <http://example.org/data#Taylor_Spuckler>;
+    dbo:sister <http://example.org/data#Tiffany_Spuckler>;
+    dbo:brother <http://example.org/data#Wesley_Spuckler>;
+    dbo:sister <http://example.org/data#Zoe_Spuckler>;
+    dbo:sister <http://example.org/data#Gummy_Sue_Spuckler>;
+    dbo:sister <http://example.org/data#Rubella_Scabies_Spuckler>;
+    dbo:parent <http://example.org/data#Cletus_Spuckler>;
+    dbo:parent <http://example.org/data#Brandine_Spuckler>;
+    dbo:grandparent <http://example.org/data#Maw_Spuckler>;
+    dbo:grandparent <http://example.org/data#Pete_Spuckler> .
+
+<http://example.org/data#Taylor_Spuckler> 
+    rdfs:label "Taylor_Spuckler";
+    foaf:gender "male"@en;
+    dbo:sister <http://example.org/data#Brittany_Spuckler>;
+    dbo:sister <http://example.org/data#Cassidy_Spuckler>;
+    dbo:sister <http://example.org/data#Chloe_Spuckler>;
+    dbo:brother <http://example.org/data#Cody_Spuckler>;
+    dbo:brother <http://example.org/data#Dermott_Spuckler>;
+    dbo:brother <http://example.org/data#Dylan_Spuckler>;
+    dbo:sister <http://example.org/data#Heather_Spuckler>;
+    dbo:brother <http://example.org/data#Hunter_Spuckler>;
+    dbo:brother <http://example.org/data#Ian_Spuckler>;
+    dbo:brother <http://example.org/data#Jordan_Spuckler>;
+    dbo:sister <http://example.org/data#Katlin_Spuckler>;
+    dbo:sister <http://example.org/data#Kendall_Spuckler>;
+    dbo:brother <http://example.org/data#Kevin_Spuckler>;
+    dbo:sister <http://example.org/data#Kira_Spuckler>;
+    dbo:sister <http://example.org/data#Lauren_Spuckler>;
+    dbo:brother <http://example.org/data#Morgan_Spuckler>;
+    dbo:brother <http://example.org/data#Max_Spuckler>;
+    dbo:brother <http://example.org/data#Noah_Spuckler>;
+    dbo:brother <http://example.org/data#Phil_Spuckler>;
+    dbo:brother <http://example.org/data#Q-Bert_Spuckler>;
+    dbo:brother <http://example.org/data#Rumor_Spuckler>;
+    dbo:sister <http://example.org/data#Sascha_Spuckler>;
+    dbo:sister <http://example.org/data#Scout_Spuckler>;
+    dbo:sister <http://example.org/data#Tiffany_Spuckler>;
+    dbo:brother <http://example.org/data#Wesley_Spuckler>;
+    dbo:sister <http://example.org/data#Zoe_Spuckler>;
+    dbo:sister <http://example.org/data#Gummy_Sue_Spuckler>;
+    dbo:sister <http://example.org/data#Rubella_Scabies_Spuckler>;
+    dbo:parent <http://example.org/data#Cletus_Spuckler>;
+    dbo:parent <http://example.org/data#Brandine_Spuckler>;
+    dbo:grandparent <http://example.org/data#Maw_Spuckler>;
+    dbo:grandparent <http://example.org/data#Pete_Spuckler> .
+
+<http://example.org/data#Tiffany_Spuckler> 
+    rdfs:label "Tiffany_Spuckler";
+    foaf:gender "female"@en;
+    dbo:sister <http://example.org/data#Brittany_Spuckler>;
+    dbo:sister <http://example.org/data#Cassidy_Spuckler>;
+    dbo:sister <http://example.org/data#Chloe_Spuckler>;
+    dbo:brother <http://example.org/data#Cody_Spuckler>;
+    dbo:brother <http://example.org/data#Dermott_Spuckler>;
+    dbo:brother <http://example.org/data#Dylan_Spuckler>;
+    dbo:sister <http://example.org/data#Heather_Spuckler>;
+    dbo:brother <http://example.org/data#Hunter_Spuckler>;
+    dbo:brother <http://example.org/data#Ian_Spuckler>;
+    dbo:brother <http://example.org/data#Jordan_Spuckler>;
+    dbo:sister <http://example.org/data#Katlin_Spuckler>;
+    dbo:sister <http://example.org/data#Kendall_Spuckler>;
+    dbo:brother <http://example.org/data#Kevin_Spuckler>;
+    dbo:sister <http://example.org/data#Kira_Spuckler>;
+    dbo:sister <http://example.org/data#Lauren_Spuckler>;
+    dbo:brother <http://example.org/data#Morgan_Spuckler>;
+    dbo:brother <http://example.org/data#Max_Spuckler>;
+    dbo:brother <http://example.org/data#Noah_Spuckler>;
+    dbo:brother <http://example.org/data#Phil_Spuckler>;
+    dbo:brother <http://example.org/data#Q-Bert_Spuckler>;
+    dbo:brother <http://example.org/data#Rumor_Spuckler>;
+    dbo:sister <http://example.org/data#Sascha_Spuckler>;
+    dbo:sister <http://example.org/data#Scout_Spuckler>;
+    dbo:brother <http://example.org/data#Taylor_Spuckler>;
+    dbo:brother <http://example.org/data#Wesley_Spuckler>;
+    dbo:sister <http://example.org/data#Zoe_Spuckler>;
+    dbo:sister <http://example.org/data#Gummy_Sue_Spuckler>;
+    dbo:sister <http://example.org/data#Rubella_Scabies_Spuckler>;
+    dbo:parent <http://example.org/data#Cletus_Spuckler>;
+    dbo:parent <http://example.org/data#Brandine_Spuckler>;
+    dbo:grandparent <http://example.org/data#Maw_Spuckler>;
+    dbo:grandparent <http://example.org/data#Pete_Spuckler> .
+
+<http://example.org/data#Wesley_Spuckler> 
+    rdfs:label "Wesley_Spuckler";
+    foaf:gender "male"@en;
+    dbo:sister <http://example.org/data#Brittany_Spuckler>;
+    dbo:sister <http://example.org/data#Cassidy_Spuckler>;
+    dbo:sister <http://example.org/data#Chloe_Spuckler>;
+    dbo:brother <http://example.org/data#Cody_Spuckler>;
+    dbo:brother <http://example.org/data#Dermott_Spuckler>;
+    dbo:brother <http://example.org/data#Dylan_Spuckler>;
+    dbo:sister <http://example.org/data#Heather_Spuckler>;
+    dbo:brother <http://example.org/data#Hunter_Spuckler>;
+    dbo:brother <http://example.org/data#Ian_Spuckler>;
+    dbo:brother <http://example.org/data#Jordan_Spuckler>;
+    dbo:sister <http://example.org/data#Katlin_Spuckler>;
+    dbo:sister <http://example.org/data#Kendall_Spuckler>;
+    dbo:brother <http://example.org/data#Kevin_Spuckler>;
+    dbo:sister <http://example.org/data#Kira_Spuckler>;
+    dbo:sister <http://example.org/data#Lauren_Spuckler>;
+    dbo:brother <http://example.org/data#Morgan_Spuckler>;
+    dbo:brother <http://example.org/data#Max_Spuckler>;
+    dbo:brother <http://example.org/data#Noah_Spuckler>;
+    dbo:brother <http://example.org/data#Phil_Spuckler>;
+    dbo:brother <http://example.org/data#Q-Bert_Spuckler>;
+    dbo:brother <http://example.org/data#Rumor_Spuckler>;
+    dbo:sister <http://example.org/data#Sascha_Spuckler>;
+    dbo:sister <http://example.org/data#Scout_Spuckler>;
+    dbo:brother <http://example.org/data#Taylor_Spuckler>;
+    dbo:sister <http://example.org/data#Tiffany_Spuckler>;
+    dbo:sister <http://example.org/data#Zoe_Spuckler>;
+    dbo:sister <http://example.org/data#Gummy_Sue_Spuckler>;
+    dbo:sister <http://example.org/data#Rubella_Scabies_Spuckler>;
+    dbo:parent <http://example.org/data#Cletus_Spuckler>;
+    dbo:parent <http://example.org/data#Brandine_Spuckler>;
+    dbo:grandparent <http://example.org/data#Maw_Spuckler>;
+    dbo:grandparent <http://example.org/data#Pete_Spuckler> .
+
+<http://example.org/data#Zoe_Spuckler> 
+    rdfs:label "Zoe_Spuckler";
+    foaf:gender "female"@en;
+    dbo:sister <http://example.org/data#Brittany_Spuckler>;
+    dbo:sister <http://example.org/data#Cassidy_Spuckler>;
+    dbo:sister <http://example.org/data#Chloe_Spuckler>;
+    dbo:brother <http://example.org/data#Cody_Spuckler>;
+    dbo:brother <http://example.org/data#Dermott_Spuckler>;
+    dbo:brother <http://example.org/data#Dylan_Spuckler>;
+    dbo:sister <http://example.org/data#Heather_Spuckler>;
+    dbo:brother <http://example.org/data#Hunter_Spuckler>;
+    dbo:brother <http://example.org/data#Ian_Spuckler>;
+    dbo:brother <http://example.org/data#Jordan_Spuckler>;
+    dbo:sister <http://example.org/data#Katlin_Spuckler>;
+    dbo:sister <http://example.org/data#Kendall_Spuckler>;
+    dbo:brother <http://example.org/data#Kevin_Spuckler>;
+    dbo:sister <http://example.org/data#Kira_Spuckler>;
+    dbo:sister <http://example.org/data#Lauren_Spuckler>;
+    dbo:brother <http://example.org/data#Morgan_Spuckler>;
+    dbo:brother <http://example.org/data#Max_Spuckler>;
+    dbo:brother <http://example.org/data#Noah_Spuckler>;
+    dbo:brother <http://example.org/data#Phil_Spuckler>;
+    dbo:brother <http://example.org/data#Q-Bert_Spuckler>;
+    dbo:brother <http://example.org/data#Rumor_Spuckler>;
+    dbo:sister <http://example.org/data#Sascha_Spuckler>;
+    dbo:sister <http://example.org/data#Scout_Spuckler>;
+    dbo:brother <http://example.org/data#Taylor_Spuckler>;
+    dbo:sister <http://example.org/data#Tiffany_Spuckler>;
+    dbo:brother <http://example.org/data#Wesley_Spuckler>;
+    dbo:sister <http://example.org/data#Gummy_Sue_Spuckler>;
+    dbo:sister <http://example.org/data#Rubella_Scabies_Spuckler>;
+    dbo:parent <http://example.org/data#Cletus_Spuckler>;
+    dbo:parent <http://example.org/data#Brandine_Spuckler>;
+    dbo:grandparent <http://example.org/data#Maw_Spuckler>;
+    dbo:grandparent <http://example.org/data#Pete_Spuckler> .
+
+<http://example.org/data#Gummy_Sue_Spuckler> 
+    rdfs:label "Gummy_Sue_Spuckler";
+    foaf:gender "female"@en;
+    dbo:sister <http://example.org/data#Brittany_Spuckler>;
+    dbo:sister <http://example.org/data#Cassidy_Spuckler>;
+    dbo:sister <http://example.org/data#Chloe_Spuckler>;
+    dbo:brother <http://example.org/data#Cody_Spuckler>;
+    dbo:brother <http://example.org/data#Dermott_Spuckler>;
+    dbo:brother <http://example.org/data#Dylan_Spuckler>;
+    dbo:sister <http://example.org/data#Heather_Spuckler>;
+    dbo:brother <http://example.org/data#Hunter_Spuckler>;
+    dbo:brother <http://example.org/data#Ian_Spuckler>;
+    dbo:brother <http://example.org/data#Jordan_Spuckler>;
+    dbo:sister <http://example.org/data#Katlin_Spuckler>;
+    dbo:sister <http://example.org/data#Kendall_Spuckler>;
+    dbo:brother <http://example.org/data#Kevin_Spuckler>;
+    dbo:sister <http://example.org/data#Kira_Spuckler>;
+    dbo:sister <http://example.org/data#Lauren_Spuckler>;
+    dbo:brother <http://example.org/data#Morgan_Spuckler>;
+    dbo:brother <http://example.org/data#Max_Spuckler>;
+    dbo:brother <http://example.org/data#Noah_Spuckler>;
+    dbo:brother <http://example.org/data#Phil_Spuckler>;
+    dbo:brother <http://example.org/data#Q-Bert_Spuckler>;
+    dbo:brother <http://example.org/data#Rumor_Spuckler>;
+    dbo:sister <http://example.org/data#Sascha_Spuckler>;
+    dbo:sister <http://example.org/data#Scout_Spuckler>;
+    dbo:brother <http://example.org/data#Taylor_Spuckler>;
+    dbo:sister <http://example.org/data#Tiffany_Spuckler>;
+    dbo:brother <http://example.org/data#Wesley_Spuckler>;
+    dbo:sister <http://example.org/data#Zoe_Spuckler>;
+    dbo:sister <http://example.org/data#Rubella_Scabies_Spuckler>;
+    dbo:parent <http://example.org/data#Cletus_Spuckler>;
+    dbo:parent <http://example.org/data#Brandine_Spuckler>;
+    dbo:grandparent <http://example.org/data#Maw_Spuckler>;
+    dbo:grandparent <http://example.org/data#Pete_Spuckler> .
+
+<http://example.org/data#Rubella_Scabies_Spuckler> 
+    rdfs:label "Rubella_Scabies_Spuckler";
+    foaf:gender "female"@en;
+    dbo:sister <http://example.org/data#Brittany_Spuckler>;
+    dbo:sister <http://example.org/data#Cassidy_Spuckler>;
+    dbo:sister <http://example.org/data#Chloe_Spuckler>;
+    dbo:brother <http://example.org/data#Cody_Spuckler>;
+    dbo:brother <http://example.org/data#Dermott_Spuckler>;
+    dbo:brother <http://example.org/data#Dylan_Spuckler>;
+    dbo:sister <http://example.org/data#Heather_Spuckler>;
+    dbo:brother <http://example.org/data#Hunter_Spuckler>;
+    dbo:brother <http://example.org/data#Ian_Spuckler>;
+    dbo:brother <http://example.org/data#Jordan_Spuckler>;
+    dbo:sister <http://example.org/data#Katlin_Spuckler>;
+    dbo:sister <http://example.org/data#Kendall_Spuckler>;
+    dbo:brother <http://example.org/data#Kevin_Spuckler>;
+    dbo:sister <http://example.org/data#Kira_Spuckler>;
+    dbo:sister <http://example.org/data#Lauren_Spuckler>;
+    dbo:brother <http://example.org/data#Morgan_Spuckler>;
+    dbo:brother <http://example.org/data#Max_Spuckler>;
+    dbo:brother <http://example.org/data#Noah_Spuckler>;
+    dbo:brother <http://example.org/data#Phil_Spuckler>;
+    dbo:brother <http://example.org/data#Q-Bert_Spuckler>;
+    dbo:brother <http://example.org/data#Rumor_Spuckler>;
+    dbo:sister <http://example.org/data#Sascha_Spuckler>;
+    dbo:sister <http://example.org/data#Scout_Spuckler>;
+    dbo:brother <http://example.org/data#Taylor_Spuckler>;
+    dbo:sister <http://example.org/data#Tiffany_Spuckler>;
+    dbo:brother <http://example.org/data#Wesley_Spuckler>;
+    dbo:sister <http://example.org/data#Zoe_Spuckler>;
+    dbo:sister <http://example.org/data#Gummy_Sue_Spuckler>;
+    dbo:sister <http://example.org/data#Rubella_Scabies_Spuckler>;
+    dbo:parent <http://example.org/data#Cletus_Spuckler>;
+    dbo:parent <http://example.org/data#Brandine_Spuckler>;
+    dbo:grandparent <http://example.org/data#Maw_Spuckler>;
+    dbo:grandparent <http://example.org/data#Pete_Spuckler> .
+
+<http://example.org/data#Brittany_Spuckler> 
+    rdfs:label "Brittany_Spuckler";
+    foaf:gender "female"@en;
+    dbo:sister <http://example.org/data#Brittany_Spuckler>;
+    dbo:sister <http://example.org/data#Cassidy_Spuckler>;
+    dbo:sister <http://example.org/data#Chloe_Spuckler>;
+    dbo:brother <http://example.org/data#Cody_Spuckler>;
+    dbo:brother <http://example.org/data#Dermott_Spuckler>;
+    dbo:brother <http://example.org/data#Dylan_Spuckler>;
+    dbo:sister <http://example.org/data#Heather_Spuckler>;
+    dbo:brother <http://example.org/data#Hunter_Spuckler>;
+    dbo:brother <http://example.org/data#Ian_Spuckler>;
+    dbo:brother <http://example.org/data#Jordan_Spuckler>;
+    dbo:sister <http://example.org/data#Katlin_Spuckler>;
+    dbo:sister <http://example.org/data#Kendall_Spuckler>;
+    dbo:brother <http://example.org/data#Kevin_Spuckler>;
+    dbo:sister <http://example.org/data#Kira_Spuckler>;
+    dbo:sister <http://example.org/data#Lauren_Spuckler>;
+    dbo:brother <http://example.org/data#Morgan_Spuckler>;
+    dbo:brother <http://example.org/data#Max_Spuckler>;
+    dbo:brother <http://example.org/data#Noah_Spuckler>;
+    dbo:brother <http://example.org/data#Phil_Spuckler>;
+    dbo:brother <http://example.org/data#Q-Bert_Spuckler>;
+    dbo:brother <http://example.org/data#Rumor_Spuckler>;
+    dbo:sister <http://example.org/data#Sascha_Spuckler>;
+    dbo:sister <http://example.org/data#Scout_Spuckler>;
+    dbo:brother <http://example.org/data#Taylor_Spuckler>;
+    dbo:sister <http://example.org/data#Tiffany_Spuckler>;
+    dbo:brother <http://example.org/data#Wesley_Spuckler>;
+    dbo:sister <http://example.org/data#Zoe_Spuckler>;
+    dbo:sister <http://example.org/data#Gummy_Sue_Spuckler>;
+    dbo:sister <http://example.org/data#Rubella_Scabies_Spuckler>;
+    dbo:parent <http://example.org/data#Cletus_Spuckler>;
+    dbo:parent <http://example.org/data#Brandine_Spuckler>;
+    dbo:grandparent <http://example.org/data#Maw_Spuckler>;
+    dbo:grandparent <http://example.org/data#Pete_Spuckler> .
+
+<http://example.org/data#Nelson_Muntz> 
+    rdfs:label "Nelson_Muntz";
+    foaf:gender "male"@en;
+    dbo:parent <http://example.org/data#Eddie_Muntz>;
+    dbo:parent <http://example.org/data#Mrs_Muntz>;
+    dbo:grandparent <http://example.org/data#Judge_Muntz> .
+
+<http://example.org/data#Eddie_Muntz> 
+    rdfs:label "Eddie_Muntz";
+    foaf:gender "male"@en;
+    dbo:child <http://example.org/data#Nelson_Muntz>;
+    dbo:parent <http://example.org/data#Judge_Muntz>;
+    dbo:spouse <http://example.org/data#Mrs_Muntz> .
+
+<http://example.org/data#Mrs_Muntz> 
+    rdfs:label "Mrs_Muntz";
+    foaf:gender "female"@en;
+    dbo:child <http://example.org/data#Nelson_Muntz>;
+    dbo:spouse <http://example.org/data#Nelson_Muntz> .
+
+<http://example.org/data#Judge_Muntz> 
+    rdfs:label "Judge_Muntz";
+    foaf:gender "male"@en;
+    dbo:child <http://example.org/data#Eddie_Muntz> .
+
+<http://example.org/data#Wendell_Borton> 
+    rdfs:label "Wendell_Borton";
+    foaf:gender "male"@en;
+    dbo:parent <http://example.org/data#Mr_Borton>;
+    dbo:parent <http://example.org/data#Mrs_Borton> .
+
+<http://example.org/data#Mr_Borton> 
+    rdfs:label "Mr_Borton";
+    foaf:gender "male"@en;
+    dbo:child <http://example.org/data#Wendell_Borton>;
+    dbo:spouse <http://example.org/data#Mrs_Borton> .
+
+<http://example.org/data#Mrs_Borton> 
+    rdfs:label "Mrs_Borton";
+    foaf:gender "female"@en;
+    dbo:child <http://example.org/data#Wendell_Borton>;
+    dbo:spouse <http://example.org/data#Mr_Borton> .
+
+<http://example.org/data#Frank_Grimes> 
+    rdfs:label "Frank_Grimes";
+    foaf:gender "male"@en;
+    dbo:child <http://example.org/data#Frank_Grimes_Jr> .
+
+<http://example.org/data#Frank_Grimes_Jr> 
+    rdfs:label "Frank_Grimes_Jr";
+    foaf:gender "male"@en;
+    dbo:parent <http://example.org/data#Frank_Grimes> .
+
+<http://example.org/data#Moe_Szyslak> 
+    rdfs:label "Moe_Szyslak";
+    foaf:gender "male"@en;
+    dbo:parent <http://example.org/data#Mary_Szyslak>;
+    dbo:parent <http://example.org/data#Morty_Szyslak>;
+    dbo:brother <http://example.org/data#Stringfellow_Szyslak>;
+    dbo:brother <http://example.org/data#Gandamac_Szyslak>;
+    dbo:sister <http://example.org/data#Minnie_Szyslak>;
+    dbo:grandparent <http://example.org/data#Grandmother_Szyslak> .
+
+<http://example.org/data#Stringfellow_Szyslak> 
+    rdfs:label "Stringfellow_Szyslak";
+    foaf:gender "male"@en;
+    dbo:parent <http://example.org/data#Mary_Szyslak>;
+    dbo:parent <http://example.org/data#Morty_Szyslak>;
+    dbo:brother <http://example.org/data#Moe_Szyslak>;
+    dbo:brother <http://example.org/data#Gandamac_Szyslak>;
+    dbo:sister <http://example.org/data#Minnie_Szyslak>;
+    dbo:grandparent <http://example.org/data#Grandmother_Szyslak> .
+
+<http://example.org/data#Gandamac_Szyslak> 
+    rdfs:label "Gandamac_Szyslak";
+    foaf:gender "male"@en;
+    dbo:parent <http://example.org/data#Mary_Szyslak>;
+    dbo:parent <http://example.org/data#Morty_Szyslak>;
+    dbo:brother <http://example.org/data#Stringfellow_Szyslak>;
+    dbo:brother <http://example.org/data#Moe_Szyslak>;
+    dbo:sister <http://example.org/data#Minnie_Szyslak>;
+    dbo:grandparent <http://example.org/data#Grandmother_Szyslak> .
+
+<http://example.org/data#Minnie_Szyslak> 
+    rdfs:label "Minnie_Szyslak";
+    foaf:gender "female"@en;
+    dbo:parent <http://example.org/data#Mary_Szyslak>;
+    dbo:parent <http://example.org/data#Morty_Szyslak>;
+    dbo:brother <http://example.org/data#Stringfellow_Szyslak>;
+    dbo:brother <http://example.org/data#Gandamac_Szyslak>;
+    dbo:brother <http://example.org/data#Moe_Szyslak>;
+    dbo:grandparent <http://example.org/data#Grandmother_Szyslak> .
+
+
+<http://example.org/data#Mary_Szyslak> 
+    rdfs:label "Mary_Szyslak";
+    foaf:gender "female"@en;
+    dbo:spouse <http://example.org/data#Morty_Szyslak>;
+    dbo:child <http://example.org/data#Stringfellow_Szyslak>;
+    dbo:child <http://example.org/data#Gandamac_Szyslak>;
+    dbo:child <http://example.org/data#Moe_Szyslak>;
+    dbo:child <http://example.org/data#Minnie_Szyslak>;
+    dbo:parent <http://example.org/data#Grandmother_Szyslak> .
+
+<http://example.org/data#Morty_Szyslak> 
+    rdfs:label "Morty_Szyslak";
+    foaf:gender "male"@en;
+    dbo:spouse <http://example.org/data#Mary_Szyslak>;
+    dbo:child <http://example.org/data#Stringfellow_Szyslak>;
+    dbo:child <http://example.org/data#Gandamac_Szyslak>;
+    dbo:child <http://example.org/data#Moe_Szyslak>;
+    dbo:child <http://example.org/data#Minnie_Szyslak> .

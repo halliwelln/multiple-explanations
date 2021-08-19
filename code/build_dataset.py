@@ -13,7 +13,7 @@ rn.seed(SEED)
 
 parser = argparse.ArgumentParser()
 parser.add_argument('dataset', type=str,
-       help='paul, royalty')
+       help='paul, english_royalty, etc')
 parser.add_argument("rules", type=str,nargs='*',
      help='<rule> separated by spaces (no quotes or commas) i.e aunt child uncle')
 args = parser.parse_args()
