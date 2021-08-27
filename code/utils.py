@@ -7,7 +7,6 @@ def graded_precision_recall(
     true_exp,
     pred_exp,
     true_weight,
-    max_trace,
     unk_ent_id,
     unk_rel_id,
     unk_weight_id):
@@ -19,16 +18,31 @@ def graded_precision_recall(
     '''
     
     n = len(pred_exp)
+    
+    unk = np.array([[unk_ent_id, unk_rel_id, unk_ent_id]])
 
-    relevance_scores = np.zeros(max_trace)
+
+    #first compute number of triples in explanation (must exclude padded triples)
+    num_explanations = 0
+
+    for i in range(len(true_exp)):
+
+        current_trace =  true_exp[i]
+
+        if (current_trace != unk).all(axis=1).sum() > 0:
+
+            num_explanations += 1
+
+    relevance_scores = np.zeros(num_explanations)
 
     for i in range(n):
 
         current_pred = pred_exp[i]
 
-        for j in range(len(true_exp)):
+        for j in range(num_explanations):
 
             unpadded_traces = remove_padding_np(true_exp[j],unk_ent_id,unk_rel_id)
+
             unpadded_weights = true_weight[j][true_weight[j] != unk_weight_id]
 
             indices = (unpadded_traces == current_pred).all(axis=1)
@@ -37,12 +51,13 @@ def graded_precision_recall(
 
             relevance_scores[j] += sum_weights
 
-    max_relevance_score = max(relevance_scores)
     max_idx = np.argmax(relevance_scores)
+    
+    max_relevance_score = relevance_scores[max_idx]
 
     total_sum = sum([float(weight) for weight in true_weight[max_idx] if weight != unk_weight_id])
 
-    precision = max_relevance_score/n
+    precision = max_relevance_score /n
     recall = max_relevance_score/total_sum
     
     return precision, recall

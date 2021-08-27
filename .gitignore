@@ -1,3 +1,5 @@
 *.DS_Store
 data/experiment_data.csv
 __pycache__
+data/simpsons.npz
+code/get_experiment_weights.py

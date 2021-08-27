@@ -99,12 +99,15 @@ def replica_step(head,rel,tail,explanation,num_relations):
         optimizer.apply_gradients(zip(grads,masks))
 
     current_pred = []
+    current_scores = []
 
     for i in range(num_relations):
 
         mask_i = adj_mats[i] * tf.nn.sigmoid(masks[i])
 
-        non_masked_indices = tf.gather(mask_i.indices[mask_i.values > THRESHOLD],[1,2],axis=1)
+        mask_idx = mask_i.values > THRESHOLD
+
+        non_masked_indices = tf.gather(mask_i.indices[mask_idx],[1,2],axis=1)
 
         if tf.reduce_sum(non_masked_indices) != 0:
 
@@ -114,9 +117,16 @@ def replica_step(head,rel,tail,explanation,num_relations):
             
             triple = tf.gather(triple,[0,2,1],axis=1)
 
+            score_array = mask_i.values[mask_idx] 
+
             current_pred.append(triple)
+            current_scores.append(score_array)
+
+    current_scores = tf.concat([array for array in current_scores],axis=0)
+    top_k_scores = tf.argsort(current_scores,direction='DESCENDING')[0:2]
 
     pred_exp = tf.reshape(tf.concat([array for array in current_pred],axis=0),(-1,3))
+    pred_exp = tf.gather(pred_exp,top_k_scores,axis=0)
 
     true_exp = tf.squeeze(explanation,axis=0)
 
@@ -295,6 +305,7 @@ if __name__ == '__main__':
 
     out_preds = np.array(out_preds,dtype=object)
 
+    print(f'Rule: {RULE}')
     print(f'Num epochs: {NUM_EPOCHS}')
     print(f'Embedding dim: {EMBEDDING_DIM}')
     print(f'learning_rate: {LEARNING_RATE}')

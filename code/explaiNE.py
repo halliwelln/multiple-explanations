@@ -13,7 +13,7 @@ def get_pred(adj_mats,num_relations,tape,pred,top_k):
         for idx,score in enumerate(tape.gradient(pred,adj_mat_i.values).numpy()):
             if score:
                 scores.append((idx,i,score))
-                
+
     top_k_scores = sorted(scores, key=lambda x : x[2],reverse=True)[:top_k]
     
     pred_triples = []
@@ -65,7 +65,7 @@ if __name__ == '__main__':
 
     data = np.load(os.path.join('..','data',DATASET+'.npz'))
 
-    triples,traces,weights,entities,relations = utils.get_data(data,RULE)
+    triples,traces,_,entities,relations = utils.get_data(data,RULE)
 
     NUM_ENTITIES = len(entities)
     NUM_RELATIONS = len(relations)
