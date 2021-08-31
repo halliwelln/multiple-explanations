@@ -144,7 +144,7 @@ def remove_padding_tf(exp,unk_ent_id, unk_rel_id):
 
     return masked_exp
 
-def max_jaccard_np(current_traces,pred_exp,unk_ent_id,unk_rel_id):
+def max_jaccard_np(current_traces,pred_exp,unk_ent_id,unk_rel_id,return_idx=False):
 
     ''''
     pred_exp must have shape[0] >= 1
@@ -163,6 +163,8 @@ def max_jaccard_np(current_traces,pred_exp,unk_ent_id,unk_rel_id):
 
         jaccards.append(jaccard)
     
+    if return_idx:
+        return max(jaccards), np.argmax(jaccards)
     return max(jaccards)
 
 def max_jaccard_tf(current_traces,pred_exp,unk_ent_id,unk_rel_id):

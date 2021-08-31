@@ -55,8 +55,6 @@
     dbo:brother <https://simpsons.fandom.com/wiki/Bart_Simpson>;
     dbo:parent <https://simpsons.fandom.com/wiki/Marge_Simpson>;
     dbo:parent <https://simpsons.fandom.com/wiki/Homer_Simpson>;
-    dbo:aunt <https://simpsons.fandom.com/wiki/Selma_Bouvier>;
-    dbo:aunt <https://simpsons.fandom.com/wiki/Patty_Bouvier>;
     dbo:grandparent <https://simpsons.fandom.com/wiki/Abe_Simpson>;
     dbo:grandparent <https://simpsons.fandom.com/wiki/Mona_Olsen>;
     dbo:grandparent <https://simpsons.fandom.com/wiki/Clancy_Bouvier>;
@@ -69,8 +67,6 @@
     dbo:brother <https://simpsons.fandom.com/wiki/Bart_Simpson>;
     dbo:parent <https://simpsons.fandom.com/wiki/Marge_Simpson>;
     dbo:parent <https://simpsons.fandom.com/wiki/Homer_Simpson>;
-    dbo:aunt <https://simpsons.fandom.com/wiki/Selma_Bouvier>;
-    dbo:aunt <https://simpsons.fandom.com/wiki/Patty_Bouvier>;
     dbo:grandparent <https://simpsons.fandom.com/wiki/Abe_Simpson>;
     dbo:grandparent <https://simpsons.fandom.com/wiki/Mona_Olsen>;
     dbo:grandparent <https://simpsons.fandom.com/wiki/Clancy_Bouvier>;
@@ -83,8 +79,6 @@
     dbo:sister <https://simpsons.fandom.com/wiki/Maggie_Simpson>;
     dbo:parent <https://simpsons.fandom.com/wiki/Marge_Simpson>;
     dbo:parent <https://simpsons.fandom.com/wiki/Homer_Simpson>;
-    dbo:aunt <https://simpsons.fandom.com/wiki/Selma_Bouvier>;
-    dbo:aunt <https://simpsons.fandom.com/wiki/Patty_Bouvier>;
     dbo:grandparent <https://simpsons.fandom.com/wiki/Abe_Simpson>;
     dbo:grandparent <https://simpsons.fandom.com/wiki/Mona_Olsen>;
     dbo:grandparent <https://simpsons.fandom.com/wiki/Clancy_Bouvier>;
@@ -130,10 +124,7 @@
     dbo:sister <https://simpsons.fandom.com/wiki/Marge_Simpson>;
     dbo:sister <https://simpsons.fandom.com/wiki/Selma_Bouvier>;
     dbo:parent <https://simpsons.fandom.com/wiki/Clancy_Bouvier>;
-    dbo:parent <https://simpsons.fandom.com/wiki/Jacqueline_Gurney>;
-    dbo:aunt <https://simpsons.fandom.com/wiki/Charlene_Bouvier>;
-    dbo:aunt <https://simpsons.fandom.com/wiki/Gladys_Gurney>;
-    dbo:uncle <https://simpsons.fandom.com/wiki/Lou_Gurney> .
+    dbo:parent <https://simpsons.fandom.com/wiki/Jacqueline_Gurney> .
 
 <https://simpsons.fandom.com/wiki/Selma_Bouvier> 
     rdfs:label "Selma_Bouvier";
@@ -141,10 +132,7 @@
     dbo:sister <https://simpsons.fandom.com/wiki/Marge_Simpson>;
     dbo:sister <https://simpsons.fandom.com/wiki/Patty_Bouvier>;
     dbo:parent <https://simpsons.fandom.com/wiki/Clancy_Bouvier>;
-    dbo:parent <https://simpsons.fandom.com/wiki/Jacqueline_Gurney>;
-    dbo:aunt <https://simpsons.fandom.com/wiki/Charlene_Bouvier>;
-    dbo:aunt <https://simpsons.fandom.com/wiki/Gladys_Gurney>;
-    dbo:uncle <https://simpsons.fandom.com/wiki/Lou_Gurney> .
+    dbo:parent <https://simpsons.fandom.com/wiki/Jacqueline_Gurney> .
 
 <https://simpsons.fandom.com/wiki/Chet_Simpson> 
     rdfs:label "Chet_Simpson";
@@ -215,7 +203,6 @@
     rdfs:label "Rod_Flanders";
     foaf:gender "male"@en;
     dbo:brother <https://simpsons.fandom.com/wiki/Todd_Flanders>;
-    dbo:aunt <https://simpsons.fandom.com/wiki/Nediana_Flanders>;
     dbo:grandparent <https://simpsons.fandom.com/wiki/Nedward_Flanders>;
     dbo:grandparent <https://simpsons.fandom.com/wiki/Agnes_Flanders> .
 
@@ -223,7 +210,6 @@
     rdfs:label "Todd_Flanders";
     foaf:gender "male"@en;
     dbo:brother <https://simpsons.fandom.com/wiki/Rod_Flanders>;
-    dbo:aunt <https://simpsons.fandom.com/wiki/Nediana_Flanders>;
     dbo:grandparent <https://simpsons.fandom.com/wiki/Nedward_Flanders,_Sr.>;
     dbo:grandparent <https://simpsons.fandom.com/wiki/Agnes_Flanders> .
 
@@ -423,9 +409,7 @@
     dbo:parent <https://simpsons.fandom.com/wiki/Luann_Van_Houten>;
     dbo:parent <https://simpsons.fandom.com/wiki/Kirk_Van_Houten>;
     dbo:grandparent <https://simpsons.fandom.com/wiki/Grandpa_Van_Houten>;
-    dbo:grandparent <https://simpsons.fandom.com/wiki/Grandma_Van_Houten>;
-    dbo:aunt <https://simpsons.fandom.com/wiki/Luann%27s_Sister> .
-
+    dbo:grandparent <https://simpsons.fandom.com/wiki/Grandma_Van_Houten> .
 <https://simpsons.fandom.com/wiki/Kirk_Van_Houten> 
     rdfs:label "Kirk_Van_Houten";
     foaf:gender "male"@en;
@@ -462,8 +446,7 @@
     dbo:parent <https://simpsons.fandom.com/wiki/Clancy_Wiggum>;
     dbo:parent <https://simpsons.fandom.com/wiki/Sarah_Wiggum>;
     dbo:grandparent <https://simpsons.fandom.com/wiki/Iggy_Wiggum>;
-    dbo:grandparent <https://simpsons.fandom.com/wiki/Mrs_Wiggum>;
-    dbo:uncle <https://simpsons.fandom.com/wiki/Fred_Kanneke> .
+    dbo:grandparent <https://simpsons.fandom.com/wiki/Mrs_Wiggum> .
 
 <https://simpsons.fandom.com/wiki/Clancy_Wiggum> 
     rdfs:label "Clancy_Wiggum";
@@ -518,13 +501,11 @@
     dbo:grandparent <https://simpsons.fandom.com/wiki/Wainwright_Montgomery_Burns>;
     dbo:grandparent <https://simpsons.fandom.com/wiki/Evelyn_Graycomb>; 
     dbo:grandparent <https://simpsons.fandom.com/wiki/Jean-Claude_Charles>;
-    dbo:grandparent <https://simpsons.fandom.com/wiki/Ophelia_Charles>;
-    dbo:aunt <https://simpsons.fandom.com/wiki/Doreena_Burns> .
+    dbo:grandparent <https://simpsons.fandom.com/wiki/Ophelia_Charles> .
 
 <https://simpsons.fandom.com/wiki/Zeph_Burns> 
     rdfs:label "Zeph_Burns";
     foaf:gender "male"@en;
-    dbo:aunt <https://simpsons.fandom.com/wiki/Doreena_Burns>;
     dbo:parent <https://simpsons.fandom.com/wiki/Clifford_Burns>;
     dbo:parent <https://simpsons.fandom.com/wiki/Daphne_Charles>;    
     dbo:brother <https://simpsons.fandom.com/wiki/Charles_Montgomery_Burns>;
@@ -544,7 +525,6 @@
 <https://simpsons.fandom.com/wiki/George_Burns_(character)> 
     rdfs:label "George_Burns_(character)";
     foaf:gender "male"@en;
-    dbo:aunt <https://simpsons.fandom.com/wiki/Doreena_Burns>;
     dbo:brother <https://simpsons.fandom.com/wiki/Charles_Montgomery_Burns>;
     dbo:brother <https://simpsons.fandom.com/wiki/Zeph_Burns>;
     dbo:brother <https://simpsons.fandom.com/wiki/Clifford_Burns_Jr.>;
@@ -564,7 +544,6 @@
 <https://simpsons.fandom.com/wiki/Clifford_Burns_Jr.> 
     rdfs:label "Clifford_Burns_Jr.";
     foaf:gender "male"@en;
-    dbo:aunt <https://simpsons.fandom.com/wiki/Doreena_Burns>;
     dbo:brother <https://simpsons.fandom.com/wiki/Charles_Montgomery_Burns>;
     dbo:brother <https://simpsons.fandom.com/wiki/Zeph_Burns>;
     dbo:brother <https://simpsons.fandom.com/wiki/George_Burns_(character)>; 
@@ -584,7 +563,6 @@
 <https://simpsons.fandom.com/wiki/Cornelius_Burns> 
     rdfs:label "Cornelius_Burns";
     foaf:gender "male"@en;
-    dbo:aunt <https://simpsons.fandom.com/wiki/Doreena_Burns>;
     dbo:brother <https://simpsons.fandom.com/wiki/Charles_Montgomery_Burns>;
     dbo:brother <https://simpsons.fandom.com/wiki/Zeph_Burns>;
     dbo:brother <https://simpsons.fandom.com/wiki/George_Burns_(character)>; 
@@ -604,7 +582,6 @@
 <https://simpsons.fandom.com/wiki/Ernest_Burns> 
     rdfs:label "Ernest_Burns";
     foaf:gender "male"@en; 
-    dbo:aunt <https://simpsons.fandom.com/wiki/Doreena_Burns>;
     dbo:brother <https://simpsons.fandom.com/wiki/Charles_Montgomery_Burns>;
     dbo:brother <https://simpsons.fandom.com/wiki/Zeph_Burns>;
     dbo:brother <https://simpsons.fandom.com/wiki/George_Burns_(character)>; 
@@ -624,7 +601,6 @@
 <https://simpsons.fandom.com/wiki/Archibald_Burns> 
     rdfs:label "Archibald_Burns";
     foaf:gender "male"@en;
-    dbo:aunt <https://simpsons.fandom.com/wiki/Doreena_Burns>;
     dbo:brother <https://simpsons.fandom.com/wiki/Charles_Montgomery_Burns>;
     dbo:brother <https://simpsons.fandom.com/wiki/Zeph_Burns>;
     dbo:brother <https://simpsons.fandom.com/wiki/George_Burns_(character)>; 
@@ -644,7 +620,6 @@
 <https://simpsons.fandom.com/wiki/Sarah_Drew_Linscott> 
     rdfs:label "Sarah_Drew_Linscott";
     foaf:gender "female"@en;
-    dbo:aunt <https://simpsons.fandom.com/wiki/Doreena_Burns>;
     dbo:brother <https://simpsons.fandom.com/wiki/Charles_Montgomery_Burns>;
     dbo:brother <https://simpsons.fandom.com/wiki/Zeph_Burns>;
     dbo:brother <https://simpsons.fandom.com/wiki/George_Burns_(character)>; 
@@ -664,7 +639,6 @@
 <https://simpsons.fandom.com/wiki/Cornelia_Hernandez> 
     rdfs:label "Cornelia_Hernandez";
     foaf:gender "female"@en;
-    dbo:aunt <https://simpsons.fandom.com/wiki/Doreena_Burns>;
     dbo:brother <https://simpsons.fandom.com/wiki/Charles_Montgomery_Burns>;
     dbo:brother <https://simpsons.fandom.com/wiki/Zeph_Burns>;
     dbo:brother <https://simpsons.fandom.com/wiki/George_Burns_(character)>; 
@@ -684,7 +658,6 @@
 <https://simpsons.fandom.com/wiki/Dominique_Burns> 
     rdfs:label "Dominique_Burns";
     foaf:gender "female"@en;
-    dbo:aunt <https://simpsons.fandom.com/wiki/Doreena_Burns>;
     dbo:brother <https://simpsons.fandom.com/wiki/Charles_Montgomery_Burns>;
     dbo:brother <https://simpsons.fandom.com/wiki/Zeph_Burns>;
     dbo:brother <https://simpsons.fandom.com/wiki/George_Burns_(character)>; 
@@ -808,7 +781,6 @@
 <https://simpsons.fandom.com/wiki/Seymour_Skinner> 
     rdfs:label "Seymour_Skinner";
     foaf:gender "male"@en;
-    dbo:uncle <https://simpsons.fandom.com/wiki/Stevie>;
     dbo:brother <https://simpsons.fandom.com/wiki/Seymour_Skinner_(real)>;
     dbo:parent <https://simpsons.fandom.com/wiki/Agnes_Skinner>;
     dbo:parent <https://simpsons.fandom.com/wiki/Sheldon_Skinner>;
@@ -818,7 +790,6 @@
 <https://simpsons.fandom.com/wiki/Seymour_Skinner_(real)> 
     rdfs:label "Seymour_Skinner_(real)";
     foaf:gender "male"@en;
-    dbo:uncle <https://simpsons.fandom.com/wiki/Stevie>;
     dbo:brother <https://simpsons.fandom.com/wiki/Seymour_Skinner>;
     dbo:parent <https://simpsons.fandom.com/wiki/Agnes_Skinner>;
     dbo:parent <https://simpsons.fandom.com/wiki/Sheldon_Skinner>;

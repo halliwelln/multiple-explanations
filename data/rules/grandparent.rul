@@ -51,7 +51,6 @@ WHERE {
     
     FILTER (?me != ?mygrandparent1)
     FILTER (?me != ?mygrandparent2)
-    FILTER (EXISTS {?me dbo:grandparent ?mygrandparent1 .})
 }
 
 </body>
@@ -68,7 +67,6 @@ WHERE {
     ?myparent dbo:parent ?mygrandparent .
     
     FILTER (?me != ?mygrandparent)
-    FILTER (EXISTS {?me dbo:grandparent ?mygrandparent .})
 }
 
 </body>
@@ -103,7 +101,6 @@ WHERE {
     ?myparent dbo:parent ?mygrandparent .
     
     FILTER (?me != ?mygrandparent)
-    FILTER (EXISTS {?me dbo:grandparent ?mygrandparent .})
 }
 
 </body>
@@ -121,8 +118,6 @@ WHERE {
     ?myparent dbo:child ?me .
     
     FILTER (?me != ?mygrandparent)
-    FILTER (EXISTS {?me dbo:grandparent ?mygrandparent .})
-
 }
 
 </body>

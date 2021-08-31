@@ -31,7 +31,6 @@ WHERE {
     ?mybrother dbo:parent ?myparent .
 
     FILTER (?me != ?myparent)
-    FILTER (EXISTS {?me dbo:parent ?myparent .})
 }
 
 </body>
@@ -68,7 +67,6 @@ WHERE {
 
     FILTER (?me != ?myparent)
     FILTER (?me != ?myparent2)
-    FILTER (EXISTS {?me dbo:parent ?myparent .})
 
 }
 
@@ -87,7 +85,6 @@ WHERE {
     ?me dbo:sister ?mysister .
 
     FILTER (?me != ?myparent)
-    FILTER (EXISTS {?me dbo:parent ?myparent .})
 }
 
 </body>
@@ -105,7 +102,6 @@ WHERE {
     ?myparent dbo:child ?mybrother .
 
     FILTER (?me != ?myparent)
-    FILTER (EXISTS {?me dbo:parent ?myparent .})
 }
 
 </body>
@@ -141,7 +137,6 @@ WHERE {
     ?me dbo:sister ?mysister .
 
     FILTER (?me != ?myparent)
-    FILTER (EXISTS {?me dbo:parent ?myparent .})
 }
 
 </body>
@@ -174,7 +169,6 @@ WHERE {
     ?myparent dbo:spouse ?myparent2 .
 
     FILTER (?me != ?myparent)
-    FILTER (EXISTS {?me dbo:parent ?myparent .})
 
 }
 

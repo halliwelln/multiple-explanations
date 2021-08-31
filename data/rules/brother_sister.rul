@@ -71,7 +71,6 @@ WHERE {
   ?me dbo:sister ?mysister .
 
   FILTER (?me != ?mybrother)
-  FILTER (EXISTS {?me dbo:brother ?mybrother .})
 }
 
 </body>
@@ -140,6 +139,7 @@ WHERE {
   ?me dbo:sister ?mysister .
 
   FILTER (?me != ?mysister)
+  FILTER (EXISTS {?mysister dbo:brother ?me .})
 }
 
 </body>
@@ -148,16 +148,15 @@ WHERE {
 <rule>
 <body>  
 CONSTRUCT {
-    ?me dbo:brother ?mybrother1 .
+    ?me dbo:brother ?mybrother2 .
     [] dbo:weight "0.70"^^xsd:float .
 }
 WHERE {
+  ?me dbo:brother ?mybrother1 .
   ?mybrother1 dbo:brother ?mybrother2 .
-  ?me dbo:brother ?mybrother2 .
 
   FILTER (?me != ?mybrother1)
   FILTER (?me != ?mybrother2)
-  FILTER (EXISTS {?me dbo:brother ?mybrother1 .})
 }
 
 </body>
@@ -194,6 +193,7 @@ WHERE {
   ?mysister dbo:brother ?me .
 
   FILTER (?me != ?mysister)
+  FILTER (EXISTS {?me dbo:sister ?mysister .})
 }
 
 </body>
@@ -210,7 +210,6 @@ WHERE {
   ?mybrother dbo:sister ?mysister .
 
   FILTER (?me != ?mysister)
-  FILTER (EXISTS {?me dbo:sister ?mysister .})
 }
 
 </body>
@@ -287,16 +286,15 @@ WHERE {
 <rule>
 <body>  
 CONSTRUCT {
-    ?me dbo:sister ?mysister1 .
+    ?me dbo:sister ?mysister2 .
     [] dbo:weight "0.70"^^xsd:float .
 }
 WHERE {
+  ?me dbo:sister ?mysister1 .
   ?mysister1 dbo:sister ?mysister2 .
-  ?me dbo:sister ?mysister2 .
 
   FILTER (?me != ?mysister1)
   FILTER (?me != ?mysister2)
-  FILTER (EXISTS {?me dbo:sister ?mysister1 .})
 }
 
 </body>
