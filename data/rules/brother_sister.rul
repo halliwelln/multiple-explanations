@@ -47,14 +47,14 @@ WHERE {
 <body>  
 CONSTRUCT {
     ?me dbo:brother ?mybrother .
-    [] dbo:weight "0.75"^^xsd:float .
+    [] dbo:weight "0.80"^^xsd:float .
 }
 WHERE {
   ?myparent dbo:child ?mybrother .
   ?me dbo:parent ?myparent .
 
   FILTER (?me != ?mybrother)
-  FILTER (EXISTS {?mybrother foaf:gender 'male'@en .})
+  FILTER (EXISTS {?me dbo:brother ?mybrother .})
 }
 
 </body>
@@ -64,14 +64,14 @@ WHERE {
 <body>  
 CONSTRUCT {
     ?me dbo:brother ?mybrother .
-    [] dbo:weight "0.75"^^xsd:float .
+    [] dbo:weight "0.60"^^xsd:float .
 }
 WHERE {
   ?mysister dbo:brother ?mybrother .
   ?me dbo:sister ?mysister .
 
   FILTER (?me != ?mybrother)
-  FILTER (EXISTS {?mybrother foaf:gender 'male'@en .})
+  FILTER (EXISTS {?me dbo:brother ?mybrother .})
 }
 
 </body>
@@ -81,14 +81,14 @@ WHERE {
 <body>  
 CONSTRUCT {
     ?me dbo:brother ?mybrother .
-    [] dbo:weight "0.25"^^xsd:float .
+    [] dbo:weight "0.30"^^xsd:float .
 }
 WHERE {
   ?mybrother dbo:grandparent ?mygrandparent .
   ?me dbo:grandparent ?mygrandparent .
 
   FILTER (?me != ?mybrother)
-  FILTER (EXISTS {?mybrother foaf:gender 'male'@en .})
+  FILTER (EXISTS {?me dbo:brother ?mybrother .})
 }
 
 </body>
@@ -99,14 +99,14 @@ WHERE {
 <body>  
 CONSTRUCT {
     ?me dbo:brother ?mybrother .
-    [] dbo:weight "0.75"^^xsd:float .
+    [] dbo:weight "0.90"^^xsd:float .
 }
 WHERE {
   ?mybrother dbo:parent ?myparent .
   ?me dbo:parent ?myparent .
 
   FILTER (?me != ?mybrother)
-  FILTER (EXISTS {?mybrother foaf:gender 'male'@en .})
+  FILTER (EXISTS {?me dbo:brother ?mybrother .})
 }
 
 </body>
@@ -117,14 +117,14 @@ WHERE {
 <body>  
 CONSTRUCT {
     ?me dbo:brother ?mybrother .
-    [] dbo:weight "0.75"^^xsd:float .
+    [] dbo:weight "0.70"^^xsd:float .
 }
 WHERE {
   ?mybrother dbo:sister ?mysister .
   ?me dbo:sister ?mysister .
 
   FILTER (?me != ?mybrother)
-  FILTER (EXISTS {?mybrother foaf:gender 'male'@en .})
+  FILTER (EXISTS {?me dbo:brother ?mybrother .})
 }
 
 </body>
@@ -134,13 +134,12 @@ WHERE {
 <body>  
 CONSTRUCT {
     ?mysister dbo:brother ?me .
-    [] dbo:weight "0.75"^^xsd:float .
+    [] dbo:weight "0.80"^^xsd:float .
 }
 WHERE {
   ?me dbo:sister ?mysister .
 
   FILTER (?me != ?mysister)
-  FILTER (EXISTS {?me foaf:gender 'male'@en .})
 }
 
 </body>
@@ -150,7 +149,7 @@ WHERE {
 <body>  
 CONSTRUCT {
     ?me dbo:brother ?mybrother1 .
-    [] dbo:weight "0.75"^^xsd:float .
+    [] dbo:weight "0.70"^^xsd:float .
 }
 WHERE {
   ?mybrother1 dbo:brother ?mybrother2 .
@@ -158,7 +157,7 @@ WHERE {
 
   FILTER (?me != ?mybrother1)
   FILTER (?me != ?mybrother2)
-  FILTER (EXISTS {?mybrother1 foaf:gender 'male'@en .})
+  FILTER (EXISTS {?me dbo:brother ?mybrother1 .})
 }
 
 </body>
@@ -189,13 +188,12 @@ WHERE {
 <body>  
 CONSTRUCT {
     ?me dbo:sister ?mysister .
-    [] dbo:weight "0.75"^^xsd:float .
+    [] dbo:weight "0.80"^^xsd:float .
 }
 WHERE {
   ?mysister dbo:brother ?me .
 
   FILTER (?me != ?mysister)
-  FILTER (EXISTS {?mysister foaf:gender 'female'@en .})
 }
 
 </body>
@@ -205,14 +203,14 @@ WHERE {
 <body>  
 CONSTRUCT {
     ?me dbo:sister ?mysister .
-    [] dbo:weight "0.75"^^xsd:float .
+    [] dbo:weight "0.70"^^xsd:float .
 }
 WHERE {
   ?me dbo:brother ?mybrother .
   ?mybrother dbo:sister ?mysister .
 
   FILTER (?me != ?mysister)
-  FILTER (EXISTS {?mysister foaf:gender 'female'@en .})
+  FILTER (EXISTS {?me dbo:sister ?mysister .})
 }
 
 </body>
@@ -222,14 +220,14 @@ WHERE {
 <body>  
 CONSTRUCT {
     ?me dbo:sister ?mysister .
-    [] dbo:weight "0.75"^^xsd:float .
+    [] dbo:weight "0.80"^^xsd:float .
 }
 WHERE {
   ?myparent dbo:child ?mysister .
   ?me dbo:parent ?myparent .
 
   FILTER (?me != ?mysister)
-  FILTER (EXISTS {?mysister foaf:gender 'female'@en .})
+  FILTER (EXISTS {?me dbo:sister ?mysister .})
 }
 
 </body>
@@ -239,14 +237,14 @@ WHERE {
 <body>  
 CONSTRUCT {
     ?me dbo:sister ?mysister .
-    [] dbo:weight "0.75"^^xsd:float .
+    [] dbo:weight "0.70"^^xsd:float .
 }
 WHERE {
   ?mysister dbo:brother ?mybrother .
   ?me dbo:brother ?mybrother .
 
   FILTER (?me != ?mysister)
-  FILTER (EXISTS {?mysister foaf:gender 'female'@en .})
+  FILTER (EXISTS {?me dbo:sister ?mysister .})
 }
 
 </body>
@@ -256,14 +254,14 @@ WHERE {
 <body>  
 CONSTRUCT {
     ?me dbo:sister ?mysister .
-    [] dbo:weight "0.25"^^xsd:float .
+    [] dbo:weight "0.20"^^xsd:float .
 }
 WHERE {
   ?mysister dbo:grandparent ?mygrandparent .
   ?me dbo:grandparent ?mygrandparent .
 
   FILTER (?me != ?mysister)
-  FILTER (EXISTS {?mysister foaf:gender 'female'@en .})
+  FILTER (EXISTS {?me dbo:sister ?mysister .})
 }
 
 </body>
@@ -273,14 +271,14 @@ WHERE {
 <body>  
 CONSTRUCT {
     ?me dbo:sister ?mysister .
-    [] dbo:weight "1.00"^^xsd:float .
+    [] dbo:weight "0.90"^^xsd:float .
 }
 WHERE {
   ?me dbo:parent ?myparent .
   ?mysister dbo:parent ?myparent .
 
   FILTER (?me != ?mysister)
-  FILTER (EXISTS {?mysister foaf:gender 'female'@en .})
+  FILTER (EXISTS {?me dbo:sister ?mysister .})
 }
 
 </body>
@@ -290,7 +288,7 @@ WHERE {
 <body>  
 CONSTRUCT {
     ?me dbo:sister ?mysister1 .
-    [] dbo:weight "0.75"^^xsd:float .
+    [] dbo:weight "0.70"^^xsd:float .
 }
 WHERE {
   ?mysister1 dbo:sister ?mysister2 .
@@ -298,7 +296,7 @@ WHERE {
 
   FILTER (?me != ?mysister1)
   FILTER (?me != ?mysister2)
-  FILTER (EXISTS {?mysister1 foaf:gender 'female'@en .})
+  FILTER (EXISTS {?me dbo:sister ?mysister1 .})
 }
 
 </body>
