@@ -20,6 +20,14 @@
     xmlns:dbo  = "&dbo;"
 >
 
+<!--
+?myspouse hasSpouse ?me ->
+?me hasSpouse ?myspouse
+
+score: 0.8
+logically true: yes
+pattern: symmetric 
+-->
 <rule>
 <body>  
 CONSTRUCT {
@@ -35,6 +43,14 @@ WHERE {
 </body>
 </rule> 
 
+<!--
+?me hasSpouse ?myspouse ->
+?myspouse hasSpouse ?me
+
+score: 0.8
+logically true: yes
+pattern: symmetric 
+-->
 <rule>
 <body>  
 CONSTRUCT {
@@ -50,6 +66,15 @@ WHERE {
 </body>
 </rule> 
 
+<!--
+?myspouse hasSpouse ?me ->
+?me hasChild ?mychild
+?mychild hasParent ?myspouse
+
+score: 0.5
+logically true: yes
+pattern: chain 
+-->
 <rule>
 <body>  
 CONSTRUCT {
@@ -66,7 +91,41 @@ WHERE {
 </body>
 </rule> 
 
+<!--
+?myspouse hasSpouse ?me ->
+?myspouse hasChild ?mychild
+?mychild hasParent ?me
 
+score: 0.5
+logically true: yes
+pattern: chain 
+-->
+<rule>
+<body>  
+CONSTRUCT {
+    ?myspouse dbo:spouse ?me .
+    [] dbo:weight "0.50"^^xsd:float .
+}
+WHERE {
+    ?myspouse dbo:child ?mychild .
+    ?mychild dbo:parent ?me .
+
+    FILTER (?myspouse != ?me)
+}
+
+</body>
+</rule> 
+
+
+<!--
+?me hasSpouse ?myspouse ->
+?myspouse hasChild ?mychild
+?mychild hasParent ?me
+
+score: 0.5
+logically true: yes
+pattern: chain 
+-->
 <rule>
 <body>  
 CONSTRUCT {
@@ -83,6 +142,41 @@ WHERE {
 </body>
 </rule>
 
+
+<!--
+?me hasSpouse ?myspouse ->
+?me hasChild ?mychild
+?mychild hasParent ?myspouse
+
+score: 0.5
+logically true: yes
+pattern: chain 
+-->
+<rule>
+<body>  
+CONSTRUCT {
+    ?me dbo:spouse ?myspouse .
+    [] dbo:weight "0.50"^^xsd:float .
+}
+WHERE {
+    ?me dbo:child ?mychild .
+    ?mychild dbo:parent ?myspouse .
+
+    FILTER (?myspouse != ?me)
+}
+
+</body>
+</rule>
+
+<!--
+?me hasSpouse ?myspouse ->
+?myspouse dbo:child ?mychild
+?me dbo:child ?mychild
+
+score: 0.9
+logically true: yes
+pattern: star 
+-->
 <rule>
 <body>  
 CONSTRUCT {
@@ -99,6 +193,41 @@ WHERE {
 </body>
 </rule>
 
+<!--
+?me hasSpouse ?myspouse ->
+?me dbo:child ?mychild
+?myspouse dbo:child ?mychild
+
+score: 0.9
+logically true: yes
+pattern: star 
+-->
+<rule>
+<body>  
+CONSTRUCT {
+    ?me dbo:spouse ?myspouse .
+    [] dbo:weight "0.90"^^xsd:float .
+}
+WHERE {
+    ?me dbo:child ?mychild .
+    ?myspouse dbo:child ?mychild .
+
+    FILTER (?myspouse != ?me)
+}
+
+</body>
+</rule>
+
+
+<!--
+?myspouse hasSpouse ?me ->
+?myspouse dbo:child ?mychild
+?me dbo:child ?mychild
+
+score: 0.9
+logically true: yes
+pattern: star 
+-->
 <rule>
 <body>  
 CONSTRUCT {
@@ -114,5 +243,32 @@ WHERE {
 
 </body>
 </rule>
+
+
+<!--
+?myspouse hasSpouse ?me ->
+?me dbo:child ?mychild
+?myspouse dbo:child ?mychild
+
+score: 0.9
+logically true: yes
+pattern: star 
+-->
+<rule>
+<body>  
+CONSTRUCT {
+    ?myspouse dbo:spouse ?me .
+    [] dbo:weight "0.90"^^xsd:float .
+}
+WHERE {
+    ?me dbo:child ?mychild .
+    ?myspouse dbo:child ?mychild .
+
+    FILTER (?myspouse != ?me)
+}
+
+</body>
+</rule>
+
 
 </rdf:RDF>

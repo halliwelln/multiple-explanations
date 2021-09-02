@@ -22,6 +22,15 @@
     xmlns:foaf = "&foaf;"
 >
 
+<!--
+?me hasGrandparent ?mygrandparent -> 
+?me hasBrother ?mybrother
+?mybrother hasGrandparent ?mygrandparent
+
+# of combinations: 2 
+number: 1/2
+logically true: yes 
+-->
 <rule>
 <body>  
 CONSTRUCT {
@@ -38,7 +47,41 @@ WHERE {
 </body>
 </rule>
 
+<!--
+?me hasGrandparent ?mygrandparent -> 
+?mybrother hasBrother ?me
+?mybrother hasGrandparent ?mygrandparent
 
+# of combinations: 2 
+number: 2/2
+logically true: no 
+-->
+<rule>
+<body>  
+CONSTRUCT {
+    ?me dbo:grandparent ?mygrandparent .
+    [] dbo:weight "0.60"^^xsd:float .
+}
+WHERE {
+    ?mybrother dbo:brother ?me .
+    ?mybrother dbo:grandparent ?mygrandparent .
+    
+    FILTER (?me != ?mygrandparent)
+    FILTER (EXISTS {?me dbo:grandparent ?mygrandparent .})
+}
+
+</body>
+</rule>
+
+<!--
+?me hasGrandparent ?mygrandparent1 -> 
+?me hasGrandparent ?mygrandparent2
+?mygrandparent1 hasSpouse ?mygrandparent2
+
+# of combinations: 2 
+number: 1/2
+logically true: yes 
+-->
 <rule>
 <body>  
 CONSTRUCT {
@@ -56,6 +99,42 @@ WHERE {
 </body>
 </rule>
 
+<!--
+?me hasGrandparent ?mygrandparent1 -> 
+?me hasGrandparent ?mygrandparent2
+?mygrandparent2 hasSpouse ?mygrandparent1
+
+# of combinations: 2 
+number: 2/2
+logically true: yes 
+-->
+<rule>
+<body>  
+CONSTRUCT {
+    ?me dbo:grandparent ?mygrandparent1 .
+    [] dbo:weight "0.70"^^xsd:float .
+}
+WHERE {
+    ?me dbo:grandparent ?mygrandparent2 .
+    ?mygrandparent2 dbo:spouse ?mygrandparent1 .
+    
+    FILTER (?me != ?mygrandparent1)
+    FILTER (?me != ?mygrandparent2)
+}
+
+</body>
+</rule>
+
+
+<!--
+?me hasGrandparent ?mygrandparent -> 
+?me hasParent ?myparent
+?myparent hasSpouse ?mygrandparent
+
+# of combinations: 1 
+number: 1/1
+logically true: yes 
+-->
 <rule>
 <body>  
 CONSTRUCT {
@@ -72,6 +151,16 @@ WHERE {
 </body>
 </rule>
 
+
+<!--
+?me hasGrandparent ?mygrandparent -> 
+?mysister hashasGrandparent ?mygrandparent
+?me hasSister ?mysister
+
+# of combinations: 2
+number: 1/2
+logically true: yes 
+-->
 <rule>
 <body>  
 CONSTRUCT {
@@ -89,7 +178,41 @@ WHERE {
 </body>
 </rule>
 
+<!--
+?me hasGrandparent ?mygrandparent -> 
+?mysister hashasGrandparent ?mygrandparent
+?mysister hasSister ?me
 
+# of combinations: 2
+number: 2/2
+logically true: no 
+-->
+<rule>
+<body>  
+CONSTRUCT {
+    ?me dbo:grandparent ?mygrandparent .
+    [] dbo:weight "0.60"^^xsd:float .
+}
+WHERE {
+    ?mysister dbo:grandparent ?mygrandparent .
+    ?mysister dbo:sister ?me .
+    
+    FILTER (?me != ?mygrandparent)
+
+}
+
+</body>
+</rule>
+
+<!--
+?me hasGrandparent ?mygrandparent -> 
+?myparent hasChild ?me
+?myparent hasParent ?mygrandparent
+
+# of combinations: 1
+number: 1/1
+logically true: yes
+-->
 <rule>
 <body>  
 CONSTRUCT {
@@ -106,7 +229,15 @@ WHERE {
 </body>
 </rule>
 
+<!--
+?me hasGrandparent ?mygrandparent -> 
+?myparent hasChild ?me
+?myparent hasParent ?mygrandparent
 
+# of combinations: 1
+number: 1/1
+logically true: yes
+-->
 <rule>
 <body>  
 CONSTRUCT {

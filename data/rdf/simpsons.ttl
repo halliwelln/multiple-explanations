@@ -26,9 +26,6 @@
     dbo:child <https://simpsons.fandom.com/wiki/Maggie_Simpson>;
     dbo:sister <https://simpsons.fandom.com/wiki/Selma_Bouvier>;
     dbo:sister <https://simpsons.fandom.com/wiki/Patty_Bouvier>;
-    dbo:aunt <https://simpsons.fandom.com/wiki/Charlene_Bouvier>;
-    dbo:aunt <https://simpsons.fandom.com/wiki/Gladys_Gurney>;
-    dbo:uncle <https://simpsons.fandom.com/wiki/Lou_Gurney>;
     dbo:spouse <https://simpsons.fandom.com/wiki/Homer_Simpson> .
 
 <https://simpsons.fandom.com/wiki/Charlene_Bouvier> 
@@ -410,6 +407,7 @@
     dbo:parent <https://simpsons.fandom.com/wiki/Kirk_Van_Houten>;
     dbo:grandparent <https://simpsons.fandom.com/wiki/Grandpa_Van_Houten>;
     dbo:grandparent <https://simpsons.fandom.com/wiki/Grandma_Van_Houten> .
+    
 <https://simpsons.fandom.com/wiki/Kirk_Van_Houten> 
     rdfs:label "Kirk_Van_Houten";
     foaf:gender "male"@en;

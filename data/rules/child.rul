@@ -43,7 +43,7 @@ CONSTRUCT {
     [] dbo:weight "0.70"^^xsd:float .
 }
 WHERE {
-    ?me dbo:brother ?brother .
+    ?me dbo:brother ?mybrother .
     ?myparent dbo:child ?mybrother .
 
     FILTER (?myparent != ?me)
