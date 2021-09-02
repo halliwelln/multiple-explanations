@@ -24,25 +24,16 @@
 
 <!--                 brother                     -->
 
-<rule>
-<body>  
-CONSTRUCT {
-    ?me dbo:brother ?mybrother .
-    [] dbo:weight "0.00"^^xsd:float .
 
-}
-WHERE {
-    ?me dbo:parent ?myparent .
-    ?mybrother dbo:parent ?myparent .
-    ?mybrother foaf:gender "male"@en .
-    
-    FILTER (?me != ?mybrother)
-}
+<!--
+?me hasBrother ?mybrother -> 
+?myparent hasChild ?mybrother
+?me hasParent ?myparent
 
-</body>
-</rule>
-
-
+score: 0.8
+logically true: no 
+pattern: star
+-->
 <rule>
 <body>  
 CONSTRUCT {
@@ -54,12 +45,21 @@ WHERE {
   ?me dbo:parent ?myparent .
 
   FILTER (?me != ?mybrother)
-  FILTER (EXISTS {?me dbo:brother ?mybrother .})
 }
 
 </body>
 </rule>
 
+
+<!--
+?me hasBrother ?mybrother -> 
+?mysister hasBrother ?mybrother
+?me hasSister ?mysister
+
+score: 0.6
+logically true: yes
+pattern: chain
+-->
 <rule>
 <body>  
 CONSTRUCT {
@@ -76,6 +76,16 @@ WHERE {
 </body>
 </rule>
 
+
+<!--
+?me hasBrother ?mybrother -> 
+?mybrother hasGrandparent ?mygrandparent
+?me hasGrandparent ?mygrandparent
+
+score: 0.3
+logically true: no
+pattern: star
+-->
 <rule>
 <body>  
 CONSTRUCT {
@@ -87,13 +97,20 @@ WHERE {
   ?me dbo:grandparent ?mygrandparent .
 
   FILTER (?me != ?mybrother)
-  FILTER (EXISTS {?me dbo:brother ?mybrother .})
 }
 
 </body>
 </rule>
 
+<!--
+?me hasBrother ?mybrother -> 
+?mybrother hasParent ?myparent
+?me hasParent ?myparent
 
+score: 0.9
+logically true: no
+pattern: star
+-->
 <rule>
 <body>  
 CONSTRUCT {
@@ -105,13 +122,20 @@ WHERE {
   ?me dbo:parent ?myparent .
 
   FILTER (?me != ?mybrother)
-  FILTER (EXISTS {?me dbo:brother ?mybrother .})
 }
 
 </body>
 </rule>
 
+<!--
+?me hasBrother ?mybrother -> 
+?mybrother hasSister ?mysister
+?me hasSister ?mysister
 
+score: 0.7
+logically true: no
+pattern: star
+-->
 <rule>
 <body>  
 CONSTRUCT {
@@ -123,12 +147,19 @@ WHERE {
   ?me dbo:sister ?mysister .
 
   FILTER (?me != ?mybrother)
-  FILTER (EXISTS {?me dbo:brother ?mybrother .})
 }
 
 </body>
 </rule>
 
+<!--
+?mysister hasBrother ?me -> 
+?me hasSister ?mysister
+
+score: 0.8
+logically true: no
+pattern: inverse
+-->
 <rule>
 <body>  
 CONSTRUCT {
@@ -139,12 +170,20 @@ WHERE {
   ?me dbo:sister ?mysister .
 
   FILTER (?me != ?mysister)
-  FILTER (EXISTS {?mysister dbo:brother ?me .})
 }
 
 </body>
 </rule>
 
+<!--
+?me hasBrother ?mybrother2 -> 
+?me hasBrother ?mybrother1
+?mybrother1 hasBrother ?mybrother2
+
+score: 0.7
+logically true: yes
+pattern: chain
+-->
 <rule>
 <body>  
 CONSTRUCT {
@@ -162,27 +201,19 @@ WHERE {
 </body>
 </rule>
 
-
 <!--                 brother                     -->
 
+
 <!--                 sister                     -->
-<rule>
-<body>  
-CONSTRUCT {
-    ?me dbo:sister ?mysister .
-    [] dbo:weight "0.00"^^xsd:float .
 
-}
-WHERE {
-    ?me dbo:parent ?myparent .
-    ?mysister dbo:parent ?myparent .
-    ?mysister foaf:gender "female"@en .
-    FILTER (?me != ?mysister)
-}
+<!--
+?me hasSister ?mysister -> 
+?mysister hasBrother ?me
 
-</body>
-</rule>
-
+score: 0.8
+logically true: no
+pattern: inverse
+-->
 <rule>
 <body>  
 CONSTRUCT {
@@ -193,12 +224,20 @@ WHERE {
   ?mysister dbo:brother ?me .
 
   FILTER (?me != ?mysister)
-  FILTER (EXISTS {?me dbo:sister ?mysister .})
 }
 
 </body>
 </rule>
 
+<!--
+?me hasSister ?mysister -> 
+?me hasBrother ?mybrother
+?mybrother hasSister ?mysister
+
+score: 0.7
+logically true: yes
+pattern: chain
+-->
 <rule>
 <body>  
 CONSTRUCT {
@@ -215,6 +254,16 @@ WHERE {
 </body>
 </rule>
 
+
+<!--
+?me hasSister ?mysister -> 
+?myparent hasChild ?mysister
+?me hasParent ?myparent
+
+score: 0.8
+logically true: no
+pattern: chain
+-->
 <rule>
 <body>  
 CONSTRUCT {
@@ -226,12 +275,20 @@ WHERE {
   ?me dbo:parent ?myparent .
 
   FILTER (?me != ?mysister)
-  FILTER (EXISTS {?me dbo:sister ?mysister .})
 }
 
 </body>
 </rule>
 
+<!--
+?me hasSister ?mysister -> 
+?mysister hasBrother ?mybrother
+?me hasBrother ?mybrother
+
+score: 0.7
+logically true: no
+pattern: star
+-->
 <rule>
 <body>  
 CONSTRUCT {
@@ -243,12 +300,20 @@ WHERE {
   ?me dbo:brother ?mybrother .
 
   FILTER (?me != ?mysister)
-  FILTER (EXISTS {?me dbo:sister ?mysister .})
 }
 
 </body>
 </rule>
 
+<!--
+?me hasSister ?mysister -> 
+?mysister hasGrandparent ?mygrandparent
+?me hasGrandparent ?mygrandparent
+
+score: 0.2
+logically true: no
+pattern: star
+-->
 <rule>
 <body>  
 CONSTRUCT {
@@ -260,12 +325,20 @@ WHERE {
   ?me dbo:grandparent ?mygrandparent .
 
   FILTER (?me != ?mysister)
-  FILTER (EXISTS {?me dbo:sister ?mysister .})
 }
 
 </body>
 </rule>
 
+<!--
+?me hasSister ?mysister -> 
+?me hasParent ?myparent
+?mysister hasParent ?myparent
+
+score: 0.9
+logically true: no
+pattern: star
+-->
 <rule>
 <body>  
 CONSTRUCT {
@@ -277,12 +350,20 @@ WHERE {
   ?mysister dbo:parent ?myparent .
 
   FILTER (?me != ?mysister)
-  FILTER (EXISTS {?me dbo:sister ?mysister .})
 }
 
 </body>
 </rule>
 
+<!--
+?me hasSister ?mysister2 -> 
+?me hasSister ?mysister1
+?mysister1 hasSister ?mysister2
+
+score: 0.7
+logically true: yes
+pattern: chain
+-->
 <rule>
 <body>  
 CONSTRUCT {

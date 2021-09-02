@@ -20,6 +20,15 @@
     xmlns:dbo  = "&dbo;"
 >
 
+<!--
+?myparent hasChild ?me -> 
+?myparent hasChild ?mysister
+?me hasSister ?mysister
+
+score: 0.7
+logically true: yes
+pattern: star
+-->
 <rule>
 <body>  
 CONSTRUCT {
@@ -36,6 +45,16 @@ WHERE {
 </body>
 </rule> 
 
+
+<!--
+?myparent hasChild ?me -> 
+?me hasBrother ?mybrother
+?myparent hasChild ?mybrother
+
+score: 0.7
+logically true: yes
+pattern: chain
+-->
 <rule>
 <body>  
 CONSTRUCT {
@@ -52,7 +71,15 @@ WHERE {
 </body>
 </rule> 
 
+<!--
+?myparent hasChild ?me -> 
+?me hasGrandparent ?mygrandparent
+?myparent hasParent ?mygrandparent
 
+score: 0.4
+logically true: no
+pattern: chain
+-->
 <rule>
 <body>  
 CONSTRUCT {
@@ -70,6 +97,16 @@ WHERE {
 </body>
 </rule> 
 
+<!--
+?myparent hasChild ?me -> 
+?me hasParent ?myparent2
+?myparent2 hasSpouse ?myparent
+
+
+score: 0.7
+logically true: yes
+pattern: chain
+-->
 <rule>
 <body>  
 CONSTRUCT {
@@ -86,6 +123,14 @@ WHERE {
 </body>
 </rule> 
 
+<!--
+?myparent hasChild ?me -> 
+?me hasParent ?myparent
+
+score: 0.9
+logically true: yes
+pattern: inverse
+-->
 <rule>
 <body>  
 CONSTRUCT {
@@ -101,6 +146,15 @@ WHERE {
 </body>
 </rule> 
 
+<!--
+?myparent hasChild ?me -> 
+?me hasBrother ?mybrother
+?mybrother hasParent ?myparent
+
+score: 0.7
+logically true: yes
+pattern: chain
+-->
 <rule>
 <body>  
 CONSTRUCT {
@@ -117,7 +171,15 @@ WHERE {
 </body>
 </rule> 
 
+<!--
+?myparent hasChild ?me -> 
+?mygrandparent hasChild ?myparent
+?me hasGrandparent ?mygrandparent
 
+score: 0.4
+logically true: no
+pattern: star
+-->
 <rule>
 <body>  
 CONSTRUCT {
@@ -135,7 +197,15 @@ WHERE {
 </body>
 </rule> 
 
+<!--
+?myparent hasChild ?me -> 
+?mysister hasParent ?myparent
+?me hasSister ?mysister
 
+score: 0.7
+logically true: yes
+pattern: chain
+-->
 <rule>
 <body>  
 CONSTRUCT {
@@ -152,7 +222,15 @@ WHERE {
 </body>
 </rule>
 
+<!--
+?me hasChild ?mychild -> 
+?myspouse hasChild ?mychild
+?me hasSpouse ?myspouse
 
+score: 0.7
+logically true: yes
+pattern: chain
+-->
 <rule>
 <body>  
 CONSTRUCT {
