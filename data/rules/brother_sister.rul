@@ -45,6 +45,7 @@ WHERE {
   ?me dbo:parent ?myparent .
 
   FILTER (?me != ?mybrother)
+  FILTER (EXISTS {?me dbo:brother ?mybrother .})
 }
 
 </body>
@@ -97,6 +98,7 @@ WHERE {
   ?me dbo:grandparent ?mygrandparent .
 
   FILTER (?me != ?mybrother)
+  FILTER (EXISTS {?me dbo:brother ?mybrother .})
 }
 
 </body>
@@ -122,6 +124,7 @@ WHERE {
   ?me dbo:parent ?myparent .
 
   FILTER (?me != ?mybrother)
+  FILTER (EXISTS {?me dbo:brother ?mybrother .})
 }
 
 </body>
@@ -147,6 +150,7 @@ WHERE {
   ?me dbo:sister ?mysister .
 
   FILTER (?me != ?mybrother)
+  FILTER (EXISTS {?me dbo:brother ?mybrother .})
 }
 
 </body>
@@ -170,6 +174,8 @@ WHERE {
   ?me dbo:sister ?mysister .
 
   FILTER (?me != ?mysister)
+  FILTER (EXISTS {?mysister dbo:brother ?me .})
+
 }
 
 </body>
@@ -224,6 +230,7 @@ WHERE {
   ?mysister dbo:brother ?me .
 
   FILTER (?me != ?mysister)
+  FILTER (EXISTS {?me dbo:sister ?mysister .})
 }
 
 </body>
@@ -275,6 +282,7 @@ WHERE {
   ?me dbo:parent ?myparent .
 
   FILTER (?me != ?mysister)
+  FILTER (EXISTS {?me dbo:sister ?mysister .})
 }
 
 </body>
@@ -300,6 +308,7 @@ WHERE {
   ?me dbo:brother ?mybrother .
 
   FILTER (?me != ?mysister)
+  FILTER (EXISTS {?me dbo:sister ?mysister .})
 }
 
 </body>
@@ -325,6 +334,7 @@ WHERE {
   ?me dbo:grandparent ?mygrandparent .
 
   FILTER (?me != ?mysister)
+  FILTER (EXISTS {?me dbo:sister ?mysister .})
 }
 
 </body>
@@ -350,6 +360,7 @@ WHERE {
   ?mysister dbo:parent ?myparent .
 
   FILTER (?me != ?mysister)
+  FILTER (EXISTS {?me dbo:sister ?mysister .})
 }
 
 </body>

@@ -24,16 +24,18 @@ function us:exportEntailment() {
     xt:define("h", <http://www.inria.fr/2015/humans#>);
     xt:define("i", <http://www.inria.fr/2015/humans-instances#>);
     let (ind = 0, list = xt:list()) {
+        xt:print("size:", xt:size(entailmentList));
         for (ent in entailmentList) {
+            xt:print("process:", ind, xt:size(entailmentList));
             let ((acons awhere) = ent) {
                 xt:add(list, us:format(acons, awhere, set(ind = ind + 1)))
             }
         } ;
-        let (target = reduce(rq:concat, list)) {
-            xt:print(target) ;
-            xt:print("result in: /Users/nhalliwe/Desktop/multiple-explanations/data/simpsons_traces/entailment.ttl");
-            xt:write("/Users/nhalliwe/Desktop/multiple-explanations/data/simpsons_traces/entailment.ttl", target)
-        }
+        
+            #xt:print(list) ;
+            let (name = xt:write("entailment.ttl", list)) {
+                 xt:print("result in:", name);
+            }
     }
 }
 
