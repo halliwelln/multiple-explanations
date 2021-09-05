@@ -24,9 +24,7 @@
 
 <!--                 brother                     -->
 
-<!--        
-comment this out for simpsons data  
--->
+
 <rule>
 <body>  
 CONSTRUCT {
@@ -44,9 +42,6 @@ WHERE {
 </rule>
 
 
-<!--        
-comment this out for simpsons data  
--->
 <rule>
 <body>  
 CONSTRUCT {
