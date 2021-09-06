@@ -33,7 +33,7 @@ CONSTRUCT {
 WHERE {
     ?me dbo:parent ?myparent .
     ?mybrother dbo:parent ?myparent .
-    ?mybrother foaf:gender "male"@en .
+    ?mybrother dbo:gender "male"@en .
     
     FILTER (?me != ?mybrother)
 }
@@ -50,7 +50,7 @@ CONSTRUCT {
 WHERE {
     ?me dbo:parent ?myparent .
     ?mysister dbo:parent ?myparent .
-    ?mysister foaf:gender "female"@en .
+    ?mysister dbo:gender "female"@en .
     
     FILTER (?me != ?mysister)
 }

@@ -311,7 +311,8 @@ if __name__ == '__main__':
     print(f'learning_rate: {LEARNING_RATE}')
     print(f'threshold {THRESHOLD}')
 
-    np.savez(os.path.join('..','data','preds',DATASET,'gnn_explainer_'+DATASET+'_'+RULE+'_preds.npz'),
+    np.savez(os.path.join('..','data','preds',
+        DATASET,'gnn_explainer_'+DATASET+'_'+RULE+ '_' + str(NUM_EPOCHS)+'_preds.npz'),
         best_idx=best_idx, preds=out_preds,test_idx=best_test_indices
         )
 

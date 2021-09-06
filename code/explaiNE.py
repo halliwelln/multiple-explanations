@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import numpy as np
+import tensorflow as tf
 
 def get_pred(adj_mats,num_relations,tape,pred,top_k):
     
@@ -11,11 +12,11 @@ def get_pred(adj_mats,num_relations,tape,pred,top_k):
         adj_mat_i = adj_mats[i]
         
         for idx,score in enumerate(tape.gradient(pred,adj_mat_i.values).numpy()):
-            if score:
+            if tf.abs(score) >= 0:
                 scores.append((idx,i,score))
 
     top_k_scores = sorted(scores, key=lambda x : x[2],reverse=True)[:top_k]
-    
+
     pred_triples = []
     
     for idx,rel,score in top_k_scores:
@@ -32,7 +33,6 @@ def get_pred(adj_mats,num_relations,tape,pred,top_k):
 
 if __name__ == '__main__':
 
-    import tensorflow as tf
     import os
     import utils
     import random as rn
@@ -103,7 +103,7 @@ if __name__ == '__main__':
 
     for train_idx,test_idx in kf.split(X=triples):
 
-        #test_idx = test_idx[0:2]
+        #test_idx = test_idx[0:100]
 
         pred_exps = []
         cv_jaccard = 0.0
