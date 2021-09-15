@@ -59,6 +59,7 @@ if (MODEL == 'gnn_explainer') or (MODEL == 'all'):
     gnn_jaccard_list = []
     gnn_precision_list = []
     gnn_recall_list = []
+    gnn_f1_list = []
 
     for i in range(num_gnn_triples):
 
@@ -68,16 +69,18 @@ if (MODEL == 'gnn_explainer') or (MODEL == 'all'):
 
         gnn_jaccard_i = utils.max_jaccard_np(gnn_true_exp,gnn_pred,UNK_ENT_ID,UNK_REL_ID)
 
-        gnn_precision_i, gnn_recall_i = utils.graded_precision_recall(
+        gnn_precision_i, gnn_recall_i, gnn_f1_i = utils.graded_precision_recall(
             gnn_true_exp,gnn_pred,true_weight,UNK_ENT_ID,UNK_REL_ID,UNK_WEIGHT_ID)
 
         gnn_jaccard_list.append(gnn_jaccard_i)
         gnn_precision_list.append(gnn_precision_i)
         gnn_recall_list.append(gnn_recall_i)
+        gnn_f1_list.append(gnn_f1_i)
 
     gnn_jaccard_list = np.array(gnn_jaccard_list)
     gnn_precision_list = np.array(gnn_precision_list)
     gnn_recall_list = np.array(gnn_recall_list)
+    gnn_f1_list = np.array(gnn_f1_list)
     
     for rule in RULES:
 
@@ -86,8 +89,7 @@ if (MODEL == 'gnn_explainer') or (MODEL == 'all'):
         gnn_jaccard = np.mean(gnn_jaccard_list[gnn_indices])
         gnn_precision = np.mean(gnn_precision_list[gnn_indices])
         gnn_recall = np.mean(gnn_recall_list[gnn_indices])
-
-        gnn_f1 = utils.f1(gnn_precision,gnn_recall)
+        gnn_f1 = np.mean(gnn_f1_list[gnn_indices])
 
         print(f'{DATASET} {rule} GnnExplainer')
         print(f'graded precision {round(gnn_precision,3)}')
@@ -116,6 +118,7 @@ if (MODEL == 'explaine') or (MODEL == 'all'):
     explaine_jaccard_list = []
     explaine_precision_list = []
     explaine_recall_list = []
+    explaine_f1_list = []
 
     for i in range(num_explaine_triples):
 
@@ -125,16 +128,18 @@ if (MODEL == 'explaine') or (MODEL == 'all'):
 
         explaine_jaccard_i = utils.max_jaccard_np(explaine_true_exp,explaine_pred,UNK_ENT_ID,UNK_REL_ID)
 
-        explaine_precision_i, explaine_recall_i = utils.graded_precision_recall(
+        explaine_precision_i, explaine_recall_i, explaine_f1_i = utils.graded_precision_recall(
             explaine_true_exp,explaine_pred,true_weight,UNK_ENT_ID,UNK_REL_ID,UNK_WEIGHT_ID)
 
         explaine_jaccard_list.append(explaine_jaccard_i)
         explaine_precision_list.append(explaine_precision_i)
         explaine_recall_list.append(explaine_recall_i)
+        explaine_f1_list.append(explaine_f1_i)
 
     explaine_jaccard_list = np.array(explaine_jaccard_list)
     explaine_precision_list = np.array(explaine_precision_list)
     explaine_recall_list = np.array(explaine_recall_list)
+    explaine_f1_list = np.array(explaine_f1_list)
 
     for rule in RULES:
 
@@ -143,7 +148,7 @@ if (MODEL == 'explaine') or (MODEL == 'all'):
         explaine_jaccard =  np.mean(explaine_jaccard_list[explaine_rule_indices])
         explaine_precision = np.mean(explaine_precision_list[explaine_rule_indices])
         explaine_recall = np.mean(explaine_recall_list[explaine_rule_indices])
-        explaine_f1 = utils.f1(explaine_precision,explaine_recall)
+        explaine_f1 = np.mean(explaine_f1_list[explaine_rule_indices])
 
         print(f'{DATASET} {rule} ExplaiNE')
         print(f'graded precision {round(explaine_precision,3)}')

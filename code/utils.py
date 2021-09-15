@@ -69,10 +69,16 @@ def graded_precision_recall(
     # precision = max_relevance_score / (n * .9)
     # recall = max_relevance_score/ (num_true_triples * .9)
 
-    precision = np.max(relevance_scores / (n * .9))
-    recall = np.max(relevance_scores /  (num_true_triples * .9))
+    precision_scores = relevance_scores / (n * .9)
+    recall_scores = relevance_scores /  (num_true_triples * .9)
 
-    return precision, recall
+    f1_scores = 2 * (precision_scores * recall_scores) / (precision_scores + recall_scores + .000001)
+
+    f1 = np.max(f1_scores)
+    precision = np.max(precision_scores)
+    recall = np.max(recall_scores)
+
+    return precision, recall, f1
 
 def pad_trace(trace,longest_trace,max_padding,unk):
 

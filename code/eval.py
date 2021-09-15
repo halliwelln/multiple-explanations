@@ -60,6 +60,7 @@ if (MODEL == 'gnn_explainer') or (MODEL == 'all'):
     gnn_jaccard = 0.0
     gnn_precision = 0.0
     gnn_recall = 0.0
+    gnn_f1 = 0.0
 
     for i in range(num_gnn_triples):
 
@@ -69,18 +70,20 @@ if (MODEL == 'gnn_explainer') or (MODEL == 'all'):
 
         gnn_jaccard_i = utils.max_jaccard_np(gnn_true_exp,gnn_pred,UNK_ENT_ID,UNK_REL_ID)
 
-        gnn_precision_i, gnn_recall_i = utils.graded_precision_recall(
+        gnn_precision_i, gnn_recall_i, gnn_f1_i = utils.graded_precision_recall(
             gnn_true_exp,gnn_pred,true_weight,UNK_ENT_ID,UNK_REL_ID,UNK_WEIGHT_ID)
 
         gnn_precision += gnn_precision_i
         gnn_recall += gnn_recall_i
         gnn_jaccard += gnn_jaccard_i
+        gnn_f1 += gnn_f1_i
 
     gnn_jaccard /= num_gnn_triples
     gnn_precision /= num_gnn_triples
     gnn_recall /= num_gnn_triples
+    gnn_f1 /= num_gnn_triples
 
-    gnn_f1 = utils.f1(gnn_precision,gnn_recall)
+    #gnn_f1 = utils.f1(gnn_precision,gnn_recall)
 
     print(f'{DATASET} {RULE} GnnExplainer')
     print(f'graded precision {round(gnn_precision,3)}')
@@ -107,6 +110,7 @@ if (MODEL == 'explaine') or (MODEL == 'all'):
     explaine_jaccard = 0.0
     explaine_precision = 0.0
     explaine_recall = 0.0
+    explaine_f1 = 0.0
 
     for i in range(num_explaine_triples):
 
@@ -116,18 +120,20 @@ if (MODEL == 'explaine') or (MODEL == 'all'):
 
         explaine_jaccard_i = utils.max_jaccard_np(explaine_true_exp,explaine_pred,UNK_ENT_ID,UNK_REL_ID)
 
-        explaine_precision_i, explaine_recall_i = utils.graded_precision_recall(
+        explaine_precision_i, explaine_recall_i, explaine_f1_i = utils.graded_precision_recall(
             explaine_true_exp,explaine_pred,true_weight,UNK_ENT_ID,UNK_REL_ID,UNK_WEIGHT_ID)
 
         explaine_precision += explaine_precision_i
         explaine_recall += explaine_recall_i
         explaine_jaccard += explaine_jaccard_i
+        explaine_f1 += explaine_f1_i
 
     explaine_jaccard /= num_explaine_triples
     explaine_precision /= num_explaine_triples
     explaine_recall /= num_explaine_triples
+    explaine_f1 /= num_explaine_triples
 
-    explaine_f1 = utils.f1(explaine_precision,explaine_recall)
+    #explaine_f1 = utils.f1(explaine_precision,explaine_recall)
 
     print(f'{DATASET} {RULE} ExplaiNE')
     print(f'graded precision {round(explaine_precision,3)}')
