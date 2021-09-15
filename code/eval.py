@@ -14,7 +14,7 @@ rn.seed(SEED)
 parser = argparse.ArgumentParser()
 
 parser.add_argument('dataset', type=str,
-    help='paul, simpsons')
+    help='paul, french_royalty')
 parser.add_argument('rule',type=str,
     help='spouse,uncle,...,full_data')
 parser.add_argument('model',type=str)
@@ -46,7 +46,7 @@ if (MODEL == 'gnn_explainer') or (MODEL == 'all'):
 
     # gnn_data = np.load(
     #     os.path.join('..','data','preds',DATASET,
-    #         'gnn_explainer_'+DATASET+'_'+RULE+'_' + str(100)+'_preds.npz'),allow_pickle=True)
+    #         'gnn_explainer_'+DATASET+'_'+RULE+'_' + str(50)+'_preds.npz'),allow_pickle=True)
 
     gnn_test_idx = gnn_data['test_idx']
 
@@ -67,9 +67,9 @@ if (MODEL == 'gnn_explainer') or (MODEL == 'all'):
         gnn_pred = gnn_preds[i]
         true_weight = gnn_true_weights[i]
 
-        #gnn_jaccard += utils.max_jaccard_np(gnn_true_exp,gnn_pred,UNK_ENT_ID,UNK_REL_ID)
+        gnn_jaccard_i = utils.max_jaccard_np(gnn_true_exp,gnn_pred,UNK_ENT_ID,UNK_REL_ID)
 
-        gnn_precision_i, gnn_recall_i, gnn_jaccard_i = utils.graded_precision_recall(
+        gnn_precision_i, gnn_recall_i = utils.graded_precision_recall(
             gnn_true_exp,gnn_pred,true_weight,UNK_ENT_ID,UNK_REL_ID,UNK_WEIGHT_ID)
 
         gnn_precision += gnn_precision_i
@@ -87,7 +87,6 @@ if (MODEL == 'gnn_explainer') or (MODEL == 'all'):
     print(f'graded recall {round(gnn_recall,3)}')
     print(f'f1 {round(gnn_f1,3)}')
     print(f'max jaccard score: {round(gnn_jaccard,3)}')
-
 
 ###################################################
 if (MODEL == 'explaine') or (MODEL == 'all'):
@@ -115,9 +114,9 @@ if (MODEL == 'explaine') or (MODEL == 'all'):
         explaine_pred = explaine_preds[i]
         true_weight = explaine_true_weights[i]
 
-        #explaine_jaccard += utils.max_jaccard_np(explaine_true_exp,explaine_pred,UNK_ENT_ID,UNK_REL_ID)
+        explaine_jaccard_i = utils.max_jaccard_np(explaine_true_exp,explaine_pred,UNK_ENT_ID,UNK_REL_ID)
 
-        explaine_precision_i, explaine_recall_i,explaine_jaccard_i = utils.graded_precision_recall(
+        explaine_precision_i, explaine_recall_i = utils.graded_precision_recall(
             explaine_true_exp,explaine_pred,true_weight,UNK_ENT_ID,UNK_REL_ID,UNK_WEIGHT_ID)
 
         explaine_precision += explaine_precision_i

@@ -24,13 +24,21 @@ def graded_precision_recall(
     #first compute number of triples in explanation (must exclude padded triples)
     num_explanations = 0
 
+    #number of triples per explanation
+    num_true_triples = []
+
     for i in range(len(true_exp)):
 
-        current_trace =  true_exp[i]
+        current_trace = true_exp[i]
 
-        if (current_trace != unk).all(axis=1).sum() > 0:
+        num_triples = (current_trace != unk).all(axis=1).sum()
+
+        if  num_triples > 0:
 
             num_explanations += 1
+            num_true_triples.append(num_triples)
+
+    num_true_triples = np.array(num_true_triples)
 
     relevance_scores = np.zeros(num_explanations)
 
@@ -50,17 +58,21 @@ def graded_precision_recall(
 
             relevance_scores[j] += sum_weights
 
-    max_jaccard,max_idx = max_jaccard_np(
-        true_exp,pred_exp,unk_ent_id,unk_rel_id,return_idx=True)
+    # max_jaccard,max_idx = max_jaccard_np(
+    #     true_exp,pred_exp,unk_ent_id,unk_rel_id,return_idx=True)
     
-    max_relevance_score = relevance_scores[max_idx]
+    # max_relevance_score = relevance_scores[max_idx]
 
-    total_sum = sum([float(weight) for weight in true_weight[max_idx] if weight != unk_weight_id])
+    # #total_sum = sum([float(weight) for weight in true_weight[max_idx] if weight != unk_weight_id])
+    #num_true_triples = remove_padding_np(true_exp[max_idx],unk_ent_id,unk_rel_id).shape[0]
 
-    precision = max_relevance_score /n
-    recall = max_relevance_score/total_sum
-    
-    return precision, recall, max_jaccard
+    # precision = max_relevance_score / (n * .9)
+    # recall = max_relevance_score/ (num_true_triples * .9)
+
+    precision = np.max(relevance_scores / (n * .9))
+    recall = np.max(relevance_scores /  (num_true_triples * .9))
+
+    return precision, recall
 
 def pad_trace(trace,longest_trace,max_padding,unk):
 
