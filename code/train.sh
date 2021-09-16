@@ -17,7 +17,7 @@ TRACE_LENGTH=2
 
 MODEL='explaine'
 
-./eval.py $DATASET $RULE $MODEL $TRACE_LENGTH
+#./eval.py $DATASET $RULE $MODEL $TRACE_LENGTH
 
 # GNN_NUM_EPOCHS=50
 # GNN_LR=.001
@@ -26,6 +26,7 @@ MODEL='explaine'
 
 MODEL='gnn_explainer'
 
-./eval.py $DATASET $RULE $MODEL $TRACE_LENGTH
+#./eval.py $DATASET $RULE $MODEL $TRACE_LENGTH
 
-#./error.py $DATASET $RULE $MODEL
+MODEL='all'
+./error.py $DATASET $RULE $MODEL

@@ -4,7 +4,7 @@ import utils
 
 def get_counts(
     num_triples,true_triples, 
-    true_exps, preds,unk_ent_id,unk_rel_id, predicate_weights):
+    true_exps,preds,true_weights,unk_ent_id,unk_rel_id,unk_weight_id,predicate_weights):
 
     predicate_counts = {}
     pred_counts = {}
@@ -14,8 +14,10 @@ def get_counts(
         true_triple = true_triples[i]
         true_exp = true_exps[i]
         pred = preds[i]
+        true_weight = true_weights[i]
         
-        max_jaccard,max_idx = utils.max_jaccard_np(true_exp,pred,unk_ent_id,unk_rel_id,return_idx=True)
+        max_jaccard,max_idx = utils.max_jaccard_np(true_exp,pred,true_weight,unk_ent_id,
+            unk_rel_id,unk_weight_id,return_idx=True)
         
         max_predicates = true_triple[1] +'_' + '_'.join([p for p in true_exp[max_idx,:,1] if p != unk_rel_id])
         
@@ -78,7 +80,7 @@ if __name__ == "__main__":
     triples,traces,weights,entities,relations = utils.get_data(data,RULE)
 
     UNK_ENT_ID = 'UNK_ENT'
-    UNK_ENT_ID = 'UNK_REL'
+    UNK_REL_ID = 'UNK_REL'
     UNK_WEIGHT_ID = 'UNK_WEIGHT'
 
     with open(os.path.join('..','data','predicate_weights.json'),'r') as f:
@@ -97,13 +99,22 @@ if __name__ == "__main__":
         gnn_test_idx = gnn_data['test_idx']
         gnn_true_triples = triples[gnn_test_idx]
         gnn_true_exps = traces[gnn_test_idx]
+        gnn_true_weights = weights[gnn_test_idx]
 
         gnn_preds = gnn_data['preds']
 
         num_gnn_triples = gnn_true_exps.shape[0]
 
-        gnn_counts, gnn_pred_counts = get_counts(num_gnn_triples,gnn_true_triples,
-            gnn_true_exps,gnn_preds,UNK_ENT_ID,UNK_ENT_ID,predicate_weights)
+        gnn_counts, gnn_pred_counts = get_counts(
+            num_triples=num_gnn_triples,
+            true_triples=gnn_true_triples,
+            true_exps=gnn_true_exps,
+            preds=gnn_preds,
+            true_weights=gnn_true_weights,
+            unk_ent_id=UNK_ENT_ID,
+            unk_rel_id=UNK_REL_ID,
+            unk_weight_id=UNK_WEIGHT_ID,
+            predicate_weights=predicate_weights)
 
         gnn_sorted_counts = collections.OrderedDict(sorted(gnn_counts.items()))
 
@@ -132,12 +143,20 @@ if __name__ == "__main__":
         explaine_true_triples = triples[explaine_test_idx]
         explaine_true_exps = traces[explaine_test_idx]
         explaine_preds = explaine_data['preds']
+        explaine_true_weights = weights[explaine_test_idx]
 
         num_explaine_triples = explaine_true_exps.shape[0]
 
-        explaine_counts, explaine_pred_counts = get_counts(num_explaine_triples,
-            explaine_true_triples,explaine_true_exps,explaine_preds,
-            UNK_ENT_ID,UNK_ENT_ID,predicate_weights)
+        explaine_counts, explaine_pred_counts = get_counts(
+            num_triples=num_explaine_triples,
+            true_triples=explaine_true_triples,
+            true_exps=explaine_true_exps,
+            preds=explaine_preds,
+            true_weights=explaine_true_weights,
+            unk_ent_id=UNK_ENT_ID,
+            unk_rel_id=UNK_REL_ID,
+            unk_weight_id=UNK_WEIGHT_ID,
+            predicate_weights=predicate_weights)
 
         explaine_sorted_counts = collections.OrderedDict(sorted(explaine_counts.items()))
         print(f"Rule: {RULE}")

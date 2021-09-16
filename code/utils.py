@@ -162,7 +162,8 @@ def remove_padding_tf(exp,unk_ent_id, unk_rel_id):
 
     return masked_exp
 
-def max_jaccard_np(current_traces,pred_exp,unk_ent_id,unk_rel_id,return_idx=False):
+def max_jaccard_np(current_traces,pred_exp,true_weight,
+    unk_ent_id,unk_rel_id,unk_weight_id,return_idx=False):
 
     ''''
     pred_exp must have shape[0] >= 1
@@ -172,18 +173,34 @@ def max_jaccard_np(current_traces,pred_exp,unk_ent_id,unk_rel_id,return_idx=Fals
     '''
     
     jaccards = []
+    sum_weights = []
     
     for i in range(len(current_traces)):
         
         true_exp = remove_padding_np(current_traces[i],unk_ent_id,unk_rel_id)
 
+        weight = true_weight[i][true_weight[i] != unk_weight_id]
+
+        sum_weight = sum([float(num) for num in weight])
+
+        sum_weights.append(sum_weight)
+
         jaccard = jaccard_score_np(true_exp, pred_exp)
 
         jaccards.append(jaccard)
+
+    max_indices = np.array(jaccards) == max(jaccards)
+
+    if max_indices.sum() > 1:
+        max_idx = np.argmax(max_indices * sum_weights)
+        max_jaccard = jaccards[max_idx]
+    else:
+        max_jaccard = max(jaccards)
+        max_idx = np.argmax(jaccards)
     
     if return_idx:
-        return max(jaccards), np.argmax(jaccards)
-    return max(jaccards)
+        return max_jaccard, max_idx
+    return max_jaccard
 
 def max_jaccard_tf(current_traces,pred_exp,unk_ent_id,unk_rel_id):
 

@@ -66,12 +66,13 @@ if (MODEL == 'gnn_explainer') or (MODEL == 'all'):
 
         gnn_true_exp = gnn_true_exps[i]
         gnn_pred = gnn_preds[i]
-        true_weight = gnn_true_weights[i]
+        gnn_true_weight = gnn_true_weights[i]
 
-        gnn_jaccard_i = utils.max_jaccard_np(gnn_true_exp,gnn_pred,UNK_ENT_ID,UNK_REL_ID)
+        gnn_jaccard_i = utils.max_jaccard_np(gnn_true_exp,gnn_pred,gnn_true_weight,
+            UNK_ENT_ID,UNK_REL_ID,UNK_WEIGHT_ID)
 
         gnn_precision_i, gnn_recall_i, gnn_f1_i = utils.graded_precision_recall(
-            gnn_true_exp,gnn_pred,true_weight,UNK_ENT_ID,UNK_REL_ID,UNK_WEIGHT_ID)
+            gnn_true_exp,gnn_pred,gnn_true_weight,UNK_ENT_ID,UNK_REL_ID,UNK_WEIGHT_ID)
 
         gnn_precision += gnn_precision_i
         gnn_recall += gnn_recall_i
@@ -116,12 +117,13 @@ if (MODEL == 'explaine') or (MODEL == 'all'):
 
         explaine_true_exp = explaine_true_exps[i]
         explaine_pred = explaine_preds[i]
-        true_weight = explaine_true_weights[i]
+        explaine_true_weight = explaine_true_weights[i]
 
-        explaine_jaccard_i = utils.max_jaccard_np(explaine_true_exp,explaine_pred,UNK_ENT_ID,UNK_REL_ID)
+        explaine_jaccard_i = utils.max_jaccard_np(explaine_true_exp,explaine_pred,explaine_true_weight,
+            UNK_ENT_ID,UNK_REL_ID,UNK_WEIGHT_ID)
 
         explaine_precision_i, explaine_recall_i, explaine_f1_i = utils.graded_precision_recall(
-            explaine_true_exp,explaine_pred,true_weight,UNK_ENT_ID,UNK_REL_ID,UNK_WEIGHT_ID)
+            explaine_true_exp,explaine_pred,explaine_true_weight,UNK_ENT_ID,UNK_REL_ID,UNK_WEIGHT_ID)
 
         explaine_precision += explaine_precision_i
         explaine_recall += explaine_recall_i
