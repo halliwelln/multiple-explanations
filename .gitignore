@@ -5,3 +5,4 @@ data/simpsons.npz
 code/get_experiment_weights.py
 code/get_weights.py
 data/french_royalty.npz
+*.ipynb
