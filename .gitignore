@@ -7,3 +7,4 @@ code/get_weights.py
 data/french_royalty.npz
 *.ipynb
 .ipynb_checkpoints
+data/simpsons_traces
