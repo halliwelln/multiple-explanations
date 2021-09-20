@@ -1,6 +1,6 @@
 #!/bin/bash
 
-conda activate kg_env_new
+conda activate kg_env
 
 DATASET='french_royalty'
 RULE='full_data'
