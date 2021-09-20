@@ -8,11 +8,9 @@ data = np.load(os.path.join('..','data',DATASET+'.npz'))
 
 triples,traces,weights,entities,relations = utils.get_data(data,RULE)
 ```
-where 
-```python
-traces[0]
-```
-gives an explanation for ```python triples[0]```
+where $traces[0]$
+
+gives an explanation for $triples[0]$
 
 To reproduce results, first build a conda environment which uses Python 3.7 and Tensorflow-GPU 2.3:
 ```
