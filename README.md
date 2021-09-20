@@ -1,6 +1,9 @@
 Loading the FrenchRoyalty-200k is as simple as decompressing the `french_royalty.npz.zip` in `/data` and using the `utils.get_data` function:
 
 ```python
+import numpy as np
+import utils
+
 DATASET = 'french_royalty'
 RULE = 'spouse'
 
