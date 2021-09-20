@@ -11,7 +11,7 @@ data = np.load(os.path.join('..','data',DATASET+'.npz'))
 
 triples,traces,weights,entities,relations = utils.get_data(data,RULE)
 ```
-where `RULE` can be: *spouse*, *brother*, *sister*, *grandparent*, *child*, *parent*, or *full_data*. 
+where `RULE` can be: `'spouse'`, `'brother'`, `'sister'`, `'grandparent'`, `'child'`, `'parent'`, or `'full_data'`. 
 
 `traces[0]` gives an explanation for `triples[0]`, and `weights[0]` gives the weights for each explanation in `traces[0]`. 
 
