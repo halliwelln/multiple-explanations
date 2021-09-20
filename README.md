@@ -19,7 +19,7 @@ where `RULE` can be: `'spouse'`, `'brother'`, `'sister'`, `'grandparent'`, `'chi
 
 `entities` and `relations` is a numpy array containing all unique entities/relations. 
 
-To reproduce results, first build a conda environment which uses Python 3.7 and Tensorflow-GPU 2.3:
+To reproduce benchmark results, first build a conda environment which uses Python 3.7 and Tensorflow-GPU 2.3:
 ```
 conda env create -f kg_env.yml --name kg_env
 ```
