@@ -1,6 +1,6 @@
 # FrenchRoyalty-200k
 
-Loading the FrenchRoyalty-200k is as simple as decompressing the `french_royalty.npz.zip` in `/data` and using the `utils.get_data` function:
+Loading the FrenchRoyalty-200k into Python is as simple as decompressing the `french_royalty.npz.zip` in `/data` and using the `utils.get_data` function:
 
 ```python
 import os
