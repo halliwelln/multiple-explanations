@@ -17,16 +17,16 @@ TRACE_LENGTH=2
 
 MODEL='explaine'
 
-#./eval.py $DATASET $RULE $MODEL $TRACE_LENGTH
+./eval.py $DATASET $RULE $MODEL $TRACE_LENGTH
 
 # GNN_NUM_EPOCHS=50
 # GNN_LR=.001
 
 #./GnnExplainer.py $DATASET $RULE $GNN_NUM_EPOCHS $EMBEDDING_DIM $GNN_LR
 
-MODEL='gnn_explainer'
+#MODEL='gnn_explainer'
 
 #./eval.py $DATASET $RULE $MODEL $TRACE_LENGTH
 
-MODEL='all'
-./error.py $DATASET $RULE $MODEL
+#MODEL='all'
+#./error.py $DATASET $RULE $MODEL
