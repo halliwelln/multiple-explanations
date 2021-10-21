@@ -24,4 +24,4 @@ To reproduce benchmark results, first build a conda environment which uses Pytho
 conda env create -f kg_env.yml --name kg_env
 ```
 
-The latest version of the semantic reasoner can be found here: https://project.inria.fr/corese/
+The latest version of the semantic reasoner can be found here: <https://project.inria.fr/corese/>
