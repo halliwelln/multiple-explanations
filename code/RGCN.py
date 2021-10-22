@@ -307,4 +307,3 @@ if __name__ == '__main__':
     model.save_weights(os.path.join('..','data','weights',DATASET,DATASET + '_'+RULE+'.h5'))
 
     print('Done.')
-

@@ -1,4 +1,4 @@
-# FrenchRoyalty-200k
+# User Scored Evaluation of Non-Unique Explanations forRelational Graph Convolutional Network Link Prediction onKnowledge Graphs
 
 Loading the FrenchRoyalty-200k into Python is as simple as decompressing the `french_royalty.npz.zip` in `/data` and using the `utils.get_data` function:
 
