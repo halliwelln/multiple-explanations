@@ -40,6 +40,19 @@ conda env create -f kg_env.yml --name kg_env
   HAL_ID = {hal-03402766},
   HAL_VERSION = {v1},
 }
+
+@misc{halliwell:hal-03434544,
+  TITLE = {{A Simplified Benchmark for Ambiguous Explanations of Knowledge Graph Link Prediction using Relational Graph Convolutional Networks}},
+  AUTHOR = {Halliwell, Nicholas and Gandon, Fabien and Lecue, Freddy},
+  URL = {https://hal.archives-ouvertes.fr/hal-03434544},
+  NOTE = {Poster},
+  HOWPUBLISHED = {{AAAI}},
+  YEAR = {2022},
+  MONTH = Feb,
+  PDF = {https://hal.archives-ouvertes.fr/hal-03434544/file/AAAI_Poster_2022.pdf},
+  HAL_ID = {hal-03434544},
+  HAL_VERSION = {v1},
+}
 ```
 
 The latest version of the semantic reasoner can be found here: <https://project.inria.fr/corese/>
