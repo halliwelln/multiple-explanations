@@ -1,0 +1,32 @@
+#!/bin/bash
+
+conda activate kg_env
+
+DATASET='french_royalty'
+RULE='full_data'
+
+EMBEDDING_DIM=10
+RGCN_EPOCHS=1000
+RGCN_LR=.01
+
+#./RGCN.py $DATASET $RULE $RGCN_EPOCHS $EMBEDDING_DIM $RGCN_LR
+
+TRACE_LENGTH=2
+
+#./explaiNE.py $DATASET $RULE $TRACE_LENGTH $EMBEDDING_DIM
+
+MODEL='explaine'
+
+./eval.py $DATASET $RULE $MODEL $TRACE_LENGTH
+
+# GNN_NUM_EPOCHS=50
+# GNN_LR=.001
+
+#./GnnExplainer.py $DATASET $RULE $GNN_NUM_EPOCHS $EMBEDDING_DIM $GNN_LR
+
+#MODEL='gnn_explainer'
+
+#./eval.py $DATASET $RULE $MODEL $TRACE_LENGTH
+
+#MODEL='all'
+#./error.py $DATASET $RULE $MODEL

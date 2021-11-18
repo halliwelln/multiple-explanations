@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE rdf:RDF [
+  <!ENTITY rule   "http://ns.inria.fr/corese/rule/"> 
+  <!ENTITY rdf    "http://www.w3.org/1999/02/22-rdf-syntax-ns">
+  <!ENTITY rdfs   "http://www.w3.org/2000/01/rdf-schema">
+  <!ENTITY xsd    "http://www.w3.org/2001/XMLSchema#">
+  <!ENTITY spin   "http://spinrdf.org/sp#">
+  <!ENTITY owl    "http://www.w3.org/2002/07/owl#">
+  <!ENTITY dbo    "http://dbpedia.org/ontology/">
+]>
+
+<rdf:RDF 
+    xmlns:rdf  = "&rdf;#"
+    xmlns:rdfs = "&rdfs;#"
+    xmlns:xsd  = "&xsd;" 
+    xmlns:rule = "&rule;#"
+    xmlns:owl  = "&owl;"
+    xmlns:sp   = "&spin;"
+    xmlns      = "&rule;"
+    xmlns:dbo  = "&dbo;"
+>
+
+<!--
+?myparent hasChild ?me -> 
+?myparent hasChild ?mysister
+?me hasSister ?mysister
+
+score: 0.7
+logically true: yes
+pattern: star
+-->
+<rule>
+<body>  
+CONSTRUCT {
+    ?myparent dbo:child ?me .
+    [] dbo:weight "0.70"^^xsd:float .
+}
+WHERE {
+    ?myparent dbo:child ?mysister .
+    ?me dbo:sister ?mysister .
+
+    FILTER (?myparent != ?me)
+}
+
+</body>
+</rule> 
+
+
+<!--
+?myparent hasChild ?me -> 
+?me hasBrother ?mybrother
+?myparent hasChild ?mybrother
+
+score: 0.7
+logically true: yes
+pattern: chain
+-->
+<rule>
+<body>  
+CONSTRUCT {
+    ?myparent dbo:child ?me .
+    [] dbo:weight "0.70"^^xsd:float .
+}
+WHERE {
+    ?me dbo:brother ?mybrother .
+    ?myparent dbo:child ?mybrother .
+
+    FILTER (?myparent != ?me)
+}
+
+</body>
+</rule> 
+
+<!--
+?myparent hasChild ?me -> 
+?me hasGrandparent ?mygrandparent
+?myparent hasParent ?mygrandparent
+
+score: 0.4
+logically true: no
+pattern: chain
+-->
+<rule>
+<body>  
+CONSTRUCT {
+    ?myparent dbo:child ?me .
+    [] dbo:weight "0.40"^^xsd:float .
+}
+WHERE {
+    ?me dbo:grandparent ?mygrandparent .
+    ?myparent dbo:parent ?mygrandparent .
+
+    FILTER (?myparent != ?me)
+    FILTER (EXISTS {?myparent dbo:child ?me .})
+}
+
+</body>
+</rule> 
+
+<!--
+?myparent hasChild ?me -> 
+?me hasParent ?myparent2
+?myparent2 hasSpouse ?myparent
+
+
+score: 0.7
+logically true: yes
+pattern: chain
+-->
+<rule>
+<body>  
+CONSTRUCT {
+    ?myparent dbo:child ?me .
+    [] dbo:weight "0.70"^^xsd:float .
+}
+WHERE {
+    ?me dbo:parent ?myparent2 .
+    ?myparent2 dbo:spouse ?myparent .
+
+    FILTER (?myparent != ?me)
+}
+
+</body>
+</rule> 
+
+<!--
+?myparent hasChild ?me -> 
+?me hasParent ?myparent
+
+score: 0.9
+logically true: yes
+pattern: inverse
+-->
+<rule>
+<body>  
+CONSTRUCT {
+    ?myparent dbo:child ?me .
+    [] dbo:weight "0.90"^^xsd:float .
+}
+WHERE {
+    ?me dbo:parent ?myparent .
+
+    FILTER (?myparent != ?me)
+}
+
+</body>
+</rule> 
+
+<!--
+?myparent hasChild ?me -> 
+?me hasBrother ?mybrother
+?mybrother hasParent ?myparent
+
+score: 0.7
+logically true: yes
+pattern: chain
+-->
+<rule>
+<body>  
+CONSTRUCT {
+    ?myparent dbo:child ?me .
+    [] dbo:weight "0.70"^^xsd:float .
+}
+WHERE {
+    ?me dbo:brother ?mybrother .
+    ?mybrother dbo:parent ?myparent .
+
+    FILTER (?myparent != ?me)
+}
+
+</body>
+</rule> 
+
+<!--
+?myparent hasChild ?me -> 
+?mygrandparent hasChild ?myparent
+?me hasGrandparent ?mygrandparent
+
+score: 0.4
+logically true: no
+pattern: star
+-->
+<rule>
+<body>  
+CONSTRUCT {
+    ?myparent dbo:child ?me .
+    [] dbo:weight "0.40"^^xsd:float .
+}
+WHERE {
+    ?mygrandparent dbo:child ?myparent .
+    ?me dbo:grandparent ?mygrandparent .
+
+    FILTER (?myparent != ?me)
+    FILTER (EXISTS {?myparent dbo:child ?me .})
+}
+
+</body>
+</rule> 
+
+<!--
+?myparent hasChild ?me -> 
+?mysister hasParent ?myparent
+?me hasSister ?mysister
+
+score: 0.7
+logically true: yes
+pattern: chain
+-->
+<rule>
+<body>  
+CONSTRUCT {
+    ?myparent dbo:child ?me .
+    [] dbo:weight "0.70"^^xsd:float .
+}
+WHERE {
+    ?mysister dbo:parent ?myparent .
+    ?me dbo:sister ?mysister .
+
+    FILTER (?myparent != ?me)
+}
+
+</body>
+</rule>
+
+<!--
+?me hasChild ?mychild -> 
+?myspouse hasChild ?mychild
+?me hasSpouse ?myspouse
+
+score: 0.7
+logically true: yes
+pattern: chain
+-->
+<rule>
+<body>  
+CONSTRUCT {
+    ?me dbo:child ?mychild .
+    [] dbo:weight "0.70"^^xsd:float .
+}
+WHERE {
+    ?myspouse dbo:child ?mychild .
+    ?me dbo:spouse ?myspouse .
+
+    FILTER (?me != ?mychild)
+}
+
+</body>
+</rule>
+
+</rdf:RDF>

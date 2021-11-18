@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE rdf:RDF [
+  <!ENTITY rule   "http://ns.inria.fr/corese/rule/"> 
+  <!ENTITY rdf    "http://www.w3.org/1999/02/22-rdf-syntax-ns">
+  <!ENTITY rdfs   "http://www.w3.org/2000/01/rdf-schema">
+  <!ENTITY xsd    "http://www.w3.org/2001/XMLSchema#">
+  <!ENTITY spin   "http://spinrdf.org/sp#">
+  <!ENTITY owl    "http://www.w3.org/2002/07/owl#">
+  <!ENTITY dbo    "http://dbpedia.org/ontology/">
+  <!ENTITY foaf   "http://xmlns.com/foaf/0.1/">
+]>
+
+<rdf:RDF 
+    xmlns:rdf  = "&rdf;#"
+    xmlns:rdfs = "&rdfs;#"
+    xmlns:xsd  = "&xsd;" 
+    xmlns:rule = "&rule;#"
+    xmlns:owl  = "&owl;"
+    xmlns:sp   = "&spin;"
+    xmlns      = "&rule;"
+    xmlns:dbo  = "&dbo;"
+    xmlns:foaf = "&foaf;"
+>
+
+<!--                 brother                     -->
+
+
+<!--
+?me hasBrother ?mybrother -> 
+?myparent hasChild ?mybrother
+?me hasParent ?myparent
+
+score: 0.8
+logically true: no 
+pattern: star
+-->
+<rule>
+<body>  
+CONSTRUCT {
+    ?me dbo:brother ?mybrother .
+    [] dbo:weight "0.80"^^xsd:float .
+}
+WHERE {
+  ?myparent dbo:child ?mybrother .
+  ?me dbo:parent ?myparent .
+
+  FILTER (?me != ?mybrother)
+  FILTER (EXISTS {?me dbo:brother ?mybrother .})
+}
+
+</body>
+</rule>
+
+
+<!--
+?me hasBrother ?mybrother -> 
+?mysister hasBrother ?mybrother
+?me hasSister ?mysister
+
+score: 0.6
+logically true: yes
+pattern: chain
+-->
+<rule>
+<body>  
+CONSTRUCT {
+    ?me dbo:brother ?mybrother .
+    [] dbo:weight "0.60"^^xsd:float .
+}
+WHERE {
+  ?mysister dbo:brother ?mybrother .
+  ?me dbo:sister ?mysister .
+
+  FILTER (?me != ?mybrother)
+}
+
+</body>
+</rule>
+
+
+<!--
+?me hasBrother ?mybrother -> 
+?mybrother hasGrandparent ?mygrandparent
+?me hasGrandparent ?mygrandparent
+
+score: 0.3
+logically true: no
+pattern: star
+-->
+<rule>
+<body>  
+CONSTRUCT {
+    ?me dbo:brother ?mybrother .
+    [] dbo:weight "0.30"^^xsd:float .
+}
+WHERE {
+  ?mybrother dbo:grandparent ?mygrandparent .
+  ?me dbo:grandparent ?mygrandparent .
+
+  FILTER (?me != ?mybrother)
+  FILTER (EXISTS {?me dbo:brother ?mybrother .})
+}
+
+</body>
+</rule>
+
+<!--
+?me hasBrother ?mybrother -> 
+?mybrother hasParent ?myparent
+?me hasParent ?myparent
+
+score: 0.9
+logically true: no
+pattern: star
+-->
+<rule>
+<body>  
+CONSTRUCT {
+    ?me dbo:brother ?mybrother .
+    [] dbo:weight "0.90"^^xsd:float .
+}
+WHERE {
+  ?mybrother dbo:parent ?myparent .
+  ?me dbo:parent ?myparent .
+
+  FILTER (?me != ?mybrother)
+  FILTER (EXISTS {?me dbo:brother ?mybrother .})
+}
+
+</body>
+</rule>
+
+<!--
+?me hasBrother ?mybrother -> 
+?mybrother hasSister ?mysister
+?me hasSister ?mysister
+
+score: 0.7
+logically true: no
+pattern: star
+-->
+<rule>
+<body>  
+CONSTRUCT {
+    ?me dbo:brother ?mybrother .
+    [] dbo:weight "0.70"^^xsd:float .
+}
+WHERE {
+  ?mybrother dbo:sister ?mysister .
+  ?me dbo:sister ?mysister .
+
+  FILTER (?me != ?mybrother)
+  FILTER (EXISTS {?me dbo:brother ?mybrother .})
+}
+
+</body>
+</rule>
+
+<!--
+?mysister hasBrother ?me -> 
+?me hasSister ?mysister
+
+score: 0.8
+logically true: no
+pattern: inverse
+-->
+<rule>
+<body>  
+CONSTRUCT {
+    ?mysister dbo:brother ?me .
+    [] dbo:weight "0.80"^^xsd:float .
+}
+WHERE {
+  ?me dbo:sister ?mysister .
+
+  FILTER (?me != ?mysister)
+  FILTER (EXISTS {?mysister dbo:brother ?me .})
+
+}
+
+</body>
+</rule>
+
+<!--
+?me hasBrother ?mybrother2 -> 
+?me hasBrother ?mybrother1
+?mybrother1 hasBrother ?mybrother2
+
+score: 0.7
+logically true: yes
+pattern: chain
+-->
+<rule>
+<body>  
+CONSTRUCT {
+    ?me dbo:brother ?mybrother2 .
+    [] dbo:weight "0.70"^^xsd:float .
+}
+WHERE {
+  ?me dbo:brother ?mybrother1 .
+  ?mybrother1 dbo:brother ?mybrother2 .
+
+  FILTER (?me != ?mybrother1)
+  FILTER (?me != ?mybrother2)
+}
+
+</body>
+</rule>
+
+<!--                 brother                     -->
+
+
+<!--                 sister                     -->
+
+<!--
+?me hasSister ?mysister -> 
+?mysister hasBrother ?me
+
+score: 0.8
+logically true: no
+pattern: inverse
+-->
+<rule>
+<body>  
+CONSTRUCT {
+    ?me dbo:sister ?mysister .
+    [] dbo:weight "0.80"^^xsd:float .
+}
+WHERE {
+  ?mysister dbo:brother ?me .
+
+  FILTER (?me != ?mysister)
+  FILTER (EXISTS {?me dbo:sister ?mysister .})
+}
+
+</body>
+</rule>
+
+<!--
+?me hasSister ?mysister -> 
+?me hasBrother ?mybrother
+?mybrother hasSister ?mysister
+
+score: 0.7
+logically true: yes
+pattern: chain
+-->
+<rule>
+<body>  
+CONSTRUCT {
+    ?me dbo:sister ?mysister .
+    [] dbo:weight "0.70"^^xsd:float .
+}
+WHERE {
+  ?me dbo:brother ?mybrother .
+  ?mybrother dbo:sister ?mysister .
+
+  FILTER (?me != ?mysister)
+}
+
+</body>
+</rule>
+
+
+<!--
+?me hasSister ?mysister -> 
+?myparent hasChild ?mysister
+?me hasParent ?myparent
+
+score: 0.8
+logically true: no
+pattern: chain
+-->
+<rule>
+<body>  
+CONSTRUCT {
+    ?me dbo:sister ?mysister .
+    [] dbo:weight "0.80"^^xsd:float .
+}
+WHERE {
+  ?myparent dbo:child ?mysister .
+  ?me dbo:parent ?myparent .
+
+  FILTER (?me != ?mysister)
+  FILTER (EXISTS {?me dbo:sister ?mysister .})
+}
+
+</body>
+</rule>
+
+<!--
+?me hasSister ?mysister -> 
+?mysister hasBrother ?mybrother
+?me hasBrother ?mybrother
+
+score: 0.7
+logically true: no
+pattern: star
+-->
+<rule>
+<body>  
+CONSTRUCT {
+    ?me dbo:sister ?mysister .
+    [] dbo:weight "0.70"^^xsd:float .
+}
+WHERE {
+  ?mysister dbo:brother ?mybrother .
+  ?me dbo:brother ?mybrother .
+
+  FILTER (?me != ?mysister)
+  FILTER (EXISTS {?me dbo:sister ?mysister .})
+}
+
+</body>
+</rule>
+
+<!--
+?me hasSister ?mysister -> 
+?mysister hasGrandparent ?mygrandparent
+?me hasGrandparent ?mygrandparent
+
+score: 0.2
+logically true: no
+pattern: star
+-->
+<rule>
+<body>  
+CONSTRUCT {
+    ?me dbo:sister ?mysister .
+    [] dbo:weight "0.20"^^xsd:float .
+}
+WHERE {
+  ?mysister dbo:grandparent ?mygrandparent .
+  ?me dbo:grandparent ?mygrandparent .
+
+  FILTER (?me != ?mysister)
+  FILTER (EXISTS {?me dbo:sister ?mysister .})
+}
+
+</body>
+</rule>
+
+<!--
+?me hasSister ?mysister -> 
+?me hasParent ?myparent
+?mysister hasParent ?myparent
+
+score: 0.9
+logically true: no
+pattern: star
+-->
+<rule>
+<body>  
+CONSTRUCT {
+    ?me dbo:sister ?mysister .
+    [] dbo:weight "0.90"^^xsd:float .
+}
+WHERE {
+  ?me dbo:parent ?myparent .
+  ?mysister dbo:parent ?myparent .
+
+  FILTER (?me != ?mysister)
+  FILTER (EXISTS {?me dbo:sister ?mysister .})
+}
+
+</body>
+</rule>
+
+<!--
+?me hasSister ?mysister2 -> 
+?me hasSister ?mysister1
+?mysister1 hasSister ?mysister2
+
+score: 0.7
+logically true: yes
+pattern: chain
+-->
+<rule>
+<body>  
+CONSTRUCT {
+    ?me dbo:sister ?mysister2 .
+    [] dbo:weight "0.70"^^xsd:float .
+}
+WHERE {
+  ?me dbo:sister ?mysister1 .
+  ?mysister1 dbo:sister ?mysister2 .
+
+  FILTER (?me != ?mysister1)
+  FILTER (?me != ?mysister2)
+}
+
+</body>
+</rule>
+
+<!--                 sister                     -->
+
+</rdf:RDF>

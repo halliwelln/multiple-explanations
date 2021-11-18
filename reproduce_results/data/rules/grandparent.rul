@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE rdf:RDF [
+  <!ENTITY rule   "http://ns.inria.fr/corese/rule/"> 
+  <!ENTITY rdf    "http://www.w3.org/1999/02/22-rdf-syntax-ns">
+  <!ENTITY rdfs   "http://www.w3.org/2000/01/rdf-schema">
+  <!ENTITY xsd    "http://www.w3.org/2001/XMLSchema#">
+  <!ENTITY spin   "http://spinrdf.org/sp#">
+  <!ENTITY owl    "http://www.w3.org/2002/07/owl#">
+  <!ENTITY dbo    "http://dbpedia.org/ontology/">
+  <!ENTITY foaf   "http://xmlns.com/foaf/0.1/">
+]>
+
+<rdf:RDF 
+    xmlns:rdf  = "&rdf;#"
+    xmlns:rdfs = "&rdfs;#"
+    xmlns:xsd  = "&xsd;" 
+    xmlns:rule = "&rule;#"
+    xmlns:owl  = "&owl;"
+    xmlns:sp   = "&spin;"
+    xmlns      = "&rule;"
+    xmlns:dbo  = "&dbo;"
+    xmlns:foaf = "&foaf;"
+>
+
+<!--
+?me hasGrandparent ?mygrandparent -> 
+?me hasBrother ?mybrother
+?mybrother hasGrandparent ?mygrandparent
+
+score: 0.6
+logically true: yes 
+pattern: chain
+-->
+<rule>
+<body>  
+CONSTRUCT {
+    ?me dbo:grandparent ?mygrandparent .
+    [] dbo:weight "0.60"^^xsd:float .
+}
+WHERE {
+    ?me dbo:brother ?mybrother .
+    ?mybrother dbo:grandparent ?mygrandparent .
+    
+    FILTER (?me != ?mygrandparent)
+}
+
+</body>
+</rule>
+
+<!--
+?me hasGrandparent ?mygrandparent1 -> 
+?me hasGrandparent ?mygrandparent2
+?mygrandparent1 hasSpouse ?mygrandparent2
+
+score: 0.7
+logically true: yes 
+pattern: star
+-->
+<rule>
+<body>  
+CONSTRUCT {
+    ?me dbo:grandparent ?mygrandparent1 .
+    [] dbo:weight "0.70"^^xsd:float .
+}
+WHERE {
+    ?me dbo:grandparent ?mygrandparent2 .
+    ?mygrandparent1 dbo:spouse ?mygrandparent2 .
+    
+    FILTER (?me != ?mygrandparent1)
+    FILTER (?me != ?mygrandparent2)
+}
+
+</body>
+</rule>
+
+<!--
+?me hasGrandparent ?mygrandparent1 -> 
+?me hasGrandparent ?mygrandparent2
+?mygrandparent2 hasSpouse ?mygrandparent1
+
+score: 0.7
+logically true: yes 
+pattern: star
+-->
+<rule>
+<body>  
+CONSTRUCT {
+    ?me dbo:grandparent ?mygrandparent1 .
+    [] dbo:weight "0.70"^^xsd:float .
+}
+WHERE {
+    ?me dbo:grandparent ?mygrandparent2 .
+    ?mygrandparent2 dbo:spouse ?mygrandparent1 .
+    
+    FILTER (?me != ?mygrandparent1)
+    FILTER (?me != ?mygrandparent2)
+}
+
+</body>
+</rule>
+
+
+<!--
+?me hasGrandparent ?mygrandparent -> 
+?me hasParent ?myparent
+?myparent hasParent ?mygrandparent
+
+score: 0.9
+logically true: yes 
+pattern: chain
+-->
+<rule>
+<body>  
+CONSTRUCT {
+    ?me dbo:grandparent ?mygrandparent .
+    [] dbo:weight "0.90"^^xsd:float .
+}
+WHERE {
+    ?me dbo:parent ?myparent .
+    ?myparent dbo:parent ?mygrandparent .
+    
+    FILTER (?me != ?mygrandparent)
+}
+
+</body>
+</rule>
+
+
+<!--
+?me hasGrandparent ?mygrandparent -> 
+?mysister hasGrandparent ?mygrandparent
+?me hasSister ?mysister
+
+score: 0.6
+logically true: yes 
+pattern: chain
+-->
+<rule>
+<body>  
+CONSTRUCT {
+    ?me dbo:grandparent ?mygrandparent .
+    [] dbo:weight "0.60"^^xsd:float .
+}
+WHERE {
+    ?mysister dbo:grandparent ?mygrandparent .
+    ?me dbo:sister ?mysister .
+    
+    FILTER (?me != ?mygrandparent)
+
+}
+
+</body>
+</rule>
+
+
+<!--
+?me hasGrandparent ?mygrandparent -> 
+?myparent hasChild ?me
+?myparent hasParent ?mygrandparent
+
+score: 0.9
+logically true: yes 
+pattern: star
+-->
+<rule>
+<body>  
+CONSTRUCT {
+    ?me dbo:grandparent ?mygrandparent .
+    [] dbo:weight "0.90"^^xsd:float .
+}
+WHERE {
+    ?myparent dbo:child ?me .
+    ?myparent dbo:parent ?mygrandparent .
+    
+    FILTER (?me != ?mygrandparent)
+}
+
+</body>
+</rule>
+
+<!--
+?me hasGrandparent ?mygrandparent -> 
+?mygrandparent hasChild ?myparent
+?myparent hasChild ?me
+
+score: 0.7
+logically true: yes 
+pattern: chain
+-->
+<rule>
+<body>  
+CONSTRUCT {
+    ?me dbo:grandparent ?mygrandparent .
+    [] dbo:weight "0.90"^^xsd:float .
+}
+WHERE {
+    ?mygrandparent dbo:child ?myparent .
+    ?myparent dbo:child ?me .
+    
+    FILTER (?me != ?mygrandparent)
+}
+
+</body>
+</rule>
+
+
+</rdf:RDF>
