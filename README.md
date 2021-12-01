@@ -46,12 +46,12 @@ conda env create -f kg_env.yml --name kg_env
   AUTHOR = {Halliwell, Nicholas and Gandon, Fabien and Lecue, Freddy},
   URL = {https://hal.archives-ouvertes.fr/hal-03434544},
   NOTE = {Poster},
-  HOWPUBLISHED = {{AAAI}},
+  HOWPUBLISHED = {{36th AAAI Conference on Artificial Intelligence}},
   YEAR = {2022},
   MONTH = Feb,
-  PDF = {https://hal.archives-ouvertes.fr/hal-03434544/file/AAAI_Poster_2022.pdf},
+  PDF = {https://hal.archives-ouvertes.fr/hal-03434544v2/file/AAAI_Poster_2022%20%282%29.pdf},
   HAL_ID = {hal-03434544},
-  HAL_VERSION = {v1},
+  HAL_VERSION = {v2},
 }
 ```
 
