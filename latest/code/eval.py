@@ -32,12 +32,13 @@ data = np.load(os.path.join('..','data',DATASET+'.npz'))
 triples,traces,weights,entities,relations = utils.get_data(data,RULE)
 
 _, _,_,X_test_triples, X_test_traces, X_test_weights = utils.train_test_split_no_unseen(
-        triples,traces,weights,test_size=.3,seed=SEED)
+        X=triples,E=traces,weights=weights,test_size=.3,seed=SEED)
 
 UNK_ENT_ID = 'UNK_ENT'
 UNK_REL_ID = 'UNK_REL'
 UNK_WEIGHT_ID = 'UNK_WEIGHT'
-MAX_TRACE = data['max_trace']
+
+NUM_TRIPLES = len(X_test_triples)
 
 ###################################################
 
@@ -53,14 +54,12 @@ if (MODEL == 'gnn_explainer') or (MODEL == 'all'):
 
     gnn_preds = gnn_data['preds']
 
-    num_gnn_triples = X_test_traces.shape[0]
-
     gnn_jaccard = 0.0
     gnn_precision = 0.0
     gnn_recall = 0.0
     gnn_f1 = 0.0
 
-    for i in range(num_gnn_triples):
+    for i in range(NUM_TRIPLES):
 
         gnn_true_exp = X_test_traces[i]
         gnn_pred = gnn_preds[i]
@@ -77,10 +76,10 @@ if (MODEL == 'gnn_explainer') or (MODEL == 'all'):
         gnn_jaccard += gnn_jaccard_i
         gnn_f1 += gnn_f1_i
 
-    gnn_jaccard /= num_gnn_triples
-    gnn_precision /= num_gnn_triples
-    gnn_recall /= num_gnn_triples
-    gnn_f1 /= num_gnn_triples
+    gnn_jaccard /= NUM_TRIPLES
+    gnn_precision /= NUM_TRIPLES
+    gnn_recall /= NUM_TRIPLES
+    gnn_f1 /= NUM_TRIPLES
 
     #gnn_f1 = utils.f1(gnn_precision,gnn_recall)
 
@@ -99,14 +98,12 @@ if (MODEL == 'explaine') or (MODEL == 'all'):
 
     explaine_preds = explaine_data['preds']
 
-    num_explaine_triples = X_test_traces.shape[0]
-
     explaine_jaccard = 0.0
     explaine_precision = 0.0
     explaine_recall = 0.0
     explaine_f1 = 0.0
 
-    for i in range(num_explaine_triples):
+    for i in range(NUM_TRIPLES):
 
         explaine_true_exp = X_test_traces[i]
         explaine_pred = explaine_preds[i]
@@ -123,10 +120,10 @@ if (MODEL == 'explaine') or (MODEL == 'all'):
         explaine_jaccard += explaine_jaccard_i
         explaine_f1 += explaine_f1_i
 
-    explaine_jaccard /= num_explaine_triples
-    explaine_precision /= num_explaine_triples
-    explaine_recall /= num_explaine_triples
-    explaine_f1 /= num_explaine_triples
+    explaine_jaccard /= NUM_TRIPLES
+    explaine_precision /= NUM_TRIPLES
+    explaine_recall /= NUM_TRIPLES
+    explaine_f1 /= NUM_TRIPLES
 
     #explaine_f1 = utils.f1(explaine_precision,explaine_recall)
 

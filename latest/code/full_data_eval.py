@@ -33,6 +33,8 @@ UNK_ENT_ID = 'UNK_ENT'
 UNK_REL_ID = 'UNK_REL'
 UNK_WEIGHT_ID = 'UNK_WEIGHT'
 
+NUM_TRIPLES = len(X_test_triples)
+
 RULES = ['spouse', 'brother', 'sister', 'grandparent', 'child', 'parent']
 
 ###################################################
@@ -45,14 +47,12 @@ if (MODEL == 'gnn_explainer') or (MODEL == 'all'):
 
     gnn_preds = gnn_data['preds']
 
-    num_gnn_triples = X_test_traces.shape[0]
-
     gnn_jaccard_list = []
     gnn_precision_list = []
     gnn_recall_list = []
     gnn_f1_list = []
 
-    for i in range(num_gnn_triples):
+    for i in range(NUM_TRIPLES):
 
         gnn_true_exp = X_test_traces[i]
         gnn_pred = gnn_preds[i]
@@ -101,14 +101,12 @@ if (MODEL == 'explaine') or (MODEL == 'all'):
 
     explaine_preds = explaine_data['preds']
 
-    num_explaine_triples = X_test_traces.shape[0]
-
     explaine_jaccard_list = []
     explaine_precision_list = []
     explaine_recall_list = []
     explaine_f1_list = []
 
-    for i in range(num_explaine_triples):
+    for i in range(NUM_TRIPLES):
 
         explaine_true_exp = X_test_traces[i]
         explaine_pred = explaine_preds[i]

@@ -159,7 +159,7 @@ if __name__ == '__main__':
     triples,traces,weights,entities,relations = utils.get_data(data,RULE)
 
     X_train_triples, X_train_traces,_,X_test_triples, X_test_traces, _ = utils.train_test_split_no_unseen(
-        triples,traces,weights,test_size=.3,seed=SEED)
+        X=triples,E=traces,weights=weights,test_size=.3,seed=SEED)
 
     NUM_ENTITIES = len(entities)
     NUM_RELATIONS = len(relations)

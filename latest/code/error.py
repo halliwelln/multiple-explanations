@@ -3,12 +3,14 @@
 import utils
 
 def get_counts(
-    num_triples,true_triples, 
+    true_triples, 
     true_exps,preds,true_weights,unk_ent_id,
     unk_rel_id,unk_weight_id,predicate_weights):
 
     predicate_counts = {}
     pred_counts = {}
+
+    num_triples = len(true_triples)
 
     for i in range(num_triples):
         
@@ -65,7 +67,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
 
     parser.add_argument('dataset', type=str,
-        help='paul, french_royalty')
+        help='french_royalty')
     parser.add_argument('rule',type=str,
         help='spouse,uncle,...,full_data')
     parser.add_argument('model',type=str)
@@ -76,13 +78,16 @@ if __name__ == "__main__":
     RULE = args.rule
     MODEL = args. model
 
+    UNK_ENT_ID = 'UNK_ENT'
+    UNK_REL_ID = 'UNK_REL'
+    UNK_WEIGHT_ID = 'UNK_WEIGHT'
+
     data = np.load(os.path.join('..','data',DATASET+'.npz'))
 
     triples,traces,weights,entities,relations = utils.get_data(data,RULE)
 
-    UNK_ENT_ID = 'UNK_ENT'
-    UNK_REL_ID = 'UNK_REL'
-    UNK_WEIGHT_ID = 'UNK_WEIGHT'
+    _, _,_,X_test_triples, X_test_traces, X_test_weights = utils.train_test_split_no_unseen(
+            X=triples,E=traces,weights=weights,test_size=.3,seed=SEED)
 
     with open(os.path.join('..','data','predicate_weights.json'),'r') as f:
         predicate_weights = json.load(f)    
@@ -97,21 +102,20 @@ if __name__ == "__main__":
         #     os.path.join('..','data','preds',DATASET,
         #         'gnn_explainer_'+DATASET+'_'+RULE+'_' + str(50)+'_preds.npz'),allow_pickle=True)
 
-        gnn_test_idx = gnn_data['test_idx']
-        gnn_true_triples = triples[gnn_test_idx]
-        gnn_true_exps = traces[gnn_test_idx]
-        gnn_true_weights = weights[gnn_test_idx]
+        # gnn_test_idx = gnn_data['test_idx']
+        # gnn_true_triples = triples[gnn_test_idx]
+        # gnn_true_exps = traces[gnn_test_idx]
+        # gnn_true_weights = weights[gnn_test_idx]
 
         gnn_preds = gnn_data['preds']
 
-        num_gnn_triples = gnn_true_exps.shape[0]
+        #num_gnn_triples = gnn_true_exps.shape[0]
 
         gnn_counts, gnn_pred_counts = get_counts(
-            num_triples=num_gnn_triples,
-            true_triples=gnn_true_triples,
-            true_exps=gnn_true_exps,
+            true_triples=X_test_triples,
+            true_exps=X_test_traces,
             preds=gnn_preds,
-            true_weights=gnn_true_weights,
+            true_weights=X_test_weights,
             unk_ent_id=UNK_ENT_ID,
             unk_rel_id=UNK_REL_ID,
             unk_weight_id=UNK_WEIGHT_ID,
@@ -140,20 +144,20 @@ if __name__ == "__main__":
             os.path.join('..','data','preds',DATASET,
                 'explaine_'+DATASET+'_'+RULE+'_preds.npz'),allow_pickle=True)
 
-        explaine_test_idx = explaine_data['test_idx']
-        explaine_true_triples = triples[explaine_test_idx]
-        explaine_true_exps = traces[explaine_test_idx]
         explaine_preds = explaine_data['preds']
-        explaine_true_weights = weights[explaine_test_idx]
 
-        num_explaine_triples = explaine_true_exps.shape[0]
+        # explaine_test_idx = explaine_data['test_idx']
+        # explaine_true_triples = triples[explaine_test_idx]
+        # explaine_true_exps = traces[explaine_test_idx]
+        # explaine_true_weights = weights[explaine_test_idx]
+
+        # num_explaine_triples = explaine_true_exps.shape[0]
 
         explaine_counts, explaine_pred_counts = get_counts(
-            num_triples=num_explaine_triples,
-            true_triples=explaine_true_triples,
-            true_exps=explaine_true_exps,
+            true_triples=X_test_triples,
+            true_exps=X_test_traces,
             preds=explaine_preds,
-            true_weights=explaine_true_weights,
+            true_weights=X_test_weights,
             unk_ent_id=UNK_ENT_ID,
             unk_rel_id=UNK_REL_ID,
             unk_weight_id=UNK_WEIGHT_ID,
