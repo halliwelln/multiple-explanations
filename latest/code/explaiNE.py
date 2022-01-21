@@ -38,7 +38,6 @@ if __name__ == '__main__':
     import random as rn
     import RGCN
     import argparse
-    from sklearn.model_selection import KFold
 
     SEED = 123
     os.environ['PYTHONHASHSEED'] = str(SEED)
@@ -67,8 +66,12 @@ if __name__ == '__main__':
 
     triples,traces,weights,entities,relations = utils.get_data(data,RULE)
 
+    MAX_PADDING = 2
+    LONGEST_TRACE = utils.get_longest_trace(data, RULE)
+
     X_train_triples, X_train_traces,_,X_test_triples, X_test_traces, _ = utils.train_test_split_no_unseen(
-        triples,traces,weights,test_size=.3,seed=SEED)
+        X=triples,E=traces,weights=weights,longest_trace=LONGEST_TRACE,max_padding=MAX_PADDING,
+        test_size=.25,seed=SEED)
 
     NUM_ENTITIES = len(entities)
     NUM_RELATIONS = len(relations)
@@ -147,78 +150,3 @@ if __name__ == '__main__':
         )
 
     print('Done.')
-
-    # kf = KFold(n_splits=3,shuffle=True,random_state=SEED)
-
-    # cv_scores = []
-    # cv_preds = []
-    # test_indicies = []
-
-    # for train_idx,test_idx in kf.split(X=triples):
-
-    #     #test_idx = test_idx[0:100]
-
-    #     pred_exps = []
-    #     cv_jaccard = 0.0
-
-    #     train2idx = triples2idx[train_idx]
-    #     trainexp2idx = traces2idx[train_idx]
-
-    #     test2idx = triples2idx[test_idx]
-    #     testexp2idx = traces2idx[test_idx]
-
-    #     ADJACENCY_DATA = tf.concat([
-    #         train2idx,
-    #         trainexp2idx.reshape(-1,3),
-    #         test2idx,
-    #         testexp2idx.reshape(-1,3)
-    #         ],axis=0
-    #     )
-
-    #     adj_mats = utils.get_adj_mats(ADJACENCY_DATA,NUM_ENTITIES,NUM_RELATIONS)
-
-    #     tf_data = tf.data.Dataset.from_tensor_slices(
-    #             (test2idx[:,0],test2idx[:,1],test2idx[:,2],testexp2idx)).batch(1)
-
-    #     for head, rel, tail, true_exp in tf_data:
-
-    #         with tf.GradientTape(watch_accessed_variables=False,persistent=True) as tape:
-
-    #             tape.watch(adj_mats)
-        
-    #             pred = model([
-    #                 ALL_INDICES,
-    #                 tf.reshape(head,(1,-1)),
-    #                 tf.reshape(rel,(1,-1)),
-    #                 tf.reshape(tail,(1,-1)),
-    #                 adj_mats
-    #                 ]
-    #             )
-
-    #         pred_exp = get_pred(adj_mats,NUM_RELATIONS,tape,pred,TOP_K)
-
-    #         pred_exps.append(pred_exp)
-
-    #         jaccard = utils.max_jaccard_tf(true_exp[0],pred_exp,UNK_ENT_ID,UNK_REL_ID)
-
-    #         #print(f'jaccard {jaccard}')
-    #         cv_jaccard += jaccard
-
-    #     cv_preds.append(pred_exps)
-    #     cv_scores.append(cv_jaccard / test2idx.shape[0])
-    #     test_indicies.append(test_idx)
-
-    # best_idx = np.argmax(cv_scores)
-    # best_test_indices = test_indicies[best_idx]
-    # best_preds = np.array(cv_preds[best_idx])
-
-    # best_preds = utils.idx2array(best_preds,idx2ent,idx2rel)
-
-    # print(f'Top k: {TOP_K}')
-    # print(f'Embedding dim: {EMBEDDING_DIM}')
-
-    # np.savez(os.path.join('..','data','preds',DATASET,'explaine_'+DATASET+'_'+RULE+'_preds.npz'),
-    #     preds=best_preds,best_idx=best_idx,test_idx=best_test_indices
-    #     )
-
-    # print('Done.')

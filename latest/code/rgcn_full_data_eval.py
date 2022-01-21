@@ -31,8 +31,14 @@ data = np.load(os.path.join('..','data',DATASET+'.npz'))
 
 triples,traces,weights,entities,relations = utils.get_data(data,'full_data')
 
-X_train_triples, X_train_traces,_,X_test_triples, X_test_traces, _ = utils.train_test_split_no_unseen(
-            triples,traces,weights,test_size=.3,seed=SEED)
+MAX_PADDING = 2
+LONGEST_TRACE = utils.get_longest_trace(data, RULE)
+
+X_train_triples, X_train_traces,_,\
+            test_triples, X_test_traces, _ = utils.train_test_split_no_unseen(
+                X=triples,E=traces,weights=weights,
+                longest_trace=LONGEST_TRACE,max_padding=MAX_PADDING,
+                test_size=.25,seed=SEED)
 
 RULES = ['spouse', 'brother', 'sister', 'grandparent', 'child', 'parent']
 
@@ -97,47 +103,3 @@ for rule in RULES:
     acc = np.mean((preds > .5))
 
     print(f'{DATASET} {rule} accuracy {round(acc,3)}')
-
-
-    # kf_acc = []
-
-    # for train_idx,test_idx in kf.split(X=triples):
-
-    #     train2idx = utils.array2idx(triples[train_idx],ent2idx,rel2idx)
-    #     trainexp2idx = utils.array2idx(traces[train_idx],ent2idx,rel2idx)
-
-    #     test2idx = utils.array2idx(triples[test_idx],ent2idx,rel2idx)
-    #     testexp2idx =  utils.array2idx(traces[test_idx],ent2idx,rel2idx)
-
-    #     ADJACENCY_DATA = tf.concat([
-    #         train2idx,
-    #         trainexp2idx.reshape(-1,3),
-    #         test2idx,
-    #         testexp2idx.reshape(-1,3)
-    #         ],axis=0
-    #     )
-
-    #     ADJ_MATS = utils.get_adj_mats(ADJACENCY_DATA,NUM_ENTITIES,NUM_RELATIONS)
-
-    #     X_test = np.expand_dims(test2idx,axis=0)
-
-    #     rule_indices = X_test[0,:,1] == rel2idx[rule]
-
-    #     X_test_rule = X_test[:,rule_indices,:]
-
-    #     preds = model.predict(
-    #         x=[
-    #             ALL_INDICES,
-    #             X_test_rule[:,:,0],
-    #             X_test_rule[:,:,1],
-    #             X_test_rule[:,:,2],
-    #             ADJ_MATS
-    #         ]
-    #     )
-
-    #     kf_acc.append(np.mean((preds > .5)))
-
-    # cv_acc = np.mean(kf_acc)
-
-    # print(f'{DATASET} {rule} accuracy {round(cv_acc,3)}')
-

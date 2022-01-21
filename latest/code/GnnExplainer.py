@@ -29,7 +29,7 @@ def get_computation_graph(head,rel,tail,data,num_relations):
 
 def replica_step(head,rel,tail,explanation,num_entities, num_relations):
     
-    comp_graph = get_computation_graph(head,rel,tail,K,ADJACENCY_DATA,num_relations)
+    comp_graph = get_computation_graph(head,rel,tail,ADJACENCY_DATA,num_relations)
 
     adj_mats = utils.get_adj_mats(comp_graph, num_entities, num_relations)
 
@@ -126,7 +126,6 @@ def distributed_replica_step(head,rel,tail,explanation,num_entities, num_relatio
 if __name__ == '__main__':
 
     import argparse
-    from sklearn.model_selection import KFold
     import tensorflow as tf
 
     SEED = 123
@@ -158,8 +157,12 @@ if __name__ == '__main__':
 
     triples,traces,weights,entities,relations = utils.get_data(data,RULE)
 
+    MAX_PADDING = 2
+    LONGEST_TRACE = utils.get_longest_trace(data, RULE)
+
     X_train_triples, X_train_traces,_,X_test_triples, X_test_traces, _ = utils.train_test_split_no_unseen(
-        X=triples,E=traces,weights=weights,test_size=.3,seed=SEED)
+        X=triples,E=traces,weights=weights,longest_trace=LONGEST_TRACE,max_padding=MAX_PADDING,
+        test_size=.25,seed=SEED)
 
     NUM_ENTITIES = len(entities)
     NUM_RELATIONS = len(relations)
@@ -258,7 +261,7 @@ if __name__ == '__main__':
     print(f'threshold {THRESHOLD}')
 
     np.savez(os.path.join('..','data','preds',
-        DATASET,'gnn_explainer_'+DATASET+'_'+RULE+ '_' + str(NUM_EPOCHS)+'_preds.npz'),
+        DATASET,'gnn_explainer_'+DATASET+'_'+RULE+ '_'+'_preds.npz'),
         preds=out_preds
         )
 

@@ -18,25 +18,28 @@ parser.add_argument('dataset', type=str,
 parser.add_argument('rule',type=str,
     help='spouse,uncle,...,full_data')
 parser.add_argument('model',type=str)
-parser.add_argument('trace_length',type=int)
 
 args = parser.parse_args()
 
 DATASET = args.dataset
 RULE = args.rule
 MODEL = args.model
-TRACE_LENGTH = args.trace_length
 
 data = np.load(os.path.join('..','data',DATASET+'.npz'))
 
 triples,traces,weights,entities,relations = utils.get_data(data,RULE)
 
-_, _,_,X_test_triples, X_test_traces, X_test_weights = utils.train_test_split_no_unseen(
-        X=triples,E=traces,weights=weights,test_size=.3,seed=SEED)
+MAX_PADDING = 2
+LONGEST_TRACE = utils.get_longest_trace(data, RULE)
 
 UNK_ENT_ID = 'UNK_ENT'
 UNK_REL_ID = 'UNK_REL'
 UNK_WEIGHT_ID = 'UNK_WEIGHT'
+
+_, _,_,X_test_triples, X_test_traces, X_test_weights = utils.train_test_split_no_unseen(
+    X=triples,E=traces,weights=weights,longest_trace=LONGEST_TRACE,max_padding=MAX_PADDING,
+    unk_ent_id=UNK_ENT_ID, unk_rel_id=UNK_REL_ID,
+    test_size=.25,seed=SEED)
 
 NUM_TRIPLES = len(X_test_triples)
 

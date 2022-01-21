@@ -1,0 +1,7 @@
+'french_royalty' 'full_data' 20 10 0.001
+'french_royalty' 'spouse' 20 10 0.001
+'french_royalty' 'brother' 20 10 0.001
+'french_royalty' 'sister' 20 10 0.001
+'french_royalty' 'grandparent' 20 10 0.001
+'french_royalty' 'child' 20 10 0.001
+'french_royalty' 'parent' 20 10 0.001

@@ -163,7 +163,7 @@ def get_RGCN_Model(num_entities,num_relations,embedding_dim,output_dim,seed):
         output_dim=embedding_dim,
         name='entity_embeddings',
         embeddings_initializer=tf.keras.initializers.RandomUniform(
-            minval=-1,
+            minval=0,
             maxval=1,
             seed=seed
         )
@@ -214,7 +214,6 @@ if __name__ == '__main__':
     import argparse
     import os
     import random as rn
-    from sklearn.model_selection import KFold
 
     SEED = 123
     os.environ['PYTHONHASHSEED'] = str(SEED)
@@ -245,8 +244,13 @@ if __name__ == '__main__':
 
     triples,traces,weights,entities,relations = utils.get_data(data,RULE)
 
-    X_train_triples, X_train_traces,_,X_test_triples, X_test_traces, _ = utils.train_test_split_no_unseen(
-        triples,traces,weights,test_size=.3,seed=SEED)
+    MAX_PADDING = 2
+    LONGEST_TRACE = utils.get_longest_trace(data, RULE)
+
+    X_train_triples, X_train_traces,_,_, _, _ = utils.train_test_split_no_unseen(
+        X=triples,E=traces,weights=weights,
+        longest_trace=LONGEST_TRACE,max_padding=MAX_PADDING,
+        test_size=.25,seed=SEED)
 
     NUM_ENTITIES = len(entities)
     NUM_RELATIONS = len(relations)
@@ -259,19 +263,9 @@ if __name__ == '__main__':
 
     X_train = np.concatenate([X_train_triples,X_train_traces.reshape(-1,3)],axis=0)
 
+    X_train = np.unique(X_train,axis=0)
+
     X_train = utils.array2idx(X_train,ent2idx,rel2idx)
-
-    # full_data = np.unique(
-    #     np.concatenate([triples2idx,traces2idx.reshape(-1,3)],axis=0),
-    #     axis=0)
-
-    # X_train,X_test = utils.train_test_split_no_unseen(
-    #     full_data, 
-    #     test_size=.2,
-    #     seed=SEED, 
-    #     allow_duplication=False, 
-    #     filtered_test_predicates=None
-    # )
 
     ADJ_MATS = utils.get_adj_mats(X_train,NUM_ENTITIES,NUM_RELATIONS)
 
@@ -310,6 +304,6 @@ if __name__ == '__main__':
         verbose=1
     )
 
-    #model.save_weights(os.path.join('..','data','weights',DATASET,DATASET + '_'+RULE+'.h5'))
+    model.save_weights(os.path.join('..','data','weights',DATASET,DATASET + '_'+RULE+'.h5'))
 
     print('Done.')

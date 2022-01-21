@@ -3,6 +3,15 @@
 import numpy as np
 import tensorflow as tf
 
+def get_longest_trace(data, rule):
+
+    if rule == 'full_data':
+        longest_trace = data['max_trace']
+    else:
+        longest_trace = data[rule + '_longest_trace']
+
+    return longest_trace
+
 def graded_precision_recall(
     true_exp,
     pred_exp,
@@ -58,21 +67,22 @@ def graded_precision_recall(
 
             relevance_scores[j] += sum_weights
 
-    # max_jaccard,max_idx = max_jaccard_np(
-    #     true_exp,pred_exp,unk_ent_id,unk_rel_id,return_idx=True)
-    
-    # max_relevance_score = relevance_scores[max_idx]
-
-    # #total_sum = sum([float(weight) for weight in true_weight[max_idx] if weight != unk_weight_id])
-    #num_true_triples = remove_padding_np(true_exp[max_idx],unk_ent_id,unk_rel_id).shape[0]
-
-    # precision = max_relevance_score / (n * .9)
-    # recall = max_relevance_score/ (num_true_triples * .9)
-
     precision_scores = relevance_scores / (n * .9)
     recall_scores = relevance_scores /  (num_true_triples * .9)
 
-    f1_scores = 2 * (precision_scores * recall_scores) / (precision_scores + recall_scores + .000001)
+    nonzero_indices = (precision_scores + recall_scores) != 0
+
+    if np.sum(nonzero_indices) == 0:
+        f1_scores = [0.0]
+    else:
+
+        nonzero_precision_scores = precision_scores[nonzero_indices]
+        nonzero_recall_scores = recall_scores[nonzero_indices]
+
+        f1_scores = 2 * (nonzero_precision_scores * \
+            nonzero_recall_scores) / (nonzero_precision_scores + nonzero_recall_scores)
+
+    #f1_scores = 2 * (precision_scores * recall_scores) / (precision_scores + recall_scores + .000001)
 
     f1 = np.max(f1_scores)
     precision = np.max(precision_scores)
@@ -138,25 +148,25 @@ def jaccard_score_tf(true_exp,pred_exp):
     
     return score
 
-def remove_padding_np(exp,unk_ent_id, unk_rel_id):
+def remove_padding_np(exp,unk_ent_id, unk_rel_id,axis=1):
 
     #unk = np.array(['UNK_ENT', 'UNK_REL', 'UNK_ENT'])
     unk = np.array([unk_ent_id, unk_rel_id, unk_ent_id],dtype=object)
 
-    exp_mask = (exp != unk).all(axis=1)
+    exp_mask = (exp != unk).all(axis=axis)
 
     masked_exp = exp[exp_mask]
 
     return masked_exp
 
-def remove_padding_tf(exp,unk_ent_id, unk_rel_id):
+def remove_padding_tf(exp,unk_ent_id, unk_rel_id,axis=-1):
 
     #unk = tf.convert_to_tensor(np.array(['UNK_ENT', 'UNK_REL', 'UNK_ENT']))
     unk = tf.cast(
         tf.convert_to_tensor([unk_ent_id, unk_rel_id, unk_ent_id]),
         dtype=exp.dtype)
 
-    exp_mask = tf.reduce_all(tf.math.not_equal(exp, unk),axis=1)
+    exp_mask = tf.reduce_all(tf.math.not_equal(exp, unk),axis=axis)
 
     masked_exp = tf.boolean_mask(exp,exp_mask)
 
@@ -495,9 +505,11 @@ def train_test_split_no_unseen(
     X,
     E,
     weights=None,
+    longest_trace=None,
+    max_padding=None,
     unk_ent_id='UNK_ENT',
     unk_rel_id='UNK_REL',
-    test_size=.3,
+    test_size=.25,
     seed=123,
     allow_duplication=False):
 
@@ -510,16 +522,23 @@ def train_test_split_no_unseen(
     X_test_candidates = X
     X_test_exp_candidates = E
 
-    exp_entities = np.array([
-        [E[:,i,j,0],E[:,i,j,2]] for i in range(LONGEST_TRACE) for j in range(MAX_PADDING)]).flatten()
+    if E.ndim == 4:
 
-    exp_relations = np.array([
-        [E[:,i,j,1]] for i in range(LONGEST_TRACE) for j in range(MAX_PADDING)]).flatten()
+        exp_entities = np.array([
+            [E[:,i,j,0],E[:,i,j,2]] for i in range(longest_trace) for j in range(max_padding)]).flatten()
 
+        exp_relations = np.array([
+            [E[:,i,j,1]] for i in range(longest_trace) for j in range(max_padding)]).flatten()
+        
+    elif E.ndim == 3:
+        exp_entities = np.array([[E[:,i,:][:,0],E[:,i,:][:,2]] for i in range(max_padding)]).flatten()
+
+        exp_relations = np.array([E[:,i,:][:,1] for i in range(max_padding)]).flatten()
+        
     entities, entity_cnt = np.unique(np.concatenate([
-                                triples[:,0], triples[:,2], exp_entities],axis=0),return_counts=True)
+                                X[:,0], X[:,2], exp_entities],axis=0),return_counts=True)
     rels, rels_cnt = np.unique(np.concatenate([
-                                triples[:,1], exp_relations],axis=0),return_counts=True)
+                                X[:,1], exp_relations],axis=0),return_counts=True)
     
     dict_entities = dict(zip(entities, entity_cnt))
     dict_rels = dict(zip(rels, rels_cnt))
@@ -530,7 +549,7 @@ def train_test_split_no_unseen(
 
     for i, idx in enumerate(all_indices_shuffled):
         test_triple = X_test_candidates[idx]
-        test_exp = utils.remove_padding_np(X_test_exp_candidates[idx],unk_ent_id, unk_rel_id,axis=-1)
+        test_exp = remove_padding_np(X_test_exp_candidates[idx],unk_ent_id, unk_rel_id,axis=-1)
                 
         # reduce the entity and rel count of triple
         dict_entities[test_triple[0]] = dict_entities[test_triple[0]] - 1

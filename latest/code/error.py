@@ -2,6 +2,45 @@
 
 import utils
 
+def error_indices_french_royalty(X_test_traces,X_test_weights,pred_traces):
+    
+    jaccard_scores = []
+
+    for i in range(len(X_test_traces)):
+
+        jaccard = utils.max_jaccard_np(X_test_traces[i],pred_traces[i],X_test_weights[i],
+                   unk_ent_id='UNK_ENT',unk_rel_id='UNK_REL',unk_weight_id='UNK_WEIGHT',return_idx=False)
+
+        jaccard_scores.append(jaccard)
+
+    error_idx = np.array(jaccard_scores) < 1
+    
+    return error_idx
+
+def predicate_frequency(error_preds):
+    
+    '''
+    most frequently predicted predicate amongst errors
+    '''
+        
+    count_dict = rel_counts(error_preds)
+
+    sorted_counts = sorted(count_dict.items(),key=lambda key:key[1],reverse=True)
+
+    percentage = round(100*sorted_counts[0][1] / sum(count_dict.values()))
+    
+    return sorted_counts, percentage
+
+def rel_counts(error_preds):
+
+    all_rels = error_preds.reshape(-1,3)[:,1]
+
+    rels,counts = np.unique(all_rels[all_rels!='UNK_REL'], return_counts=True)
+
+    count_dict = dict(zip(list(rels), list(counts)))
+
+    return count_dict
+
 def get_counts(
     true_triples, 
     true_exps,preds,true_weights,unk_ent_id,
@@ -86,8 +125,14 @@ if __name__ == "__main__":
 
     triples,traces,weights,entities,relations = utils.get_data(data,RULE)
 
-    _, _,_,X_test_triples, X_test_traces, X_test_weights = utils.train_test_split_no_unseen(
-            X=triples,E=traces,weights=weights,test_size=.3,seed=SEED)
+    MAX_PADDING = 2
+    LONGEST_TRACE = utils.get_longest_trace(data, RULE)
+
+    _, _,_,X_test_triples, X_test_traces, \
+        X_test_weights = utils.train_test_split_no_unseen(
+                            X=triples,E=traces,weights=weights,
+                            longest_trace=LONGEST_TRACE,max_padding=MAX_PADDING,
+                            test_size=.25,seed=SEED)
 
     with open(os.path.join('..','data','predicate_weights.json'),'r') as f:
         predicate_weights = json.load(f)    
@@ -98,6 +143,12 @@ if __name__ == "__main__":
             os.path.join('..','data','preds',DATASET,
                 'gnn_explainer_'+DATASET+'_'+RULE+'_preds.npz'),allow_pickle=True)
 
+        gnn_preds = gnn_data['preds']
+
+        error_idx = error_indices_french_royalty(X_test_traces,X_test_weights,gnn_preds)
+
+        error_preds = gnn_preds[error_idx].reshape(-1,3)
+
         # gnn_data = np.load(
         #     os.path.join('..','data','preds',DATASET,
         #         'gnn_explainer_'+DATASET+'_'+RULE+'_' + str(50)+'_preds.npz'),allow_pickle=True)
@@ -107,7 +158,6 @@ if __name__ == "__main__":
         # gnn_true_exps = traces[gnn_test_idx]
         # gnn_true_weights = weights[gnn_test_idx]
 
-        gnn_preds = gnn_data['preds']
 
         #num_gnn_triples = gnn_true_exps.shape[0]
 
@@ -125,17 +175,21 @@ if __name__ == "__main__":
 
         print(f"Rule: {RULE}")
         print(f"GNNExplainer counts {gnn_sorted_counts}")
-        print(f"GNNExplainer pred counts {gnn_pred_counts}")
+        print(f"GNNExplainer pred counts {gnn_pred_counts}")  
 
-        if RULE == 'spouse':
+        sorted_counts, percentage = predicate_frequency(error_preds)
 
-            keys = ['_'.join(k.split('_')[1:]) for k,_ in gnn_pred_counts.items()]
-            values = list(gnn_pred_counts.values())
+        print(f"of incorrect predictions {sorted_counts[0][0]} was used in {percentage}% of triples")
 
-            fig, ax = plt.subplots(figsize=(8,4))
-            ax.bar(keys,values)
-            ax.set_xticklabels(labels=keys,rotation = (45), fontsize = 14)
-            plt.savefig(f"../plots/{DATASET}_gnn_explainer_{RULE}_counts.pdf",bbox_inches='tight')
+        # if RULE == 'spouse':
+
+        #     keys = ['_'.join(k.split('_')[1:]) for k,_ in gnn_pred_counts.items()]
+        #     values = list(gnn_pred_counts.values())
+
+        #     fig, ax = plt.subplots(figsize=(8,4))
+        #     ax.bar(keys,values)
+        #     ax.set_xticklabels(labels=keys,rotation = (45), fontsize = 14)
+        #     plt.savefig(f"../plots/{DATASET}_gnn_explainer_{RULE}_counts.pdf",bbox_inches='tight')
 
     ###################################################
     if (MODEL == 'explaine') or (MODEL == 'all'):
@@ -145,6 +199,10 @@ if __name__ == "__main__":
                 'explaine_'+DATASET+'_'+RULE+'_preds.npz'),allow_pickle=True)
 
         explaine_preds = explaine_data['preds']
+
+        error_idx = error_indices_french_royalty(X_test_traces,X_test_weights,explaine_preds)
+
+        error_preds = explaine_preds[error_idx].reshape(-1,3)
 
         # explaine_test_idx = explaine_data['test_idx']
         # explaine_true_triples = triples[explaine_test_idx]
@@ -168,13 +226,16 @@ if __name__ == "__main__":
         print(f"Explaine counts {explaine_sorted_counts}")
         print(f"Explaine pred counts {explaine_pred_counts}")
 
-        if RULE == 'spouse':
+        sorted_counts, percentage = predicate_frequency(error_preds)
 
-            keys = ['_'.join(k.split('_')[1:]) for k,_ in explaine_pred_counts.items()]
-            values = list(explaine_pred_counts.values())
+        print(f"of incorrect predictions {sorted_counts[0][0]} was used in {percentage}% of triples")
+        # if RULE == 'spouse':
 
-            fig, ax = plt.subplots(figsize=(8,4))
-            ax.bar(keys,values)
-            ax.set_xticklabels(labels=keys,rotation = (45), fontsize = 14)
-            plt.savefig(f"../plots/{DATASET}_explaine_{RULE}_counts.pdf",bbox_inches='tight')
+        #     keys = ['_'.join(k.split('_')[1:]) for k,_ in explaine_pred_counts.items()]
+        #     values = list(explaine_pred_counts.values())
+
+        #     fig, ax = plt.subplots(figsize=(8,4))
+        #     ax.bar(keys,values)
+        #     ax.set_xticklabels(labels=keys,rotation = (45), fontsize = 14)
+        #     plt.savefig(f"../plots/{DATASET}_explaine_{RULE}_counts.pdf",bbox_inches='tight')
 
