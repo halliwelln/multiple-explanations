@@ -122,15 +122,15 @@ if __name__ == "__main__":
         print(f"GNNExplainer counts {gnn_sorted_counts}")
         print(f"GNNExplainer pred counts {gnn_pred_counts}")
 
-        if RULE == 'spouse':
+        #if RULE == 'spouse':
 
-            keys = ['_'.join(k.split('_')[1:]) for k,_ in gnn_pred_counts.items()]
-            values = list(gnn_pred_counts.values())
+        keys = ['_'.join(k.split('_')[1:]) for k,_ in gnn_pred_counts.items()]
+        values = list(gnn_pred_counts.values())
 
-            fig, ax = plt.subplots(figsize=(8,4))
-            ax.bar(keys,values)
-            ax.set_xticklabels(labels=keys,rotation = (45), fontsize = 14)
-            plt.savefig(f"../plots/{DATASET}_gnn_explainer_{RULE}_counts.pdf",bbox_inches='tight')
+        fig, ax = plt.subplots(figsize=(8,4))
+        ax.bar(keys,values)
+        ax.set_xticklabels(labels=keys,rotation = (45), fontsize = 14)
+        plt.savefig(f"../plots/{DATASET}_gnn_explainer_{RULE}_counts.pdf",bbox_inches='tight')
 
     ###################################################
     if (MODEL == 'explaine') or (MODEL == 'all'):
@@ -163,13 +163,13 @@ if __name__ == "__main__":
         print(f"Explaine counts {explaine_sorted_counts}")
         print(f"Explaine pred counts {explaine_pred_counts}")
 
-        if RULE == 'spouse':
+        #if RULE == 'spouse':
 
-            keys = ['_'.join(k.split('_')[1:]) for k,_ in explaine_pred_counts.items()]
-            values = list(explaine_pred_counts.values())
+        keys = ['_'.join(k.split('_')[1:]) for k,_ in explaine_pred_counts.items()]
+        values = list(explaine_pred_counts.values())
 
-            fig, ax = plt.subplots(figsize=(8,4))
-            ax.bar(keys,values)
-            ax.set_xticklabels(labels=keys,rotation = (45), fontsize = 14)
-            plt.savefig(f"../plots/{DATASET}_explaine_{RULE}_counts.pdf",bbox_inches='tight')
+        fig, ax = plt.subplots(figsize=(8,4))
+        ax.bar(keys,values)
+        ax.set_xticklabels(labels=keys,rotation = (45), fontsize = 14)
+        plt.savefig(f"../plots/{DATASET}_explaine_{RULE}_counts.pdf",bbox_inches='tight')
 
